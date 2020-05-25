@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="background" id="background1">
-    <img class="planet" id="desert-planet" src="desertplanet1.png" onclick="select(this)">  </img> <!--Desert Planet Img---->
+    <img class="planet" id="desert-planet" src="desertplanet1.png" onmouseover="select(this)" onclick="deselect(this)">  </img> <!--Desert Planet Img---->
     <img class="planet" id="savanna-planet" src="savannaplanet1.png">  </img> <!--Savanna Planet Img---->
     <img class="planet" id="arctic-planet" src="arcticplanet1.png">  </img> <!--Arctic Planet Img---->
     <img class="planet" id="tundra-planet" src="tundraplanet1.png">  </img> <!--Tundra Planet Img---->
@@ -29,11 +29,14 @@
 
     <script>
       function select(el) {
-        var thisPlanet = document.getElementById("desert-planet");
-        thisPlanet.style.backgroundColor = "lime";
-        thisPlanet.style.padding = "1.5px";
+        el.style.backgroundColor = "lime";
+        el.style.padding = "1.5px";
+      }
+      function deselect(el) {
+        el.style.backgroundColor = "gray";
+        el.style.padding = "1px";
       }
     </script>
   </body>
 </html>
-<!--Version 0.13--->
+<!--Version 0.14--->
