@@ -19,13 +19,22 @@
   </head>
   <body>
     <div class="background" id="background1">
-    <img class="planet" id="desert-planet" src="desertplanet1.png">  </img> <!--Desert Planet Img---->
+    <img class="planet" id="desert-planet" src="desertplanet1.png" onclick="enlarge(this)">  </img> <!--Desert Planet Img---->
     <img class="planet" id="savanna-planet" src="savannaplanet1.png">  </img> <!--Savanna Planet Img---->
     <img class="planet" id="arctic-planet" src="arcticplanet1.png">  </img> <!--Arctic Planet Img---->
     <img class="planet" id="tundra-planet" src="tundraplanet1.png">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental-planet" src="continentalplanet1.png">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean-planet" src="oceanplanet1.png">  </img> <!--Ocean Planet Img---->
     </div>
+
+    <script>
+      function enlarge(el) {
+      var thisPlanet = document.getElementById("desert-planet");
+      var newHeight = thisPlanet.style.height + 30;
+      var newWidth = thisPlanet.style.width + 30;
+      thisPlanet.style.height = newHeight + "px";
+      thisPlanet.style.width = newWidth + "px";
+    </script>
   </body>
 </html>
-<!--Version 0.10--->
+<!--Version 0.11--->
