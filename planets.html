@@ -3,7 +3,7 @@
     <title> 4x Planet Showcase </title>
     <style>
     
-      .background { position:absolute; width:800px; height:auto; }
+      .background { position:absolute; width:800px; height:200px; }
       #background1 { top:40px; left:60px; background: black; }
       
       .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:grey; border-radius:50%;}
@@ -30,9 +30,10 @@
     <script>
       function select(el) {
         var thisPlanet = document.getElementById("desert-planet");
-        thisPlanet.style.backgroundColor = "green";
+        thisPlanet.style.backgroundColor = "lime";
+        thisPlanet.style.padding = "2px";
       }
     </script>
   </body>
 </html>
-<!--Version 0.12--->
+<!--Version 0.13--->
