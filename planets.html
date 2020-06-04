@@ -13,17 +13,54 @@
       #continental-planet { top:50px; left:500px; }
       #ocean-planet { top:50px; left:600px; }
       
+      .info-box { 
+        position:absolute;
+        width: 170px;
+        height: 300px;
+        font-family: 'MedievalSharp', cursive; 
+        font-size:80%;
+        border: 2px solid gray;
+        border-radius: 20%;
+        display: inline-grid;
+        margin: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 2em 2em 2em 2em 2em;
+        grid-template-areas:
+          "name  name  sprite"
+          "habit habit cost"
+          "desc  desc  desc"
+          "desc  desc  desc"
+          "pop   pop   pop";
+        gap: 2px;
+        background: #c2bebe;
+        transition:0.4s;
+      }
+      .cell { background: #efefef; padding: 3px; position: relative;}
+      .name { grid-area:name; text-align:left; }
+      .name p { white-space: nowrap; }
+      .habit { grid-area:habit; text-align:left; }
+      .cost { grid-area: cost; text-align:right; }
+      .desc { grid-area: desc; text-align:center; }
+      .pop { grid-area: pop; text-align:left; }
+      #desertSurvey { display:null; }
     </style>
   </head>
   <body>
     
-    <img class="planet" id="desert-planet" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img---->
+    <img class="planet" id="desert-planet" src="desertplanet1.png" onclick="surveyDesert(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img---->
     <img class="planet" id="savanna-planet" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
     <img class="planet" id="arctic-planet" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
     <img class="planet" id="tundra-planet" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental-planet" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean-planet" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
-
+    
+    <div class="info-box" id="desertSurvey"> <!--Desert--->
+      <div class="cell name"><p> [variable] </p></div>
+      <div class="cell sprite"><p> [somehow insert sprite] </p></div>
+      <div class="cell habit"><p> [70% Habitability] </p></div>
+      <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+    </div>
     <script>
       function select(el) {
         el.style.backgroundColor = "lime";
@@ -33,7 +70,11 @@
         el.style.backgroundColor = "gray";
         el.style.padding = "0px";
       }
+      function surveyDesert() {
+        var survey = document.getElementById("desertSurvey")
+        survey.style.display = inline-grid;
+      }
     </script>
   </body>
 </html>
-<!--Version 0.19--->
+<!--Version 0.20--->
