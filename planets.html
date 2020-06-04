@@ -1,6 +1,7 @@
 <html>
   <head>
     <title> 4x Planet Showcase </title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <style>
     
       body { background:#030a17; }
@@ -35,13 +36,14 @@
         background: #c2bebe;
         transition:0.4s;
       }
-      .cell { background: #efefef; padding: 3px; position: relative;}
-      .name { grid-area:name; text-align:left; }
+      .cell { background: #efefef; padding: 3px; position: relative; border: solid grey 0.3px; }
+      .cell p { font-family: 'MedievalSharp', cursive; }
+      .name { grid-area:name; text-align:center; }
       .name p { white-space: nowrap; }
       .habit { grid-area:habit; text-align:left; }
       .cost { grid-area: cost; text-align:right; }
       .desc { grid-area: desc; text-align:center; }
-      .pop { grid-area: pop; text-align:left; }
+      .pop { grid-area: pop; text-align:center; }
       #desertSurvey { display:none; top:80px; left:800px; height:300px;}
     </style>
   </head>
@@ -57,7 +59,8 @@
     <div class="info-box" id="desertSurvey"> <!--Desert--->
       <div class="cell name"><p> [variable] </p></div>
       <div class="cell sprite"><p> [somehow insert sprite] </p></div>
-      <div class="cell habit"><p> [70% Habitability] </p></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell habit"><p> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
       <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
     </div>
@@ -72,9 +75,9 @@
       }
       function surveyDesert() {
         var survey = document.getElementById("desertSurvey")
-        survey.style.display = "block";
+        survey.style.display = "inline-grid";
       }
     </script>
   </body>
 </html>
-<!--Version 0.24--->
+<!--Version 0.25--->
