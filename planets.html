@@ -22,7 +22,7 @@
         font-size:80%;
         border: 2px solid lightgray;
         border-radius: 5px;
-        display: inline-grid;
+        display: none;
         margin: 15px;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 2px 58px 60px 120px 50px 10px;
@@ -45,11 +45,11 @@
       .desertSprite { image-rendering:pixelated; }
       .habit { grid-area:habit; text-align:center; }
       .cost { grid-area: cost; text-align:center; }
-      .desc { grid-area: desc; text-align:center; }
+      .desc { grid-area: desc; text-align:center; font-size:100%; }
       .pop { grid-area: pop; text-align:center; }
       .top { grid-area:top; gap:0px; display:none; }
       .bottom { grid-area:bottom; gap:0px; display:none; }
-      #desertSurvey { display:none; top:80px; left:900px; height:300px;}
+      #desertSurvey { top:80px; left:1000px; height:300px;}
     </style>
   </head>
   <body>
@@ -87,4 +87,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.49--->
+<!--Version 0.50--->
