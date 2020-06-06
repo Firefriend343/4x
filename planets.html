@@ -35,7 +35,7 @@
         background: #1d4b96;
         transition:0.4s;
       }
-      .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#2055ab; }
+      .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#4379d1; }
       .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
       .name p { white-space: nowrap; }
@@ -58,14 +58,12 @@
     <img class="planet" id="ocean-planet" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
     <div class="info-box" id="desertSurvey"> <!--Desert--->
-      <div class="cell top"></div>
       <div class="cell name"><p> [variable] </p></div>
-      <img class="cell sprite desertSprite" src="desertplanet1.png"></img>
+      <div class="cell sprite"><img class="cell desertSprite" src="desertplanet1.png"></img></div>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
       <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
-      <div class="cell bottom"></div>
     </div>
     <script>
       function select(el) {
@@ -83,4 +81,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.42--->
+<!--Version 0.43--->
