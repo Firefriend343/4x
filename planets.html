@@ -33,13 +33,14 @@
           "desc  desc  desc"
           "pop   pop   pop";
         gap: 2px;
-        background: #34b4eb;
+        background: #1d4b96;
         transition:0.4s;
       }
-      .cell { background: #efefef; padding: 3px; position: relative; }
+      .cell { background: #efefef; padding: 3px; position: relative; overflow:hidden; }
       .cell p { font-family: 'MedievalSharp', cursive; }
-      .name { grid-area:name; text-align:center; }
+      .name { grid-area: name; text-align:center; }
       .name p { white-space: nowrap; }
+      .desertSprite { grid-area:sprite; }
       .habit { grid-area:habit; text-align:left; }
       .cost { grid-area: cost; text-align:right; }
       .desc { grid-area: desc; text-align:center; }
@@ -58,7 +59,7 @@
     
     <div class="info-box" id="desertSurvey"> <!--Desert--->
       <div class="cell name"><p> [variable] </p></div>
-      <div class="cell sprite"><p> [somehow insert sprite] </p></div>
+      <img class="cell sprite" src="desertplanet1.png"></img>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell habit"><p> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
@@ -80,4 +81,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.27--->
+<!--Version 0.28--->
