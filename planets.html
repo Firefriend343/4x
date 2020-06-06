@@ -146,8 +146,8 @@
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
         var surveyIcon = document.getElementById("surveyIcon");
-        var newTop = el.style.top + "75";
-        var newLeft = el.style.left;
+        var newTop = el.offsetTop + 75;
+        var newLeft = el.offsetLeft;
         surveyIcon.style.top = newTop + "px";
         surveyIcon.style.left = newLeft + "px";
         surveyIcon.style.display = "block";
@@ -186,4 +186,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.66--->
+<!--Version 0.67--->
