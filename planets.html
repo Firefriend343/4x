@@ -43,6 +43,7 @@
       .name p { white-space: nowrap; }
       .sprite { grid-area:sprite; }
       .desertSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .savvanaSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
       .habit { grid-area:habit; text-align:center; }
       .cost { grid-area: cost; text-align:center; }
       .desc { grid-area: desc; text-align:center; font-size:85%; }
@@ -50,24 +51,36 @@
       .top { grid-area: top; gap:0px; display:none; }
       .bottom { grid-area: bottom; gap:0px; display:none; }
       #desertSurvey { top:80px; left:1000px; height:300px;}
+      #savannaSurvey { top:80px; left:1000px; height:300px;}
     </style>
   </head>
   <body>
     
     <img class="planet" id="desert-planet" src="desertplanet1.png" onclick="surveyDesert(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img---->
-    <img class="planet" id="savanna-planet" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
+    <img class="planet" id="savanna-planet" src="savannaplanet1.png" onclick="surveySavanna(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
     <img class="planet" id="arctic-planet" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
     <img class="planet" id="tundra-planet" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental-planet" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean-planet" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
-    <div class="info-box" id="desertSurvey"> <!--Desert--->
+    <div class="info-box" id="desertSurvey"> <!--Desert Planet--->
       <div class="cell top"></div>
       <div class="cell name"><p> [variable] </p></div>
       <div class="cell sprite"><img class="cell desertSprite" src="desertplanet1.png"></img></div>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
-      <div class="cell desc"><p> Your scans of the planet show nothing but endless seas of dunes, cacti, and the occasional mesa or oasis. It appears to be [habitatable/mostly habitable/nearly inhabitable] to your species.  </p></div>
+      <div class="cell desc"><p> Your scans of the planet show nothing but endless seas of dunes, cacti, and the occasional mesa or oasis. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="savannaSurvey"> <!--Savanna Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><p> [variable] </p></div>
+      <div class="cell sprite"><img class="cell savvanaSprite" src="savvanaplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
       <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
       <div class="cell bottom"></div>
     </div>
@@ -84,7 +97,11 @@
         var survey = document.getElementById("desertSurvey")
         survey.style.display = "inline-grid";
       }
+      function surveySavanna() {
+        var survey = document.getElementById("savannaSurvey")
+        survey.style.display = "inline-grid";
+      }
     </script>
   </body>
 </html>
-<!--Version 0.56--->
+<!--Version 0.57--->
