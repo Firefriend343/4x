@@ -60,7 +60,7 @@
       #tundraSurvey { top:80px; left:1000px; height:300px; }
       #continentalSurvey { top:80px; left:1000px; height:300px; }
       #oceanSurvey { top:80px; left:1000px; height:300px; }
-      .surveyIcon { display:none; }
+      .surveyIcon { display:none; position:absolute; }
       #surveyIcon { width:20px; height:20px; }
     </style>
   </head>
@@ -146,8 +146,8 @@
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
         var surveyIcon = document.getElementById("surveyIcon");
-        var newTop = el.offsetTop + 75;
-        var newLeft = el.offsetLeft;
+        var newTop = el.offsetTop + 65;
+        var newLeft = el.offsetLeft + 10;
         surveyIcon.style.top = newTop + "px";
         surveyIcon.style.left = newLeft + "px";
         surveyIcon.style.display = "block";
@@ -186,4 +186,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.67--->
+<!--Version 0.68--->
