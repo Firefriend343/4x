@@ -27,12 +27,12 @@
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 30px 48px 48px 96px 48px 30px;
         grid-template-areas:
-          "blank blank blank"
+          "top   top   top"
           "name  name  sprite"
           "habit habit cost"
           "desc  desc  desc"
           "pop   pop   pop"
-          "blank blank blank";
+          "bottom bottom bottom";
         gap: 2px;
         background: #1d4b96;
         transition:0.4s;
@@ -46,7 +46,8 @@
       .cost { grid-area: cost; text-align:right; }
       .desc { grid-area: desc; text-align:center; }
       .pop { grid-area: pop; text-align:center; }
-      .blank { grid-area:blank }
+      .top { grid-area:top; background: #1d4b96;}
+      .bottom { grid-area:bottom; background: #1d4b96;}
       #desertSurvey { display:none; top:80px; left:900px; height:300px;}
     </style>
   </head>
@@ -60,14 +61,14 @@
     <img class="planet" id="ocean-planet" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
     <div class="info-box" id="desertSurvey"> <!--Desert--->
-      <div class="cell blank"></div>
+      <div class="cell top"></div>
       <div class="cell name"><p> [variable] </p></div>
       <img class="cell sprite" src="desertplanet1.png"></img>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell habit"><p> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
       <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
-      <div class="cell blank"></div>
+      <div class="cell bottom"></div>
     </div>
     <script>
       function select(el) {
@@ -85,4 +86,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.30--->
+<!--Version 0.32--->
