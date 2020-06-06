@@ -14,6 +14,9 @@
       #continental-planet { top:50px; left:500px; }
       #ocean-planet { top:50px; left:600px; }
       
+      .info-box-container { display:none; }
+      #info-box-container { display:none; }
+      
       .info-box { 
         position:absolute;
         width: 170px;
@@ -63,6 +66,8 @@
     <img class="planet" id="continental-planet" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean-planet" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
+    <div class="info-box-container" id="info-box-container"></div>
+
     <div class="info-box" id="desertSurvey"> <!--Desert Planet--->
       <div class="cell top"></div>
       <div class="cell name"><p> [variable] </p></div>
@@ -94,14 +99,22 @@
         el.style.padding = "0px";
       }
       function surveyDesert() {
-        var survey = document.getElementById("desertSurvey")
+        var container = document.getElementById("info-box-container");
+        while (container.firstChild) { container.removeChild(container.firstChild); }
+        var survey = document.getElementById("desertSurvey");
+        var newSurvey = survey.cloneNode(true);
+        container.appendChild(newSurvey);
         survey.style.display = "inline-grid";
       }
       function surveySavanna() {
-        var survey = document.getElementById("savannaSurvey")
+        var container = document.getElementById("info-box-container");
+        while (container.firstChild) { container.removeChild(container.firstChild); }
+        var survey = document.getElementById("savannaSurvey");
+        var newSurvey = survey.cloneNode(true);
+        container.appendChild(newSurvey);
         survey.style.display = "inline-grid";
       }
     </script>
   </body>
 </html>
-<!--Version 0.60--->
+<!--Version 0.61--->
