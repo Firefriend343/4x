@@ -33,11 +33,11 @@
           "desc  desc  desc"
           "pop   pop   pop"
           "bottom bottom bottom";
-        gap: 2px;
+        gap: 1px;
         background: #1d4b96;
         transition:0.4s;
       }
-      .cell { background: #efefef; padding: 3px; position: relative; overflow:hidden; }
+      .cell { background: gray; padding: 3px; position: relative; overflow:hidden; font-size:70%; }
       .cell p { font-family: 'MedievalSharp', cursive; }
       .name { grid-area: name; text-align:center; }
       .name p { white-space: nowrap; }
@@ -47,8 +47,8 @@
       .cost { grid-area: cost; text-align:right; }
       .desc { grid-area: desc; text-align:center; }
       .pop { grid-area: pop; text-align:center; }
-      .top { grid-area:top; background: #1d4b96;}
-      .bottom { grid-area:bottom; background: #1d4b96;}
+      .top { grid-area:top; display:none; }
+      .bottom { grid-area:bottom; display:none; }
       #desertSurvey { display:none; top:80px; left:900px; height:300px;}
     </style>
   </head>
@@ -87,4 +87,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.34--->
+<!--Version 0.35--->
