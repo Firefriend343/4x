@@ -60,7 +60,7 @@
       #tundraSurvey { top:80px; left:1000px; height:300px; }
       #continentalSurvey { top:80px; left:1000px; height:300px; }
       #oceanSurvey { top:80px; left:1000px; height:300px; }
-      .surveyIcon { position:absolute; transition:0.4s }
+      .surveyIcon { position:absolute; transition:1s }
       #surveyIcon { width:0px; height:0px; }
     </style>
   </head>
@@ -154,7 +154,6 @@
         var newWidth = 20;
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
-        surveyIcon.style.display = "block";
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -190,8 +189,9 @@
         var newHeight = 0;
         var newWidth = 0;
         surveyIcon.style.height = newHeight + "px";
-        surveyIcon.style.width = newWidth + "px";     }
+        surveyIcon.style.width = newWidth + "px";     
+      }
     </script>
   </body>
 </html>
-<!--Version 0.73--->
+<!--Version 0.74--->
