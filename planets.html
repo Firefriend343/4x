@@ -190,6 +190,12 @@
       }
       function unSurvey(el) {
         var survey = document.getElementById("desertSurvey");
+        setTimeout(function(){
+          unSurvey2()
+        },1000);        
+      }
+      function unSurvey2(el) {
+        var survey = document.getElementById("desertSurvey");
         survey.style.display = "none";
       }
     </script>
