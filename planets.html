@@ -28,7 +28,7 @@
         grid-auto-rows: 30px 48px 48px 96px 48px 30px;
         grid-template-areas:
           "top   top   top"
-          "name  name  sprite"
+          "name  name  desertSprite"
           "habit habit cost"
           "desc  desc  desc"
           "pop   pop   pop"
@@ -41,7 +41,8 @@
       .cell p { font-family: 'MedievalSharp', cursive; }
       .name { grid-area: name; text-align:center; }
       .name p { white-space: nowrap; }
-      .desertSprite { grid-area:sprite; }
+      .sprite { grid-area:sprite; }
+      .desertSprite {}
       .habit { grid-area:habit; text-align:left; }
       .cost { grid-area: cost; text-align:right; }
       .desc { grid-area: desc; text-align:center; }
@@ -63,7 +64,7 @@
     <div class="info-box" id="desertSurvey"> <!--Desert--->
       <div class="cell top"></div>
       <div class="cell name"><p> [variable] </p></div>
-      <img class="cell sprite" src="desertplanet1.png"></img>
+      <img class="cell sprite desertSprite" src="desertplanet1.png"></img>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell habit"><p> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p> This is a desert planet, harsh and unforgiving, [yet suitable/tolerable/very inhabitable] to your species. </p></div>
@@ -86,4 +87,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.32--->
+<!--Version 0.33--->
