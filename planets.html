@@ -73,7 +73,7 @@
     <img class="planet" id="continental" src="continentalplanet1.png" onclick="surveyContinental(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onclick="surveyOcean(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
-    <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyDesert(this)"></img>
+    <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
     <div class="info-box" id="desertSurvey" onclick="unSurvey(this)"> <!--Desert Planet--->
       <div class="cell top"></div>
@@ -165,7 +165,7 @@
         surveyIcon.style.width = newWidth + "px";
         var currentSurvey = el.id + "Survey";
         var newSurvey = document.getElementById(currentSurvey)
-        newSurvey.style.display = "inline-grid";
+        /*newSurvey.style.display = "inline-grid";*/
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -181,7 +181,7 @@
         surveyIcon.style.width = newWidth + "px";
       }
       function surveyPlanet() {
-        currentSurvey.style.display = "none";
+        newSurvey.style.display = "inline-grid";
       }
       function surveyDesert() {
         desertSurvey.style.display = "inline-grid";
@@ -208,4 +208,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.84--->
+<!--Version 0.85--->
