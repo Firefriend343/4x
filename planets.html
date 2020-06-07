@@ -158,6 +158,11 @@
       function deselect(el) {
         el.style.backgroundColor = "gray";
         el.style.padding = "0px";
+        setTimeout(function(){
+          hideIcon()
+        },800);        
+      }
+      function hideIcon(el) {
         var surveyIcon = document.getElementById("surveyIcon");
         var newHeight = 0;
         var newWidth = 0;
@@ -190,15 +195,9 @@
       }
       function unSurvey(el) {
         var survey = document.getElementById("desertSurvey");
-        setTimeout(function(){
-          unSurvey2()
-        },1000);        
-      }
-      function unSurvey2(el) {
-        var survey = document.getElementById("desertSurvey");
         survey.style.display = "none";
-      }
+        }
     </script>
   </body>
 </html>
-<!--Version 0.75--->
+<!--Version 0.77--->
