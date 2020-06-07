@@ -20,20 +20,22 @@
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 10px 70px 160px 50px 10px;
         grid-template-areas:
-          "top    top    top"
-          "name   name   name"
-          "desc   desc   desc"
-          "button button button"
-          "bottom bottom bottom";
+          "top     top    top"
+          "name    name   name"
+          "desc    desc   desc"
+          "margin1 button margin2"
+          "bottom  bottom bottom";
         gap: 1.75px;
         background: #1d4b96;
         transition:0.4s;
       }
       .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
-      .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .cell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .name { grid-area:name; text-align:left; }
-      .name p { white-space:nowrap; font-size:120%; }
+      .name p { white-space:nowrap; font-size:200%; }
       .desc { grid-area:desc; text-align:center; }
+      .margin1 { grid-area:margin1; }
+      .margin2 { grid-area:margin2; }
       .button { grid-area:button; }
       .top { grid-area:top; display:none; }
       .bottom { grid-area:bottom; display:none; }
@@ -45,9 +47,11 @@
   
     <div class="eventA" id="event1">
       <div class="cell top"></div>
-      <div class="cell name"><p> Mineral Theft </p></div>
+      <div class="cell name"><p> MINERAL THEFT </p></div>
       <div class="cell desc"><p> A thief has broken into a storage warehouse on [planetName] and stolen a large amount of raw minerals recently mined from the planet. </p></div>
+      <cell clas="cell margin1">
       <div class="cell button"><button> Unfortunate. </button></div>
+      <cell clas="cell margin2">
       <div class="cell bottom"></div>
     </div>
   
@@ -56,3 +60,4 @@
     </script>
   </body>
 </html>
+<!--Version 0.4--->
