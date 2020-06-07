@@ -9,13 +9,13 @@
       
       .eventA { 
         position:absolute;
-        width: 300px;
-        height: auto;
+        width: 270px;
+        height: 300px;
         font-family: 'MedievalSharp', cursive; 
         font-size:80%;
         border: 2px solid lightgray;
         border-radius: 5px;
-        display: none;
+        display: inline-grid;
         margin: 15px;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 10px 70px 160px 50px 10px;
@@ -34,8 +34,8 @@
       .name { grid-area:name; text-align:left; }
       .name p { white-space:nowrap; font-size:200%; }
       .desc { grid-area:desc; text-align:center; }
-      .margin1 { grid-area:margin1; }
-      .margin2 { grid-area:margin2; }
+      .margin1 { grid-area:margin1; display:none; }
+      .margin2 { grid-area:margin2; display:none; }
       .button { grid-area:button; }
       .top { grid-area:top; display:none; }
       .bottom { grid-area:bottom; display:none; }
@@ -60,4 +60,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.4--->
+<!--Version 0.7--->
