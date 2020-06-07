@@ -7,12 +7,12 @@
       body { background:#030a17; }
       .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:grey; border-radius:50%; transition:0.5s; }
       
-      #desert-planet { top:50px; left:100px; }
-      #savanna-planet { top:50px; left:200px; }
-      #arctic-planet { top:50px; left:300px }
-      #tundra-planet { top:50px; left:400px; }
-      #continental-planet { top:50px; left:500px; }
-      #ocean-planet { top:50px; left:600px; }
+      #desert { top:50px; left:100px; }
+      #savanna { top:50px; left:200px; }
+      #arctic { top:50px; left:300px }
+      #tundra { top:50px; left:400px; }
+      #continental { top:50px; left:500px; }
+      #ocean { top:50px; left:600px; }
       
       .info-box { 
         position:absolute;
@@ -66,12 +66,12 @@
   </head>
   <body>
     
-    <img class="planet" id="desert-planet" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
-    <img class="planet" id="savanna-planet" src="savannaplanet1.png" onclick="surveySavanna(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
-    <img class="planet" id="arctic-planet" src="arcticplanet1.png" onclick="surveyArctic(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
-    <img class="planet" id="tundra-planet" src="tundraplanet1.png" onclick="surveyTundra(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
-    <img class="planet" id="continental-planet" src="continentalplanet1.png" onclick="surveyContinental(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
-    <img class="planet" id="ocean-planet" src="oceanplanet1.png" onclick="surveyOcean(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    <img class="planet" id="desert" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
+    <img class="planet" id="savanna" src="savannaplanet1.png" onclick="surveySavanna(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
+    <img class="planet" id="arctic" src="arcticplanet1.png" onclick="surveyArctic(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
+    <img class="planet" id="tundra" src="tundraplanet1.png" onclick="surveyTundra(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
+    <img class="planet" id="continental" src="continentalplanet1.png" onclick="surveyContinental(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
+    <img class="planet" id="ocean" src="oceanplanet1.png" onclick="surveyOcean(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyDesert(this)"></img>
 
@@ -150,7 +150,7 @@
       var tundraSurvey = document.getElementById("tundraSurvey");
       var continentalSurvey = document.getElementById("continentalSurvey");
       var oceanSurvey = document.getElementById("oceanSurvey");
-      var currentSurvey = null;
+      var newSurvey = null;
       
       function select(el) {
         el.style.backgroundColor = "lime";
@@ -163,7 +163,8 @@
         var newWidth = 20;
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
-        var currentSurvey = el.id;
+        var newSurvey = el.id + "Survey";
+        el.appendChild(newSurvey);
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -206,4 +207,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.81--->
+<!--Version 0.82--->
