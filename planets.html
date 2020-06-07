@@ -150,11 +150,11 @@
       var tundraSurvey = document.getElementById("tundraSurvey");
       var continentalSurvey = document.getElementById("continentalSurvey");
       var oceanSurvey = document.getElementById("oceanSurvey");
+      var currentSurvey = null;
       
       function select(el) {
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
-        var surveyIcon = document.getElementById("surveyIcon");
         var newTop = el.offsetTop + 65;
         var newLeft = el.offsetLeft + 5;
         surveyIcon.style.top = newTop + "px";
@@ -163,6 +163,7 @@
         var newWidth = 20;
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
+        var currentSurvey = el;
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -172,7 +173,6 @@
         },800);        
       }
       function hideIcon(el) {
-        var surveyIcon = document.getElementById("surveyIcon");
         var newHeight = 0;
         var newWidth = 0;
         surveyIcon.style.height = newHeight + "px";
@@ -197,11 +197,10 @@
         oceanSurvey.style.display = "inline-grid";
       }
       function unSurvey(el) {
-        var survey = document.getElementById("desertSurvey");
-        survey.style.display = "none";
-        console.log("Sorry this only works on desert planets because your scanners are bad")
+        el.style.display = "none";
+        console.log("Un-surveyed")
       }
     </script>
   </body>
 </html>
-<!--Version 0.79--->
+<!--Version 0.80--->
