@@ -142,6 +142,15 @@
     </div>
 
     <script>
+      /*Global Values*/
+      var surveyIcon = document.getElementById("surveyIcon");
+      var desertSurvey = document.getElementById("desertSurvey");
+      var savannaSurvey = document.getElementById("savvanaSurvey");
+      var arcticSurvey = document.getElementById("arcticSurvey");
+      var tundraSurvey = document.getElementById("tundraSurvey");
+      var continentalSurvey = document.getElementById("continentalSurvey");
+      var oceanSurvey = document.getElementById("oceanSurvey");
+      
       function select(el) {
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
@@ -170,8 +179,7 @@
         surveyIcon.style.width = newWidth + "px";
       }
       function surveyDesert() {
-        var survey = document.getElementById("desertSurvey");
-        survey.style.display = "inline-grid";
+        desertSurvey.style.display = "inline-grid";
       }
       function surveySavanna() {
         var survey = document.getElementById("savannaSurvey");
@@ -200,4 +208,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.77--->
+<!--Version 0.78--->
