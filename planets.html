@@ -67,11 +67,11 @@
   <body>
     
     <img class="planet" id="desert" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
-    <img class="planet" id="savanna" src="savannaplanet1.png" onclick="surveySavanna(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
-    <img class="planet" id="arctic" src="arcticplanet1.png" onclick="surveyArctic(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
-    <img class="planet" id="tundra" src="tundraplanet1.png" onclick="surveyTundra(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
-    <img class="planet" id="continental" src="continentalplanet1.png" onclick="surveyContinental(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
-    <img class="planet" id="ocean" src="oceanplanet1.png" onclick="surveyOcean(this)" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    <img class="planet" id="savanna" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
+    <img class="planet" id="arctic" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
+    <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
+    <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
+    <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -165,14 +165,13 @@
         surveyIcon.style.width = newWidth + "px";
         var currentSurvey = el.id + "Survey";
         newSurvey = document.getElementById(currentSurvey)
-        /*newSurvey.style.display = "inline-grid";*/
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
         el.style.padding = "0px";
         setTimeout(function(){
           hideIcon()
-        },800);        
+        },1100);        
       }
       function hideIcon(el) {
         var newHeight = 0;
@@ -183,24 +182,6 @@
       function surveyPlanet() {
         newSurvey.style.display = "inline-grid";
       }
-      function surveyDesert() {
-        desertSurvey.style.display = "inline-grid";
-      }
-      function surveySavanna() {
-        savannaSurvey.style.display = "inline-grid";
-      }
-      function surveyArctic() {
-        arcticSurvey.style.display = "inline-grid";
-      }
-      function surveyTundra() {
-        tundraSurvey.style.display = "inline-grid";
-      }
-      function surveyContinental() {
-        continentalSurvey.style.display = "inline-grid";
-      }
-      function surveyOcean() {
-        oceanSurvey.style.display = "inline-grid";
-      }
       function unSurvey(el) {
         el.style.display = "none";
         console.log("Un-surveyed");
@@ -208,4 +189,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.86--->
+<!--Version 0.87--->
