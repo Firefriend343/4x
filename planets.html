@@ -73,7 +73,7 @@
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     
-    <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
+    <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)" onclick="yee(this)"></img>
 
     <div class="info-box" id="desertSurvey" onclick="unSurvey(this)"> <!--Desert Planet--->
       <div class="cell top"></div>
@@ -190,7 +190,10 @@
         el.style.display = "none";
         console.log("Un-surveyed");
       }
+      function yee(el) {
+        prompt("What do you want to name this planet?")
+      }
     </script>
   </body>
 </html>
-<!--Version 0.90--->
+<!--Version 0.91--->
