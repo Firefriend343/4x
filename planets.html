@@ -165,7 +165,7 @@
         surveyIcon.style.width = newWidth + "px";
         var currentSurvey = el.id + "Survey";
         var newSurvey = document.getElementById(currentSurvey)
-        el.appendChild(newSurvey);
+        newSurvey.style.display = "inline-grid";
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -208,4 +208,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.83--->
+<!--Version 0.84--->
