@@ -4,11 +4,19 @@
     </style>
   </head>
   <body>
+    
+    <span> You are located on </span><span id="planet1"></span><span>.</span>
+    
     <form>
       <label for="planetName">Name this planet:</label>
       <input type="text" id="planetName" name="planetName"><br><br>
-      <button type="submit" value="Submit"></button>
+      <button type="submit" value="Submit"> Submit </button>
     </form>
+    
+    <script>
+      var planet1 = document.getElementById("planet1");
+      planet1.innerText = planetName;
+    </script>
   </body>
 <html>
 <!--Version 0.1--Forms----->
