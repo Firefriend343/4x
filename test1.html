@@ -4,12 +4,14 @@
   </head>
   <body>
   
-  <div><p>You are located on</p> + planetName + <p>.</p></div>
+  <span>You are located on</span><span id="planet"></span><span>.</span>
   
   <script>
-  var planetName = "Earth";
+    var planetName = "Earth";
+    var planet1 = document.getElementById("planet");
+    planet1.innerText = planetName;
   </script>
   
   </body>
 </html>
-<!--Test Version 1 *** Variables in paragraphs--->
+<!--Test Version 1.4 *** Variables in paragraphs--->
