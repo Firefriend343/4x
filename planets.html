@@ -40,7 +40,7 @@
       .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
       .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
-      .name p { white-space: nowrap; }
+      .name span { white-space: nowrap; }
       .sprite { grid-area:sprite; }
       .desertSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
       .savannaSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
@@ -77,7 +77,7 @@
 
     <div class="info-box" id="desertSurvey" onclick="unSurvey(this)"> <!--Desert Planet--->
       <div class="cell top"></div>
-      <div class="cell name"><p> [variable] </p></div>
+      <div class="cell name"><span id="planet1">  </span></div>
       <div class="cell sprite"><img class="cell desertSprite" src="desertplanet1.png"></img></div>
       <div class="cell habit"><p> [% Habitability] </p></div>
       <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
@@ -152,6 +152,10 @@
       var oceanSurvey = document.getElementById("oceanSurvey");
       var newSurvey = null;
       
+      var planet1Name = "Calsron"; /*Desert Planet Name*/
+      const planet1 = document.getElementById("planet1");
+      planet1.innerText = planet1Name;
+      
       function select(el) {
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
@@ -189,4 +193,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.89--->
+<!--Version 0.90--->
