@@ -6,7 +6,7 @@
     <style>
       
       body { background:#030a17; }
-      
+
       .eventA { 
         position:absolute;
         width: 270px;
@@ -40,6 +40,7 @@
       .top { grid-area:top; display:none; }
       .bottom { grid-area:bottom; display:none; }
       #event1 { height:300px; top:100px; left:900px; }
+      #button1 { border-radius:10%; background:darkblue; }
     </style>
   </head>
   
@@ -50,7 +51,7 @@
       <div class="cell name"><p> MINERAL THEFT </p></div>
       <div class="cell desc"><p> A thief has broken into a storage warehouse on [planetName] and stolen a large amount of raw minerals recently mined from the planet. </p></div>
       <cell clas="cell margin1"></div>
-      <div class="cell button"><button> Unfortunate. </button></div>
+      <div class="cell button"><button class="cell" id="button1"> Unfortunate. </button></div>
       <cell clas="cell margin2"></div>
       <div class="cell bottom"></div>
     </div>
@@ -60,4 +61,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.7--->
+<!--Version 0.9--->
