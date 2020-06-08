@@ -145,6 +145,8 @@
       <div class="cell bottom"></div>
     </div>
 
+    <button onclick="decide()"> Pick the Img </button>
+  
     <script>
       /*Global Values*/
       var surveyIcon = document.getElementById("surveyIcon");
@@ -190,7 +192,7 @@
         el.style.display = "none";
       }
       
-      function draw(el) {
+      function decide(el) {
         var allIds = ["mineralPlanet1", "mineralPlanet2"];
         var randomIndex = Math.floor(Math.random() * allIds.length);
         var idToCopy = allIds[randomIndex];
