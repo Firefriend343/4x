@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <title> 4x Planet Showcase </title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+    
+      body { background:#030a17; }
+      .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:grey; border-radius:50%; transition:0.5s; }
+      
+      #desert { top:50px; left:100px; }
+      #savanna { top:50px; left:200px; }
+      #arctic { top:50px; left:300px }
+      #tundra { top:50px; left:400px; }
+      #continental { top:50px; left:500px; }
+      #ocean { top:50px; left:600px; }
+      
+      .info-box { 
+        position:absolute;
+        width: 170px;
+        height: auto;
+        font-family: 'MedievalSharp', cursive; 
+        font-size:80%;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        display: none;
+        margin: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 2px 58px 60px 120px 50px 10px;
+        grid-template-areas:
+          "top   top   top"
+          "name  name  sprite"
+          "habit habit cost"
+          "desc  desc  desc"
+          "pop   pop   pop"
+          "bottom bottom bottom";
+        gap: 1.75px;
+        background: #1d4b96;
+        transition:0.4s;
+      }
+      .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
+      .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .name { grid-area: name; text-align:center; }
+      .name span { font-size:140%; }
+      .sprite { grid-area:sprite; }
+      .desertSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .savannaSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .arcticSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .tundraSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .continentalSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .oceanSprite { image-rendering:pixelated; background:grey; border-radius:50%; }
+      .habit { grid-area:habit; text-align:center; }
+      .cost { grid-area: cost; text-align:center; }
+      .desc { grid-area: desc; text-align:center; font-size:85%; }
+      .pop { grid-area: pop; text-align:center; }
+      .top { grid-area: top; gap:0px; display:none; }
+      .bottom { grid-area: bottom; gap:0px; display:none; }
+      #desertSurvey { top:80px; left:1000px; height:300px; }
+      #savannaSurvey { top:80px; left:980px; height:300px; }
+      #arcticSurvey { top:80px; left:960px; height:300px; }
+      #tundraSurvey { top:80px; left:940px; height:300px; }
+      #continentalSurvey { top:80px; left:920px; height:300px; }
+      #oceanSurvey { top:80px; left:900px; height:300px; }
+      .surveyIcon { position:absolute; transition:1s }
+      #surveyIcon { width:0px; height:0px; }
+      
+      #form1 { top:700px; left:200px; }
+    </style>
+  </head>
+  <body>
+    
+    <img class="planet" id="desert" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
+    <img class="planet" id="savanna" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
+    <img class="planet" id="arctic" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
+    <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
+    <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
+    <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    
+    <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
+
+    <div class="info-box" id="desertSurvey" onclick="unSurvey(this)"> <!--Desert Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span id="desertPlanet">  </span></div>
+      <div class="cell sprite"><img class="cell desertSprite" src="desertplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> Your scans of the planet show nothing but endless seas of dunes, cacti, and the occasional mesa or oasis. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="savannaSurvey" onclick="unSurvey(this)"> <!--Savanna Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell savannaSprite" src="savannaplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="arcticSurvey" onclick="unSurvey(this)"> <!--Arctic Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell arcticSprite" src="arcticplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> This planet is a barren, freezing, thick floe of ice. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="tundraSurvey" onclick="unSurvey(this)"> <!--Tundra Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell tundraSprite" src="tundraplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> What was probably once a rolling green-hilled planet has been frozen to its core. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="continentalSurvey" onclick="unSurvey(this)"> <!--Continental Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell continentalSprite" src="continentalplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> The hills and valleys of this planet are a brilliant, verdant green. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="info-box" id="oceanSurvey" onclick="unSurvey(this)"> <!--Ocean Planet--->
+      <div class="cell top"></div>
+      <div class="cell name"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell oceanSprite" src="oceanplanet1.png"></img></div>
+      <div class="cell habit"><p> [% Habitability] </p></div>
+      <div class="cell cost"><p> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p> This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains [#] of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div>
+      <form id="form1">
+        <label for="desertPlanetName">Name this planet:</label>
+        <input type="text" id="desertPlanetName"><br><br>
+        <button type="button" value="Submit" onclick="nameDesertPlanet(this)"> Submit </button>
+      </form>
+    </div>
+
+    <script>
+      /*Global Values*/
+      var surveyIcon = document.getElementById("surveyIcon");
+      var desertSurvey = document.getElementById("desertSurvey");
+      var savannaSurvey = document.getElementById("savvanaSurvey");
+      var arcticSurvey = document.getElementById("arcticSurvey");
+      var tundraSurvey = document.getElementById("tundraSurvey");
+      var continentalSurvey = document.getElementById("continentalSurvey");
+      var oceanSurvey = document.getElementById("oceanSurvey");
+      var newSurvey = null;
+      
+      function nameDesertPlanet() {
+        var desertPlanet = document.getElementById("desertPlanet");
+        desertPlanet.innerText = document.getElementById("desertPlanetName").value;
+      }
+      function select(el) {
+        el.style.backgroundColor = "lime";
+        el.style.padding = "1.5px";
+        var newTop = el.offsetTop + 65;
+        var newLeft = el.offsetLeft + 5;
+        surveyIcon.style.top = newTop + "px";
+        surveyIcon.style.left = newLeft + "px";
+        var newHeight = 20;
+        var newWidth = 20;
+        surveyIcon.style.height = newHeight + "px";
+        surveyIcon.style.width = newWidth + "px";
+        var currentSurvey = el.id + "Survey";
+        newSurvey = document.getElementById(currentSurvey)
+      }
+      function deselect(el) {
+        el.style.backgroundColor = "gray";
+        el.style.padding = "0px";
+        setTimeout(function(){
+          hideIcon()
+        },1100);        
+      }
+      function hideIcon(el) {
+        var newHeight = 0;
+        var newWidth = 0;
+        surveyIcon.style.height = newHeight + "px";
+        surveyIcon.style.width = newWidth + "px";
+      }
+      function surveyPlanet() {
+        newSurvey.style.display = "inline-grid";
+      }
+      function unSurvey(el) {
+        el.style.display = "none";
+        console.log("Un-surveyed");
+      }
+    </script>
+  </body>
+</html>
+<!--Version 0.1--Checking Planet Name w/ Forms--->
