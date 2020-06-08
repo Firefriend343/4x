@@ -15,7 +15,7 @@
       #continental { top:50px; left:500px; }
       #ocean { top:50px; left:600px; }
       #mineralPlanet1 { top:200px; left:100px; }
-      #mineralPlanet2 { top:200px; left:200px; }
+      #mineralPlanet2 { /*top:200px; left:200px;*/ display:none; }
       
       .info-box { 
         position:absolute;
@@ -78,7 +78,7 @@
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
 
     <img class="mineralPlanet" id="mineralPlanet1">  </img> <!--Mineral Planet #1 Img---->
-    <!----<img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 Img---->
+    <img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
