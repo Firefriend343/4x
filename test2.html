@@ -10,15 +10,15 @@
     <form>
       <label for="planetName">Name this planet:</label>
       <input type="text" id="planetName" name="planetName"><br><br>
-      <button type="submit" value="Submit" onchange="function1(this)"> Submit </button>
+      <button type="submit" value="Submit" onkeyup="function1(this)"> Submit </button>
     </form>
     
     <script>
       function function1() {
-      var planet1 = document.getElementById("planet1");
-      planet1.innerText = document.getElementById("planetName").value;
+        var planet1 = document.getElementById("planet1");
+        planet1.innerText = document.getElementById("planetName").value;
       }
     </script>
   </body>
 <html>
-<!--Version 0.6--Forms----->
+<!--Version 0.7--Forms----->
