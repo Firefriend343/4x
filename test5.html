@@ -15,6 +15,7 @@
       #continental { top:50px; left:500px; }
       #ocean { top:50px; left:600px; }
       #mineralPlanet1 { top:200px; left:100px; }
+      #mineralPlanet2 { top:200px; left:200px; }
       
       .info-box { 
         position:absolute;
@@ -75,7 +76,9 @@
     <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
-    <img class="mineralPlanet" id="mineralPlanet1">  </img> <!--Mineral Planet Img------src="mineralplanet1.png"-->
+
+    <img class="mineralPlanet" id="mineralPlanet1">  </img> <!--Mineral Planet #1 Img---->
+    <img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -199,8 +202,10 @@
         var newPlanet = document.getElementById(idToCopy);
         if (newPlanet.id == "mineralPlanet1") {
           document.getElementById("mineralPlanet1").src = "mineralplanet1.png";
+          console.log("#1 selected");
         }
-        else {
+        else if (newPlanet.id == "mineralPlanet2") {
+          document.getElementById("mineralPlanet2").src = "mineralplanet2.png";
           console.log("#2 selected");
         }
       }
