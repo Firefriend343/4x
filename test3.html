@@ -63,6 +63,7 @@
       .surveyIcon { position:absolute; transition:1s }
       #surveyIcon { width:0px; height:0px; }
       
+      .form { position:absolute; }
       #form1 { top:700px; left:200px; }
     </style>
   </head>
@@ -143,10 +144,10 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div>
+    <div class="form">
       <form id="form1">
         <label for="desertPlanetName">Your sensor have detected a possibly habitable planet. What do you want to name it?</label>
-        <input type="text" id="desertPlanetName"><br><br>
+        <input type="text" autocomplete="off" id="desertPlanetName"><br><br>
         <button type="button" value="Submit" onclick="nameDesertPlanet(this)"> Submit </button>
       </form>
     </div>
@@ -203,4 +204,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.3--Checking Planet Name w/ Forms--->
+<!--Version 0.5--Checking Planet Name w/ Forms--->
