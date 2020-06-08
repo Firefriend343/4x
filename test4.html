@@ -15,25 +15,8 @@
     <script>
     
     var variable = null;
-    
-    document.addEventListener("keydown", function (e) {
-      if (e.keyCode == "a") {
-        variable.innerText = "Planet 1";
-        console.log("a");
-      }
-      else if (e.keyCode == "b") {
-        variable.innerText = "Planet 2";
-        console.log("b");
-      }
-      else if (e.keyCode == "c") {
-        variable.innerText = "Planet 3";
-        console.log("c");
-      }
-      else if (e.keyCode == "d") {
-        variable.innerText = "Planet 4";
-        console.log("d");
-      }
-    });
+   
+    event = new KeyboardEvent("planetName", "key")
     
     </script>
   </body>
