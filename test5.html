@@ -4,8 +4,9 @@
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <style>
     
-      body { background:lightblue; }
-      .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:grey; border-radius:50%; transition:0.5s; }
+      body { background:lightpink; }
+      .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
+      .mineralPlanet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
       
       #desert { top:50px; left:100px; }
       #savanna { top:50px; left:200px; }
@@ -13,6 +14,7 @@
       #tundra { top:50px; left:400px; }
       #continental { top:50px; left:500px; }
       #ocean { top:50px; left:600px; }
+      #mineralPlanet1 { top:200px; left:100px; }
       
       .info-box { 
         position:absolute;
@@ -73,6 +75,7 @@
     <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    <img class="mineralPlanet" id="mineralPlanet1" src="mineralplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Mineral Planet Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -186,6 +189,21 @@
       function unSurvey(el) {
         el.style.display = "none";
       }
+      
+      function draw(el) {
+        var allIds = ["mineralPlanet1", "mineralPlanet2"];
+        var randomIndex = Math.floor(Math.random() * allIds.length);
+        var idToCopy = allIds[randomIndex];
+        var newPlanet = document.getElementById(idToCopy);
+        if (newPlanet.id = "mineralPlanet1") {
+          document.getElementById("mineralPlanet1").src = "mineralplanet1.png";
+        }
+        else () {
+          console.log("#2 selected");
+        }
+      }
+       
+      
     </script>
   </body>
 </html>
