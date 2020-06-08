@@ -68,12 +68,12 @@
   </head>
   <body>
     
-    <img class="planet" id="desert" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
-    <img class="planet" id="savanna" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
-    <img class="planet" id="arctic" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
-    <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
-    <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
-    <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    <img class="planet system1planet" id="desert" src="desertplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Desert Planet Img, onclick="surveyDesert(this)"---->
+    <img class="planet system1planet" id="savanna" src="savannaplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Savanna Planet Img---->
+    <img class="planet system1planet" id="arctic" src="arcticplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Arctic Planet Img---->
+    <img class="planet system1planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
+    <img class="planet system1planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
+    <img class="planet system1planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
     <img class="star" id="redStar" src="redstar1.png" onclick="zoomOut(this)">  </img> <!--Red Star Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
@@ -197,10 +197,10 @@
         var newWidth = 10;
         el.style.height = newHeight + "px";
         el.style.width = newWidth + "px";
-        var systemPlanets = document.querySelectorAll(".system1Planets");
-        systemPlanets.style.display = "none";
+        var systemPlanets = document.querySelectorAll(".system1Planet");
+        systemPlanets.forEach(planetEl => planetEl.style.display = "none");
       }
     </script>
   </body>
 </html>
-<!--Version 0.104--->
+<!--Version 0.105--->
