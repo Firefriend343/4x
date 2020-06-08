@@ -74,7 +74,7 @@
     <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
-    <img class="star" id="redStar" src="redstar1.png">  </img> <!--Red Star Img---->
+    <img class="star" id="redStar" src="redstar1.png" onclick="zoomOut(this)">  </img> <!--Red Star Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -192,7 +192,15 @@
       function unSurvey(el) {
         el.style.display = "none";
       }
+      function zoomOut(el) {
+        var newHeight = 10;
+        var newWidth = 10;
+        el.style.height = newHeight + "px";
+        el.style.width = newWidth + "px";
+        var systemPlanets = document.querySelectorAll(".system1Planets");
+        systemPlanets.style.display = "none";
+      }
     </script>
   </body>
 </html>
-<!--Version 0.103--->
+<!--Version 0.104--->
