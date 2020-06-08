@@ -77,8 +77,8 @@
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
 
-    <img class="mineralPlanet" id="mineralPlanet1">  </img> <!--Mineral Planet #1 Img---->
-    <img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 Img---->
+    <img class="mineralPlanet" id="mineralPlanet1" onmouseenter="scan(this)" onmouseone="unscan(this)">  </img> <!--Mineral Planet #1 ID---->
+    <img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 ID---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -209,7 +209,14 @@
           console.log("#2 selected");
         }
       }
-       
+      function select(el) {
+        el.style.backgroundColor = "lime";
+        el.style.padding = "1.5px";
+      }
+      function unscan(el) {
+        el.style.backgroundColor = "gray";
+        el.style.padding = "0px";
+      }
       
     </script>
     <script decide()></script>
