@@ -5,7 +5,8 @@
     <style>
     
       body { background:#030a17; }
-      .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:grey; border-radius:50%; transition:0.5s; }
+      .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
+      .star { position:absolute; image-rendering:pixeled; width:65px; height:65px; background:#e3d1d1; border-radius:50%; transition:0.5s; }
       
       #desert { top:50px; left:100px; }
       #savanna { top:50px; left:200px; }
@@ -13,6 +14,7 @@
       #tundra { top:50px; left:400px; }
       #continental { top:50px; left:500px; }
       #ocean { top:50px; left:600px; }
+      #redStar { top:200px; left:200px; }
       
       .info-box { 
         position:absolute;
@@ -72,6 +74,7 @@
     <img class="planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
+    <img class="star" id="redStar" src="redstar1.png">  </img> <!--Red Star Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -192,4 +195,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.96--->
+<!--Version 0.97--->
