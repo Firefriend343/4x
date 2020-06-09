@@ -6,6 +6,7 @@
     
       body { background:#030a17; }
       .planet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
+      .mineralPlanet { position:absolute; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
       .star { position:absolute; image-rendering:pixelated; width:70px; height:70px; background:#cfc4c4; border-radius:50%; transition:0.5s; }
       
       #desert { top:135px; left:185px; }
@@ -15,6 +16,10 @@
       #continental { top:435px; left:135px; }
       #ocean { top:525px; left:535px; }
       #redStar { top:300px; left:320px; }
+      #blueStar { top:300px; left:700px; }
+      #mineralPlanet1 { top:300px; left:530px; }
+      #mineralPlanet2 { top:125px; left:600px; }
+      #mineralPlanet3 { top:615px; left:800px; }
       
       .info-box { 
         position:absolute;
@@ -74,11 +79,17 @@
     <img class="planet system1planet" id="tundra" src="tundraplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Tundra Planet Img---->
     <img class="planet system1planet" id="continental" src="continentalplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Continental Planet Img---->
     <img class="planet system1planet" id="ocean" src="oceanplanet1.png" onmouseenter="select(this)" onmouseout="deselect(this)">  </img> <!--Ocean Planet Img---->
-    <img class="star zoomedOut" id="redStar" src="redstar1.png" onclick="zoomIn(this)">  </img> <!--Red Star Img---->
+
+    <img class="mineralPlanet system2planet" id="mineralPlanet1" src="mineralplanet1.png" onmouseenter="mineralScan(this)" onmouseout="mineralUnScan(this)">  </img> <!--Mineral Planet #1---->
+    <img class="mineralPlanet system2planet" id="mineralPlanet2" src="mineralplanet2.png" onmouseenter="mineralScan(this)" onmouseout="mineralUnScan(this)">  </img> <!--Mineral Planet #2---->
+    <img class="mineralPlanet system2planet" id="mineralPlanet3" src="mineralplanet3.png" onmouseenter="mineralScan(this)" onmouseout="mineralUnScan(this)">  </img> <!--Mineral Planet #3---->
+
+    <img class="star zoomedOut" id="redStar" src="redstar1.png" onclick="zoomInRed(this)">  </img> <!--Red Star Img---->
+    <img class="star zoomedOut" id="blueStar" src="bluestar1.png" onclick="zoomInBlue(this)">  </img> <!--Blue Star Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
-    <div class="info-box" id="desertSurvey" onclick="unSurvey(this)"> <!--Desert Planet--->
+    <div class="info-box" id="desertSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span id="desertPlanet">  </span></div>
       <div class="cell sprite"><img class="cell desertSprite" src="desertplanet1.png"></img></div>
@@ -89,7 +100,7 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="info-box" id="savannaSurvey" onclick="unSurvey(this)"> <!--Savanna Planet--->
+    <div class="info-box" id="savannaSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span> [variable] </span></div>
       <div class="cell sprite"><img class="cell savannaSprite" src="savannaplanet1.png"></img></div>
@@ -100,7 +111,7 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="info-box" id="arcticSurvey" onclick="unSurvey(this)"> <!--Arctic Planet--->
+    <div class="info-box" id="arcticSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span> [variable] </span></div>
       <div class="cell sprite"><img class="cell arcticSprite" src="arcticplanet1.png"></img></div>
@@ -111,7 +122,7 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="info-box" id="tundraSurvey" onclick="unSurvey(this)"> <!--Tundra Planet--->
+    <div class="info-box" id="tundraSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span> [variable] </span></div>
       <div class="cell sprite"><img class="cell tundraSprite" src="tundraplanet1.png"></img></div>
@@ -122,7 +133,7 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="info-box" id="continentalSurvey" onclick="unSurvey(this)"> <!--Continental Planet--->
+    <div class="info-box" id="continentalSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span> [variable] </span></div>
       <div class="cell sprite"><img class="cell continentalSprite" src="continentalplanet1.png"></img></div>
@@ -133,7 +144,7 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="info-box" id="oceanSurvey" onclick="unSurvey(this)"> <!--Ocean Planet--->
+    <div class="info-box" id="oceanSurvey" onclick="unSurvey(this)">
       <div class="cell top"></div>
       <div class="cell name"><span> [variable] </span></div>
       <div class="cell sprite"><img class="cell oceanSprite" src="oceanplanet1.png"></img></div>
@@ -171,7 +182,7 @@
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
         var currentSurvey = el.id + "Survey";
-        newSurvey = document.getElementById(currentSurvey)
+        newSurvey = document.getElementById(currentSurvey);
       }
       function deselect(el) {
         el.style.backgroundColor = "gray";
@@ -179,6 +190,24 @@
         setTimeout(function(){
           hideIcon()
         },1100);        
+      }
+      function mineralScan(el) {
+        el.style.backgroundColor = "lime";
+        el.style.padding = "1.5px";
+        /*var newTop = el.offsetTop + 85;
+        var newLeft = el.offsetLeft + 5;
+        surveyIcon.style.top = newTop + "px";
+        surveyIcon.style.left = newLeft + "px";
+        var newHeight = 20;
+        var newWidth = 20;
+        surveyIcon.style.height = newHeight + "px";
+        surveyIcon.style.width = newWidth + "px";
+        var currentSurvey = el.id + "Survey";
+        newSurvey = document.getElementById(currentSurvey);*/
+      }
+      function mineralUnScan(el) {
+        el.style.backgroundColor = "gray";
+        el.style.padding = "0px";        
       }
       function hideIcon(el) {
         var newHeight = 0;
@@ -192,7 +221,7 @@
       function unSurvey(el) {
         el.style.display = "none";
       }
-      function zoomIn(el) {
+      function zoomInRed() {
         var star = document.getElementById("redStar");
         var newHeight = 15;
         var newWidth = 15;
@@ -203,9 +232,9 @@
         star.classList.remove("zoomedOut");
         star.classList.add("zoomedIn");
         star.removeAttribute("onclick");
-        document.querySelector(".zoomedIn").onclick = zoomOut;
+        document.querySelector(".zoomedIn").onclick = zoomOutRed;
       }
-      function zoomOut(el) { 
+      function zoomOutRed() { 
         var star = document.getElementById("redStar");
         var newHeight = 70;
         var newWidth = 70;
@@ -216,9 +245,35 @@
         star.classList.remove("zoomedIn");
         star.classList.add("zoomedOut");
         star.removeAttribute("onclick");
-        document.querySelector(".zoomedOut").onclick = zoomIn;
+        document.querySelector(".zoomedOut").onclick = zoomInRed;
+      }
+      function zoomInBlue() {
+        var star = document.getElementById("blueStar");
+        var newHeight = 15;
+        var newWidth = 15;
+        star.style.height = newHeight + "px";
+        star.style.width = newWidth + "px";
+        var systemPlanets = document.querySelectorAll(".system2Planet");
+        systemPlanets.forEach(planetEl => planetEl.style.display = "none");
+        star.classList.remove("zoomedOut");
+        star.classList.add("zoomedIn");
+        star.removeAttribute("onclick");
+        document.querySelector(".zoomedIn").onclick = zoomOutBlue;
+      }
+      function zoomOutBlue() { 
+        var star = document.getElementById("blueStar");
+        var newHeight = 70;
+        var newWidth = 70;
+        star.style.height = newHeight + "px";
+        star.style.width = newWidth + "px";
+        var systemPlanets = document.querySelectorAll(".system2Planet");
+        systemPlanets.forEach(planetEl => planetEl.style.display = "block");
+        star.classList.remove("zoomedIn");
+        star.classList.add("zoomedOut");
+        star.removeAttribute("onclick");
+        document.querySelector(".zoomedOut").onclick = zoomInBlue;
       }
     </script>
   </body>
 </html>
-<!--Version 0.111--->
+<!--Version 0.112--->
