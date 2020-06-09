@@ -209,6 +209,7 @@
       var oceanSurvey = document.getElementById("oceanSurvey");
       var newSurvey = null;
       var newMineralSurvey = null;
+      var mineralPlanetCaption = null;
       
       var desertPlanetName = "Calsron"; /*Desert Planet Name*/
       const desertPlanet = document.getElementById("desertPlanet");
@@ -239,8 +240,8 @@
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
         var caption = el.id + "Caption";
-        var planetCaption = document.getElementById(caption);
-        planetCaption.style.display = "block";
+        mineralPlanetCaption = document.getElementById(caption);
+        mineralPlanetCaption.style.display = "block";
         var newTop = el.offsetTop + 85;
         var newLeft = el.offsetLeft + 5;
         mineralIcon.style.top = newTop + "px";
@@ -270,7 +271,7 @@
         var newWidth = 0;
         mineralIcon.style.height = newHeight + "px";
         mineralIcon.style.width = newWidth + "px";
-        newMineralSurvey.style.display = "none";
+        mineralPlanetCaption.style.display = "none";
       }
       function surveyPlanet() {
         newSurvey.style.display = "inline-grid";
@@ -339,4 +340,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.136--->
+<!--Version 0.137--->
