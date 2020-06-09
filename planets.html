@@ -203,7 +203,7 @@
         star.classList.remove("zoomedOut");
         star.classList.add("zoomedIn");
         star.removeAttribute("onclick");
-        document.querySelectorAll(".zoomedIn").onclick = zoomOut(document.getElementById("redStar"));
+        document.querySelectorAll(".zoomedIn").onclick = zoomOut;
       }
       function zoomOut(el) { 
         var star = document.getElementById("redStar");
@@ -216,9 +216,9 @@
         star.classList.remove("zoomedIn");
         star.classList.add("zoomedOut");
         star.removeAttribute("onclick");
-        document.querySelectorAll(".zoomedOut").onclick = zoomIn(document.getElementById("redStar"));
+        document.querySelectorAll(".zoomedOut").onclick = zoomIn;
       }
     </script>
   </body>
 </html>
-<!--Version 0.109--->
+<!--Version 0.110--->
