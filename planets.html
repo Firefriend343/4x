@@ -21,6 +21,10 @@
       #redStar { top:300px; left:320px; width:15px; height:15px; }
       #blueStar { top:300px; left:900px; width:15px; height:15px; }
       
+      #mineralPlanet1Caption { position:absolute; top:360px; left:730px; dispaly:none; }
+      #mineralPlanet2Caption { position:absolute; top:185px; left:800px; dispaly:none; }
+      #mineralPlanet3Caption { position:absolute; top:675px; left:1000px; dispaly:none; }
+      
       .info-box { 
         position:absolute;
         width: 170px;
@@ -186,6 +190,11 @@
     <div class="mineralScan" id="mineralPlanet2Scan" onclick="unscanMineralPlanet(this)"><div class="top"></div><div class="cell desc"><span> This planet contains 62 units of minerals. </span></div><div class="bottom"></div></div>
     <div class="mineralScan" id="mineralPlanet3Scan" onclick="unscanMineralPlanet(this)"><div class="top"></div><div class="cell desc"><span> This planet contains 13 units of minerals. </span></div><div class="bottom"></div></div>
 
+    <div id="mineralPlanet1Caption"><span> Coria Alpha </span></div>
+    <div id="mineralPlanet2Caption"><span> Coria Beta </span></div>
+    <div id="mineralPlanet3Caption"><span> Coria Gamma </span></div>
+
+
     <script>
       /*Global Values*/
       var surveyIcon = document.getElementById("surveyIcon");
@@ -227,6 +236,9 @@
       function mineralScan(el) {
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
+        var caption = el.id + "Caption";
+        var planetCaption = caption.id;
+        caption.style.display = "block";
         var newTop = el.offsetTop + 85;
         var newLeft = el.offsetLeft + 5;
         mineralIcon.style.top = newTop + "px";
@@ -240,6 +252,9 @@
       }
       function mineralUnScan(el) {
         el.style.backgroundColor = "gray";
+        var caption = el.id + "Caption";
+        var planetCaption = caption.id;
+        caption.style.display = "none";
         el.style.padding = "0px";
         setTimeout(function(){
           hideMineralIcon()
@@ -324,4 +339,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.125--->
+<!--Version 0.126--->
