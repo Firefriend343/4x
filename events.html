@@ -64,7 +64,7 @@
       .button2 { grid-area:button2 }
       .top { grid-area:top; display:none; }
       .bottom { grid-area:bottom; display:none; }
-      #event1 { height:300px; top:200px; left:500px; display:block; }
+      #event1 { height:300px; top:200px; left:500px; display:inline-grid; }
       #event2 { height:300px; top:200px; left:570px; display:none; }
       #button { border-radius:10%; background:#7096cf; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
     </style>
@@ -95,7 +95,7 @@
       
       function closeEvent1() {
         event1.style.display = "none";
-        event2.style.display = "block";
+        event2.style.display = "inline-grid";
       }
       function closeEvent2() {
         event2.style.display = "none";
@@ -104,4 +104,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.18--->
+<!--Version 0.19--->
