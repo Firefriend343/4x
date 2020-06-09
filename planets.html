@@ -237,7 +237,7 @@
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
         var caption = el.id + "Caption";
-        var planetCaption = caption.id;
+        var planetCaption = document.getElementById("caption");
         planetCaption.style.display = "block";
         var newTop = el.offsetTop + 85;
         var newLeft = el.offsetLeft + 5;
@@ -253,7 +253,7 @@
       function mineralUnScan(el) {
         el.style.backgroundColor = "gray";
         var caption = el.id + "Caption";
-        var planetCaption = caption.id;
+        var planetCaption = document.getElementById("caption");
         planetCaption.style.display = "none";
         el.style.padding = "0px";
         setTimeout(function(){
@@ -339,4 +339,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.127--->
+<!--Version 0.128--->
