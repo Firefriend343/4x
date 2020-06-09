@@ -264,15 +264,15 @@
         var newWidth = 0;
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
-        var caption = el.id + "Caption";
-        var planetCaption = document.getElementById(caption);
-        planetCaption.style.display = "none";
       }
       function hideMineralIcon(el) {
         var newHeight = 0;
         var newWidth = 0;
         mineralIcon.style.height = newHeight + "px";
         mineralIcon.style.width = newWidth + "px";
+        var caption = el.id + "Caption";
+        var planetCaption = document.getElementById(caption);
+        planetCaption.style.display = "none";
       }
       function surveyPlanet() {
         newSurvey.style.display = "inline-grid";
@@ -341,4 +341,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.133--->
+<!--Version 0.134--->
