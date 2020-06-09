@@ -15,8 +15,8 @@
       #tundra { top:365px; left:495px; }
       #continental { top:435px; left:135px; }
       #ocean { top:525px; left:535px; }
-      #redStar { top:300px; left:320px; }
-      #blueStar { top:300px; left:700px; }
+      #redStar { top:300px; left:320px; width:15px; height:15px; }
+      #blueStar { top:300px; left:700px; width:15px; height:15px; }
       #mineralPlanet1 { top:300px; left:530px; }
       #mineralPlanet2 { top:125px; left:600px; }
       #mineralPlanet3 { top:615px; left:800px; }
@@ -84,8 +84,8 @@
     <img class="mineralPlanet system2planet" id="mineralPlanet2" src="mineralplanet2.png" onmouseenter="mineralScan(this)" onmouseout="mineralUnScan(this)">  </img> <!--Mineral Planet #2---->
     <img class="mineralPlanet system2planet" id="mineralPlanet3" src="mineralplanet3.png" onmouseenter="mineralScan(this)" onmouseout="mineralUnScan(this)">  </img> <!--Mineral Planet #3---->
 
-    <img class="star zoomedOutRed" id="redStar" src="redstar1.png" onclick="zoomInRed(this)">  </img> <!--Red Star Img---->
-    <img class="star zoomedOutBlue" id="blueStar" src="bluestar1.png" onclick="zoomInBlue(this)">  </img> <!--Blue Star Img---->
+    <img class="star zoomedInRed" id="redStar" src="redstar1.png" onclick="zoomOutRed(this)">  </img> <!--Red Star Img---->
+    <img class="star zoomedInBlue" id="blueStar" src="bluestar1.png" onclick="zoomOutBlue(this)">  </img> <!--Blue Star Img---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -276,4 +276,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.114--->
+<!--Version 0.115--->
