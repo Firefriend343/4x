@@ -15,7 +15,8 @@
       #continental { top:50px; left:500px; }
       #ocean { top:50px; left:600px; }
       #mineralPlanet1 { top:200px; left:100px; }
-      #mineralPlanet2 { /*top:200px; left:200px;*/ display:none; }
+      #mineralPlanet2 { display:none; }
+      #mineralPlanet3 { display:none; }
       
       .info-box { 
         position:absolute;
@@ -79,6 +80,7 @@
 
     <img class="mineralPlanet" id="mineralPlanet1" onmouseenter="scan(this)" onmouseone="unscan(this)">  </img> <!--Mineral Planet #1 ID---->
     <img class="mineralPlanet" id="mineralPlanet2">  </img> <!--Mineral Planet #2 ID---->
+    <img class="mineralPlanet" id="mineralPlanet3">  </img> <!--Mineral Planet #3 ID---->
     
     <img class="surveyIcon" id="surveyIcon" src="surveyicon.png" onclick="surveyPlanet(this)"></img>
 
@@ -196,7 +198,7 @@
       }
       
       function decide(el) {
-        var allIds = ["mineralPlanet1", "mineralPlanet2"];
+        var allIds = ["mineralPlanet1", "mineralPlanet2", "mineralPlanet3"];
         var randomIndex = Math.floor(Math.random() * allIds.length);
         var idToCopy = allIds[randomIndex];
         var newPlanet = document.getElementById(idToCopy);
@@ -207,6 +209,10 @@
         else if (newPlanet.id == "mineralPlanet2") {
           document.getElementById("mineralPlanet1").src = "mineralplanet2.png";
           console.log("#2 selected");
+        }
+        else if (newPlanet.id == "mineralPlanet3") {
+          document.getElementById("mineralPlanet1").src = "mineralplanet3.png";
+          console.log("#3 selected");
         }
       }
       function select(el) {
@@ -219,7 +225,6 @@
       }
       
     </script>
-    <script decide()></script>
   </body>
 </html>
 <!--Test 5--Creating Planet Randomizers--->
