@@ -47,7 +47,7 @@
       .mineralScan { 
         position:absolute;
         width: 120px;
-        height: 30px;
+        height: 60px;
         font-family: 'MedievalSharp', cursive; 
         font-size:80%;
         border: 2px solid lightgray;
@@ -55,7 +55,7 @@
         display: none;
         margin: 15px;
         grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 2px 18px 10px;
+        grid-auto-rows: 2px 48px 10px;
         grid-template-areas:
           "top   top   top"
           "desc  desc  desc"
@@ -182,9 +182,9 @@
       <div class="cell bottom"></div>
     </div>
 
-    <div class="mineralScan" id="mineralPlanet1Scan" onclick="unscanMineralPlanet"><div class="top"></div><div class="cell desc"><span> This planet contains 40 units of minerals. </span></div><div class="bottom"></div></div>
-    <div class="mineralScan" id="mineralPlanet2Scan" onclick="unscanMineralPlanet"><div class="top"></div><div class="cell desc"><span> This planet contains 62 units of minerals. </span></div><div class="bottom"></div></div>
-    <div class="mineralScan" id="mineralPlanet3Scan" onclick="unscanMineralPlanet"><div class="top"></div><div class="cell desc"><span> This planet contains 13 units of minerals. </span></div><div class="bottom"></div></div>
+    <div class="mineralScan" id="mineralPlanet1Scan" onclick="unscanMineralPlanet(this)"><div class="top"></div><div class="cell desc"><span> This planet contains 40 units of minerals. </span></div><div class="bottom"></div></div>
+    <div class="mineralScan" id="mineralPlanet2Scan" onclick="unscanMineralPlanet(this)"><div class="top"></div><div class="cell desc"><span> This planet contains 62 units of minerals. </span></div><div class="bottom"></div></div>
+    <div class="mineralScan" id="mineralPlanet3Scan" onclick="unscanMineralPlanet(this)"><div class="top"></div><div class="cell desc"><span> This planet contains 13 units of minerals. </span></div><div class="bottom"></div></div>
 
     <script>
       /*Global Values*/
@@ -266,8 +266,8 @@
       function scanMineralPlanet() {
         newMineralScan.style.display = "inline-grid";
       }
-      function unscanMineralPlanet() {
-        newMineralScan.style.display = "none";
+      function unscanMineralPlanet(el) {
+        el.style.display = "none";
       }
       function zoomInRed() {
         var star = document.getElementById("redStar");
@@ -324,4 +324,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.121--->
+<!--Version 0.122--->
