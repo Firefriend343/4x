@@ -18,6 +18,7 @@
       #mineralPlanet1 { top:300px; left:730px; display:none; }
       #mineralPlanet2 { top:125px; left:800px; display:none; }
       #mineralPlanet3 { top:615px; left:1000px; display:none; }
+      
       #redStar { top:300px; left:320px; width:15px; height:15px; }
       #blueStar { top:300px; left:900px; width:15px; height:15px; }
       
@@ -300,8 +301,8 @@
       }
       function zoomOutRed() { 
         var star = document.getElementById("redStar");
-        var newHeight = 70;
-        var newWidth = 70;
+        var newHeight = 80;
+        var newWidth = 80;
         star.style.height = newHeight + "px";
         star.style.width = newWidth + "px";
         var systemPlanets = document.querySelectorAll(".system1Planet");
@@ -326,8 +327,8 @@
       }
       function zoomOutBlue() { 
         var star = document.getElementById("blueStar");
-        var newHeight = 70;
-        var newWidth = 70;
+        var newHeight = 80;
+        var newWidth = 80;
         star.style.height = newHeight + "px";
         star.style.width = newWidth + "px";
         var systemPlanets = document.querySelectorAll(".system2Planet");
@@ -340,4 +341,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.137--->
+<!--Version 0.138--->
