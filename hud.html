@@ -2,12 +2,50 @@
   <head>
     <title>HUD Test</title>
     <style>
-      .HUD { position:absolute; top:0px; left:0px; height:50px; width:100%; background:#7096cf; }
+      .HUD { position:absolute; top:0px; left:0px; height:50px; width:100%; background:#7096cf; border:2px solid lightgray; 
+        grid-template-columns: repeat(10, 1fr);
+        grid-auto-rows:10px 30px 10px;
+        grid-template-areas:
+          "top     top         top           top     top        top          top     top           top             top   "
+          "margin1 mineralIcon mineralNumber margin2 creditIcon creditNumber margin3 authorityIcon authorityNumber margin4"
+          "bottom  bottom      bottom        bottom  bottom     bottom       bottom  bottom        bottom          bottom";
+        gap:0px;
+        transition:0.4s
+      }
+      .top { grid-area:top; background:#1d4b96; }
+      .bottom { grid-area:bottom; background:#1d4b96; }
+      .cell { position:relative; padding:3px; overflow:hidden; }
+      .cell p { overflow:hidden; font-size:80%; }
+      .cell span { overflow:hidden; font-size:80%; }
+      .margin1 { grid-area:margin1; }
+      .margin2 { grid-area:margin2; }
+      .margin3 { grid-area:margin3; }
+      .margin4 { grid-area:margin4; }
+      .mineralIcon { grid-area:mineralIcon; }
+      .creditIcon { grid-area:creditIcon; }
+      .authorityIcon { grid-area:authorityIcon; }
+      .mineralNumber { grid-area:mineralNumber; }
+      .creditNumber { grid-area:creditNumber; }
+      .authorityNumber { grid-area:authorityNumber; }
+      
     </style>
   
   </head>
   <body>
-    <div class="HUD"><span> ... </span></div>
+    <div class="HUD">
+      <div class="cell top"></div>
+      <div class="cell margin1"></div>
+      <div class="cell mineralIcon"><img id="HUDMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="cell mineralNumber"><span id="HUDMineralNumber"> 50(+0) </span></div>
+      <div class="cell margin2"></div>
+      <div class="cell creditIcon"><img id="HUDCreditIcon" src="crediticon.png"></img></div>
+      <div class="cell creditNumber"><span id="HUDCreditNumber"> 50(+0) </span></div>
+      <div class="cell margin3"></div>
+      <div class="cell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
+      <div class="cell authorityNumber"><span id="HUDAuthorityNumber"> 50(+0) </span></div>
+      <div class="cell margin4"></div>
+      <div class="cell bottom"></div>
+    </div>
   </body>
 </html>
-<!--Version 0.5--->
+<!--Version 0.7--->
