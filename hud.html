@@ -64,7 +64,7 @@
       var HUDAuthorityNumber = document.getElementById("HUDAuthorityNumber");
       
       function indebt() {
-        var newCreditNumber = -20;
+        var newCreditNumber = HUDMineralNumber.innerText - 20;
         var newAuthorityNumber = 30;
         HUDCreditNumber.innerText = newCreditNumber;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
