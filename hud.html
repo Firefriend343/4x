@@ -34,7 +34,9 @@
       #HUDCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #HUDAuthorityIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       
-      #button1 { position:absolute; top:300px; left:100px; background:yellow; border: 5px solid gray; }
+      #button1 { position:absolute; top:300px; left:100px; background:lightblue; border: 5px solid gray; }
+      #button2 { position:absolute; top:300px; left:500px; background:yellow; border: 5px solid gray; }
+      #button3 { position:absolute; top:300px; left:900px; background:thistle; border: 5px solid gray; }
       
     </style>
   
@@ -55,7 +57,11 @@
       <div class="cell bottom"></div>
     </div>
 
-    <button id="button1" onclick="indebt()"> Click to go into debt </button>
+    <button id="button1" onclick="indebtMinerals()"> Click to spend Minerals </button>
+    <button id="button2" onclick="indebtCredits()"> Click to spend Credits </button>
+    <button id="button3" onclick="indebtAuthority()"> Click to spend Authority </button>
+
+
 
     <script>
       
@@ -63,14 +69,19 @@
       var HUDCreditNumber = document.getElementById("HUDCreditNumber");
       var HUDAuthorityNumber = document.getElementById("HUDAuthorityNumber");
       
-      function indebt() {
-        var newCreditNumber = HUDMineralNumber.innerText - 20;
-        var newAuthorityNumber = 30;
+      function indebtMinerals() {
+        var newMineralNumber = HUDMineralNumber.innerText - 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
+      function indebtCredits() {
+        var newCreditNumber = HUDCreditNumber.innerText - 20;
         HUDCreditNumber.innerText = newCreditNumber;
+      }
+      function indebtMinerals() {
+        var newAuthorityNumber = HUDAuthorityNumber.innerText - 20;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
       }
-      
     </script>
   </body>
 </html>
-<!--Version 0.18--->
+<!--Version 0.19--->
