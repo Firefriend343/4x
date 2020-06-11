@@ -50,7 +50,7 @@
       <div class="cell creditNumber"><span id="HUDCreditNumber"> 50(+0) </span></div>
       <div class="cell margin3"></div>
       <div class="cell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
-      <div class="cell authorityNumber"><span id="HUDAuthorityNumber"> 50(+0) </span></div>
+      <div class="cell authorityNumber"><span id="HUDAuthorityNumber"> 50 </span></div>
       <div class="cell margin4"></div>
       <div class="cell bottom"></div>
     </div>
@@ -64,7 +64,7 @@
       var HUDAuthorityNumber = document.getElementById("HUDAuthorityNumber");
       
       function indebt() {
-        var newCreditNumber = "-20(+0)";
+        var newCreditNumber = -20;
         var newAuthorityNumber = "10(+0)"
         HUDCreditNumber.innerText = newCreditNumber;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
