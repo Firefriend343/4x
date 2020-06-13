@@ -258,7 +258,7 @@
         el.style.backgroundColor = "gray";
         el.style.padding = "0px";
         setTimeout(function(){
-          hideMineralIcon()
+          hideMineralIcon(el)
         },1100);
       }
       function hideIcon(el) {
@@ -272,6 +272,8 @@
         var newWidth = 0;
         mineralIcon.style.height = newHeight + "px";
         mineralIcon.style.width = newWidth + "px";
+        var caption = el.id + "Caption";
+        mineralPlanetCaption = document.getElementById(caption);
         mineralPlanetCaption.style.display = "none";
       }
       function surveyPlanet() {
