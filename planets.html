@@ -22,6 +22,14 @@
       #redStar { top:300px; left:320px; width:15px; height:15px; }
       #blueStar { top:300px; left:900px; width:15px; height:15px; }
       
+      .planetCaption span { color:white; font-size:70%; }
+      #desertPlanetCaption { width:90px; position:absolute; top:190px; left:185px; display:none; }
+      #savannaPlanetCaption { width:90px; position:absolute; top:180px; left:515px; display:none; }
+      #arcticPlanetCaption { width:90px; position:absolute; top:360px; left:75px; display:none; }
+      #tundraPlanetCaption { width:90px; position:absolute; top:420px; left:495px; display:none; }
+      #continentalPlanetCaption { width:90px; position:absolute; top:490px; left:135px; display:none; }
+      #oceanPlanetCaption { width:90px; position:absolute; top:480px; left:535px; display:none; }
+      
       .mineralPlanetCaption span { color:white; font-size:70%; }
       #mineralPlanet1Caption { width:90px; position:absolute; top:355px; left:730px; display:none; }
       #mineralPlanet2Caption { width:90px; position:absolute; top:180px; left:800px; display:none; }
@@ -197,6 +205,13 @@
     <div class="mineralPlanetCaption" id="mineralPlanet2Caption"><span> Coria Beta </span></div>
     <div class="mineralPlanetCaption" id="mineralPlanet3Caption"><span> Coria Gamma </span></div>
 
+    <div class="planetCaption" id="desertPlanetCaption"><span> Calsron Alpha </span></div>
+    <div class="planetCaption" id="savannaPlanetCaption"><span> Calsron Beta </span></div>
+    <div class="planetCaption" id="arcticPlanetCaption"><span> Calsron Gamma </span></div>
+    <div class="planetCaption" id="tundraPlanetCaption"><span> Calsron Delta </span></div>
+    <div class="planetCaption" id="continentalPlanetCaption"><span> Calsron Epsilon </span></div>
+    <div class="planetCaption" id="oceanPlanetCaption"><span> Calsron Zeta </span></div>
+
 
     <script>
       /*Global Values*/
@@ -210,6 +225,7 @@
       var oceanSurvey = document.getElementById("oceanSurvey");
       var newSurvey = null;
       var newMineralSurvey = null;
+      var planetCaption = null;
       var mineralPlanetCaption = null;
       
       var desertPlanetName = "Calsron"; /*Desert Planet Name*/
@@ -219,6 +235,9 @@
       function select(el) {
         el.style.backgroundColor = "lime";
         el.style.padding = "1.5px";
+        var caption = el.id + "Caption";
+        planetCaption = document.getElementById(caption);
+        planetCaption.style.display = "block";
         var newTop = el.offsetTop + 85;
         var newLeft = el.offsetLeft + 5;
         surveyIcon.style.top = newTop + "px";
@@ -266,6 +285,9 @@
         var newWidth = 0;
         surveyIcon.style.height = newHeight + "px";
         surveyIcon.style.width = newWidth + "px";
+        var caption = el.id + "Caption";
+        planetCaption = document.getElementById(caption);
+        planetCaption.style.display = "none";
       }
       function hideMineralIcon(el) {
         var newHeight = 0;
@@ -343,4 +365,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.139--->
+<!--Version 0.140--->
