@@ -5,18 +5,18 @@
   
     <style>
       body { background:#030a17; }
-      #system1 { position:absolute; top:300px; left:420px; }
+      #system1 { position:absolute; width:400px; height:400px; top:20px; left:20px; }
     
       .planet { position:relative; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
-      .star { position:relative; image-rendering:pixelated; width:80px; height:50px; background:white; border-radius:50%; transition:0.5s; }
+      .star { position:absolute; image-rendering:pixelated; width:80px; height:80px; background:white; border-radius:50%; transition:0.5s; }
       
-      #s1 { top:0px; left:0px; }
-      #1 { top:-60px; left:120px; }
-      #2 { top:-80px; left:-110px; }
-      #3 { top:20px; left:150px; }
-      #4 { top:30px; left:-90px; }
-      #5 { top:380px; left:140px; }
-      #6 { top:370px; left:-70px; }
+      #s1 { top:300px; left:420px; }
+      #p1 { top:60px; left:320px; }
+      #p2 { top:80px; left:110px; }
+      #p3 { top:220px; left:450px; }
+      #p4 { top:230px; left:90px; }
+      #p5 { top:480px; left:440px; }
+      #p6 { top:470px; left:70px; }
       
     </style>
     
@@ -24,14 +24,14 @@
   
   <body>
   
+    <img class="star" id="s1" src="redstar1.png"></img>  
     <div id="system1">
-      <img class="star" id="s1" src="redstar1.png"></img>
-      <img class="planet" id="1" src="savannaplanet1.png"></img>
-      <img class="planet" id="2" src="mineralplanet1.png"></img>
-      <img class="planet" id="3" src="continentalplanet1.png"></img>
-      <img class="planet" id="4" src="relicplanet1.png"></img>
-      <img class="planet" id="5" src="mineralplanet3.png"></img>
-      <img class="planet" id="6" src="desertplanet1.png"></img>
+      <img class="planet" id="p1" src="savannaplanet1.png"></img>
+      <img class="planet" id="p2" src="mineralplanet1.png"></img>
+      <img class="planet" id="p3" src="continentalplanet1.png"></img>
+      <img class="planet" id="p4" src="relicplanet1.png"></img>
+      <img class="planet" id="p5" src="mineralplanet3.png"></img>
+      <img class="planet" id="p6" src="desertplanet1.png"></img>
     </div>
   
     <script>
@@ -39,4 +39,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.2--->
+<!--Version 0.3--->
