@@ -53,8 +53,18 @@
           pEl.src = allImgs[randomIndex];
         }
       }
+      function generatePosition() {
+        var planetElList = document.querySelecotrAll('#system1 .planet');
+        for (const pEl of planetElList) {
+          var randomIndex = Math.floor(Math.random() * 400);
+          pEL.style.top = randomIndex + "px";
+          pEL.style.left = randomIndex + "px";
+        }
+      }
+      //Instant Functions
       generate();
+      generatePosition();
     </script>
   </body>
 </html>
-<!--Version 0.8--->
+<!--Version 0.10--->
