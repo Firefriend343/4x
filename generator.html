@@ -54,9 +54,7 @@
         }
       }
       function generatePosition() {
-        var planetElList = document.querySelectorAll('#system1 .planet');
-        for (const pEl of planetElList) {
-          var allPositions = [["133px","185px"],
+        var allPositions = [["133px","185px"],
                               ["225px","571px"],
                               ["165px","265px"],
                               ["415px","210px"],
@@ -66,10 +64,13 @@
                               ["417px","813px"],
                               ["488px","717px"],
                               ["214px","315px"]];
+        var planetElList = document.querySelectorAll('#system1 .planet');
+        for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allPositions.length);
           var planetPosition = allPositions[randomIndex];
           pEl.style.top = planetPosition[0];
           pEl.style.left = planetPosition[1];
+          let removed = allPositions.splice(randomIndex, 1);
         }
       }
       //Instant Functions
@@ -78,4 +79,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.17--->
+<!--Version 0.18--->
