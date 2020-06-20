@@ -5,10 +5,11 @@
   
     <style>
       body { background:#030a17; }
+      img { image-rendering:pixelated; }
       #system1 { position:absolute; width:400px; height:400px; top:20px; left:20px; }
     
-      .planet { position:relative; image-rendering:pixelated; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
-      .star { position:absolute; image-rendering:pixelated; width:80px; height:80px; background:white; border-radius:50%; transition:0.5s; }
+      .planet { position:relative; width:50px; height:50px; background:gray; border-radius:50%; transition:0.5s; }
+      .star { position:absolute; width:80px; height:80px; background:white; border-radius:50%; transition:0.5s; }
       
       #s1 { top:300px; left:420px; }
       #p1 { top:60px; left:520px; }
@@ -26,17 +27,33 @@
   
     <img class="star" id="s1" src="orangestar1.png"></img>  
     <div id="system1">
-      <img class="planet" id="p1" src="savannaplanet1.png"></img>
-      <img class="planet" id="p2" src="mineralplanet1.png"></img>
-      <img class="planet" id="p3" src="continentalplanet1.png"></img>
-      <img class="planet" id="p4" src="relicplanet1.png"></img>
-      <img class="planet" id="p5" src="mineralplanet3.png"></img>
-      <img class="planet" id="p6" src="desertplanet1.png"></img>
+      <img class="planet" id="p1"></img>
+      <img class="planet" id="p2"></img>
+      <img class="planet" id="p3"></img>
+      <img class="planet" id="p4"></img>
+      <img class="planet" id="p5"></img>
+      <img class="planet" id="p6"></img>
     </div>
   
     <script>
-  
+      function generate() {
+        var allImgs = ["desertplanet1.png", 
+                       "savannaplanet1.png", 
+                       "arcticplanet1.png", 
+                       "tundraplanet1.png", 
+                       "continentalplanet1.png", 
+                       "oceanplanet1.png", 
+                       "relicplanet1.png", 
+                       "mineralplanet1.png", 
+                       "mineralplanet2.png", 
+                       "mineralplanet3.png"];
+        var planetElList = document.querySelectorAll('#system1 .planet');
+        for (const pEl of planetElList) {
+          var randomIndex = Math.floor(Math.random() * allImgs.length);
+          pEl.src = allImgs[randomIndex];
+        }
+      }
     </script>
   </body>
 </html>
-<!--Version 0.5--->
+<!--Version 0.7--->
