@@ -42,13 +42,34 @@
         background: #1d4b96;
         transition:0.4s;
       }
-      
+      .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
+      .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .name { grid-area: name; text-align:center; }
+      .name span { font-size:140%; }
+      .sprite { grid-area:sprite; }
+      .habit { grid-area:habit; text-align:center; }
+      .cost { grid-area: cost; text-align:center; }
+      .desc { grid-area: desc; text-align:center; font-size:85%; }
+      .pop { grid-area: pop; text-align:center; }
+      .top { grid-area: top; gap:0px; display:none; }
+      .bottom { grid-area: bottom; gap:0px; display:none; }
     </style>
     
   </head>
   
   <body>
   
+     <div class="info-box" onclick="unSurvey(this)">
+      <div class="cell top"></div>
+      <div class="cell name" id="surveyName"><span> [variable] </span></div>
+      <div class="cell sprite"><img class="cell"></img></div>
+      <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
+      <div class="cell cost"><p  id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p  id="surveyDesc"> The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell pop"><p> This planet contains <span id="surveyPop">[#]</span> of Population Units. </p></div>
+      <div class="cell bottom"></div>
+    </div>
+    
     <img class="star" id="s1" src="orangestar1.png"></img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
@@ -61,14 +82,36 @@
   
     <script>
       //global variables
-      var newPlanet = null;
       
       function survey(ev) {
         let el = ev.target;
-        console.log ("the function worked");
-        console.log (el);
-        console.log (el.biome);
+        console.log("the function worked");
+        console.log(el);
+        console.log(el.biome);
+        var infoBox = document.getElementById("info-box");
+        
+        var biome = el.biome;
+        var survey = {
+          desert: { surveyName: "Desert" }, 
+          savanna: { surveyName: "Savanna" },
+          arctic: { surveyName: "Arctic" },
+          tundra: { surveyName: "Tundra" },
+          continental: { surveyName: "Continental" },
+          ocean: { surveyName: "Ocean" },
+          relic: { surveyName: "Relic" },
+          mineral1: { surveyName: "Mineral1" },
+          mineral2: { surveyName: "Mineral2" },
+          mineral3: { surveyName: "Mineral3" },
+          barren: { surveyName: "Barren" }
+        }
+        document.getElementById("surveyName").innerText = survey[el.biome].surveyName;
       }
+      function unSurvey(el) {
+        el.style.display = "none";
+      }
+      
+      //system generation
+      
       function generateImgs() {
         var allImgs = [["desertplanet1.png", "desert"],
                        ["savannaplanet1.png", "savanna"],
@@ -131,4 +174,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.28--->
+<!--Version 0.29--->
