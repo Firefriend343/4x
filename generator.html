@@ -71,12 +71,18 @@
                               ["412px","584px"],
                               ["587px","453px"]];
         var planetElList = document.querySelectorAll('#system1 .planet');
+        var curPlanetIndex = 0;
+        var numPlanets = Math.floor(Math.random() * 6) + 1;
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allPositions.length);
           var planetPosition = allPositions[randomIndex];
           pEl.style.top = planetPosition[0];
           pEl.style.left = planetPosition[1];
           let removed = allPositions.splice(randomIndex, 1);
+          curPlanetIndex++;
+          if (curPlanetIndex > numPlanets) {
+            pEl.parentNode.removeChild(pEl);
+          }
         }
       }
       //Instant Functions
@@ -85,4 +91,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.25--->
+<!--Version 0.26--->
