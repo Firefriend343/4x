@@ -45,8 +45,12 @@
                        "oceanplanet1.png", 
                        "relicplanet1.png", 
                        "mineralplanet1.png", 
+                       "mineralplanet2.png",
                        "mineralplanet2.png", 
-                       "mineralplanet3.png"];
+                       "mineralplanet3.png",
+                       "mineralplanet3.png",
+                       "barrenplanet1.png",
+                       "barrenplanet1.png"];
         var planetElList = document.querySelectorAll('#system1 .planet');
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
@@ -54,7 +58,7 @@
         }
       }
       function generatePosition() {
-        var allPositions = [["133px","185px"],
+        var allPositions =   [["133px","185px"],
                               ["225px","571px"],
                               ["665px","80px"],
                               ["415px","210px"],
@@ -63,7 +67,7 @@
                               ["122px","717px"],
                               ["417px","813px"],
                               ["488px","28px"],
-                              ["214px","315px"]
+                              ["214px","315px"],
                               ["322px","514px"]];
         var planetElList = document.querySelectorAll('#system1 .planet');
         for (const pEl of planetElList) {
@@ -80,4 +84,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.20--->
+<!--Version 0.21--->
