@@ -20,9 +20,11 @@
       #p6 { }
       
       .info-box { 
-        position:absolute;
+        position:fixed;
         width: 170px;
-        height: auto;
+        height: 300px;
+        top:200px;
+        left:900px;
         font-family: 'MedievalSharp', cursive; 
         font-size:80%;
         border: 2px solid lightgray;
@@ -65,7 +67,7 @@
       <div class="cell sprite"><img class="cell"></img></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell cost"><p  id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
-      <div class="cell desc"><p  id="surveyDesc"> The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans. It appears to be [habitable/mostly habitable/nearly inhabitable] to your species. </p></div>
+      <div class="cell desc"><p  id="surveyDesc"> [desc] </p></div>
       <div class="cell pop"><p> This planet contains <span id="surveyPop">[#]</span> of Population Units. </p></div>
       <div class="cell bottom"></div>
     </div>
@@ -174,4 +176,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.29--->
+<!--Version 0.30--->
