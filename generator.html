@@ -63,29 +63,33 @@
       //global variables
       var newPlanet = null;
       
-      function survey(el) {
+      function survey(ev) {
+        let el = ev.target;
         console.log ("the function worked");
+        console.log (el);
+        console.log (el.biome);
       }
       function generateImgs() {
-        var allImgs = ["desertplanet1.png", 
-                       "savannaplanet1.png", 
-                       "arcticplanet1.png", 
-                       "tundraplanet1.png", 
-                       "continentalplanet1.png", 
-                       "oceanplanet1.png", 
-                       "relicplanet1.png", 
-                       "mineralplanet1.png", 
-                       "mineralplanet2.png",
-                       "mineralplanet2.png", 
-                       "mineralplanet3.png",
-                       "mineralplanet3.png",
-                       "barrenplanet1.png",
-                       "barrenplanet1.png"];
+        var allImgs = [["desertplanet1.png", "desert"],
+                       ["savannaplanet1.png", "savanna"],
+                       ["arcticplanet1.png", "arctic"],
+                       ["tundraplanet1.png", "tundra"],
+                       ["continentalplanet1.png", "continental"], 
+                       ["oceanplanet1.png", "ocean"],
+                       ["relicplanet1.png", "relic"],
+                       ["mineralplanet1.png", "mineral1"],
+                       ["mineralplanet2.png", "mineral2"],
+                       ["mineralplanet2.png", "mineral2"],
+                       ["mineralplanet3.png", "mineral3"],
+                       ["mineralplanet3.png", "mineral3"],
+                       ["barrenplanet1.png", "barren"],
+                       ["barrenplanet1.png", "barren"]];
         var planetElList = document.querySelectorAll('#system1 .planet');
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
-          pEl.src = allImgs[randomIndex];
-          pEl.setAttribute("onclick","survey(this)");
+          pEl.src = allImgs[randomIndex][0];
+          pEl.biome =  allImgs[randomIndex][1];
+          pEl.addEventListener("click", survey);
         }
       }
       function generatePosition() {
@@ -127,4 +131,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.27--->
+<!--Version 0.28--->
