@@ -19,6 +19,30 @@
       #p5 { }
       #p6 { }
       
+      .info-box { 
+        position:absolute;
+        width: 170px;
+        height: auto;
+        font-family: 'MedievalSharp', cursive; 
+        font-size:80%;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        display: none;
+        margin: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 2px 58px 60px 120px 50px 10px;
+        grid-template-areas:
+          "top   top   top"
+          "name  name  sprite"
+          "habit habit cost"
+          "desc  desc  desc"
+          "pop   pop   pop"
+          "bottom bottom bottom";
+        gap: 1.75px;
+        background: #1d4b96;
+        transition:0.4s;
+      }
+      
     </style>
     
   </head>
@@ -36,6 +60,9 @@
     </div>
   
     <script>
+      function survey(el) {
+        console.log ("the function worked");
+      }
       function generateImgs() {
         var allImgs = ["desertplanet1.png", 
                        "savannaplanet1.png", 
@@ -55,6 +82,7 @@
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
           pEl.src = allImgs[randomIndex];
+          pEl.setAttribute("onclick","survey(this)");
         }
       }
       function generatePosition() {
@@ -85,6 +113,11 @@
           }
         }
       }
+      
+      function hide(el) {
+        el.style.display = "none";
+      }
+      
       //Instant Functions
       generateImgs();
       generatePosition();
