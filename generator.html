@@ -36,7 +36,7 @@
         grid-template-areas:
           "top   top   top"
           "name  name  sprite"
-          "habit habit cost"
+          "cost  cost  habit"
           "desc  desc  desc"
           "pop   pop   pop"
           "bottom bottom bottom";
@@ -52,8 +52,9 @@
       .name { grid-area: name; text-align:center; }
       .name span { font-size:140%; }
       .sprite { grid-area:sprite; }
-      .habit { grid-area:habit; text-align:center; }
       .cost { grid-area: cost; text-align:center; }
+      .cost span { font-size:120%; }
+      .habit { grid-area:habit; text-align:center; }
       .desc { grid-area: desc; text-align:center; font-size:85%; }
       .pop { grid-area: pop; text-align:center; }
       .top { grid-area: top; gap:0px; display:none; }
@@ -184,4 +185,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.38--->
+<!--Version 0.39--->
