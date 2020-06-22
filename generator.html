@@ -46,6 +46,7 @@
       }
       .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
       .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
       .name span { font-size:140%; }
       .sprite { grid-area:sprite; }
@@ -63,11 +64,11 @@
   
      <div class="info-box" onclick="unSurvey(this)">
       <div class="cell top"></div>
-      <div class="cell name" id="surveyName"><span> [variable] </span></div>
+      <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell"></img></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
-      <div class="cell cost"><p  id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
-      <div class="cell desc"><p  id="surveyDesc"> [desc] </p></div>
+      <div class="cell cost"><p id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
       <div class="cell pop"><p> This planet contains <span id="surveyPop">[#]</span> of Population Units. </p></div>
       <div class="cell bottom"></div>
     </div>
@@ -90,7 +91,8 @@
         console.log("the function worked");
         console.log(el);
         console.log(el.biome);
-        var infoBox = document.getElementById("info-box");
+        var infoBox = $("info-box");
+        infoBox.style.display = "inline-grid";
         
         var biome = el.biome;
         var survey = {
@@ -106,10 +108,18 @@
           mineral3: { surveyName: "Mineral3" },
           barren: { surveyName: "Barren" }
         }
-        document.getElementById("surveyName").innerText = survey[el.biome].surveyName;
+        $("surveyName").innerText = survey[el.biome].surveyName;
+        ///$("surveyImage").src = survey[el.biome].surveyImage;
       }
       function unSurvey(el) {
         el.style.display = "none";
+      }
+      
+      function $ (id) {
+        return document.getElementById(id);
+      }
+      function $$ (sel) {
+        return document.querySelectorAll(sel);
       }
       
       //system generation
@@ -129,7 +139,7 @@
                        ["mineralplanet3.png", "mineral3"],
                        ["barrenplanet1.png", "barren"],
                        ["barrenplanet1.png", "barren"]];
-        var planetElList = document.querySelectorAll('#system1 .planet');
+        var planetElList = $$('#system1 .planet');
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
           pEl.src = allImgs[randomIndex][0];
@@ -150,7 +160,7 @@
                               ["214px","315px"],
                               ["412px","584px"],
                               ["587px","453px"]];
-        var planetElList = document.querySelectorAll('#system1 .planet');
+        var planetElList = $$('#system1 .planet');
         var curPlanetIndex = 0;
         var numPlanets = Math.floor(Math.random() * 6) + 1;
         for (const pEl of planetElList) {
@@ -176,4 +186,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.30--->
+<!--Version 0.32--->
