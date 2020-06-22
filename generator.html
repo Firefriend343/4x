@@ -132,7 +132,7 @@
   
     <script>
       //global variables
-      var lastSurveyedPlanet = null;
+      var lastSelectedPlanet = null;
       
       function $ (id) {
         return document.getElementById(id);
@@ -143,13 +143,13 @@
       
       function selectPlanet(ev) {
         let el = ev.target;
-        var lastSurveyedPlanet = $(el);
+        var lastSelectedPlanet = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
       }
       function unselectPlanet(ev) {
         let el = ev.target;
-        var lastSurveyedPlanet = $(el);
+        var lastSelectedPlanet = null;
         el.style.background = "gray";
         el.style.padding = "0px";
       }
