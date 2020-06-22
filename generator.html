@@ -69,9 +69,9 @@
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
-      <div class="cell cost"><p id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
+      <div class="cell cost"><span id="surveyCost"> # </span><span> of Credits in Upkeep Cost </span></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
-      <div class="cell pop"><p> This planet contains <span id="surveyPop"> 0 </span> of Population Units. </p></div>
+      <div class="cell pop"><p> This planet contains <span id="surveyPop"> 0 </span> Population Units. </p></div>
       <div class="cell bottom"></div>
     </div>
     
@@ -103,20 +103,21 @@
         
         var biome = el.biome;
         var survey = {
-          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png" }, 
-          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png" },
-          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png" },
-          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png" },
-          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png" },
-          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png" },
-          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png" },
-          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png" },
-          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png" },
-          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png" },
-          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png" }
+          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10" }, 
+          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10" },
+          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10" },
+          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10" },
+          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10" },
+          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10" },
+          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15" },
+          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6" },
+          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6" },
+          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6" },
+          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A" }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         $("surveyImage").src = survey[el.biome].surveyImage;
+        $("surveyCost").innerText = survey[el.biome].surveyCost;
       }
       
       //system generation
@@ -183,4 +184,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.37--->
+<!--Version 0.38--->
