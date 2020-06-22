@@ -149,7 +149,7 @@
     </div>
     
     <div class="planetMenu" id="planetMenu">
-      <div class="menuCell menuButton1"><button id="menuButton1"> Survey System </button></div>
+      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
       <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
       <div class="menuCell menuButton2"><button id="menuButton2"> Build Mining Station </button></div>
       <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
@@ -204,8 +204,8 @@
         planetMenu.style.display = "none";
       }
       
-      function survey(ev) {
-        let el = ev.target;
+      function survey() {
+        let el = $(lastSelectedPlanet);
         console.log(el.biome);
         var infoBox = $("info-box");
         infoBox.style.display = "inline-grid";
@@ -269,7 +269,6 @@
           var randomIndex = Math.floor(Math.random() * allImgs.length);
           pEl.src = allImgs[randomIndex][0];
           pEl.biome =  allImgs[randomIndex][1];
-          pEl.addEventListener("click", survey);
           pEl.addEventListener("mouseenter", selectPlanet);
           pEl.addEventListener("mouseout", preunselectPlanet);
         }
@@ -317,4 +316,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.53--->
+<!--Version 0.54--->
