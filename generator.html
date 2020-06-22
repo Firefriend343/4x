@@ -19,7 +19,7 @@
       #p5 { }
       #p6 { }
       
-      .info-box { position:fixed; width: 180px; height: 300px; top:100px;left:1050px;font-family: 'MedievalSharp', cursive; 
+      .info-box { position:fixed; width: 190px; height: 300px; top:100px;left:1050px;font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: 2px 58px 60px 120px 50px 10px;
         grid-template-areas:
@@ -189,6 +189,7 @@
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         $("surveyImage").src = survey[el.biome].surveyImage;
+        $("surveySize").innerText = survey[el.biome].surveySize;
         $("surveyCost").innerText = survey[el.biome].surveyCost;
         $("surveyHabit").innerText = survey[el.biome].surveyHabit;
         $("surveyDesc").innerText = survey[el.biome].surveyDesc;
