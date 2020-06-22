@@ -170,6 +170,7 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
+      var unselectTimeoutId = null;
       
       function $ (id) {
         return document.getElementById(id);
@@ -189,9 +190,13 @@
         planetMenu.style.top = newTop + "px";
         var newLeft = el.offsetLeft + 70;
         planetMenu.style.left = newLeft + "px";
+        if (unselectTimeoutId) {
+          cancelTimeout(unSelectTimeout);
+          unselectTimeoutId = null;
+        }
       }
       function preunselectPlanet(ev) {
-        setTimeout(function(){
+        unselectTimeoutId = setTimeout(function(){
           unselectPlanet(ev)
         },1400);
       }
@@ -316,4 +321,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.54--->
+<!--Version 0.55--->
