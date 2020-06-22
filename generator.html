@@ -128,7 +128,9 @@
           mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6", 
                      surveyHabit: "Unhabitable", surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals. It is not suitable for life." },
           barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
-                   surveyHabit: "Unhabitable", surveyDesc: "Scanning the planet shows nothing of importance, lacking major deposits of resources. It is not suitable for life." }
+                   surveyHabit: "Unhabitable", surveyDesc: "Scanning the planet shows nothing of importance, lacking major deposits of resources. It is not suitable for life." },
+          junk: { surveyName: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A", 
+                     surveyHabit: "Unhabitable", surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with minerals. It is not suitable for life." }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         $("surveyImage").src = survey[el.biome].surveyImage;
@@ -153,7 +155,8 @@
                        ["mineralplanet3.png", "mineral3"],
                        ["mineralplanet3.png", "mineral3"],
                        ["barrenplanet1.png", "barren"],
-                       ["barrenplanet1.png", "barren"]];
+                       ["barrenplanet1.png", "barren"],
+                       ["junkplanet1.png",   "junk"]];
         var planetElList = $$('#system1 .planet');
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
@@ -201,4 +204,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.44--->
+<!--Version 0.45--->
