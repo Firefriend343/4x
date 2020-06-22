@@ -55,7 +55,7 @@
       .cost { grid-area: cost; text-align:center; }
       .cost span { font-size:120%; }
       .habit { grid-area:habit; text-align:center; }
-      .habit span { font-size:120%; }
+      .habit span { font-size:110%; }
       .desc { grid-area: desc; text-align:center; font-size:90%; }
       .pop { grid-area: pop; text-align:center; }
       .pop span { font-size:120% }
@@ -107,21 +107,33 @@
         
         var biome = el.biome;
         var survey = {
-          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10" }, 
-          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10" },
-          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10" },
-          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10" },
-          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10" },
-          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10" },
-          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15" },
-          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6" },
-          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6" },
-          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6" },
-          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A" }
+          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", 
+                   surveyHabit: "TBD" }, 
+          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10", 
+                    surveyHabit: "TBD" },
+          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", 
+                   surveyHabit: "TBD" },
+          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", 
+                   surveyHabit: "TBD" },
+          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10", 
+                        surveyHabit: "TBD" },
+          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10", 
+                  surveyHabit: "TBD" },
+          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", 
+                  surveyHabit: "70% Habitable" },
+          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6", 
+                     surveyHabit: "Unhabitable" },
+          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6", 
+                     surveyHabit: "Unhabitable" },
+          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6", 
+                     surveyHabit: "Unhabitable" },
+          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
+                   surveyHabit: "Unhabitable" }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         $("surveyImage").src = survey[el.biome].surveyImage;
         $("surveyCost").innerText = survey[el.biome].surveyCost;
+        $("surveyHabit").innerText = survey[el.biome].surveyHabit;
       }
       
       //system generation
@@ -188,4 +200,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.40--->
+<!--Version 0.42--->
