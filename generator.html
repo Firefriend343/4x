@@ -185,6 +185,10 @@
         el.style.padding = "1.5px";
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "inline-grid";
+        var newTop = el.offsetTop - 10;
+        planetMenu.style.top = newTop + "px";
+        var newLeft = el.offsetLeft + 70;
+        planetMenu.style.left = newLeft + "px";
       }
       function preunselectPlanet(ev) {
         setTimeout(function(){
@@ -197,7 +201,7 @@
         el.style.background = "gray";
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
-        planetMenu.style.display = "inline-grid";
+        planetMenu.style.display = "none";
       }
       
       function survey(ev) {
