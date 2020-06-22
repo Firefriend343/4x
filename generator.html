@@ -71,7 +71,7 @@
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell cost"><p id="surveyCost"> [# of Credits in Upkeep Cost] </p></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
-      <div class="cell pop"><p> This planet contains <span id="surveyPop">[#]</span> of Population Units. </p></div>
+      <div class="cell pop"><p> This planet contains <span id="surveyPop"> 0 </span> of Population Units. </p></div>
       <div class="cell bottom"></div>
     </div>
     
@@ -97,28 +97,26 @@
       
       function survey(ev) {
         let el = ev.target;
-        console.log("the function worked");
-        console.log(el);
         console.log(el.biome);
         var infoBox = $("info-box");
         infoBox.style.display = "inline-grid";
         
         var biome = el.biome;
         var survey = {
-          desert: { surveyName: "Desert" }, 
-          savanna: { surveyName: "Savanna" },
-          arctic: { surveyName: "Arctic" },
-          tundra: { surveyName: "Tundra" },
-          continental: { surveyName: "Continental" },
-          ocean: { surveyName: "Ocean" },
-          relic: { surveyName: "Relic" },
-          mineral1: { surveyName: "Mineral1" },
-          mineral2: { surveyName: "Mineral2" },
-          mineral3: { surveyName: "Mineral3" },
-          barren: { surveyName: "Barren" }
+          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png" }, 
+          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png" },
+          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png" },
+          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png" },
+          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png" },
+          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png" },
+          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png" },
+          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png" },
+          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png" },
+          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png" },
+          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png" }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
-        ///$("surveyImage").src = survey[el.biome].surveyImage;
+        $("surveyImage").src = survey[el.biome].surveyImage;
       }
       
       //system generation
@@ -185,4 +183,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.35--->
+<!--Version 0.36--->
