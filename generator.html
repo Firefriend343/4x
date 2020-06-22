@@ -143,13 +143,13 @@
       
       function selectPlanet(ev) {
         let el = ev.target;
-        var lastSelectedPlanet = el.id;
+        lastSelectedPlanet = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
       }
       function unselectPlanet(ev) {
         let el = ev.target;
-        var lastSelectedPlanet = null;
+        lastSelectedPlanet = null;
         el.style.background = "gray";
         el.style.padding = "0px";
       }
@@ -266,4 +266,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.50--->
+<!--Version 0.51--->
