@@ -19,20 +19,9 @@
       #p5 { }
       #p6 { }
       
-      .info-box {
-        position:fixed;
-        width: 210px;
-        height: 300px;
-        top:100px;
-        left:1050px;
-        font-family: 'MedievalSharp', cursive; 
-        font-size:80%;
-        border: 2px solid lightgray;
-        border-radius: 5px;
-        display: none;
-        margin: 15px;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 2px 58px 60px 120px 50px 10px;
+      .info-box { position:fixed; width: 210px; height: 300px; top:100px;left:1050px;font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: 2px 58px 60px 120px 50px 10px;
         grid-template-areas:
           "top   top   top"
           "name  name  sprite"
@@ -40,9 +29,7 @@
           "desc  desc  desc"
           "pop   pop   pop"
           "bottom bottom bottom";
-        gap: 1.75px;
-        background: #1d4b96;
-        transition:0.4s;
+        gap: 1.75px; background: #1d4b96;transition:0.4s;
       }
       #info-box { display:none; }
       
@@ -63,7 +50,7 @@
       .bottom { grid-area: bottom; gap:0px; display:none; }
       #surveyImage { background:grey; border-radius:50%; }
       
-      .HUD { position:absolute; top:0px; left:0px; height:50px; width:100%; background:#7096cf; border:2px solid lightgray;
+      .HUD { position:fixed; top:0px; left:0px; height:50px; width:100%; background:#7096cf; border:2px solid lightgray;
         display:inline-grid;
         grid-template-columns: 20px 50px 70px 40px 50px 70px 40px 50px 70px 40px 50px 70px auto;
         grid-auto-rows:10px 30px 10px;
@@ -255,4 +242,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.46--->
+<!--Version 0.47--->
