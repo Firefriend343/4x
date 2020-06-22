@@ -62,12 +62,63 @@
       .top { grid-area: top; gap:0px; display:none; }
       .bottom { grid-area: bottom; gap:0px; display:none; }
       #surveyImage { background:grey; border-radius:50%; }
+      
+      .HUD { position:absolute; top:0px; left:0px; height:50px; width:100%; background:#7096cf; border:2px solid lightgray;
+        display:inline-grid;
+        grid-template-columns: 20px 50px 70px 40px 50px 70px 40px 50px 70px 40px 50px 70px auto;
+        grid-auto-rows:10px 30px 10px;
+        grid-template-areas:
+          "top     top         top           top     top        top          top     top           top             top     top        top          top"
+          "margin1 mineralIcon mineralNumber margin2 creditIcon creditNumber margin3 authorityIcon authorityNumber margin4 supplyIcon supplyNumber margin5"
+          "bottom  bottom      bottom        bottom  bottom     bottom       bottom  bottom        bottom          bottom  bottom     bottom       bottom";
+        gap:0px;
+        transition:0.4s
+      }
+      .HUDtop { grid-area:top; background:#1d4b96; }
+      .HUDbottom { grid-area:bottom; background:#1d4b96; }
+      .HUDcell { position:relative; padding:3px; overflow:hidden; font-family: 'MedievalSharp', cursive; }
+      .HUDcell p { overflow:hidden; font-size:80%; font-family: 'MedievalSharp', cursive; }
+      .HUDcell span { overflow:hidden; font-size:80%; }
+      .margin1 { grid-area:margin1; }
+      .margin2 { grid-area:margin2; }
+      .margin3 { grid-area:margin3; }
+      .margin4 { grid-area:margin4; }
+      .margin5 { grid-area:margin4; }
+      .mineralIcon { grid-area:mineralIcon; }
+      .creditIcon { grid-area:creditIcon; }
+      .authorityIcon { grid-area:authorityIcon; }
+      .supplyIcon { grid-area:supplyIcon; }
+      .mineralNumber { grid-area:mineralNumber; padding:7px; }
+      .creditNumber { grid-area:creditNumber; padding:7px; }
+      .authorityNumber { grid-area:authorityNumber; padding:7px; }
+      .supplyNumber { grid-area:supplyNumber; padding:7px; }
+      #HUDMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px;}
+      #HUDCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #HUDAuthorityIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #HUDSupplyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      
     </style>
     
   </head>
   
   <body>
-  
+    <div class="HUD">
+      <div class="HUDcell HUDtop"></div>
+      <div class="HUDcell margin1"></div>
+      <div class="HUDcell mineralIcon"><img id="HUDMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 50 </span></div>
+      <div class="HUDcell margin2"></div>
+      <div class="HUDcell creditIcon"><img id="HUDCreditIcon" src="crediticon.png"></img></div>
+      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 50 </span></div>
+      <div class="HUDcell margin3"></div>
+      <div class="HUDcell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
+      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 50 </span></div>
+      <div class="HUDcell margin4"></div>
+      <div class="HUDcell supplyIcon"><img id="HUDSupplyIcon" src="supplyicon.png"></img></div>
+      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 50 </span></div>
+      <div class="HUDcell HUDbottom"></div>
+    </div>
+
      <div class="info-box" id="info-box" onclick="hide(this)">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
@@ -204,4 +255,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.45--->
+<!--Version 0.46--->
