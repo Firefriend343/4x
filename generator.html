@@ -132,12 +132,26 @@
   
     <script>
       //global variables
+      var lastSurveyedPlanet = null;
       
       function $ (id) {
         return document.getElementById(id);
       }
       function $$ (sel) {
         return document.querySelectorAll(sel);
+      }
+      
+      function selectPlanet(ev) {
+        let el = ev.target;
+        var lastSurveyedPlanet = $(el);
+        el.style.background = "lime";
+        el.style.padding = "1.5px";
+      }
+      function unselectPlanet(ev) {
+        let el = ev.target;
+        var lastSurveyedPlanet = $(el);
+        el.style.background = "gray";
+        el.style.padding = "0px";
       }
       
       function survey(ev) {
@@ -205,6 +219,8 @@
           pEl.src = allImgs[randomIndex][0];
           pEl.biome =  allImgs[randomIndex][1];
           pEl.addEventListener("click", survey);
+          pEl.addEventListener("mouseenter", selectPlanet);
+          pEl.addEventListener("mouseout", unselectPlanet);
         }
       }
       function generatePosition() {
@@ -236,8 +252,12 @@
         }
       }
       
+      
       function hide(el) {
         el.style.display = "none";
+      }
+      function remove(el) {
+        el.parentNode.removeChild(el);
       }
       
       //Instant Functions
@@ -246,4 +266,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.49--->
+<!--Version 0.50--->
