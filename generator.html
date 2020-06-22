@@ -19,13 +19,13 @@
       #p5 { }
       #p6 { }
       
-      .info-box { position:fixed; width: 210px; height: 300px; top:100px;left:1050px;font-family: 'MedievalSharp', cursive; 
+      .info-box { position:fixed; width: 180px; height: 300px; top:100px;left:1050px;font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: 2px 58px 60px 120px 50px 10px;
         grid-template-areas:
           "top   top   top"
           "name  name  sprite"
-          "cost  cost  habit"
+          "cost  size  habit"
           "desc  desc  desc"
           "pop   pop   pop"
           "bottom bottom bottom";
@@ -40,10 +40,12 @@
       .name span { font-size:140%; }
       .sprite { grid-area:sprite; }
       .cost { grid-area: cost; text-align:center; }
-      .cost span { font-size:120%; }
+      .cost span { font-size:90%; }
+      .size { grid-area:size; text-align:center }
+      .size span { font-size:90%; }
       .habit { grid-area:habit; text-align:center; }
-      .habit span { font-size:110%; }
-      .desc { grid-area: desc; text-align:center; font-size:110%; }
+      .habit span { font-size:90%; }
+      .desc { grid-area: desc; text-align:center; font-size:900%; }
       .pop { grid-area: pop; text-align:center; }
       .pop span { font-size:120% }
       .top { grid-area: top; gap:0px; display:none; }
@@ -110,8 +112,9 @@
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
-      <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
+      <div class="cell size"><p id="surveySize"> [Size] </p></div>
+      <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
       <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span> Population Units. </span></div>
       <div class="cell bottom"></div>
@@ -145,29 +148,29 @@
         
         var biome = el.biome;
         var survey = {
-          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", 
+          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
                    surveyHabit: "TBD", surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and the occasional mesa or oasis."}, 
-          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10", 
+          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10", surveySize:"TBD", 
                     surveyHabit: "TBD", surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans." },
-          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", 
+          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", surveySize:"TBD", 
                    surveyHabit: "TBD", surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World, but has frozen long since." },
-          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", 
+          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", surveySize:"TBD", 
                    surveyHabit: "TBD", surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core. It is still suitable for life, however." },
-          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10", 
+          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10", surveySize:"TBD", 
                         surveyHabit: "TBD", surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green, changing with the passing of the seasons." },
-          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10", 
+          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10", surveySize:"TBD", 
                   surveyHabit: "TBD", surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field." },
-          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", 
+          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", surveySize:"TBD", 
                   surveyHabit: "70% Habitable", surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind." },
-          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6", 
+          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6", surveySize:"TBD", 
                      surveyHabit: "Unhabitable", surveyDesc: "This planet is hot and grim, but relatively rich in minerals. It is not suitable for life." },
-          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6", 
+          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6", surveySize:"TBD", 
                      surveyHabit: "Unhabitable", surveyDesc: "There are no hills nor valleys on this planet, only massive lava-filled crevices. It is not suitable for life." },
-          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6", 
+          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6", surveySize:"TBD", 
                      surveyHabit: "Unhabitable", surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals. It is not suitable for life." },
-          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
+          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
                    surveyHabit: "Unhabitable", surveyDesc: "Scanning the planet shows nothing of importance, lacking major deposits of resources. It is not suitable for life." },
-          junk: { surveyName: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A", 
+          junk: { surveyName: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
                      surveyHabit: "Unhabitable", surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins. It is not suitable for life." }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
@@ -242,4 +245,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.47--->
+<!--Version 0.48--->
