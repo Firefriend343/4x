@@ -20,7 +20,6 @@
       #p6 { }
       
       .info-box { 
-        position:fixed;
         width: 170px;
         height: 300px;
         top:200px;
@@ -44,6 +43,8 @@
         background: #1d4b96;
         transition:0.4s;
       }
+      #info-box { display:none; }
+      
       .cell { background: lightgray; padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
       .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
@@ -62,7 +63,7 @@
   
   <body>
   
-     <div class="info-box" onclick="unSurvey(this)">
+     <div class="info-box" id="info-box" onclick="hide(this)">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell"></img></div>
@@ -85,6 +86,13 @@
   
     <script>
       //global variables
+      
+      function $ (id) {
+        return document.getElementById(id);
+      }
+      function $$ (sel) {
+        return document.querySelectorAll(sel);
+      }
       
       function survey(ev) {
         let el = ev.target;
@@ -110,16 +118,6 @@
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         ///$("surveyImage").src = survey[el.biome].surveyImage;
-      }
-      function unSurvey(el) {
-        el.style.display = "none";
-      }
-      
-      function $ (id) {
-        return document.getElementById(id);
-      }
-      function $$ (sel) {
-        return document.querySelectorAll(sel);
       }
       
       //system generation
@@ -186,4 +184,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.32--->
+<!--Version 0.33--->
