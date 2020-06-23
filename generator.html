@@ -235,7 +235,9 @@
           barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
                    surveyHabit: "Unhabitable", surveyDesc: "Scanning the planet shows nothing of importance, lacking major deposits of resources. It is not suitable for life." },
           junk: { surveyName: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins. It is not suitable for life." }
+                     surveyHabit: "Unhabitable", surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins. It is not suitable for life." },
+          gas1: { surveyName: "Gas Giant", surveyImage: "gasplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
+                     surveyHabit: "Unhabitable", surveyDesc: "Small asteriods drift through this gas giant's atmosphere, stuck in an endless orbit. It is not suitable for life. " }
         }
         $("surveyName").innerText = survey[el.biome].surveyName;
         $("surveyImage").src = survey[el.biome].surveyImage;
@@ -279,6 +281,8 @@
                        ["barrenplanet1.png", "barren"],
                        ["barrenplanet1.png", "barren"],
                        ["barrenplanet1.png", "barren"],
+                       ["gasplanet1.png",    "gas1"],
+                       ["gasplanet1.png",    "gas1"],
                        ["junkplanet1.png",   "junk"]];
         var planetElList = $$('#system1 .planet');
         for (const pEl of planetElList) {
@@ -331,4 +335,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.69--->
+<!--Version 0.70--->
