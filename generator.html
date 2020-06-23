@@ -207,7 +207,7 @@
       }
       function preventMenuClose(){
         if (unselectTimeoutId) {
-          cancelTimeout(unSelectTimeout);
+          clearTimeout(unSelectTimeout);
           unselectTimeoutId = null;
         }
       }
