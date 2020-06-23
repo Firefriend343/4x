@@ -197,6 +197,7 @@
       }
       function unselectPlanet(ev) {
         let el = ev.target;
+        lastSelectedPlanet = null;
         el.style.background = "gray";
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
