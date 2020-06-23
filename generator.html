@@ -158,7 +158,7 @@
       <img class="planet" id="p6"></img>
     </div>
 
-    <div class="planetMenu" id="planetMenu" onmouseenter="preventMenuClose()" onmouseout="preunselectPlanet()">
+    <div class="planetMenu" id="planetMenu" onmouseenter="preventMenuClose()" onmouseout="onMenuExit()">
       <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
       <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
       <div class="menuCell menuButton2"><button id="menuButton2"> Build Mining Station </button></div>
@@ -192,24 +192,27 @@
         planetMenu.style.left = newLeft + "px";
         preventMenuClose();
       }
-      function preunselectPlanet(ev) {
+      function preunselectPlanet() {
         unselectTimeoutId = setTimeout(function(){
-          unselectPlanet(ev)
+          unselectPlanet();
         },1400);
       }
-      function unselectPlanet(ev) {
-        let el = ev.target;
+      function unselectPlanet() {
+        let el = $(lastSelectedPlanet);
         el.style.background = "gray";
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
         lastSelectedPlanet = null;
       }
-      function preventMenuClose(){
+      function preventMenuClose() {
         if (unselectTimeoutId) {
           clearTimeout(unselectTimeoutId);
           unselectTimeoutId = null;
         }
+      }
+      function onMenuExit() {
+        unselectPlanet();
       }
       
       function survey() {
@@ -323,4 +326,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.62--->
+<!--Version 0.63--->
