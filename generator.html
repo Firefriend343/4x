@@ -161,9 +161,9 @@
     <div class="planetMenu" id="planetMenu">
       <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
       <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
-      <div class="menuCell menuButton2"><button id="menuButton2"> Build Mining Station </button></div>
+      <div class="menuCell menuButton2"><button id="menuButton2" onclick="buildMiningStation()"> Build Mining Station </button></div>
       <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="menuCell menuButton3"><button id="menuButton3"> Build Colony </button></div>
+      <div class="menuCell menuButton3"><button id="menuButton3" onclick="buildColony()"> Build Colony </button></div>
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
     </div>
 
@@ -193,7 +193,7 @@
       function preunselectPlanet(ev) {
         setTimeout(function(){
           unselectPlanet(ev);
-        },2000);
+        },1400);
       }
       function unselectPlanet(ev) {
         let el = ev.target;
@@ -243,6 +243,12 @@
         $("surveyCost").innerText = survey[el.biome].surveyCost;
         $("surveyHabit").innerText = survey[el.biome].surveyHabit;
         $("surveyDesc").innerText = survey[el.biome].surveyDesc;
+      }
+      function buildMiningStation() {
+        alert("you built a mining station - This function has not been added yet")
+      }
+      function buildColony() {
+        alert("you built a colony - This function has not been added yet")
       }
       
       //system generation
