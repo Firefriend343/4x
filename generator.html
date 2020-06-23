@@ -123,16 +123,16 @@
       <div class="HUDcell HUDtop"></div>
       <div class="HUDcell margin1"></div>
       <div class="HUDcell mineralIcon"><img id="HUDMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 50 </span></div>
+      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 200 </span></div>
       <div class="HUDcell margin2"></div>
       <div class="HUDcell creditIcon"><img id="HUDCreditIcon" src="crediticon.png"></img></div>
-      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 50 </span></div>
+      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 200 </span></div>
       <div class="HUDcell margin3"></div>
       <div class="HUDcell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
-      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 50 </span></div>
+      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 100 </span></div>
       <div class="HUDcell margin4"></div>
       <div class="HUDcell supplyIcon"><img id="HUDSupplyIcon" src="supplyicon.png"></img></div>
-      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 50 </span></div>
+      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 200 </span></div>
       <div class="HUDcell HUDbottom"></div>
     </div>
 
@@ -245,10 +245,20 @@
         $("surveyDesc").innerText = survey[el.biome].surveyDesc;
       }
       function buildMiningStation() {
-        alert("you built a mining station - This function has not been added yet")
+        alert("you built a mining station - This function has not been added yet");
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
+        HUDCreditNumber.innerText = newCreditNumber;
       }
       function buildColony() {
-        alert("you built a colony - This function has not been added yet")
+        alert("you built a colony - This function has not been added yet");
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
+        HUDSupplyNumber.innerText = newSupplyNumber;
       }
       
       //system generation
@@ -321,4 +331,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.64--->
+<!--Version 0.68--->
