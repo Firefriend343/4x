@@ -198,7 +198,7 @@
         },1400);
       }
       function unselectPlanet(ev) {
-        let el = $(lastSelectedPlanet);
+        let el = ev.target;
         el.style.background = "gray";
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
