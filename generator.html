@@ -249,7 +249,7 @@
         if (uninhabitablePlanets.includes(el.biome)) {
           $("surveyDesc").innerText = survey[el.biome].surveyDesc + " This planet is not suitable for life.";
         }
-        if (habitablePlanets.includes(el.biome)) {
+        else if (habitablePlanets.includes(el.biome)) {
           $("surveyDesc").innerText = survey[el.biome].surveyDesc + " This planet is suitable for life.";
         }
         else {
@@ -346,4 +346,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.72--->
+<!--Version 0.73--->
