@@ -286,15 +286,16 @@
         HUDSupplyNumber.innerText = newSupplyNumber;
         var newPopulationNumber = Number(surveyPop.innerText) + 2;
         surveyPop.innerText = newPopulationNumber;
+        var system = $("system1");
         var el = $(lastSelectedPlanet);
         var colonyMarker = $("passiveColonyMarker");
-        var newTop = el.offsetTop - 5;
-        var newLeft = el.offsetLeft + 60;
+        var newTop = system.offsetTop - 5;
+        var newLeft = system.offsetLeft + 60;
         colonyMarker.style.top = newTop + "px";
         colonyMarker.style.left = newLeft + "px";
         var newMarker = colonyMarker.cloneNode(true);
-        newMarker.id = newMarker.id + "-" +el.id;
-        el.appendChild(newMarker);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
         newMarker.style.display = "block";
       }
       
@@ -370,4 +371,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.78--->
+<!--Version 0.79--->
