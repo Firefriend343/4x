@@ -114,6 +114,12 @@
       #menuButton2 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
+      .colonyMarkerCloner { display:none; }
+      .colonyMarker { height:10px; width:10px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
+      #passiveColony {  }
+      #neutralColony {  }
+      #hostileColony {  }
+      
     </style>
     
   </head>
@@ -134,6 +140,12 @@
       <div class="HUDcell supplyIcon"><img id="HUDSupplyIcon" src="supplyicon.png"></img></div>
       <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 200 </span></div>
       <div class="HUDcell HUDbottom"></div>
+    </div>
+    
+    <div class="colonyMarkerCloner">
+      <img class="colonyMarker" id="passiveColony" src="passivecolony.png"></img>
+      <img class="colonyMarker" id="neutralColony" src="neutralcolony.png"></img>
+      <img class="colonyMarker" id="hostileColony" src="hostilecolony.png"></img>
     </div>
 
      <div class="info-box" id="info-box" onclick="hide(this)">
@@ -265,7 +277,7 @@
         HUDCreditNumber.innerText = newCreditNumber;
       }
       function buildColony() {
-        alert("you built a colony - This function has not been added yet");
+        alert("you built a colony - This function is still in development");
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
         HUDMineralNumber.innerText = newMineralNumber;
         var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
@@ -273,7 +285,17 @@
         var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
         HUDSupplyNumber.innerText = newSupplyNumber;
         var newPopulationNumber = Number(surveyPop.innerText) + 2;
-        surveyPop.innerText = newPopulationNumber
+        surveyPop.innerText = newPopulationNumber;
+        let el = $(lastSelectedPlanet);
+        let colonyMarker = $(passiveColonyMarker);
+        var newTop = el.offsetTop - 5;
+        var newLeft = el.offsetLeft + 60;
+        colonyMarker.style.top = newTop + "px";
+        colonyMarker.style.left = newLeft + "px";
+        var newMarker = colonyMarker.cloneNode(true);
+        newMarker.id = newMarker.id + "-" +el.id;
+        el.appendChild(newMarker);
+        newMarker.style.display = "block";
       }
       
       //system generation
@@ -348,4 +370,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.74--->
+<!--Version 0.75--->
