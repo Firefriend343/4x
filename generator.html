@@ -286,8 +286,8 @@
         HUDSupplyNumber.innerText = newSupplyNumber;
         var newPopulationNumber = Number(surveyPop.innerText) + 2;
         surveyPop.innerText = newPopulationNumber;
-        let el = $(lastSelectedPlanet);
-        let colonyMarker = $(passiveColonyMarker);
+        var el = $(lastSelectedPlanet);
+        var colonyMarker = $(passiveColonyMarker);
         var newTop = el.offsetTop - 5;
         var newLeft = el.offsetLeft + 60;
         colonyMarker.style.top = newTop + "px";
@@ -370,4 +370,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.76--->
+<!--Version 0.77--->
