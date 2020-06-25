@@ -115,7 +115,7 @@
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .colonyMarkerCloner { display:none; }
-      .colonyMarker { height:10px; width:10px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
+      .colonyMarker { position:relative; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
       #passiveColonyMarker {  }
       #neutralColonyMarker {  }
       #hostileColonyMarker {  }
@@ -289,8 +289,8 @@
         var system = $("system1");
         var el = $(lastSelectedPlanet);
         var colonyMarker = $("passiveColonyMarker");
-        var newTop = system.offsetTop - 5;
-        var newLeft = system.offsetLeft + 60;
+        var newTop = el.offsetTop - 5;
+        var newLeft = el.offsetLeft + 60;
         colonyMarker.style.top = newTop + "px";
         colonyMarker.style.left = newLeft + "px";
         var newMarker = colonyMarker.cloneNode(true);
@@ -371,4 +371,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.79--->
+<!--Version 0.80--->
