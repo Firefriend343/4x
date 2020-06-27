@@ -269,6 +269,11 @@
           alert ("Unidentified planet")
         }
       }
+      function preSurvey(planet) {
+        var el = $(planet);
+        survey(el);
+        console.log("preSurvey executed");
+      }
       function buildMiningStation() {
         alert("you built a mining station - This function has not been added yet");
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
@@ -301,6 +306,7 @@
       function surveyColony(el) {
         var planet = el.id.split("-")[1];
         console.log(planet);
+        preSurvey(planet);
       }
       
       //system generation
@@ -375,4 +381,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.90--->
+<!--Version 0.91--->
