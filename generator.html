@@ -371,10 +371,23 @@
         el.parentNode.removeChild(el);
       }
       
+      if (HUDCreditNumber.innerText <= 0) {
+        alert("you ran out of Credits")
+      }
+      if (HUDMineralNumber.innerText <= 0) {
+        alert("you ran out of Minerals")
+      }
+      if (HUDAuthorityNumber.innerText <= 0) {
+        alert("you ran out of Authority, you can no longer control your government")
+      }
+      if (HUDSuplliesNumber.innerText <= 0) {
+        alert("you ran out of Supplies, your colonies are starving")
+      }
+      
       //Instant Functions
       generateImgs();
       generatePosition();
     </script>
   </body>
 </html>
-<!--Version 0.94--->
+<!--Version 0.95--->
