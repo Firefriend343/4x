@@ -299,7 +299,7 @@
         newMarker.style.display = "block";
       }
       function surveyColony(el) {
-        var planet = el.id - "passiveColonyMarker-";
+        var planet = el.id.split("-")[1];
         console.log(planet);
       }
       
@@ -375,4 +375,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.89--->
+<!--Version 0.90--->
