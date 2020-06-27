@@ -371,17 +371,17 @@
         el.parentNode.removeChild(el);
       }
       
-      if (HUDCreditNumber.innerText <= 0) {
-        alert("you ran out of Credits")
-      }
       if (HUDMineralNumber.innerText <= 0) {
-        alert("you ran out of Minerals")
+        alert("you ran out of Minerals");
       }
-      if (HUDAuthorityNumber.innerText <= 0) {
-        alert("you ran out of Authority, you can no longer control your government")
+      else if (HUDCreditNumber.innerText <= 0) {
+        alert("you ran out of Credits");
       }
-      if (HUDSupplyNumber.innerText <= 0) {
-        alert("you ran out of Supplies, your colonies are starving")
+      else if (HUDAuthorityNumber.innerText <= 0) {
+        alert("you ran out of Authority, you can no longer control your government");
+      }
+      else if (HUDSupplyNumber.innerText <= 0) {
+        alert("you ran out of Supplies, your colonies are starving");
       }
       
       //Instant Functions
@@ -390,4 +390,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.95--->
+<!--Version 0.96--->
