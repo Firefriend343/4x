@@ -143,7 +143,7 @@
     </div>
     
     <div class="colonyMarkerCloner">
-      <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png"></img>
+      <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
       <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
     </div>
@@ -298,6 +298,10 @@
         system.appendChild(newMarker);
         newMarker.style.display = "block";
       }
+      function surveyColony(el) {
+        var planet = el.id - "passiveColonyMarker-";
+        console.log (planet)
+      }
       
       //system generation
       
@@ -371,4 +375,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.88--->
+<!--Version 0.89--->
