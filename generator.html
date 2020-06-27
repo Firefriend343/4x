@@ -119,6 +119,7 @@
       #passiveColonyMarker {  }
       #neutralColonyMarker {  }
       #hostileColonyMarker {  }
+      #miningStationMarker {  }
       
     </style>
     
@@ -142,10 +143,11 @@
       <div class="HUDcell HUDbottom"></div>
     </div>
     
-    <div class="colonyMarkerCloner">
+    <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
       <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
+      <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
     </div>
 
      <div class="info-box" id="info-box" onclick="hide(this)">
@@ -275,6 +277,17 @@
         HUDMineralNumber.innerText = newMineralNumber;
         var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
         HUDCreditNumber.innerText = newCreditNumber;
+        var system = $("system1");
+        var el = $(lastSelectedPlanet);
+        var stationMarker = $("miningStationMarker");
+        var newTop = el.offsetTop - 10;
+        var newLeft = el.offsetLeft + 55;
+        stationMarker.style.top = newTop + "px";
+        stationMarker.style.left = newLeft + "px";
+        var newMarker = stationMarker.cloneNode(true);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
+        newMarker.style.display = "block";
       }
       function buildColony() {
         alert("you built a colony - This function is still in development");
@@ -371,6 +384,12 @@
         el.parentNode.removeChild(el);
       }
       
+      function showInfo(el) {
+        if el = $(miningStationMarker);
+        alert ("Mining Stations produce 10 Minerals every turn. Use the tech tree to upgrade(tech tree not in random system generator).")
+      }
+      
+      ///broken, needs to be added in "next turn" function (currently executes on webpage opening)
       if (HUDMineralNumber.innerText <= 0) {
         alert("you ran out of Minerals");
       }
@@ -390,4 +409,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.96--->
+<!--Version 0.98--->
