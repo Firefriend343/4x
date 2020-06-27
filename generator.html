@@ -218,7 +218,7 @@
       
       function survey() {
         let el = $(lastSelectedPlanet);
-        console.log(el.biome);
+        //console.log(el.biome);
         var infoBox = $("info-box");
         infoBox.style.display = "inline-grid";
         
@@ -301,7 +301,7 @@
       function surveyColony(el) {
         var planet = el.id.split("-")[1];
         lastSelectedPlanet = $(planet);
-        console.log("surveyColony executed" + planet);
+        console.log("surveyColony executed " + planet);
         survey();
       }
       
@@ -377,4 +377,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.92--->
+<!--Version 0.93--->
