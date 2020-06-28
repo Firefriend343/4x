@@ -184,7 +184,7 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
-      var survey = {
+      var surveyDictionary = {
           desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
                    surveyHabit: "TBD", surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
                  surveyPop:0 }, 
@@ -267,24 +267,24 @@
                 
         var biome = el.biome;
         
-        $("surveyName").innerText = survey[el.biome].surveyName;
-        $("surveyImage").src = survey[el.biome].surveyImage;
-        $("surveySize").innerText = survey[el.biome].surveySize;
-        $("surveyCost").innerText = survey[el.biome].surveyCost;
-        $("surveyHabit").innerText = survey[el.biome].surveyHabit;
+        $("surveyName").innerText = surveyDictionary[el.biome].surveyName;
+        $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
+        $("surveySize").innerText = surveyDictionary[el.biome].surveySize;
+        $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
+        $("surveyHabit").innerText = surveyDictionary[el.biome].surveyHabit;
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (uninhabitablePlanets.includes(el.biome)) {
-          $("surveyDesc").innerText = survey[el.biome].surveyDesc + " This planet is not suitable for life.";
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc + " This planet is not suitable for life.";
         }
         else if (habitablePlanets.includes(el.biome)) {
-          $("surveyDesc").innerText = survey[el.biome].surveyDesc + " This planet is suitable for life.";
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc + " This planet is suitable for life.";
         }
         else {
-          $("surveyDesc").innerText = survey[el.biome].surveyDesc;
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc;
           alert ("Unidentified planet")
         }
-        $("surveyPop").innerText = survey[el.biome].surveyPop;
+        $("surveyPop").innerText = surveyDictionary[el.biome].surveyPop;
       }
       
       function buildMiningStation() {
@@ -453,4 +453,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.104--->
+<!--Version 0.105--->
