@@ -260,7 +260,7 @@
         planetMenu.style.display = "none";
       }
       var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
-      for (const pEl of habitablePlanets) {
+      for (habitablePlanets.includes(pEL.biome)) {
         pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
       }
       function survey() {
@@ -454,4 +454,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.113--->
+<!--Version 0.114--->
