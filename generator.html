@@ -269,7 +269,7 @@
         var biome = el.biome;
         $("surveyName").innerText = surveyDictionary[el.biome].surveyName;
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
-        $("surveySize").innerText = surveyDictionary[el.biome].surveySize;
+        $("surveySize").innerText = el.randomSize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
         $("surveyHabit").innerText = el.randomHabit;
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
@@ -291,7 +291,7 @@
         var el = $(lastSelectedPlanet);
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
         if (miningPlanets.includes(el.biome)) {
-          alert("you built a mining station - This function has not been added yet");
+          alert("you built a mining station - This function is still in development");
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
@@ -401,6 +401,9 @@
            pEl.randomHabit = "Uninhabitable";
           }
         }
+        for (const pEl of planetElList) {
+          pEl.randomSize = "Size " + Number(Math.floor(Math.random() * 10) + 1);
+        }
       }
       function generatePosition() {
         var allPositions =   [["133px","185px"],
@@ -463,4 +466,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.121--->
+<!--Version 0.122--->
