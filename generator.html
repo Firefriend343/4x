@@ -259,18 +259,7 @@
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
       }
-      for (const pEl of planetElList) {
-        var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
-        if (basicHabitablePlanets.includes(pEl.biome)) {
-          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
-        }
-        else if (pEl.biome == "relic") {
-          pEl.randomHabit = "70%";
-        }
-        else {
-          pEl.randomHabit = "Uninhabitable";
-        }
-      }
+      
       function survey() {
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
@@ -401,6 +390,18 @@
           pEl.addEventListener("mouseout", preunselectPlanet);
         }
       }
+      for (const pEl of planetElList) {
+        var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+        if (basicHabitablePlanets.includes(pEl.biome)) {
+          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+        }
+        else if (pEl.biome == "relic") {
+          pEl.randomHabit = "70%";
+        }
+        else {
+          pEl.randomHabit = "Uninhabitable";
+        }
+      }
       function generatePosition() {
         var allPositions =   [["133px","185px"],
                               ["225px","571px"],
@@ -462,4 +463,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.118--->
+<!--Version 0.120--->
