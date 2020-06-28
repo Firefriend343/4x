@@ -275,7 +275,7 @@
       function buildMiningStation() {
         var el = $(lastSelectedPlanet);
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
-        if (miningPlanets.incudes(el.biome)) {
+        if (miningPlanets.includes(el.biome)) {
           alert("you built a mining station - This function has not been added yet");
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
           HUDMineralNumber.innerText = newMineralNumber;
@@ -431,4 +431,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.100--->
+<!--Version 0.101--->
