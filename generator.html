@@ -284,7 +284,7 @@
           $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc;
           alert ("Unidentified planet")
         }
-        $("surveyPop").innerText = surveyDictionary[el.biome].surveyPop;
+        $("surveyPop").innerText = el.population;
       }
       
       function buildMiningStation() {
@@ -334,8 +334,8 @@
           HUDAuthorityNumber.innerText = newAuthorityNumber;
           var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
           HUDSupplyNumber.innerText = newSupplyNumber;
-          var newPopulationNumber = Number(surveyPop.innerText) + 2;
-          surveyPop.innerText = newPopulationNumber;
+          var newPopulationNumber = (el.population || 0) + 2;
+          el.population = newPopulationNumber;
           var system = $("system1");
           var colonyMarker = $("passiveColonyMarker");
           var newTop = el.offsetTop - 10;
@@ -453,4 +453,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.105--->
+<!--Version 0.106--->
