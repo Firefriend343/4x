@@ -184,7 +184,7 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
-      var randomHabit = Math.floor(Math.random * 100) + 1 + "%";
+      var randomHabit = Number(Math.floor(Math.random * 100) + 1) + "%";
       var surveyDictionary = {
           desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
                    surveyHabit: randomHabit, surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
@@ -454,4 +454,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.108--->
+<!--Version 0.109--->
