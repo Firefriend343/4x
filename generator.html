@@ -404,8 +404,8 @@
         for (const pEl of planetElList) {
           var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
           pEl.randomSize = "Size " + sizeNumber;
-          pEl.style.height = sizeNumber + 45 + "px";
-          pEl.style.width = sizeNumber + 45 + "px";
+          pEl.style.height = sizeNumber * 2 + 40 + "px";
+          pEl.style.width = sizeNumber * 2 + 40 + "px";
         }
       }
       function generatePosition() {
@@ -469,4 +469,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.123--->
+<!--Version 0.124--->
