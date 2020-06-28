@@ -284,7 +284,7 @@
           $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc;
           alert ("Unidentified planet")
         }
-        $("surveyPop").innerText = el.population;
+        $("surveyPop").innerText = el.population || 0;
       }
       
       function buildMiningStation() {
@@ -453,4 +453,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.106--->
+<!--Version 0.107--->
