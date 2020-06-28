@@ -397,10 +397,10 @@
         for (const pEl of planetElList) {
           var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
           if (basicHabitablePlanets.includes(pEl.biome)) {
-            pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+            pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "% Habitability";
           }
           else if (pEl.biome == "relic") {
-           pEl.randomHabit = "70%";
+           pEl.randomHabit = "70% Habitability";
           }
           else {
            pEl.randomHabit = "Uninhabitable";
@@ -474,4 +474,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.125--->
+<!--Version 0.126--->
