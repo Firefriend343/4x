@@ -184,24 +184,25 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
+      var randomHabit = Math.floor(Math.random * 100) + 1 + "%";
       var surveyDictionary = {
           desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
-                   surveyHabit: "TBD", surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
+                   surveyHabit: randomHabit, surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
                  surveyPop:0 }, 
           savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                    surveyHabit: "TBD", surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
+                    surveyHabit: randomHabit, surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
                  surveyPop:0 },
           arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                   surveyHabit: "TBD", surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
+                   surveyHabit: randomHabit, surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
                  surveyPop:0 },
           tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                   surveyHabit: "TBD", surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
+                   surveyHabit: randomHabit, surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
                  surveyPop:0 },
           continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                        surveyHabit: "TBD", surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
+                        surveyHabit: randomHabit, surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
                  surveyPop:0 },
           ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                  surveyHabit: "TBD", surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
+                  surveyHabit: randomHabit, surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
                  surveyPop:0 },
           relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", surveySize:"TBD", 
                   surveyHabit: "70% Habitable", surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
@@ -453,4 +454,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.107--->
+<!--Version 0.108--->
