@@ -279,6 +279,8 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
         HUDCreditNumber.innerText = newCreditNumber;
         var system = $("system1");
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
         var el = $(lastSelectedPlanet);
         var stationMarker = $("miningStationMarker");
         var newTop = el.offsetTop - 10;
@@ -413,4 +415,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.98--->
+<!--Version 0.99--->
