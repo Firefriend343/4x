@@ -259,8 +259,9 @@
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
       }
-      for (const pEl of planetElList) {
-          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+      var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+      for (const pEl of habitablePlanets) {
+        pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
       }
       function survey() {
         var el = $(lastSelectedPlanet);
@@ -453,4 +454,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.112--->
+<!--Version 0.113--->
