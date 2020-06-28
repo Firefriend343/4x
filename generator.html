@@ -294,6 +294,13 @@
           system.appendChild(newMarker);
           newMarker.style.display = "block";
         }
+        else if (el.biome = "junk") {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 50;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 50;
+          HUDCreditNumber.innerText = newCreditNumber;
+          alert("This system is not suitable for mining. However, it is rich in resources, and instead of building a mining station you can salvage them");
+        }
         else {
           alert ("You can't build a Mining Station here, this planet is not suitable for mining");
         }
@@ -431,4 +438,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.101--->
+<!--Version 0.103--->
