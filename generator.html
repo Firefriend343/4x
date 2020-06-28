@@ -184,6 +184,7 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
+      var planetElList = $$('#system1 .planet');
       var surveyDictionary = {
           desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
                    surveyHabit: "TBD", surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
@@ -258,7 +259,9 @@
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
       }
-      
+      for (const pEl of planetElList) {
+          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+      }
       function survey() {
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
@@ -266,13 +269,11 @@
         infoBox.style.display = "inline-grid";
                 
         var biome = el.biome;
-        
         $("surveyName").innerText = surveyDictionary[el.biome].surveyName;
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
         $("surveySize").innerText = surveyDictionary[el.biome].surveySize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
-        var randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
-        $("surveyHabit").innerText = randomHabit;
+        $("surveyHabit").innerText = el.randomHabit;
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (uninhabitablePlanets.includes(el.biome)) {
@@ -383,7 +384,6 @@
                        ["gasplanet1.png",    "gas"],
                        ["gasplanet1.png",    "gas"],
                        ["junkplanet1.png",   "junk"]];
-        var planetElList = $$('#system1 .planet');
         for (const pEl of planetElList) {
           var randomIndex = Math.floor(Math.random() * allImgs.length);
           pEl.src = allImgs[randomIndex][0];
@@ -405,7 +405,6 @@
                               ["214px","315px"],
                               ["412px","584px"],
                               ["587px","453px"]];
-        var planetElList = $$('#system1 .planet');
         var curPlanetIndex = 0;
         var numPlanets = Math.floor(Math.random() * 6) + 1;
         for (const pEl of planetElList) {
@@ -454,4 +453,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.111--->
+<!--Version 0.112--->
