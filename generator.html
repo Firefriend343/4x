@@ -389,17 +389,17 @@
           pEl.addEventListener("mouseenter", selectPlanet);
           pEl.addEventListener("mouseout", preunselectPlanet);
         }
-      }
-      for (const pEl of planetElList) {
-        var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
-        if (basicHabitablePlanets.includes(pEl.biome)) {
-          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
-        }
-        else if (pEl.biome == "relic") {
-          pEl.randomHabit = "70%";
-        }
-        else {
-          pEl.randomHabit = "Uninhabitable";
+        for (const pEl of planetElList) {
+          var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+          if (basicHabitablePlanets.includes(pEl.biome)) {
+            pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+          }
+          else if (pEl.biome == "relic") {
+           pEl.randomHabit = "70%";
+          }
+          else {
+           pEl.randomHabit = "Uninhabitable";
+          }
         }
       }
       function generatePosition() {
@@ -463,4 +463,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.120--->
+<!--Version 0.121--->
