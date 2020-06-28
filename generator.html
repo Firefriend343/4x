@@ -271,9 +271,11 @@
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
         $("surveySize").innerText = surveyDictionary[el.biome].surveySize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
-        var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
-        if (basicHabitablePlanets.includes(pEL.biome)) {
-          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+        for (const pEl of planetElList) {
+          var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+          if (basicHabitablePlanets.includes(pEL.biome)) {
+            pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+          }
         }
         $("surveyHabit").innerText = el.randomHabit;
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
@@ -455,4 +457,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.115--->
+<!--Version 0.116--->
