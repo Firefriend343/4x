@@ -259,10 +259,7 @@
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
       }
-      var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
-      for (habitablePlanets.includes(pEL.biome)) {
-        pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
-      }
+      
       function survey() {
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
@@ -274,6 +271,10 @@
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
         $("surveySize").innerText = surveyDictionary[el.biome].surveySize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
+        var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+        if (basicHabitablePlanets.includes(pEL.biome)) {
+          pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "%";
+        }
         $("surveyHabit").innerText = el.randomHabit;
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
@@ -454,4 +455,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.114--->
+<!--Version 0.115--->
