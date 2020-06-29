@@ -320,7 +320,6 @@
         var el = $(lastSelectedPlanet);
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
         if (miningPlanets.includes(el.biome)) {
-          alert("you built a mining station - This function is still in development");
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
@@ -350,16 +349,12 @@
           HUDSupplyNumber.innerText = newSupplyNumber;
           alert("This system is not suitable for mining. However, it is rich in supplies, and instead of building a mining station you can salvage them.");
         }
-        else {
-          alert ("You can't build a Mining Station here, this planet is not suitable for mining");
-        }
       }
       function buildColony() {
         var el = $(lastSelectedPlanet);
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];        
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (habitablePlanets.includes(el.biome)) {
-          alert("you built a colony - This function is still in development");
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
@@ -511,4 +506,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.153--->
+<!--Version 0.154--->
