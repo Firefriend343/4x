@@ -160,7 +160,7 @@
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
-      <div class="cell output"><span class="output" id="surveyOutput"> 2 Authority </span></div>
+      <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority </span></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
       <div class="cell size"><p id="surveySize"> [Size] </p></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
@@ -274,11 +274,12 @@
         infoBox.style.display = "inline-grid";
                 
         var biome = el.biome;
-        $("surveyType").innerText = surveyDictionary[el.biome].surveyType;
         $("surveyName").innerText = "John";
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
         $("surveyImage").style.height = "35px";
         $("surveyImage").style.width = "35px";
+        $("surveyType").innerText = surveyDictionary[el.biome].surveyType;
+        $("surveyOutput").innerText = el.authority || 0;
         $("surveySize").innerText = el.randomSize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
         $("surveyHabit").innerText = el.randomHabit;
@@ -351,6 +352,8 @@
           HUDSupplyNumber.innerText = newSupplyNumber;
           var newPopulationNumber = (el.population || 0) + 2;
           el.population = newPopulationNumber;
+          var newAuthorityNumber = (el.authority || 0) + 2;
+          el.authority = newAuthorityNumber;
           var system = $("system1");
           var colonyMarker = $("passiveColonyMarker");
           var newTop = el.offsetTop - 10;
@@ -484,4 +487,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.138--->
+<!--Version 0.140--->
