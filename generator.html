@@ -465,6 +465,11 @@
         for (const sEl of starElList) {
           sEl.src = starImg;
         }
+        for (const sEl of starElList) {
+          var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
+          sEl.style.height = sizeNumber * 4 + 70 + "px";
+          sEl.style.width = sizeNumber * 4 + 70 + "px";
+        }
       }
       
       function hide(el) {
@@ -501,4 +506,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.155--->
+<!--Version 0.157--->
