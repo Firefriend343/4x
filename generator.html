@@ -252,18 +252,6 @@
         planetMenu.style.top = newTop + "px";
         var newLeft = el.offsetLeft + 70;
         planetMenu.style.left = newLeft + "px";
-        var button2 = $("menuButton2");
-        var button3 = $("menuButton3");
-        const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
-        const unmineablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic", "barren", "junk", "gas"];
-        if (uninhabitablePlanets.includes(el.biome)) {
-          button3.setAttribute("disabled", "");
-          button3.style.backgroundColor = "#8ba6c7";
-        }
-        if (unmineablePlanets.includes(el.biome)) {
-          button2.setAttribute("disabled", "");
-          button2.style.backgroundColor = "#8ba6c7";
-        }
       }
       function preunselectPlanet(ev) {
         setTimeout(function(){
@@ -277,12 +265,6 @@
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
-        var button2 = $("menuButton2");
-        var button3 = $("menuButton3");
-        button2.removeAttribute("disabled");
-        button3.removeAttribute("disabled");
-        button2.style.backgroundColor = "navy";
-        button3.style.backgroundColor = "navy";
       }
       
       function survey() {
@@ -348,6 +330,9 @@
           var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
           HUDSupplyNumber.innerText = newSupplyNumber;
           alert("This system is not suitable for mining. However, it is rich in supplies, and instead of building a mining station you can salvage them.");
+        }
+        else {
+          alert("You can't build a Mining Station here. This planet is not suitable for mining.")
         }
       }
       function buildColony() {
