@@ -116,6 +116,9 @@
       #menuSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuJunkSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuJunkMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuJunkCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuButton1 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton2 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
@@ -193,11 +196,11 @@
     </div>
     <div class="planetMenu" id="junkPlanetMenu">
       <div class="menuCell menuButton1"><button id="menuButton4" onclick="survey()"> Survey System </button></div>
-      <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
+      <div class="menuCell menuSurveyIcon"><img id="menuJunkSurveyIcon" src="surveyicon.png"></img></div>
       <div class="menuCell menuButton2"><button id="menuButtonJunkPlanet" onclick="salvageJunkPlanet()"> Salvage Junk Planet </button></div>
-      <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="menuCell menuMineralIcon"><img id="menuJunkMineralIcon" src="gemstoneicon.png"></img></div>
       <div class="menuCell menuButton3"><button id="menuButton5" disabled> Build Colony </button></div>
-      <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
+      <div class="menuCell menuCreditIcon"><img id="menuJunkCreditIcon" src="crediticon.png"></img></div>
     </div>
 
     <script>
@@ -530,4 +533,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.148--->
+<!--Version 0.149--->
