@@ -161,7 +161,7 @@
       <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
     </div>
 
-     <div class="info-box" id="info-box" onclick="hide(this)">
+     <div class="info-box" id="info-box" onclick="hideSurvey()">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
@@ -318,6 +318,11 @@
         }
         $("surveyPop").innerText = el.population || 0;
       }
+      function hideSurvey() {
+        var el = $("info-box");
+        el.style.display = "none";
+        console.log("survey hidden");
+      }
       
       function buildMiningStation() {
         var el = $(lastSelectedPlanet);
@@ -384,6 +389,7 @@
           newMarker.id = newMarker.id + "-" + el.id;
           system.appendChild(newMarker);
           newMarker.style.display = "block";
+          survey();
         }
         else if (uninhabitablePlanets.includes(el.biome)) {
           alert ("This planet is uninhabitable. You cannot build a colony here");
@@ -508,6 +514,7 @@
       }
       
       function nextTurn() {
+        hideSurvey();
         if (HUDMineralNumber.innerText <= 0) {
          alert("you ran out of Minerals");
         }
@@ -534,4 +541,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.165--->
+<!--Version 0.167--->
