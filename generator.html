@@ -119,6 +119,8 @@
       #menuButton1 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton2 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton4 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton5 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButtonJunkPlanet { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .colonyMarkerCloner { display:none; }
@@ -190,11 +192,11 @@
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
     </div>
     <div class="planetMenu" id="junkPlanetMenu">
-      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
+      <div class="menuCell menuButton1"><button id="menuButton4" onclick="survey()"> Survey System </button></div>
       <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
-      <div class="menuCell menuButton2"><button id="menuButtonJunkPlanet" onclick="salvageJunkPlanet()"> Build Mining Station </button></div>
+      <div class="menuCell menuButton2"><button id="menuButtonJunkPlanet" onclick="salvageJunkPlanet()"> Salvage Junk Planet </button></div>
       <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="menuCell menuButton3"><button id="menuButton3" disabled> Build Colony </button></div>
+      <div class="menuCell menuButton3"><button id="menuButton5" disabled> Build Colony </button></div>
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
     </div>
 
@@ -340,13 +342,6 @@
           system.appendChild(newMarker);
           newMarker.style.display = "block";
         }
-        else if (el.biome == "junk") {
-          var newMineralNumber = Number(HUDMineralNumber.innerText) + 50;
-          HUDMineralNumber.innerText = newMineralNumber;
-          var newCreditNumber = Number(HUDCreditNumber.innerText) + 50;
-          HUDCreditNumber.innerText = newCreditNumber;
-          alert("This system is not suitable for mining. However, it is rich in resources, and instead of building a mining station you can salvage them.");
-        }
         else if (el.biome == "gas") {
           var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
           HUDSupplyNumber.innerText = newSupplyNumber;
@@ -398,7 +393,29 @@
         console.log("surveyColony executed " + planet);
         survey();
       }
-      
+      function salvageJunkPlanet() {
+        var el = $(lastSelectedPlanet);
+        alert("you salvaged the junk on the planet - This function is still in development");
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;                    
+        var system = $("system1");
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var stationMarker = $("miningStationMarker");
+        var newTop = el.offsetTop - 10;
+        var newLeft = el.offsetLeft + 55;
+        stationMarker.style.top = newTop + "px";
+        stationMarker.style.left = newLeft + "px";
+        var newMarker = stationMarker.cloneNode(true);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
+        newMarker.style.display = "block";
+        var button = $("menuButtonJunkPlanet");
+        button.setAttribute("disabled");
+        alert ("Reminder - add in disabling only one out of all junk planets")
+      }
       //system generation
       
       function generateStats() {
@@ -513,4 +530,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.146--->
+<!--Version 0.147--->
