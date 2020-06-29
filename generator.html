@@ -112,12 +112,14 @@
       .menuMineralIcon { grid-area:menuMineralIcon; }
       .menuCreditIcon { grid-area:menuCreditIcon; }
       #planetMenu {  }
+      #junkPlanetMenu
       #menuSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuButton1 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton2 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButtonJunkPlanet { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .colonyMarkerCloner { display:none; }
       .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
@@ -187,6 +189,14 @@
       <div class="menuCell menuButton3"><button id="menuButton3" onclick="buildColony()"> Build Colony </button></div>
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
     </div>
+    <div class="planetMenu" id="junkPlanetMenu">
+      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
+      <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
+      <div class="menuCell menuButton2"><button id="menuButtonJunkPlanet" onclick="salvageJunkPlanet()"> Build Mining Station </button></div>
+      <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="menuCell menuButton3"><button id="menuButton3" disabled> Build Colony </button></div>
+      <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
+    </div>
 
     <script>
       //global variables
@@ -246,12 +256,22 @@
         lastSelectedPlanet = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
-        var planetMenu = $("planetMenu");
-        planetMenu.style.display = "inline-grid";
-        var newTop = el.offsetTop - 10;
-        planetMenu.style.top = newTop + "px";
-        var newLeft = el.offsetLeft + 70;
-        planetMenu.style.left = newLeft + "px";
+        if (el.biome == "junk") {
+          var planetMenu = $("junkPlanetMenu");
+          planetMenu.style.display = "inline-grid";
+          var newTop = el.offsetTop - 10;
+          planetMenu.style.top = newTop + "px";
+          var newLeft = el.offsetLeft + 70;
+          planetMenu.style.left = newLeft + "px";        
+        }
+        else {
+          var planetMenu = $("planetMenu");
+          planetMenu.style.display = "inline-grid";
+          var newTop = el.offsetTop - 10;
+          planetMenu.style.top = newTop + "px";
+          var newLeft = el.offsetLeft + 70;
+          planetMenu.style.left = newLeft + "px";
+        }
       }
       function preunselectPlanet(ev) {
         setTimeout(function(){
@@ -493,4 +513,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.145--->
+<!--Version 0.146--->
