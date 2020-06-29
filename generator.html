@@ -534,6 +534,8 @@
         var allMiningPlanets = $$('#system1 .planet.miningStation');
         var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + allColonies.length * 2;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
+        HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
           var newPopNumber = pEl.population + 1;
           pEl.population = newPopNumber;
@@ -550,4 +552,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.171--->
+<!--Version 0.172--->
