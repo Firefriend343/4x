@@ -373,6 +373,7 @@
           el.population = newPopulationNumber;
           var newAuthorityNumber = (el.authority || 0) + 2;
           el.authority = newAuthorityNumber;
+          el.classList.add("colony");
           var system = $("system1");
           var colonyMarker = $("passiveColonyMarker");
           var newTop = el.offsetTop - 10;
@@ -520,6 +521,11 @@
           alert("you ran out of Supplies, your colonies are starving");
         }
         alert("nextTurn initated");
+        var allColonies = $$('#system1 .planet .colony');
+        for (const pEl of allColonies) {
+          var newPopNumber = pEl.surveyPop + 1;
+          pEl.surveyPop = newPopNumber;
+        }
       }
       //Instant Functions
       generateStats();
@@ -528,4 +534,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.162--->
+<!--Version 0.163--->
