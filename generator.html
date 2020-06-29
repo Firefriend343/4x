@@ -335,6 +335,7 @@
           var system = $("system1");
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
           HUDAuthorityNumber.innerText = newAuthorityNumber;
+          el.classList.add("miningStation");
           var stationMarker = $("miningStationMarker");
           var newTop = el.offsetTop - 10;
           var newLeft = el.offsetLeft + 55;
@@ -529,9 +530,14 @@
         }
         alert("nextTurn initated");
         var allColonies = $$('#system1 .planet.colony');
+        var allMiningPlanets = $$('#system1 .planet.miningStation');
         for (const pEl of allColonies) {
           var newPopNumber = pEl.population + 1;
           pEl.population = newPopNumber;
+        }
+        for (const pEl of allMiningPlanets) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
+          HUDMineralNumber.innerText = newMineralNumber;
         }
       }
       //Instant Functions
@@ -541,4 +547,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.167--->
+<!--Version 0.168--->
