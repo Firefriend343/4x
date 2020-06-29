@@ -169,7 +169,7 @@
       <div class="cell bottom"></div>
     </div>
     
-    <img class="star" id="s1" src="orangestar1.png"></img>  
+    <img class="star" id="s1"></img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
       <img class="planet" id="p2"></img>
@@ -192,6 +192,7 @@
       //global variables
       var lastSelectedPlanet = null;
       var planetElList = $$('#system1 .planet');
+      var starElList = $$('.star')
       var surveyDictionary = {
           desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10",
                    surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
@@ -457,6 +458,14 @@
           }
         }
       }
+      function generateStarImg() {
+        var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
+        var randomIndex = Math.floor(Math.random() * allImgs.length);
+        var starImg = allImgs[randomIndex];
+        for (const sEl of starElList) {
+          sEl.src = starImg;
+        }
+      }
       
       function hide(el) {
         el.style.display = "none";
@@ -491,4 +500,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.154--->
+<!--Version 0.155--->
