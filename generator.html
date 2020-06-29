@@ -532,6 +532,8 @@
         alert("nextTurn initated");
         var allColonies = $$('#system1 .planet.colony');
         var allMiningPlanets = $$('#system1 .planet.miningStation');
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + allColonies.length * 2;
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
         for (const pEl of allColonies) {
           var newPopNumber = pEl.population + 1;
           pEl.population = newPopNumber;
@@ -548,4 +550,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.170--->
+<!--Version 0.171--->
