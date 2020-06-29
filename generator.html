@@ -389,7 +389,7 @@
           newMarker.id = newMarker.id + "-" + el.id;
           system.appendChild(newMarker);
           newMarker.style.display = "block";
-          survey();
+          hideSurvey();
         }
         else if (uninhabitablePlanets.includes(el.biome)) {
           alert ("This planet is uninhabitable. You cannot build a colony here");
