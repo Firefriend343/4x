@@ -264,10 +264,6 @@
         }
       }
       function preunselectPlanet(ev) {
-        var button2 = $("menuButton2");
-        var button3 = $("menuButton3");
-        button2.removeAttribute("disabled");
-        button3.removeAttribute("disabled");
         setTimeout(function(){
           unselectPlanet(ev);
         },2200);
@@ -279,6 +275,10 @@
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        button2.removeAttribute("disabled");
+        button3.removeAttribute("disabled");
       }
       
       function survey() {
@@ -507,4 +507,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.150--->
+<!--Version 0.151--->
