@@ -521,8 +521,8 @@
           alert("you ran out of Supplies, your colonies are starving");
         }
         alert("nextTurn initated");
-        var allColonies = $$('#system1 .planet .colony');
-        for (var pEl of allColonies) {
+        var allColonies = $$('#system1 .planet.colony');
+        for (const pEl of allColonies) {
           var newPopNumber = pEl.population + 1;
           pEl.population = newPopNumber;
         }
