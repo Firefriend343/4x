@@ -126,6 +126,10 @@
       #hostileColonyMarker {  }
       #miningStationMarker {  }
       
+      #turnButton { border-radius:10%; background:#9f97d1; color:slategray; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
+                    top:800px; left:1100px; }
+      
+      
     </style>
     
   </head>
@@ -148,6 +152,8 @@
       <div class="HUDcell HUDbottom"></div>
     </div>
     
+    <button id="turnButton" onclick="nextTurn"> Next Turn </button>
+
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -500,20 +506,21 @@
         }
       }
       
-      ///broken, needs to be added in "next turn" function (currently executes on webpage opening)
-      if (HUDMineralNumber.innerText <= 0) {
-        alert("you ran out of Minerals");
+      function nextTurn() {
+        if (HUDMineralNumber.innerText <= 0) {
+         alert("you ran out of Minerals");
+        }
+        else if (HUDCreditNumber.innerText <= 0) {
+          alert("you ran out of Credits");
+        }
+        else if (HUDAuthorityNumber.innerText <= 0) {
+          alert("you ran out of Authority, you can no longer control your government");
+        }
+        else if (HUDSupplyNumber.innerText <= 0) {
+          alert("you ran out of Supplies, your colonies are starving");
+        }
+        alert("nextTurn initated");
       }
-      else if (HUDCreditNumber.innerText <= 0) {
-        alert("you ran out of Credits");
-      }
-      else if (HUDAuthorityNumber.innerText <= 0) {
-        alert("you ran out of Authority, you can no longer control your government");
-      }
-      else if (HUDSupplyNumber.innerText <= 0) {
-        alert("you ran out of Supplies, your colonies are starving");
-      }
-      
       //Instant Functions
       generateStats();
       generatePosition();
