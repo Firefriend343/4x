@@ -116,8 +116,8 @@
       #menuMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
-      #menuButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
-      #menuButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton2 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton3 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .colonyMarkerCloner { display:none; }
       .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
@@ -247,6 +247,16 @@
         lastSelectedPlanet = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        var miningPlanets = ["mineral1", "mineral2", "mineral3"];
+        var colonizablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
+        if (miningPlanets.includes(el.biome)) {
+          button2.style.backgroundColor = "slateblue";
+        }
+        else if (colonizablePlanets.includes(el.biome)) {
+          button3.style.backgroundColor = "slateblue";
+        }
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "inline-grid";
         var newTop = el.offsetTop - 10;
@@ -266,6 +276,10 @@
         el.style.padding = "0px";
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "none";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        button2.style.backgroundColor = "#9f97d1";
+        button3.style.backgroundColor = "#9f97d1";
       }
       
       function survey() {
@@ -506,4 +520,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.159--->
+<!--Version 0.160--->
