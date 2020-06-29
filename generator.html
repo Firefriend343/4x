@@ -251,9 +251,23 @@
         var newTop = el.offsetTop - 10;
         planetMenu.style.top = newTop + "px";
         var newLeft = el.offsetLeft + 70;
-        planetMenu.style.left = newLeft + "px";        
+        planetMenu.style.left = newLeft + "px";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
+        const unmineablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic", "barren", "junk", "gas"];
+        if (uninhabitablePlanets.includes(el.biome)) {
+          button3.setAttribute("disabled", "");
+        }
+        else if (unmineablePlanets.includes(el.biome)) {
+          button2.setAttribute("disabled", "");
+        }
       }
       function preunselectPlanet(ev) {
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        button2.removeAttribute("disabled");
+        button3.removeAttribute("disabled");
         setTimeout(function(){
           unselectPlanet(ev);
         },2200);
@@ -319,6 +333,13 @@
           newMarker.id = newMarker.id + "-" + el.id;
           system.appendChild(newMarker);
           newMarker.style.display = "block";
+        }
+        if (el.biome == "junk") {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+          HUDCreditNumber.innerText = newCreditNumber;
+          alert("This system is not suitable for mining. However, it is rich in materials, and instead you can salvage them(+60 Minerals, +20 Credits).");
         }
         else if (el.biome == "gas") {
           var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
@@ -486,4 +507,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.149--->
+<!--Version 0.150--->
