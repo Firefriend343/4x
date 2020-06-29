@@ -116,15 +116,9 @@
       #menuSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
-      #menuJunkSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
-      #menuJunkMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
-      #menuJunkCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #menuButton1 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton2 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
-      #menuButton4 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
-      #menuButton5 { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
-      #menuButtonJunkPlanet { border-radius:20%; background:navy; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .colonyMarkerCloner { display:none; }
       .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
@@ -194,15 +188,7 @@
       <div class="menuCell menuButton3"><button id="menuButton3" onclick="buildColony()"> Build Colony </button></div>
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
     </div>
-    <div class="planetMenu" id="junkPlanetMenu">
-      <div class="menuCell menuButton1"><button id="menuButton4" onclick="survey()"> Survey System </button></div>
-      <div class="menuCell menuSurveyIcon"><img id="menuJunkSurveyIcon" src="surveyicon.png"></img></div>
-      <div class="menuCell menuButton2"><button id="menuButtonJunkPlanet" onclick="salvageJunkPlanet()"> Salvage Junk Planet </button></div>
-      <div class="menuCell menuMineralIcon"><img id="menuJunkMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="menuCell menuButton3"><button id="menuButton5" disabled> Build Colony </button></div>
-      <div class="menuCell menuCreditIcon"><img id="menuJunkCreditIcon" src="crediticon.png"></img></div>
-    </div>
-
+    
     <script>
       //global variables
       var lastSelectedPlanet = null;
@@ -261,22 +247,12 @@
         lastSelectedPlanet = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
-        if (el.biome == "junk") {
-          var planetMenu = $("junkPlanetMenu");
-          planetMenu.style.display = "inline-grid";
-          var newTop = el.offsetTop - 10;
-          planetMenu.style.top = newTop + "px";
-          var newLeft = el.offsetLeft + 70;
-          planetMenu.style.left = newLeft + "px";        
-        }
-        else {
-          var planetMenu = $("planetMenu");
-          planetMenu.style.display = "inline-grid";
-          var newTop = el.offsetTop - 10;
-          planetMenu.style.top = newTop + "px";
-          var newLeft = el.offsetLeft + 70;
-          planetMenu.style.left = newLeft + "px";
-        }
+        var planetMenu = $("planetMenu");
+        planetMenu.style.display = "inline-grid";
+        var newTop = el.offsetTop - 10;
+        planetMenu.style.top = newTop + "px";
+        var newLeft = el.offsetLeft + 70;
+        planetMenu.style.left = newLeft + "px";        
       }
       function preunselectPlanet(ev) {
         setTimeout(function(){
@@ -396,29 +372,7 @@
         console.log("surveyColony executed " + planet);
         survey();
       }
-      function salvageJunkPlanet() {
-        var el = $(lastSelectedPlanet);
-        alert("you salvaged the junk on the planet - This function is still in development");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
-        HUDCreditNumber.innerText = newCreditNumber;                    
-        var system = $("system1");
-        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
-        HUDAuthorityNumber.innerText = newAuthorityNumber;
-        var stationMarker = $("miningStationMarker");
-        var newTop = el.offsetTop - 10;
-        var newLeft = el.offsetLeft + 55;
-        stationMarker.style.top = newTop + "px";
-        stationMarker.style.left = newLeft + "px";
-        var newMarker = stationMarker.cloneNode(true);
-        newMarker.id = newMarker.id + "-" + el.id;
-        system.appendChild(newMarker);
-        newMarker.style.display = "block";
-        var button = $("menuButtonJunkPlanet");
-        button.setAttribute("disabled", "");
-        alert ("Reminder - add in disabling only one out of all junk planets")
-      }
+      
       //system generation
       
       function generateStats() {
