@@ -258,9 +258,11 @@
         const unmineablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic", "barren", "junk", "gas"];
         if (uninhabitablePlanets.includes(el.biome)) {
           button3.setAttribute("disabled", "");
+          button3.style.backgroundColor = "#8ba6c7";
         }
         if (unmineablePlanets.includes(el.biome)) {
           button2.setAttribute("disabled", "");
+          button2.style.backgroundColor = "#8ba6c7";
         }
       }
       function preunselectPlanet(ev) {
@@ -507,4 +509,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.152--->
+<!--Version 0.153--->
