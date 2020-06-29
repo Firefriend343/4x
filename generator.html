@@ -39,11 +39,11 @@
       .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
       .name span { font-size:140%; }
+      .sprite { grid-area:sprite; }
       .type { grid-area:type; text-align:center }
-      .type span { font-size:140%; }
+      .type span { font-size:120%; }
       .output { grid-area:output; text-align:center; }
       .output span { font-size:90%; }
-      .sprite { grid-area:sprite; }
       .cost { grid-area: cost; text-align:center; }
       .cost span { font-size:90%; }
       .size { grid-area:size; text-align:center }
@@ -158,9 +158,9 @@
      <div class="info-box" id="info-box" onclick="hide(this)">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
+      <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
       <div class="cell output"><span class="output" id="surveyOutput"> 2 Authority </span></div>
-      <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
       <div class="cell size"><p id="surveySize"> [Size] </p></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
