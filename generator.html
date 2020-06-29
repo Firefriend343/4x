@@ -25,6 +25,7 @@
         grid-template-areas:
           "top   top   top"
           "name  name  sprite"
+          "type  type  blank"
           "cost  size  habit"
           "desc  desc  desc"
           "pop   pop   pop"
@@ -38,6 +39,9 @@
       .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
       .name span { font-size:140%; }
+      .type { grid-area:type; text-align:center }
+      .type span { font-size:140%; }
+      .blank { grid-area:blank; display:none; }
       .sprite { grid-area:sprite; }
       .cost { grid-area: cost; text-align:center; }
       .cost span { font-size:90%; }
@@ -153,6 +157,8 @@
      <div class="info-box" id="info-box" onclick="hide(this)">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
+      <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
+      <div class="cell blank">
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
       <div class="cell size"><p id="surveySize"> [Size] </p></div>
@@ -186,45 +192,45 @@
       var lastSelectedPlanet = null;
       var planetElList = $$('#system1 .planet');
       var surveyDictionary = {
-          desert: { surveyName: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10", surveySize:"TBD",
-                   surveyHabit: "TBD", surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
-                 surveyPop:0 }, 
-          savanna: { surveyName: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                    surveyHabit: "TBD", surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
+          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10",
+                   surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
+                   surveyPop:0 }, 
+          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10",
+                    surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
+                    surveyPop:0 },
+          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", 
+                   surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
+                   surveyPop:0 },
+          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", 
+                   surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
+                   surveyPop:0 },
+          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10",
+                        surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
+                        surveyPop:0 },
+          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10",
+                  surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
+                  surveyPop:0 },
+          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", 
+                  surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
+                  surveyPop:0 },
+          mineral1: { surveyType: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6",
+                     surveyDesc: "This planet is hot and grim, but relatively rich in minerals.",
+                     surveyPop:0 },
+          mineral2: { surveyType: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6",
+                     surveyDesc: "There are no hills nor valleys on this planet, only massive lava-filled crevices.",
+                     surveyPop:0 },
+          mineral3: { surveyType: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6",
+                     surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals.",
+                     surveyPop:0 },
+          barren: { surveyType: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
+                   surveyDesc: "Scanning the planet shows nothing of importance, as it lacks decently sized deposits of resources.",
+                   surveyPop:0 },
+          junk: { surveyType: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A",
+                 surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins.",
                  surveyPop:0 },
-          arctic: { surveyName: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                   surveyHabit: "TBD", surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
-                 surveyPop:0 },
-          tundra: { surveyName: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                   surveyHabit: "TBD", surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
-                 surveyPop:0 },
-          continental: { surveyName: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                        surveyHabit: "TBD", surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
-                 surveyPop:0 },
-          ocean: { surveyName: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10", surveySize:"TBD", 
-                  surveyHabit: "TBD", surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
-                 surveyPop:0 },
-          relic: { surveyName: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", surveySize:"TBD", 
-                  surveyHabit: "70% Habitable", surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
-                 surveyPop:0 },
-          mineral1: { surveyName: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "This planet is hot and grim, but relatively rich in minerals.",
-                 surveyPop:0 },
-          mineral2: { surveyName: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "There are no hills nor valleys on this planet, only massive lava-filled crevices.",
-                 surveyPop:0 },
-          mineral3: { surveyName: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals.",
-                 surveyPop:0 },
-          barren: { surveyName: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
-                   surveyHabit: "Unhabitable", surveyDesc: "Scanning the planet shows nothing of importance, as it lacks decently sized deposits of resources.",
-                 surveyPop:0 },
-          junk: { surveyName: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins.",
-                 surveyPop:0 },
-          gas: { surveyName: "Gas Giant", surveyImage: "gasplanet1.png", surveyCost: "N/A", surveySize:"TBD", 
-                     surveyHabit: "Unhabitable", surveyDesc: "Small asteriods drift through this gas giant's atmosphere, stuck in an endless orbit.",
-                 surveyPop:0 }
+          gas: { surveyType: "Gas Giant", surveyImage: "gasplanet1.png", surveyCost: "N/A",
+                surveyDesc: "Small asteriods drift through this gas giant's atmosphere, stuck in an endless orbit.",
+                surveyPop:0 }
         }
       
       function $ (id) {
@@ -267,7 +273,8 @@
         infoBox.style.display = "inline-grid";
                 
         var biome = el.biome;
-        $("surveyName").innerText = "John " + surveyDictionary[el.biome].surveyName;
+        $("surveyType").innerText = surveyDictionary[el.biome].surveyType;
+        $("surveyName").innerText = "John";
         $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
         $("surveySize").innerText = el.randomSize;
         $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
@@ -474,4 +481,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.127--->
+<!--Version 0.128--->
