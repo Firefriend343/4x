@@ -156,6 +156,40 @@
       #designationButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #designationButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
+      .preferenceMenu { position:absolute; top:500px; left:20px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
+        grid-template-columns: 70px 150px 70px 150px; grid-auto-rows: auto;
+        grid-template-areas:
+          "preferenceButton1 preferenceCaption1  preferenceButton2 preferenceCaption2"
+          "preferenceButton3 preferenceCaption3  preferenceButton4 preferenceCaption4"
+          "preferenceButton5 preferenceCaption5  preferenceButton6 preferenceCaption6";
+        gap: 1.75px; background: #1d4b96; transition:1.2s;
+      }
+      
+      .preferenceCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .preferenceCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .preferenceCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .preferenceButton1 { grid-area:preferenceButton1; }
+      .preferenceButton2 { grid-area:preferenceButton2; }
+      .preferenceButton3 { grid-area:preferenceButton3; }
+      .preferenceCaption1 { grid-area:preferenceCaption1; }
+      .preferenceCaption2 { grid-area:preferenceCaption2; }
+      .preferenceCaption3 { grid-area:preferenceCaption3; }
+      .preferenceButton4 { grid-area:preferenceButton4; }
+      .preferenceButton5 { grid-area:preferenceButton5; }
+      .preferenceButton6 { grid-area:preferenceButton6; }
+      .preferenceCaption4 { grid-area:preferenceCaption4; }
+      .preferenceCaption5 { grid-area:preferenceCaption5; }
+      .preferenceCaption6 { grid-area:preferenceCaption6; }
+      
+      #preferenceMenu {  }
+      #preferenceButton1 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      #preferenceButton2 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      #preferenceButton3 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      #preferenceButton4 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:35px; height:35px; font-size:80%; }
+      
       
     </style>
     
@@ -231,9 +265,31 @@
       <div class="designationCell designationSupplyIcon"><img id="designationSupplyIcon" src="supplyicon.png"></img></div>
     </div>
     
+    <div class="preferenceMenu" id="preferenceMenu">
+      <div class="preferenceCell preferenceButton1"><img id="preferenceButton1" onclick="preferPlanet(this)" src="desertplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption1"><span id="preferenceCaption1"> Desert Planet Preference </span></div>
+      <div class="preferenceCell preferenceButton2"><img id="preferenceButton2" onclick="preferPlanet(this)" src="savannaplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption2"><span id="preferenceCaption2"> Savanna Planet Preference </span></div>
+      <div class="preferenceCell preferenceButton3"><img id="preferenceButton3" onclick="preferPlanet(this)" src="arcticplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption3"><span id="preferenceCaption3"> Arctic Planet Preference </span></div>
+      <div class="preferenceCell preferenceButton4"><img id="preferenceButton4" onclick="preferPlanet(this)" src="tundraplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption4"><span id="preferenceCaption4"> Tundra Planet Preference </span></div>
+      <div class="preferenceCell preferenceButton5"><img id="preferenceButton5" onclick="preferPlanet(this)" src="continentalplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption5"><span id="preferenceCaption5"> Continental Planet Preference </span></div>
+      <div class="preferenceCell preferenceButton6"><img id="preferenceButton6" onclick="preferPlanet(this)" src="oceanplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean Planet Preference </span></div>
+    </div>
+    
+
     <script>
       //global variables
       var lastSelectedPlanet = null;
+      var preferenceDesert = false;
+      var preferenceSavanna = false;
+      var preferenceArctic = false;
+      var preferenceTundra = false;
+      var preferenceContinental = false;
+      var preferenceOcean = false;
       var planetElList = $$('#system1 .planet');
       var starElList = $$('.star')
       var surveyDictionary = {
@@ -490,6 +546,29 @@
         alert("you've designated this system as a Produce System");
       }
       
+      function preferPlanet(el) {
+        if (el.id == "preferenceButton1") {
+          preferenceDesert = true;
+        }
+        if (el.id == "preferenceButton2") {
+          preferenceSavanna = true;
+        }
+        if (el.id == "preferenceButton3") {
+          preferenceArctic = true;
+        }
+        if (el.id == "preferenceButton4") {
+          preferenceTundra = true;
+        }
+        if (el.id == "preferenceButton5") {
+          preferenceContinental = true;
+        }
+        if (el.id == "preferenceButton6") {
+          preferenceOcean = true;
+        }
+        var menu = document.getElementById("preferenceMenu");
+        menu.parentNode.removeChild(menu);
+      }
+      
       
       //system generation
       
@@ -652,4 +731,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.199--->
+<!--Version 0.200--->
