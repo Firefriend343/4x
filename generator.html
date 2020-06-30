@@ -132,7 +132,7 @@
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
         grid-template-areas:
           "designationCaption  designationCaption  designationCaption"
-          "designationButton1  designationButton1  designatiomMineralIcon"
+          "designationButton1  designationButton1  designationMineralIcon"
           "designationButton2  designationButton2  designationCreditIcon"
           "designationButton3  designationButton3  designationSupplyIcon";
         gap: 1.75px; background: #1d4b96; transition:0.4s;
@@ -382,7 +382,7 @@
           alert ("Unidentified planet")
         }
         $("surveyPop").innerText = el.population || 0;
-        $("suveyPopStatus").innerText = el.populationStatus;
+        $("suveyPopStatus").innerText = el.populationStatus || "";
       }
       function hideSurvey() {
         var el = $("info-box");
@@ -437,30 +437,40 @@
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];        
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (habitablePlanets.includes(el.biome)) {
-          var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
-          HUDMineralNumber.innerText = newMineralNumber;
-          var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
-          HUDCreditNumber.innerText = newCreditNumber;
-          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 20;
-          HUDAuthorityNumber.innerText = newAuthorityNumber;
-          var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
-          HUDSupplyNumber.innerText = newSupplyNumber;
-          var newPopulationNumber = (el.population || 0) + 2;
-          el.population = newPopulationNumber;
-          var newAuthorityNumber = (el.authority || 0) + 2;
-          el.authority = newAuthorityNumber;
-          el.classList.add("colony");
-          var system = $("system1");
-          var colonyMarker = $("passiveColonyMarker");
-          var newTop = el.offsetTop - 10;
-          var newLeft = el.offsetLeft + 55;
-          colonyMarker.style.top = newTop + "px";
-          colonyMarker.style.left = newLeft + "px";
-          var newMarker = colonyMarker.cloneNode(true);
-          newMarker.id = newMarker.id + "-" + el.id;
-          system.appendChild(newMarker);
-          newMarker.style.display = "block";
-          hideSurvey();
+          if (el.population < Number(el.randomSize.split(" ")[1]) * 2) {
+            var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
+            HUDMineralNumber.innerText = newMineralNumber;
+            var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+            HUDCreditNumber.innerText = newCreditNumber;
+            var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 20;
+            HUDAuthorityNumber.innerText = newAuthorityNumber;
+            var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
+            HUDSupplyNumber.innerText = newSupplyNumber;
+            var newPopulationNumber = (el.population || 0) + 2;
+            el.population = newPopulationNumber;
+            var newAuthorityNumber = (el.authority || 0) + 2;
+            el.authority = newAuthorityNumber;
+            el.classList.add("colony");
+            var system = $("system1");
+            var colonyMarker = $("passiveColonyMarker");
+            var newTop = el.offsetTop - 10;
+            var newLeft = el.offsetLeft + 55;
+            colonyMarker.style.top = newTop + "px";
+            colonyMarker.style.left = newLeft + "px";
+            var newMarker = colonyMarker.cloneNode(true);
+            newMarker.id = newMarker.id + "-" + el.id;
+            system.appendChild(newMarker);
+            newMarker.style.display = "block";
+            hideSurvey();
+          }
+          else {
+            if (pEl.populationMax != true) {
+              console.log("population exceeds planet limit");
+              var newPopStatus = " (Max) " + pEl.populationStatus;
+              pEl.populationStatus = newPopStatus;
+              pEl.populationMax = true;
+            }
+          }
         }
         else if (uninhabitablePlanets.includes(el.biome)) {
           alert ("This planet is uninhabitable. You cannot build a colony here");
@@ -621,6 +631,8 @@
           if (pEl.population < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
+            var newAuthorityNumber = (el.authority || 0) + 1;
+            el.authority = newAuthorityNumber;
           }
           else {
             if (pEl.populationMax != true) {
@@ -645,4 +657,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.191--->
+<!--Version 0.193--->
