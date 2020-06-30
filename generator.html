@@ -601,7 +601,33 @@
         for (const pEl of planetElList) {
           var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
           if (basicHabitablePlanets.includes(pEl.biome)) {
-            pEl.randomHabit = Number(Math.floor(Math.random() * 100) + 1) + "% Habitability";
+            if (preferenceDesert == true && pEl.biome == "desert") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            if (preferenceSavanna == true && pEl.biome == "savanna") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            if (preferenceArctic == true && pEl.biome == "arctic") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            if (preferenceTundra == true && pEl.biome == "tundra") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            if (preferenceContinental == true && pEl.biome == "continental") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            if (preferenceOcean == true && pEl.biome == "ocean") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 30) + 21) + "% Habitability";
+            }
           }
           else if (pEl.biome == "relic") {
            pEl.randomHabit = "70% Habitability";
@@ -701,7 +727,13 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
-          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
+          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 || pEl.satisfactoryPlanet == true) {
+            var newPopNumber = pEl.population + 1;
+            pEl.population = newPopNumber;
+            var newAuthorityNumber = (el.authority || 0) + 2;
+            el.authority = newAuthorityNumber;
+          }
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (el.authority || 0) + 1;
@@ -731,4 +763,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.200--->
+<!--Version 0.201--->
