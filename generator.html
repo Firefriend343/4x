@@ -732,7 +732,7 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
-          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) || pEl.satisfactoryPlanet == true) {
+          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 || pEl.satisfactoryPlanet == true) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 2;
@@ -769,4 +769,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.208--->
+<!--Version 0.209--->
