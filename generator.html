@@ -387,14 +387,20 @@
       
       function selectStar(ev) {
         let el = ev.target;
+        lastSelectedStar = el.id;
         el.style.background = "lime";
         el.style.padding = "1.5px";
-        var designationMenu = $("designationMenu");
-        designationMenu.style.display = "inline-grid";
-        var newTop = el.offsetTop - 10;
-        designationMenu.style.top = newTop + "px";
-        var newLeft = el.offsetLeft + 110;
-        designationMenu.style.left = newLeft + "px";
+        if (el.designated == true) {
+          return;
+        }
+        else {
+          var designationMenu = $("designationMenu");
+          designationMenu.style.display = "inline-grid";
+          var newTop = el.offsetTop - 10;
+          designationMenu.style.top = newTop + "px";
+          var newLeft = el.offsetLeft + 110;
+          designationMenu.style.left = newLeft + "px";
+        }
       }
       function preunselectStar(ev) {
         setTimeout(function(){
@@ -403,6 +409,7 @@
       }
       function unselectStar(ev) {
         let el = ev.target;
+        lastSelectedStar = null;
         el.style.background = "white";
         el.style.padding = "0px";
         var designationMenu = $("designationMenu");
@@ -543,12 +550,21 @@
       
       function designateMiningSystem() {
         alert("you've designated this system as a Mining System");
+        var star = $(lastSelectedStar);
+        star.classList.add("miningSystem");
+        star.designated = true;   
       }
       function designateTradeSystem() {
         alert("you've designated this system as a Trade System");
+        var star = $(lastSelectedStar);
+        star.classList.add("tradeSystem");
+        star.designated = true;
       }
       function designateProduceSystem() {
         alert("you've designated this system as a Produce System");
+        var star = $(lastSelectedStar);
+        star.classList.add("produceSystem");
+        star.designated = true;
       }
       
       function preferPlanet(el) {
@@ -715,7 +731,6 @@
       }
       
       function nextTurn() {
-        hideSurvey();
         if (HUDMineralNumber.innerText <= 0) {
          alert("you ran out of Minerals");
         }
@@ -729,10 +744,14 @@
           alert("you ran out of Supplies, your colonies are starving");
         }
         alert("nextTurn initated");
+        
+        ///planets
         var allColonies = $$('#system1 .planet.colony');
         var allMiningPlanets = $$('#system1 .planet.miningStation');
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
+        var newCreditNumber2 = Number(HUDCreditNumber.innerText) - allMiningPlanets.length * 6;
+        HUDCreditNumber.innerText = newCreditNumber2;
         for (const pEl of allColonies) {
           if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 && pEl.satisfactoryPlanet == true) {
             var newPopNumber = pEl.population + 1;
@@ -765,6 +784,25 @@
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
           HUDMineralNumber.innerText = newMineralNumber;
         }
+        
+        ///stars
+        var allMiningSystems = $$('.star.miningSystem');
+        var allTradeSystems = $$('.star.tradeSystem');
+        var allProduceSystems = $$('.star.produceSystem');
+        for (const sEl of allMiningSystems) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
+          HUDMineralNumber.innerText = newMineralNumber;
+        }
+        for (const sEl of allTradeSystems) {
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 10;
+          HUDCreditNumber.innerText = newCreditNumber;
+        }
+        for (const sEl of allProduceSystems) {
+          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 10;
+          HUDSupplyNumber.innerText = newSupplyNumber;
+        }
+        
+        
         hideSurvey();
       }
       //Instant Functions
@@ -774,4 +812,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.216--->
+<!--Version 0.218--->
