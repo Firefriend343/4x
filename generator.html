@@ -127,7 +127,7 @@
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:absolute; display:fixed; top:750px; left:1100px; }
       
-      .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 140px; font-family: 'MedievalSharp', cursive; 
+      .designationMenu { position:absolute; top:20px; left:20px; width: 150px; height: 240px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
         grid-template-areas:
@@ -141,7 +141,7 @@
       .designationCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .designationCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .designationCaption { grid-area:designationCaption; }
-      .designationCaption span { font-size:140%; text-align:center; }
+      .designationCaption span { font-size:130%; text-align:center; }
       .designationButton1 { grid-area:designationButton1; }
       .designationButton2 { grid-area:designationButton2; }
       .designationButton3 { grid-area:designationButton3; }
@@ -333,7 +333,7 @@
         designationMenu.style.display = "inline-grid";
         var newTop = el.offsetTop - 10;
         designationMenu.style.top = newTop + "px";
-        var newLeft = el.offsetLeft + 70;
+        var newLeft = el.offsetLeft + el.style.width + 10;
         designationMenu.style.left = newLeft + "px";
       }
       function preunselectStar(ev) {
@@ -630,4 +630,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.178--->
+<!--Version 0.180--->
