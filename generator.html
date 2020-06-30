@@ -127,7 +127,7 @@
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:absolute; display:fixed; top:750px; left:1100px; }
       
-      .designationMenu { position:absolute; top:20px; left:20px; width: 150px; height: 240px; font-family: 'MedievalSharp', cursive; 
+      .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 240px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
         grid-template-areas:
@@ -333,7 +333,7 @@
         designationMenu.style.display = "inline-grid";
         var newTop = el.offsetTop - 10;
         designationMenu.style.top = newTop + "px";
-        var newLeft = el.offsetLeft + el.style.width + 10;
+        var newLeft = el.offsetLeft + 110;
         designationMenu.style.left = newLeft + "px";
       }
       function preunselectStar(ev) {
@@ -343,7 +343,7 @@
       }
       function unselectStar(ev) {
         let el = ev.target;
-        el.style.background = "gray";
+        el.style.background = "white";
         el.style.padding = "0px";
         var designationMenu = $("designationMenu");
         designationMenu.style.display = "none";
@@ -573,8 +573,8 @@
         }
         for (const sEl of starElList) {
           var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
-          sEl.style.height = sizeNumber * 4 + 70 + "px";
-          sEl.style.width = sizeNumber * 4 + 70 + "px";
+          sEl.style.height = sizeNumber * 3 + 70 + "px";
+          sEl.style.width = sizeNumber * 3 + 70 + "px";
           sEl.addEventListener("mouseenter", selectStar);
           sEl.addEventListener("mouseout", preunselectStar);
         }
@@ -630,4 +630,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.180--->
+<!--Version 0.181--->
