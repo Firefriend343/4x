@@ -436,7 +436,7 @@
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];        
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (habitablePlanets.includes(el.biome)) {
-          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
+          if ((el.population || 0) < Number(el.randomSize.split(" ")[1]) * 2) {
             var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
             HUDMineralNumber.innerText = newMineralNumber;
             var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
@@ -646,4 +646,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.196--->
+<!--Version 0.197--->
