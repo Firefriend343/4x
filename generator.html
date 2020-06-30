@@ -103,8 +103,6 @@
       
       .menuCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .menuCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
-      .menuTop { grid-area:menuTop; display:none; }
-      .menuBottom { grid-area:menuBottom; display:none; }
       .menuButton1 { grid-area:menuButton1; }
       .menuButton2 { grid-area:menuButton2; }
       .menuButton3 { grid-area:menuButton3; }
@@ -128,6 +126,35 @@
       
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:absolute; display:fixed; top:750px; left:1100px; }
+      
+      .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 140px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "designationCaption  designationCaption  designationCaption"
+          "designationButton1  designationButton1  designationCreditIcon"
+          "designationButton2  designationButton2  designationMineralIcon"
+          "designationButton3  designationButton3  designationSupplyIcon";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+      .designationCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .designationCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .designationCaption { grid-area:designationCaption; }
+      .designationCaption span { font-size:140%; text-align:center; }
+      .designationButton1 { grid-area:designationButton1; }
+      .designationButton2 { grid-area:designationButton2; }
+      .designationButton3 { grid-area:designationButton3; }
+      .designationCreditIcon { grid-area:designationCreditIcon; }
+      .designationMineralIcon { grid-area:designationMineralIcon; }
+      .designationSupplyIcon { grid-area:designationSupplyIcon; }
+      #designationMenu {  }
+      #designationMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #designationCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #designationSupplyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #designationButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #designationButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #designationButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       
     </style>
@@ -186,12 +213,22 @@
     </div>
 
     <div class="planetMenu" id="planetMenu">
-      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey System </button></div>
+      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey Planet </button></div>
       <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
       <div class="menuCell menuButton2"><button id="menuButton2" onclick="buildMiningStation()"> Build Mining Station </button></div>
       <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
       <div class="menuCell menuButton3"><button id="menuButton3" onclick="buildColony()"> Build Colony </button></div>
       <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
+    </div>
+    
+    <div class="designationMenu" id="designationMenu">
+      <div class="designationCell designationCaption"><span id="designationCaption"> Designation Choices </span></div>
+      <div class="designationCell designationButton1"><button id="designationButton1" onclick="designateMiningSystem()"> Designate Mining System </button></div>
+      <div class="designationCell designationMineralIcon"><img id="designationSurveyIcon" src="surveyicon.png"></img></div>
+      <div class="designationCell designationButton2"><button id="designationButton2" onclick="designateTradeSystem()"> Designate Trade System </button></div>
+      <div class="designationCell designationCreditIcon"><img id="designationMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="designationCell designationButton3"><button id="designationButton3" onclick="designateProduceSystem()"> Designate Produce System </button></div>
+      <div class="designationCell designationSupplyIcon"><img id="designationCreditIcon" src="crediticon.png"></img></div>
     </div>
     
     <script>
@@ -288,6 +325,30 @@
         button3.style.backgroundColor = "#9f97d1";
       }
       
+      function selectStar(ev) {
+        let el = ev.target;
+        el.style.background = "lime";
+        el.style.padding = "1.5px";
+        var designationMenu = $("designationMenu");
+        designationMenu.style.display = "inline-grid";
+        var newTop = el.offsetTop - 10;
+        designationMenu.style.top = newTop + "px";
+        var newLeft = el.offsetLeft + 70;
+        designationMenu.style.left = newLeft + "px";
+      }
+      function preunselectStar(ev) {
+        setTimeout(function(){
+          unselectStar(ev);
+        },2200);
+      }
+      function unselectStar(ev) {
+        let el = ev.target;
+        el.style.background = "gray";
+        el.style.padding = "0px";
+        var designationMenu = $("designationMenu");
+        designationMenu.style.display = "none";
+      }
+      
       function survey() {
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
@@ -323,6 +384,10 @@
         el.style.display = "none";
         console.log("survey hidden");
       }
+      
+      
+      ///building or designating things
+      
       
       function buildMiningStation() {
         var el = $(lastSelectedPlanet);
@@ -405,6 +470,17 @@
         console.log("surveyColony executed " + planet);
         survey();
       }
+      
+      function designateMiningSystem {
+        alert("you've designated this system as a Mining System");
+      }
+      function designateTradeSystem {
+        alert("you've designated this system as a Trade System");
+      }
+      function designateProduceSystem {
+        alert("you've designated this system as a Produce System");
+      }
+      
       
       //system generation
       
@@ -499,6 +575,8 @@
           var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
           sEl.style.height = sizeNumber * 4 + 70 + "px";
           sEl.style.width = sizeNumber * 4 + 70 + "px";
+          sEl.addEventListener("onmouseenter", selectStar);
+          sEl.addEventListener("onmouseenter", preunselectStar);
         }
       }
       
@@ -552,4 +630,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.172--->
+<!--Version 0.174--->
