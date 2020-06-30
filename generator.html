@@ -623,9 +623,12 @@
             pEl.population = newPopNumber;
           }
           else {
-            console.log("population exceeds planet limit");
-            var newPopStatus = " (Max) " + pEl.populationStatus;
-            pEl.populationStatus = newPopStatus;
+            if (pEl.populationMax != true) {
+              console.log("population exceeds planet limit");
+              var newPopStatus = " (Max) " + pEl.populationStatus;
+              pEl.populationStatus = newPopStatus;
+              pEl.populationMax = true;
+            }
           }
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
           HUDAuthorityNumber.innerText = newAuthorityNumber;
@@ -642,4 +645,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.190--->
+<!--Version 0.191--->
