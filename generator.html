@@ -579,23 +579,23 @@
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
-            if (preferenceSavanna == true && pEl.biome == "savanna") {
+            else if (preferenceSavanna == true && pEl.biome == "savanna") {
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
-            if (preferenceArctic == true && pEl.biome == "arctic") {
+            else if (preferenceArctic == true && pEl.biome == "arctic") {
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
-            if (preferenceTundra == true && pEl.biome == "tundra") {
+            else if (preferenceTundra == true && pEl.biome == "tundra") {
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
-            if (preferenceContinental == true && pEl.biome == "continental") {
+            else if (preferenceContinental == true && pEl.biome == "continental") {
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
-            if (preferenceOcean == true && pEl.biome == "ocean") {
+            else if (preferenceOcean == true && pEl.biome == "ocean") {
               pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
               pEl.satisfactoryPlanet = true;
             }
@@ -604,10 +604,10 @@
             }
           }
           else if (pEl.biome == "relic") {
-           pEl.randomHabit = "70% Habitability";
+            pEl.randomHabit = "70% Habitability";
           }
           else {
-           pEl.randomHabit = "Uninhabitable";
+            pEl.randomHabit = "Uninhabitable";
           }
         }
       }
@@ -768,4 +768,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.204--->
+<!--Version 0.205--->
