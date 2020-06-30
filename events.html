@@ -207,7 +207,9 @@
         }
         if (el.id == "preferenceButton6") {
           preferenceOcean = true;
-        } 
+        }
+        var menu = document.getElementById("preferenceMenu");
+        menu.parentNode.removeChild(menu);
       }
       
       function closeEvent1() {
@@ -221,4 +223,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.35--->
+<!--Version 0.36--->
