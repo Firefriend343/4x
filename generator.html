@@ -617,8 +617,13 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
-          var newPopNumber = pEl.population + 1;
-          pEl.population = newPopNumber;
+          if (pEl.population < pEl.randomSize * 2) {
+            var newPopNumber = pEl.population + 1;
+            pEl.population = newPopNumber;
+          }
+          else {
+            console.log("population exceeds planet limit");
+          }
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
           HUDAuthorityNumber.innerText = newAuthorityNumber;
         }
@@ -634,4 +639,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.183--->
+<!--Version 0.184--->
