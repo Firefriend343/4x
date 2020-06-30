@@ -601,6 +601,7 @@
             }
             else {
               pEl.randomHabit = Number(Math.floor(Math.random() * 30) + 21) + "% Habitability";
+              pEl.satisfactoryPlanet = false;
             }
           }
           else if (pEl.biome == "relic") {
@@ -737,14 +738,14 @@
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 2;
             pEl.authority = newAuthorityNumber;
-            console.log(pEl.id + " is Satisfactory and has grown by 1 Unit")
+            console.log("The " + pEl.biome + " World is Satisfactory and has grown by 1 Unit")
           }
-          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) || pEl.satisfactoryPlane === undefined) {
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) || pEl.satisfactoryPlanet == false) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 1;
             pEl.authority = newAuthorityNumber;
-            console.log(pEl.id + " is not Satisfactory but has grown by 1 Unit")
+            console.log("The " + pEl.biome + " World is not Satisfactory but has grown by 1 Unit")
           }
           else if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
             console.log("population is over planet limit");
@@ -772,4 +773,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.212--->
+<!--Version 0.214--->
