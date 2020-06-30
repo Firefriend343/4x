@@ -730,20 +730,20 @@
           if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 || pEl.satisfactoryPlanet == true) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
-            var newAuthorityNumber = (el.authority || 0) + 2;
-            el.authority = newAuthorityNumber;
+            var newAuthorityNumber = (pEl.authority || 0) + 2;
+            pEl.authority = newAuthorityNumber;
           }
           else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
-            var newAuthorityNumber = (el.authority || 0) + 1;
-            el.authority = newAuthorityNumber;
+            var newAuthorityNumber = (pEl.authority || 0) + 1;
+            pEl.authority = newAuthorityNumber;
           }
           if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population - 1;
             pEl.population = newPopNumber;
-            var newAuthorityNumber = (el.authority || 0) - 1;
-            el.authority = newAuthorityNumber;
+            var newAuthorityNumber = (pEl.authority || 0) - 1;
+            pEl.authority = newAuthorityNumber;
           }
           else {
             console.log("population exceeds planet limit");
@@ -763,4 +763,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.201--->
+<!--Version 0.202--->
