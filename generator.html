@@ -790,15 +790,15 @@
         var allTradeSystems = $$('.star.tradeSystem');
         var allProduceSystems = $$('.star.produceSystem');
         for (const sEl of allMiningSystems) {
-          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
           HUDMineralNumber.innerText = newMineralNumber;
         }
         for (const sEl of allTradeSystems) {
-          var newCreditNumber = Number(HUDCreditNumber.innerText) + 10;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
           HUDCreditNumber.innerText = newCreditNumber;
         }
         for (const sEl of allProduceSystems) {
-          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 10;
+          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
           HUDSupplyNumber.innerText = newSupplyNumber;
         }
         
@@ -812,4 +812,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.218--->
+<!--Version 0.220--->
