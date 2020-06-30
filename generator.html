@@ -738,13 +738,14 @@
             var newAuthorityNumber = (pEl.authority || 0) + 2;
             pEl.authority = newAuthorityNumber;
           }
-          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 || pEl.satisfactoryPlane != true) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 1;
             pEl.authority = newAuthorityNumber;
           }
           if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
+            console.log("population is over planet limit");
             var newPopNumber = pEl.population - 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) - 1;
@@ -768,4 +769,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.205--->
+<!--Version 0.207--->
