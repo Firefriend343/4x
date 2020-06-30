@@ -210,14 +210,6 @@
           preferenceOcean = true;
         }
         var menu = document.getElementById("preferenceMenu");
-        menu.style.height = "0px";
-        menu.style.width = "0px";
-        setTimeout(function(){
-          deletePreferenceMenu();
-        },1100);
-      }
-      function deletePreferenceMenu() {
-        var menu = document.getElementById("preferenceMenu");
         menu.parentNode.removeChild(menu);
       }
       
@@ -232,4 +224,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.48--->
+<!--Version 0.50--->
