@@ -731,18 +731,6 @@
       }
       
       function nextTurn() {
-        if (HUDMineralNumber.innerText <= 0) {
-         alert("you ran out of Minerals");
-        }
-        if (HUDCreditNumber.innerText <= 0) {
-          alert("you ran out of Credits");
-        }
-        if (HUDAuthorityNumber.innerText <= 0) {
-          alert("you ran out of Authority, you can no longer control your government");
-        }
-        if (HUDSupplyNumber.innerText <= 0) {
-          alert("you ran out of Supplies, your colonies are starving");
-        }
         alert("nextTurn initated");
         
         ///planets
@@ -802,7 +790,19 @@
           HUDSupplyNumber.innerText = newSupplyNumber;
         }
         
-        
+        ///other
+        if (HUDMineralNumber.innerText <= 0) {
+         alert("you ran out of Minerals");
+        }
+        if (HUDCreditNumber.innerText <= 0) {
+          alert("you ran out of Credits");
+        }
+        if (HUDAuthorityNumber.innerText <= 0) {
+          alert("you ran out of Authority, you can no longer control your government");
+        }
+        if (HUDSupplyNumber.innerText <= 0) {
+          alert("you ran out of Supplies, your colonies are starving");
+        }
         hideSurvey();
       }
       //Instant Functions
