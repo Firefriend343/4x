@@ -540,7 +540,7 @@
         for (const pEl of planetElList) {
           var nameList = ["Riak", "Quevec", "Tolorae", "Cassentor Alpha", "Cassentor Beta", "Cassentor Gamma", "Vlaron", "Tholia Prime", "Karsaec", "Sacradia",
                           "Eclysia Alpha", "Eclysia Prime", "Trilliad", "Celium", "Piaryus", "Mazirus", "Kwevec", "D'Arthen", "Epsilon Ras", "Sherocira",
-                          "Mardilon", "Tofarian Prime", "Scieor", "Dessanu", "Zaydran", "Irsa", "Rihlac", "Saer'esr"];
+                          "Mardilon", "Tofarian Prime", "Scieor", "Dessanu", "Zaydran", "Irsa", "Rihlac", "Saer'esr", "Vartirc", "New Beyius", "Antares"];
           var randomIndex = Math.floor(Math.random() * nameList.length);
           var planetName = nameList[randomIndex];
           pEl.randomName = planetName;
@@ -628,6 +628,12 @@
             var newAuthorityNumber = (el.authority || 0) + 1;
             el.authority = newAuthorityNumber;
           }
+          if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
+            var newPopNumber = pEl.population - 1;
+            pEl.population = newPopNumber;
+            var newAuthorityNumber = (el.authority || 0) - 1;
+            el.authority = newAuthorityNumber;
+          }
           else {
             console.log("population exceeds planet limit");
           }
@@ -646,4 +652,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.197--->
+<!--Version 0.199--->
