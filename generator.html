@@ -195,7 +195,7 @@
       <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
       <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority per Turn </span></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
-      <div class="cell size"><span> Size </span><span id="surveySize"> # </span></div>
+      <div class="cell size"><span id="surveySize"> [Size] </span></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
       <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span> Population Units. </span></div>
@@ -528,7 +528,7 @@
         }
         for (const pEl of planetElList) {
           var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
-          pEl.randomSize = sizeNumber;
+          pEl.randomSize = "Size" + sizeNumber;
           pEl.style.height = sizeNumber * 2 + 40 + "px";
           pEl.style.width = sizeNumber * 2 + 40 + "px";
         }
@@ -617,7 +617,7 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
-          if (pEl.population < Number(pEl.randomSize) * 2) {
+          if (pEl.population < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
           }
@@ -639,4 +639,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.185--->
+<!--Version 0.186--->
