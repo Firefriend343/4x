@@ -464,11 +464,11 @@
             hideSurvey();
           }
           else {
-            if (pEl.populationMax != true) {
+            if (el.populationMax != true) {
               console.log("population exceeds planet limit");
-              var newPopStatus = " (Max) " + pEl.populationStatus;
-              pEl.populationStatus = newPopStatus;
-              pEl.populationMax = true;
+              var newPopStatus = " (Max) " + el.populationStatus;
+              el.populationStatus = newPopStatus;
+              el.populationMax = true;
             }
           }
         }
@@ -657,4 +657,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.193--->
+<!--Version 0.194--->
