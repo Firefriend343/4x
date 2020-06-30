@@ -737,12 +737,14 @@
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 2;
             pEl.authority = newAuthorityNumber;
+            console.log(pEl.id + " is Satisfactory and has grown by 1 Unit")
           }
-          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) || pEl.satisfactoryPlane != true) {
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) || pEl.satisfactoryPlane === undefined) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 1;
             pEl.authority = newAuthorityNumber;
+            console.log(pEl.id + " is not Satisfactory but has grown by 1 Unit")
           }
           else if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
             console.log("population is over planet limit");
@@ -761,6 +763,7 @@
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
           HUDMineralNumber.innerText = newMineralNumber;
         }
+        hideSurvey();
       }
       //Instant Functions
       generateStats();
@@ -769,4 +772,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.210--->
+<!--Version 0.212--->
