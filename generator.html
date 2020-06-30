@@ -436,7 +436,7 @@
         const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];        
         const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (habitablePlanets.includes(el.biome)) {
-          if (el.population < Number(el.randomSize.split(" ")[1]) * 2) {
+          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
             HUDMineralNumber.innerText = newMineralNumber;
             var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
@@ -622,7 +622,7 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
         HUDCreditNumber.innerText = newCreditNumber;
         for (const pEl of allColonies) {
-          if (pEl.population < Number(pEl.randomSize.split(" ")[1]) * 2) {
+          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (el.authority || 0) + 1;
@@ -646,4 +646,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.195--->
+<!--Version 0.196--->
