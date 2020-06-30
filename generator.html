@@ -198,7 +198,7 @@
       <div class="cell size"><span id="surveySize"> [Size] </span></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
-      <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span id="surveyPopStatus"> Population Units. </span></div>
+      <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span> Population Units. </span></div>
       <div class="cell bottom"></div>
     </div>
     
@@ -382,7 +382,6 @@
           alert ("Unidentified planet")
         }
         $("surveyPop").innerText = el.population || 0;
-        $("suveyPopStatus").innerText = el.populationStatus || "";
       }
       function hideSurvey() {
         var el = $("info-box");
@@ -464,12 +463,7 @@
             hideSurvey();
           }
           else {
-            if (el.populationMax != true) {
-              console.log("population exceeds planet limit");
-              var newPopStatus = " (Max) " + el.populationStatus;
-              el.populationStatus = newPopStatus;
-              el.populationMax = true;
-            }
+            console.log("population exceeds planet limit");           
           }
         }
         else if (uninhabitablePlanets.includes(el.biome)) {
@@ -635,12 +629,7 @@
             el.authority = newAuthorityNumber;
           }
           else {
-            if (pEl.populationMax != true) {
-              console.log("population exceeds planet limit");
-              var newPopStatus = " (Max) " + pEl.populationStatus;
-              pEl.populationStatus = newPopStatus;
-              pEl.populationMax = true;
-            }
+            console.log("population exceeds planet limit");
           }
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
           HUDAuthorityNumber.innerText = newAuthorityNumber;
@@ -657,4 +646,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.194--->
+<!--Version 0.195--->
