@@ -594,6 +594,25 @@
         star.designated = true;
       }
       
+      function salvageJunkPlanet(ev) {
+        let el = ev.target;
+        alert ("you've salvaged some parts from this Junk Planet. (+60 Minerals, +20 Credits)")
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;          
+        el.classList.add("salvagedJunk");
+        el.removeEventListener("click", salvageJunkPlanet, true);
+      }
+      function salvageGasPlanet(ev) {
+        let el = ev.target;
+        alert ("you've salvaged some parts from this Gas Planet. (+70 Supplies)")
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 60;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        el.classList.add("salvagedGas");
+        el.removeEventListener("click", salvageGasPlanet, true);
+      }
+      
       function preferPlanet(el) {
         if (el.id == "preferenceButton1") {
           preferenceDesert = true;
@@ -699,6 +718,14 @@
           var randomIndex = Math.floor(Math.random() * nameList.length);
           var planetName = nameList[randomIndex];
           pEl.randomName = planetName;
+        }
+        for (const pEl of planetElList) {
+          if (pEl.biome == "junk") {
+            pEl.addEventListener("click", salvageJunkPlanet, true);
+          }
+          else if (pEl.biome == "gas") {
+            pEl.addEventListener("click", salvageGasPlanet, true)
+          }
         }
       }
       function generatePosition() {
@@ -810,6 +837,17 @@
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
           HUDMineralNumber.innerText = newMineralNumber;
         }
+        var allJunkPlanets = $$('#system1 .planet.salvagedJunk');
+        var allGasPlanets = $$('#system1 .planet.salvagedGas');
+        for (const pEl of allJunkPlanets) {
+          pEl.classList.remove("salvagedJunk");
+          pEl.addEventListener("click", salvageJunkPlanet, true);
+        }
+        for (const pEl of allGasPlanets) {
+          pEl.classList.remove("salvagedGas");
+          pEl.addEventListener("click", salvageGasPlanet, true);
+        }
+        
         
         ///stars
         var allMiningSystems = $$('.star.miningSystem');
@@ -858,4 +896,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.230--->
+<!--Version 0.231--->
