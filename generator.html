@@ -210,7 +210,7 @@
       
       #event1 { top:200px; left:450px; }
       #event2 { top:200px; left:450px; }
-      #event2 .EAdesc { font-size:70%; }
+      #event2 .EAdesc { font-size:80%; }
       
     </style>
     
@@ -309,11 +309,12 @@
     </div>
     <div class="eventA" id="event2">
       <div class="Eacell EAname"><span> Nanite Swarm </span></div>
-      <div class="Eacell EAdesc"><span> Civilian ships in </span><span id="e2PlanetName"> [planetName] </span><span>'s system reported unusal findings.</span>
-                                 <span> Upon further inspection, it appared that a stream of nanites had been stuck in orbit for a long time. </span>
-                                 <span> When they were discovered, they immediately descended deeper into the atmosphere. </span>
-                                 <span> The pursuing ships watched them flock together and transform into the buildings essential for a colony. </span>
-                                 <span> An almost instant push for migration to the new planet was satisfied, and we now own a colony there. </span></div>
+      <div class="Eacell EAdesc">
+        <span> Civilian ships in </span><span id="e2PlanetName"> [planetName] </span><span>'s system reported unusal findings.</span>
+        <span> Upon further inspection, it appared that a stream of nanites had been stuck in orbit for a long time. </span>
+        <span> When they were discovered, they immediately descended deeper into the atmosphere. The civilian ships followed them to the surface. </span>
+        <span> An abandoned colony on the surface was discovered, and quickly utilized. We now own a fully functional colony on </span>
+        <span id="e2PlanetName2"> [planetName] </span><span>.</span></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent2()"> Fascinating. </button></div>
     </div>
 
@@ -899,11 +900,13 @@
         }
         var event2 = $("event2");
         var e2PlanetName = $("e2PlanetName");
+        var e2PlanetName2 = $("e2PlanetName2");
         var event2Target = planetElList[2];
         var event2Randomizer = Number(Math.floor(Math.random() * 35) + 1);
         if (event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
           event2.style.display = "inline-grid";
           e2PlanetName.innerText = event2Target.randomName;
+          e2PlanetName2.innerText = event2Target.randomName;
         }
         
         ///other
@@ -928,4 +931,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.240--->
+<!--Version 0.241--->
