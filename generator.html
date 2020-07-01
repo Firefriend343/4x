@@ -309,13 +309,13 @@
       <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean World Preference </span></div>
     </div>
     
-    <div class="eventA" id="event1">
+    <div class="eventA" id="event1" onclick="moveEvent(this)">
       <div class="Eacell EAname"><span> Mineral Theft </span></div>
       <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
                                  <span> They have stolen a large amount of raw minerals recently mined from the planet. </span></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
     </div>
-    <div class="eventA" id="event2">
+    <div class="eventA" id="event2" onclick="moveEvent(this)">
       <div class="Eacell EAname"><span> Nanite Swarm </span></div>
       <div class="Eacell EAdesc">
         <span> Civilian ships in </span><span id="e2PlanetName"> [planetName] </span><span>'s system reported unusal findings.</span>
@@ -823,6 +823,10 @@
         hideSurvey();
       }
       
+      function moveEvent(el) {
+        el.style.top = "170px";
+        el.style.left = "1000px"
+      }
       
       ///misc. and nextTurn
       function hide(el) {
@@ -953,4 +957,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.252--->
+<!--Version 0.253--->
