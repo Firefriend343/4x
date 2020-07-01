@@ -246,7 +246,7 @@
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
-      <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority per Turn </span></div>
+      <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority and Credits per Turn </span></div>
       <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
       <div class="cell size"><span id="surveySize"> [Size] </span></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
@@ -820,6 +820,8 @@
           }
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
           HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + Number(pEl.population);
+          HUDCreditNumber.innerText = newCreditNumber;
         }
         for (const pEl of allMiningPlanets) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
@@ -884,4 +886,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.232--->
+<!--Version 0.233--->
