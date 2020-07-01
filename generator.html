@@ -195,12 +195,10 @@
         border-radius: 5px; display: none; margin: 15px; gap: 1.75px; background: #1d4b96; transition:0.4s;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: 10px 70px 160px 50px 10px;
         grid-template-areas:
-          "EAtop    EAtop    EAtop"
           "EAname   EAname   EAname"
           "EAdesc   EAdesc   EAdesc"
-          "EAbutton EAbutton EAbutton"
-          "EAbottom EAbottom EAbottom";
-      }
+          "EAbutton EAbutton EAbutton";
+        }
       
       .EAcell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .EAcell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
@@ -210,6 +208,8 @@
       .EAbutton { grid-area:EAbutton; }
       .EAtop { grid-area:top; display:none; }
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      
+      #event1 { top:400px; left:450px; }
       
     </style>
     
@@ -303,7 +303,7 @@
     <div class="eventA" id="event1">
       <div class="EAcell EAtop"></div>
       <div class="Eacell EAname"><p> Mineral Theft </p></div>
-      <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1planetName"> [planetName] </span><span>.</span>
+      <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
                                  <span> They have stolen a large amount of raw minerals recently mined from the planet. </p></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
       <div class="EAcell EAbottom"></div>
@@ -750,7 +750,7 @@
       ///events
       function executeEvent1() {
         var event1 = $("event1");
-        event1.style.display = none;
+        event1.style.display = "none";
         event1.parentNode.removeChild(event1);
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
@@ -831,10 +831,12 @@
           HUDSupplyNumber.innerText = newSupplyNumber;
         }
         var event1 = $("event1");
+        var e1PlanetName = $("e1PlanetName");
         var event1Target = allMiningPlanets[1];
         var event1Randomizer = Number(Math.floor(Math.random() * 2) + 1);
         if (event1Target !== undefined && event1Randomizer == "1") {
           event1.style.display = "inline-grid";
+          e1PlanetName.innerText = event1Target.randomName;
         }
         
         ///other
@@ -859,4 +861,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.225--->
+<!--Version 0.226--->
