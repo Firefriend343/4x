@@ -201,9 +201,9 @@
         }
       
       .EAcell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
-      .EAcell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .EAcell span { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .EAname { grid-area:EAname; text-align:center; margin-top:10px; }
-      .EAname p { white-space:nowrap; font-size:200%; }
+      .EAname span { white-space:nowrap; font-size:200%; }
       .EAdesc { grid-area:EAdesc; text-align:center; padding:20px; }
       .EAbutton { grid-area:EAbutton; }
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
@@ -300,7 +300,7 @@
     </div>
     
     <div class="eventA" id="event1">
-      <div class="Eacell EAname"><p> Mineral Theft </p></div>
+      <div class="Eacell EAname"><span> Mineral Theft </span></div>
       <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
                                  <span> They have stolen a large amount of raw minerals recently mined from the planet. </p></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
@@ -886,4 +886,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.233--->
+<!--Version 0.234--->
