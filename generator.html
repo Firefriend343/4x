@@ -821,6 +821,7 @@
         alert("nextTurn initated");
         
         ///planets
+        var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         var allColonies = $$('#system1 .planet.colony');
         var allMiningPlanets = $$('#system1 .planet.miningStation');
         var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
@@ -899,9 +900,9 @@
         }
         var event2 = $("event2");
         var e2PlanetName = $("e2PlanetName");
-        var event2Target = allColonies[2];
+        var event2Target = planetElList[2];
         var event2Randomizer = Number(Math.floor(Math.random() * 2) + 1);
-        if (event2Target !== undefined && event2Randomizer == "1") {
+        if (event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
           event2.style.display = "inline-grid";
           e2PlanetName.innerText = event2Target.randomName;
         }
@@ -928,4 +929,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.236--->
+<!--Version 0.237--->
