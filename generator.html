@@ -510,18 +510,6 @@
           system.appendChild(newMarker);
           newMarker.style.display = "block";
         }
-        else if (el.biome == "junk") {
-          var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
-          HUDMineralNumber.innerText = newMineralNumber;
-          var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
-          HUDCreditNumber.innerText = newCreditNumber;
-          alert("This system is not suitable for mining. However, it is rich in materials, and instead you can salvage them (+60 Minerals, +20 Credits).");
-        }
-        else if (el.biome == "gas") {
-          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
-          HUDSupplyNumber.innerText = newSupplyNumber;
-          alert("This system is not suitable for mining. However, it is rich in supplies, and you can salvage them (+70 Supplies).");
-        }
         else {
           alert("You can't build a Mining Station here. This planet is not suitable for mining.")
         }
@@ -607,7 +595,7 @@
       function salvageGasPlanet(ev) {
         let el = ev.target;
         alert ("you've salvaged some parts from this Gas Planet. (+70 Supplies)")
-        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 60;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
         HUDSupplyNumber.innerText = newSupplyNumber;
         el.classList.add("salvagedGas");
         el.removeEventListener("click", salvageGasPlanet, true);
@@ -896,4 +884,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.231--->
+<!--Version 0.232--->
