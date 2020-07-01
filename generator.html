@@ -190,6 +190,26 @@
       #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       
+      .eventA { 
+        position:absolute; width: 270px; height: 300px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
+        border-radius: 5px; display: none; margin: 15px; gap: 1.75px; background: #1d4b96; transition:0.4s;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: 10px 70px 160px 50px 10px;
+        grid-template-areas:
+          "EAtop    EAtop    EAtop"
+          "EAname   EAname   EAname"
+          "EAdesc   EAdesc   EAdesc"
+          "EAbutton EAbutton EAbutton"
+          "EAbottom EAbottom EAbottom";
+      }
+      
+      .EAcell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .EAcell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .EAname { grid-area:EAname; text-align:left; }
+      .EAname p { white-space:nowrap; font-size:200%; }
+      .EAdesc { grid-area:EAdesc; text-align:center; }
+      .EAbutton { grid-area:EAbutton; }
+      .EAtop { grid-area:top; display:none; }
+      #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       
     </style>
     
@@ -222,7 +242,7 @@
       <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
     </div>
 
-     <div class="info-box" id="info-box" onclick="hideSurvey()">
+    <div class="info-box" id="info-box" onclick="hideSurvey()">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
@@ -280,6 +300,16 @@
       <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean World Preference </span></div>
     </div>
     
+    <div class="eventA" id="event1">
+      <div class="EAcell EAtop"></div>
+      <div class="Eacell EAname"><p> Mineral Theft </p></div>
+      <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1planetName"> [planetName] </span><span>.</span>
+                                 <span> They have stolen a large amount of raw minerals recently mined from the planet. </p></div>
+      <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
+      <div class="EAcell EAbottom"></div>
+    </div>
+
+
 
     <script>
       //global variables
@@ -717,6 +747,17 @@
         }
       }
       
+      ///events
+      function executeEvent1 {
+        var event1 = $("event1");
+        event1.style.display = none;
+        event1.parentNode.removeChild(event1);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
+      
+      
+      ///misc. and nextTurn
       function hide(el) {
         el.style.display = "none";
       }
@@ -789,6 +830,12 @@
           var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
           HUDSupplyNumber.innerText = newSupplyNumber;
         }
+        var event1 = $("event1");
+        var event1Target = allMiningPlanets[1];
+        var event1Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        if (event1Target !=== undefined && event1Randomizer == "1") {
+          event1.style.display = "inline-grid";
+        }
         
         ///other
         if (HUDMineralNumber.innerText <= 0) {
@@ -812,4 +859,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.222--->
+<!--Version 0.223--->
