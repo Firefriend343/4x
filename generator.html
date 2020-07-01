@@ -117,7 +117,7 @@
       #menuButton2 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #menuButton3 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
-      .colonyMarkerCloner { display:none; }
+      .iconCloner { display:none; }
       .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; }
       #passiveColonyMarker {  }
       #neutralColonyMarker {  }
@@ -190,6 +190,10 @@
       #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       
+      .passiveShip { padding:2px; }
+      .passiveStarbase { padding:2px; }
+      #passiveCivilianShip { height:10px; width:14px; }
+      
       .eventA { 
         position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
         border-radius: 5px; display: none; margin: 15px; gap: 1.75px; background: #1d4b96; transition:0.4s;
@@ -241,6 +245,7 @@
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
       <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
       <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
+      <img class="passiveShip" id="passiveCivilianShip" src="passivecivilian.png">
     </div>
 
     <div class="info-box" id="info-box" onclick="hideSurvey()">
@@ -257,7 +262,9 @@
       <div class="cell bottom"></div>
     </div>
     
-    <img class="star" id="s1"></img>  
+    <img class="star" id="s1">
+      <img class="passiveStarbase" id="passiveStarbase-s1" src="miningstationicon.png" onclick="buildShip(this)"><img>
+    </img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
       <img class="planet" id="p2"></img>
@@ -613,6 +620,10 @@
         el.removeEventListener("click", salvageGasPlanet, true);
       }
       
+      function buildShip(el) {
+        alert ("This is one of your Starbases. You will be given a menu where you can construct ships in this system(soon to be added).")
+      }
+      
       function preferPlanet(el) {
         if (el.id == "preferenceButton1") {
           preferenceDesert = true;
@@ -769,6 +780,15 @@
           sEl.addEventListener("mouseenter", selectStar);
           sEl.addEventListener("mouseout", preunselectStar);
         }
+      }
+      function generateStarbase() {
+        var star = $("s1");
+        var starbase = $("passivStarbase-s1");
+        var newTop = star.offsetTop - 10;
+        var newLeft = star.offsetLeft + 110;
+        starbase.style.top = newTop + "px";
+        starbase.style.left = newLeft + "px";
+        star.starbase = true;
       }
       
       ///events
@@ -928,7 +948,8 @@
       generateStats();
       generatePosition();
       generateStarImg();
+      generateStarbase();
     </script>
   </body>
 </html>
-<!--Version 0.242--->
+<!--Version 0.245--->
