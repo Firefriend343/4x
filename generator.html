@@ -209,6 +209,7 @@
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       
       #event1 { top:200px; left:450px; }
+      #event2 { top:200px; left:450px; }
       
     </style>
     
@@ -302,8 +303,17 @@
     <div class="eventA" id="event1">
       <div class="Eacell EAname"><span> Mineral Theft </span></div>
       <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
-                                 <span> They have stolen a large amount of raw minerals recently mined from the planet. </p></div>
+                                 <span> They have stolen a large amount of raw minerals recently mined from the planet. </span></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
+    </div>
+    <div class="eventA" id="event2">
+      <div class="Eacell EAname"><span> Nanite Swarm </span></div>
+      <div class="Eacell EAdesc"><span> Civilian ships in </span><span id="e2PlanetName"> [planetName] </span><span>'s system reported unusal findings.</span>
+                                 <span> Upon further inspection, it appared that a stream of nanites had been stuck in orbit for a long time. </span>
+                                 <span> When they were discovered, they immediately descended deeper into the atmosphere. </span>
+                                 <span> The pursuing ships watched them flock together and transform into the buildings essential for a colony. </span>
+                                 <span> An almost instant push for migration to the new planet was satisfied, and we now own a colony there. </span></div>
+      <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent2()"> Fascinating. </button></div>
     </div>
 
 
@@ -761,11 +771,34 @@
       
       ///events
       function executeEvent1() {
-        var event1 = $("event1");
-        event1.style.display = "none";
-        event1.parentNode.removeChild(event1);
+        var event = $("event1");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
+      }
+      function executeEvent2() {
+        var event = $("event2");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var allColonies = $$('#system1 .planet.colony');
+        var el = allColonies[2];
+        var newPopulationNumber = (el.population || 0) + 2;
+        el.population = newPopulationNumber;
+        var newAuthorityNumber = (el.authority || 0) + 2;
+        el.authority = newAuthorityNumber;
+        el.classList.add("colony");
+        var system = $("system1");
+        var colonyMarker = $("passiveColonyMarker");
+        var newTop = el.offsetTop - 10;
+        var newLeft = el.offsetLeft + 55;
+        colonyMarker.style.top = newTop + "px";
+        colonyMarker.style.left = newLeft + "px";
+        var newMarker = colonyMarker.cloneNode(true);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
+        newMarker.style.display = "block";
+        hideSurvey();
       }
       
       
@@ -863,6 +896,14 @@
           event1.style.display = "inline-grid";
           e1PlanetName.innerText = event1Target.randomName;
         }
+        var event2 = $("event2");
+        var e2PlanetName = $("e2PlanetName");
+        var event2Target = allColonies[2];
+        var event2Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        if (event2Target !== undefined && event2Randomizer == "1") {
+          event2.style.display = "inline-grid";
+          e2PlanetName.innerText = event2Target.randomName;
+        }
         
         ///other
         if (HUDMineralNumber.innerText <= 0) {
@@ -886,4 +927,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.234--->
+<!--Version 0.235--->
