@@ -782,8 +782,7 @@
         var event = $("event2");
         event.style.display = "none";
         event.parentNode.removeChild(event);
-        var allColonies = $$('#system1 .planet.colony');
-        var el = allColonies[2];
+        var el = planetElList[2];
         var newPopulationNumber = (el.population || 0) + 2;
         el.population = newPopulationNumber;
         var newAuthorityNumber = (el.authority || 0) + 2;
@@ -929,4 +928,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.237--->
+<!--Version 0.238--->
