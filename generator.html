@@ -298,7 +298,7 @@
     </div>
     
     <img class="star" id="s1">
-      <img class="passiveStarbase" id="passiveStarbase-s1" src="starbaseicon.png" onmouseenter="showBuilderMenu(this)"><img>
+      <img class="passiveStarbase" id="passiveStarbase-s1" src="starbaseicon.png" onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)"><img>
     </img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
@@ -670,11 +670,11 @@
       
       function showBuilderMenu(el) {
         var menu = $("builderMenu");
+        var newMenu = menu.cloneNode(true);
         var newTop = el.offsetTop;
         var newLeft = el.offsetLeft + 30;
-        menu.style.top = newTop + "px";
-        menu.style.left = newLeft + "px";
-        var newMenu = menu.cloneNode(true);
+        newMenu.style.top = newTop + "px";
+        newMenu.style.left = newLeft + "px";
         newMenu.id = newMenu.id + "-" + el.id;
         el.appendChild(newMenu);
         newMenu.style.display = "inline-grid";
@@ -1022,4 +1022,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.258--->
+<!--Version 0.259--->
