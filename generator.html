@@ -709,6 +709,8 @@
       
       function buildCorvette() {
         alert("you built a Corvette");
+        var newMineralNumber = Number(HUDMineralNumber - 50);
+        HUDMineralNumber.innerText = newMineralNumber;
         var corvette = $("passiveCorvette");
         var newCorvette = corvette.cloneNode(true);
         var container = $("starbaseContainer");
@@ -727,6 +729,8 @@
       }
       function buildCruiser() {
         alert("you built a Cruiser");
+        var newMineralNumber = Number(HUDMineralNumber - 110);
+        HUDMineralNumber.innerText = newMineralNumber;
         var cruiser = $("passiveCruiser");
         var newCruiser = cruiser.cloneNode(true);
         var container = $("starbaseContainer");
@@ -745,6 +749,8 @@
       }
       function buildDestroyer() {
         alert("you built a Destroyer");
+        var newMineralNumber = Number(HUDMineralNumber - 320);
+        HUDMineralNumber.innerText = newMineralNumber;
         var destroyer = $("passiveDestroyer");
         var newDestroyer = destroyer.cloneNode(true);
         var container = $("starbaseContainer");
@@ -757,12 +763,16 @@
         var newLeft = starbase.offsetLeft + 30 + 15 * currentShipNumber;
         newDestroyer.style.top = newTop + "px";
         newDestroyer.style.left = newLeft + "px";
-        newDestroyer.id = newCorvette.id + "-s1-" + currentShipNumber;
+        newDestroyer.id = newDestroyer.id + "-s1-" + currentShipNumber;
         container.appendChild(newDestroyer);
         newDestroyer.style.display = "block";
       }
       function buildDreadnaught() {
         alert("you built a Dreadnaught");
+        var newMineralNumber = Number(HUDMineralNumber - 520);
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newAuthorityNumber = Number(HUDAuthorityNumber - 50);
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
         var dreadnaught = $("passiveDreadnaught");
         var newDreadnaught = dreadnaught.cloneNode(true);
         var container = $("starbaseContainer");
@@ -781,6 +791,10 @@
       }
       function buildTitan() {
         alert("you built a Titan");
+        var newMineralNumber = Number(HUDMineralNumber - 100);
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newAuthorityNumber = Number(HUDAuthorityNumber - 350);
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
         var titan = $("passiveTitan");
         var newTitan = titan.cloneNode(true);
         var container = $("starbaseContainer");
@@ -1130,4 +1144,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.285--->
+<!--Version 0.286--->
