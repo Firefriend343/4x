@@ -1,0 +1,63 @@
+<html>
+  <head>
+  
+    <style>
+      
+      img { image-rendering:pixelated; }
+      
+      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
+        grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "builderButton1 builderCaption1"  
+          "builderButton2 builderCaption2"
+          "builderButton3 builderCaption3"  
+          "builderButton4 builderCaption4"
+          "builderButton5 builderCaption5" 
+        gap: 1.75px; background: #1d4b96; transition:1.2s;
+      }
+      
+      .builderCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .builderCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderButton1 { grid-area:builderButton1; }
+      .builderButton2 { grid-area:builderButton2; }
+      .builderButton3 { grid-area:builderButton3; }
+      .builderButton4 { grid-area:builderButton4; }
+      .builderButton5 { grid-area:builderButton5; }
+      .builderCaption1 { grid-area:builderCaption1; }
+      .builderCaption2 { grid-area:builderCaption2; }
+      .builderCaption3 { grid-area:builderCaption3; }
+      .builderCaption4 { grid-area:builderCaption4; }
+      .builderCaption5 { grid-area:builderCaption5; }
+      
+      #builderMenu {  }
+      #builderButton1 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      #builderButton2 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      #builderButton3 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      #builderButton4 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      #builderButton5 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      
+    </style>
+  </head>
+  
+  <body>
+  
+    <div class="shipBuilderMenu" id="builderMenu" onclick="closeBuilderMenu">
+      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png"></img></div>
+      <div class="builderCell builderCaption1"></div>
+      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png"></img></div>
+      <div class="builderCell builderCaption2"></div>
+      <div class="builderCell builderButton3"<img id="builderButton3" src="passivedestroyer.png"></img>></div>
+      <div class="builderCell builderCaption3"></div>
+      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png"></img></div>
+      <div class="builderCell builderCaption4"></div>
+      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png"></img></div>
+      <div class="builderCell builderCaption5"></div>
+    </div>
+    
+    <script>
+    </script>
+  </body>
+</html>
+<!--Version 1--->
