@@ -161,7 +161,7 @@
       #designationButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #designationButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
-      .preferenceMenu { position:absolute; top:640px; left:20px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+      .preferenceMenu { position:absolute; top:0px; left:0px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
         grid-template-columns: 70px 150px 70px 150px; grid-auto-rows: auto;
         grid-template-areas:
@@ -194,6 +194,40 @@
       #preferenceButton4 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      
+      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 125px; height: 180px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: 41px 82px; grid-auto-rows: auto;
+        grid-template-areas:
+          "builderButton1 builderCaption1"  
+          "builderButton2 builderCaption2"
+          "builderButton3 builderCaption3"  
+          "builderButton4 builderCaption4"
+          "builderButton5 builderCaption5"; 
+        gap: 1.75px; background: #1d4b96; transition:1.2s;
+      }
+      
+      .builderCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .builderCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderButton1 { grid-area:builderButton1; }
+      .builderButton2 { grid-area:builderButton2; }
+      .builderButton3 { grid-area:builderButton3; }
+      .builderButton4 { grid-area:builderButton4; }
+      .builderButton5 { grid-area:builderButton5; }
+      .builderCaption1 { grid-area:builderCaption1; }
+      .builderCaption2 { grid-area:builderCaption2; }
+      .builderCaption3 { grid-area:builderCaption3; }
+      .builderCaption4 { grid-area:builderCaption4; }
+      .builderCaption5 { grid-area:builderCaption5; }
+      
+      #builderMenu {  }
+      #builderButton1 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton2 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton3 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton4 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton5 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      
       
       .eventA { 
         position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
@@ -264,7 +298,7 @@
     </div>
     
     <img class="star" id="s1">
-      <img class="passiveStarbase" id="passiveStarbase-s1" src="starbaseicon.png" onclick="buildShip(this)"><img>
+      <img class="passiveStarbase" id="passiveStarbase-s1" src="starbaseicon.png" onmouseenter="buildShip(this)"><img>
     </img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
@@ -294,6 +328,19 @@
       <div class="designationCell designationSupplyIcon"><img id="designationSupplyIcon" src="supplyicon.png"></img></div>
     </div>
     
+    <div class="shipBuilderMenu" id="builderMenu" onclick="closeBuilderMenu()">
+      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png"></img></div>
+      <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
+      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png"></img></div>
+      <div class="builderCell builderCaption2"><span> Build Cruiser </span></div>
+      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png"></img></div>
+      <div class="builderCell builderCaption3"><span> Build Destroyer </span></div>
+      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png"></img></div>
+      <div class="builderCell builderCaption4"><span> Build Dreadnaught </span></div>
+      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png"></img></div>
+      <div class="builderCell builderCaption5"><span> Build Titan </span></div>
+    </div>
+
     <div class="preferenceMenu" id="preferenceMenu">
       <div class="preferenceCell preferenceButton1"><img id="preferenceButton1" onclick="preferPlanet(this)" src="desertplanet1.png"></img></div>
       <div class="preferenceCell preferenceCaption1"><span id="preferenceCaption1"> Desert World Preference </span></div>
@@ -621,8 +668,21 @@
         el.removeEventListener("click", salvageGasPlanet, true);
       }
       
-      function buildShip(el) {
-        alert ("This is one of your Starbases. You will be given a menu where you can construct ships in this system(soon to be added).")
+      function showBuilderMenu(el) {
+        var menu = $("builderMenu");
+        var newTop = el.offsetTop;
+        var newLeft = el.offsetLeft + 30;
+        menu.style.top = newTop + "px";
+        menu.style.left = newLeft + "px";
+        var newMarker = menu.cloneNode(true);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
+        newMarker.style.display = "block";    
+        menu.style.display = "inline-grid";
+      }
+      function closeBuilderMenu() {
+        var menu = $("builderMenu");
+        menu.style.display = "none";
       }
       
       function preferPlanet(el) {
@@ -957,4 +1017,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.253--->
+<!--Version 0.255--->
