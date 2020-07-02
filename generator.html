@@ -711,7 +711,7 @@
         var starbase = $("passiveStarbase-s1-0");
         var corvette = $("passiveCorvette");
         var newID = Number(starbase.id.split("-")[2]) + 1;
-        starbase.id = newID;
+        starbase.id = "passiveStarbase-s1-" + newID;
         var idNumber = Number(starbase.id.split("-")[2]);
         if (Number(idNumber) <= 5) {
           var container = $("starbaseContainer");
@@ -1073,4 +1073,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.270--->
+<!--Version 0.271--->
