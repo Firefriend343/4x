@@ -6,8 +6,9 @@
     <style>
       
       img { image-rendering:pixelated; }
+      body { background:darkred; }
       
-      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 450px; height: 175px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
         grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto;
         grid-template-areas:
@@ -34,11 +35,11 @@
       .builderCaption5 { grid-area:builderCaption5; }
       
       #builderMenu {  }
-      #builderButton1 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
-      #builderButton2 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
-      #builderButton3 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
-      #builderButton4 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
-      #builderButton5 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; }
+      #builderButton1 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; width:20px; height:24px; }
+      #builderButton2 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; width:20px; height:24px; }
+      #builderButton3 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; width:20px; height:24px; }
+      #builderButton4 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; width:20px; height:24px; }
+      #builderButton5 { border-radius:50%; background:gray; color:white; padding:2px; font-size:80%; width:20px; height:24px; }
       
     </style>
   </head>
@@ -50,7 +51,7 @@
       <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
       <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png"></img></div>
       <div class="builderCell builderCaption2"><span> Build Cruiser </span></div>
-      <div class="builderCell builderButton3"<img id="builderButton3" src="passivedestroyer.png"></img>></div>
+      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png"></img></div>
       <div class="builderCell builderCaption3"><span> Build Destroyer </span></div>
       <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png"></img></div>
       <div class="builderCell builderCaption4"><span> Build Dreadnaught </span></div>
@@ -62,4 +63,4 @@
     </script>
   </body>
 </html>
-<!--Version 3--->
+<!--Version 5--->
