@@ -718,7 +718,7 @@
         starbase.dataset.ships = currentShipNumber;
         console.log(currentShipNumber);
         var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 10 * currentShipNumber;
+        var newLeft = starbase.offsetLeft + 30 + 12 * currentShipNumber;
         newCorvette.style.top = newTop + "px";
         newCorvette.style.left = newLeft + "px";
         newCorvette.id = newCorvette.id + "-s1-" + currentShipNumber;
@@ -727,15 +727,75 @@
       }
       function buildCruiser() {
         alert("you built a Cruiser");
+        var cruiser = $("passiveCruiser");
+        var newCruiser = cruiser.cloneNode(true);
+        var container = $("starbaseContainer");
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber);
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 30 + 12 * currentShipNumber;
+        newCruiser.style.top = newTop + "px";
+        newCruiser.style.left = newLeft + "px";
+        newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
+        container.appendChild(newCruiser);
+        newCruiser.style.display = "block";
       }
       function buildDestroyer() {
         alert("you built a Destroyer");
+        var destroyer = $("passiveDestroyer");
+        var newDestroyer = destroyer.cloneNode(true);
+        var container = $("starbaseContainer");
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber);
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 30 + 12 * currentShipNumber;
+        newDestroyer.style.top = newTop + "px";
+        newDestroyer.style.left = newLeft + "px";
+        newDestroyer.id = newCorvette.id + "-s1-" + currentShipNumber;
+        container.appendChild(newDestroyer);
+        newDestroyer.style.display = "block";
       }
       function buildDreadnaught() {
         alert("you built a Dreadnaught");
+        var dreadnaught = $("passiveDreadnaught");
+        var newDreadnaught = dreadnaught.cloneNode(true);
+        var container = $("starbaseContainer");
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber);
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 30 + 12 * currentShipNumber;
+        newDreadnaught.style.top = newTop + "px";
+        newDreadnaught.style.left = newLeft + "px";
+        newDreadnaught.id = newDreadnaught.id + "-s1-" + currentShipNumber;
+        container.appendChild(newDreadnaught);
+        newDreadnaught.style.display = "block";
       }
       function buildTitan() {
         alert("you built a Titan");
+        var titan = $("passiveTitan");
+        var newTitan = titan.cloneNode(true);
+        var container = $("starbaseContainer");
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber);
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 30 + 12 * currentShipNumber;
+        newTitan.style.top = newTop + "px";
+        newTitan.style.left = newLeft + "px";
+        newTitan.id = newTitan.id + "-s1-" + currentShipNumber;
+        container.appendChild(newTitan);
+        newTitan.style.display = "block";
       }
       
       function preferPlanet(el) {
@@ -1070,4 +1130,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.283--->
+<!--Version 0.284--->
