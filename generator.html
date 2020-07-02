@@ -126,8 +126,12 @@
       
       .passiveShip { padding:2px; position:absolute; background:gray; border-radius:50%; padding:1px; }
       .passiveStarbase { padding:2px; position:absolute; width:25px; height:25px; background:gray; border-radius:50%; padding:1px; }
-      #passiveCivilianShip { height:10px; width:14px; }
-      
+      #passiveCivilianShip { height:24px; width:32px; }
+      #passiveCorvette { height:24px; width:32px; }
+      #passiveCruiser { height:24px; width:32px; }
+      #passiveDestroyer { height:24px; width:32px; }
+      #passiveDreadnaught { height:24px; width:32px; }
+      #passiveTitan { height:24px; width:32px; }
       
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:absolute; display:fixed; top:750px; left:1100px; }
@@ -280,7 +284,12 @@
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
       <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
       <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
-      <img class="passiveShip" id="passiveCivilianShip" src="passivecivilian.png">
+      <img class="passiveShip" id="passiveCivilianShip" src="passivecivilian.png"></img>
+      <img class="passiveShip" id="passiveCorvette" src="passivecorvette.png"></img>
+      <img class="passiveShip" id="passiveCruiser" src="passivecruiser.png"></img>
+      <img class="passiveShip" id="passiveDestroyer" src="passivedestroyer.png"></img>
+      <img class="passiveShip" id="passiveDreadnaught" src="passivedreadnaught.png"></img>
+      <img class="passiveShip" id="passiveTitan" src="passivetitan.png"></img>
     </div>
 
     <div class="info-box" id="info-box" onclick="hideSurvey()">
@@ -328,7 +337,7 @@
     </div>
 
     <div class="starbaseContainer" id="starbaseContainer">
-    <img class="passiveStarbase" id="passiveStarbase-s1" src="starbaseicon.png" onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)"></img>
+      <img class="passiveStarbase" id="passiveStarbase-s1-0" src="starbaseicon.png" onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
     </div>
     
     
@@ -699,6 +708,25 @@
       
       function buildCorvette() {
         alert("you built a Corvette");
+        var starbase = $("passiveStarbase-s1-0");
+        var corvette = $("passiveCorvette");
+        var newID = Number(starbase.id.split("-")[2]) + 1;
+        starbase.id = newID;
+        var idNumber = Number(starbase.id.split("-")[2]);
+        if (Number(idNumber) <= 5) {
+          var container = $("starbaseContainer");
+          var newCorvette = corvette.cloneNode(true);
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 40;
+          newCorvette.style.top = newTop + "px";
+          newCorvette.style.left = newLeft + "px";
+          newCorvette.id = corvette.id + idNumber;
+          container.appendChild(newCorvette);
+          newCorvette.style.display = "inline-grid";
+        }
+        if (Number(idNumber) > 5) {
+          alert("You have too many corvettes already in this system");
+        }
       }
       function buildCruiser() {
         alert("you built a Cruiser");
@@ -1045,4 +1073,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.267--->
+<!--Version 0.268--->
