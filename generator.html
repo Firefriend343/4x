@@ -333,15 +333,15 @@
     
     
     <div class="shipBuilderMenu" id="builderMenu">
-      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png"></img></div>
+      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png" onclick="buildCorvette()"></img></div>
       <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
-      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png"></img></div>
+      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png" onclick="buildCruiser()></img></div>
       <div class="builderCell builderCaption2"><span> Build Cruiser </span></div>
-      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png"></img></div>
+      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png" onclick="buildDestroyer()></img></div>
       <div class="builderCell builderCaption3"><span> Build Destroyer </span></div>
-      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png"></img></div>
+      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png" onclick="buildDreadnaught()></img></div>
       <div class="builderCell builderCaption4"><span> Build Dreadnaught </span></div>
-      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png"></img></div>
+      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png" onclick="buildTitan()></img></div>
       <div class="builderCell builderCaption5"><span> Build Titan </span></div>
     </div>
 
@@ -696,6 +696,22 @@
         container.removeChild(menu);
       }
       
+      function buildCorvette() {
+        alert("you built a Corvette");
+      }
+      function buildCruiser() {
+        alert("you built a Cruiser");
+      }
+      function buildDestroyer() {
+        alert("you built a Destroyer");
+      }
+      function buildDreadnaught() {
+        alert("you built a Dreadnaught");
+      }
+      function buildTitan() {
+        alert("you built a Titan");
+      }
+      
       function preferPlanet(el) {
         if (el.id == "preferenceButton1") {
           preferenceDesert = true;
@@ -1028,4 +1044,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.263--->
+<!--Version 0.264--->
