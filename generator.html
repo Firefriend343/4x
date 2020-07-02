@@ -674,15 +674,20 @@
         var newLeft = el.offsetLeft + 30;
         menu.style.top = newTop + "px";
         menu.style.left = newLeft + "px";
-        var newMarker = menu.cloneNode(true);
-        newMarker.id = newMarker.id + "-" + el.id;
-        system.appendChild(newMarker);
-        newMarker.style.display = "block";    
-        menu.style.display = "inline-grid";
+        var newMenu = menu.cloneNode(true);
+        newMenu.id = newMenu.id + "-" + el.id;
+        el.appendChild(newMenu);
+        newMenu.style.display = "inline-grid";
       }
-      function closeBuilderMenu() {
-        var menu = $("builderMenu");
+      function preCloseBuilderMenu(el) {
+        setTimeout(function(){
+          closeBuilderMenu(el);
+        },2200);
+      }
+      function closeBuilderMenu(el) {
+        var menu = $("builderMenu" + "-" + el.id);
         menu.style.display = "none";
+        el.removeChild(menu);
       }
       
       function preferPlanet(el) {
@@ -1017,4 +1022,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.257--->
+<!--Version 0.258--->
