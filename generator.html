@@ -337,7 +337,8 @@
     </div>
 
     <div class="starbaseContainer" id="starbaseContainer">
-      <img class="passiveStarbase" id="passiveStarbase-s1-0" src="starbaseicon.png" onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
+      <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
+      onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
     </div>
     
     
@@ -700,7 +701,7 @@
         },2200);
       }
       function closeBuilderMenu(el) {
-        var menu = $("builderMenu-passiveStarbase-s1-" + Number(el.id.split("-")[2]) - 1);
+        var menu = $("builderMenu-passiveStarbase-s1");
         var container = $("starbaseContainer");
         menu.style.display = "none";
         container.removeChild(menu);
@@ -708,25 +709,6 @@
       
       function buildCorvette() {
         alert("you built a Corvette");
-        var starbase = $("passiveStarbase-s1-0");
-        var corvette = $("passiveCorvette");
-        var newID = Number(starbase.id.split("-")[2]) + 1;
-        starbase.id = "passiveStarbase-s1-" + newID;
-        var idNumber = Number(starbase.id.split("-")[2]);
-        if (Number(idNumber) <= 5) {
-          var container = $("starbaseContainer");
-          var newCorvette = corvette.cloneNode(true);
-          var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 40;
-          newCorvette.style.top = newTop + "px";
-          newCorvette.style.left = newLeft + "px";
-          newCorvette.id = corvette.id + idNumber;
-          container.appendChild(newCorvette);
-          newCorvette.style.display = "inline-grid";
-        }
-        if (Number(idNumber) > 5) {
-          alert("You have too many corvettes already in this system");
-        }
       }
       function buildCruiser() {
         alert("you built a Cruiser");
@@ -1073,4 +1055,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.272--->
+<!--Version 0.273--->
