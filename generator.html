@@ -700,7 +700,7 @@
         },2200);
       }
       function closeBuilderMenu(el) {
-        var menu = $("builderMenu" + "-" + Number(el.id.split("-")[2]) - 1);
+        var menu = $("builderMenu-passiveStarbase-s1-" + Number(el.id.split("-")[2]) - 1);
         var container = $("starbaseContainer");
         menu.style.display = "none";
         container.removeChild(menu);
@@ -1073,4 +1073,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.271--->
+<!--Version 0.272--->
