@@ -709,7 +709,7 @@
       
       function buildCorvette() {
         alert("you built a Corvette");
-        var newMineralNumber = Number(HUDMineralNumber - 50);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
         var corvette = $("passiveCorvette");
         var newCorvette = corvette.cloneNode(true);
@@ -729,7 +729,7 @@
       }
       function buildCruiser() {
         alert("you built a Cruiser");
-        var newMineralNumber = Number(HUDMineralNumber - 110);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
         HUDMineralNumber.innerText = newMineralNumber;
         var cruiser = $("passiveCruiser");
         var newCruiser = cruiser.cloneNode(true);
@@ -749,7 +749,7 @@
       }
       function buildDestroyer() {
         alert("you built a Destroyer");
-        var newMineralNumber = Number(HUDMineralNumber - 320);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
         HUDMineralNumber.innerText = newMineralNumber;
         var destroyer = $("passiveDestroyer");
         var newDestroyer = destroyer.cloneNode(true);
@@ -769,9 +769,9 @@
       }
       function buildDreadnaught() {
         alert("you built a Dreadnaught");
-        var newMineralNumber = Number(HUDMineralNumber - 520);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
         HUDMineralNumber.innerText = newMineralNumber;
-        var newAuthorityNumber = Number(HUDAuthorityNumber - 50);
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
         var dreadnaught = $("passiveDreadnaught");
         var newDreadnaught = dreadnaught.cloneNode(true);
@@ -791,9 +791,9 @@
       }
       function buildTitan() {
         alert("you built a Titan");
-        var newMineralNumber = Number(HUDMineralNumber - 100);
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 100;
         HUDMineralNumber.innerText = newMineralNumber;
-        var newAuthorityNumber = Number(HUDAuthorityNumber - 350);
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
         var titan = $("passiveTitan");
         var newTitan = titan.cloneNode(true);
