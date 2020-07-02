@@ -8,9 +8,9 @@
       img { image-rendering:pixelated; }
       body { background:darkred; }
       
-      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 150px; height: 175px; font-family: 'MedievalSharp', cursive; 
+      .shipBuilderMenu { position:absolute; top:500px; left:20px; width: 120px; height: 180px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
-        grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto;
+        grid-template-columns: 35px 85px; grid-auto-rows: auto;
         grid-template-areas:
           "builderButton1 builderCaption1"  
           "builderButton2 builderCaption2"
@@ -35,11 +35,11 @@
       .builderCaption5 { grid-area:builderCaption5; }
       
       #builderMenu {  }
-      #builderButton1 { background:navy; color:white; padding:2px; font-size:80%; width:24px; height:24px; }
-      #builderButton2 { background:navy; color:white; padding:2px; font-size:80%; width:28px; height:24px; }
-      #builderButton3 { background:navy; color:white; padding:2px; font-size:80%; width:32px; height:24px; }
-      #builderButton4 { background:navy; color:white; padding:2px; font-size:80%; width:32px; height:24px; }
-      #builderButton5 { background:navy; color:white; padding:2px; font-size:80%; width:28px; height:24px; }
+      #builderButton1 { background:navy; color:white; padding:2px; font-size:80%; width:35px; height:35px; }
+      #builderButton2 { background:navy; color:white; padding:2px; font-size:80%; width:35px; height:35px; }
+      #builderButton3 { background:navy; color:white; padding:2px; font-size:80%; width:35px; height:35px; }
+      #builderButton4 { background:navy; color:white; padding:2px; font-size:80%; width:35px; height:35px; }
+      #builderButton5 { background:navy; color:white; padding:2px; font-size:80%; width:35px; height:35px; }
       
     </style>
   </head>
@@ -47,20 +47,26 @@
   <body>
   
     <div class="shipBuilderMenu" id="builderMenu" onclick="closeBuilderMenu">
-      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png"></img></div>
+      <div class="builderCell builderButton1"><button id="builderButton1"></button><img src="passivecorvette.png"></img></div>
       <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
-      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png"></img></div>
+      <div class="builderCell builderButton2"><button id="builderButton2"></button><img src="passivecruiser.png"></img></div>
       <div class="builderCell builderCaption2"><span> Build Cruiser </span></div>
-      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png"></img></div>
+      <div class="builderCell builderButton3"><button id="builderButton3"></button><img src="passivedestroyer.png"></img></div>
       <div class="builderCell builderCaption3"><span> Build Destroyer </span></div>
-      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png"></img></div>
+      <div class="builderCell builderButton4"><button id="builderButton4"></button><img src="passivedreadnaught.png"></img></div>
       <div class="builderCell builderCaption4"><span> Build Dreadnaught </span></div>
-      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png"></img></div>
+      <div class="builderCell builderButton5"><button id="builderButton5"></button><img src="passivetitan.png"></img></div>
       <div class="builderCell builderCaption5"><span> Build Titan </span></div>
     </div>
     
     <script>
+      
+      function closeBuilderMenu {
+        var menu = document.getElementById("builderMenu");
+        menu.style.display = "none";
+      }
+      
     </script>
   </body>
 </html>
-<!--Version 7--->
+<!--Version 11--->
