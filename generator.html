@@ -711,6 +711,7 @@
         alert("you built a Corvette");
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
+        currentShipNumber = Number(currentShipNumber) + 1;
         console.log(currentShipNumber);
       }
       function buildCruiser() {
@@ -1058,4 +1059,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.275--->
+<!--Version 0.276--->
