@@ -118,14 +118,14 @@
       #menuButton3 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
       .iconCloner { display:none; }
-      .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; padding:1px; }
+      .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; padding:0.2px; }
       #passiveColonyMarker {  }
       #neutralColonyMarker {  }
       #hostileColonyMarker {  }
       #miningStationMarker {  }
       
       .passiveShip { position:absolute; padding:0px; }
-      .passiveStarbase { position:absolute; width:25px; height:25px; background:gray; border-radius:50%; padding:1px; }
+      .passiveStarbase { position:absolute; width:25px; height:25px; background:gray; border-radius:50%; padding:0.4px; }
       #passiveCivilianShip {  }
       #passiveCorvette {  }
       #passiveCruiser {  }
@@ -413,6 +413,15 @@
       <span> These were relics of some ancient race, dated to be thousands of years old. Amazingly, they were still mostly intact. </span>
       <span> The starbase crew sold them a large museum chain on our homeworld for a large sum. We are now in possesion of the credits. </span></div>
       <div class="EAcell EAbutton"><button id="E4button" onclick="executeEvent4()"> Interesting. </button></div>
+    </div>
+
+    <div class="eventA" id="event5" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> A Rogue Planet </span></div>
+      <div class="Eacell EAdesc">
+      <span> A civilian ship hailing from </span><span id="e5PlanetName"> [planetName] </span><span> was passing between systems when it noticed something.</span>
+      <span> The onboard scientists realized there was a rogue planet, one hurled out of its system by a passing star, was sailing by. </span>
+      <span> The planet may have once supported life, but had frozen over long since leaving its home system. However, it is rich in resources. </span></div>
+      <div class="EAcell EAbutton"><button id="E5button" onclick="executeEvent5()"> Salvage it. </button></div>
     </div>
 
 
@@ -1108,6 +1117,15 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) + 120;
         HUDCreditNumber.innerText = newCreditNumber;
       }
+      function executeEvent5() {
+        var event = $("event5");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 60;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 80;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
       
       function moveEvent(el) {
         el.style.top = "170px";
@@ -1234,6 +1252,14 @@
         if (event4 !== undefined && event4Randomizer == "1") {
           event4.style.display = "inline-grid";
         }
+        var event5 = $("event5");
+        var e5PlanetName = $("e5PlanetName");
+        var event5Target = planetElList[0];
+        var event5Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        if (event5 !== undefined && event5Randomizer == "1" && habitablePlanets.includes(event5Target.biome)) {
+          event5.style.display = "inline-grid";
+          e5PlanetName.innerText = event5Target.randomName;
+        }
         
         ///other
         if (HUDMineralNumber.innerText <= 0) {
@@ -1258,4 +1284,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.300--->
+<!--Version 0.301--->
