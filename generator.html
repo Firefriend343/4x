@@ -250,10 +250,13 @@
       .EAdesc { grid-area:EAdesc; text-align:center; padding:20px; }
       .EAbutton { grid-area:EAbutton; }
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E2button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E3button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       
       #event1 { top:200px; left:450px; }
       #event2 { top:200px; left:450px; }
       #event2 .EAdesc { font-size:80%; }
+      #event3 { top:200px; left:450px; }
       
     </style>
     
@@ -372,8 +375,9 @@
     
     <div class="eventA" id="event1" onclick="moveEvent(this)">
       <div class="Eacell EAname"><span> Mineral Theft </span></div>
-      <div class="Eacell EAdesc"><span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
-                                 <span> They have stolen a large amount of raw minerals recently mined from the planet. </span></div>
+      <div class="Eacell EAdesc">
+      <span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
+      <span> They have stolen a large amount of raw minerals recently mined from the planet. </span></div>
       <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
     </div>
 
@@ -385,9 +389,17 @@
         <span> When they were discovered, they immediately descended deeper into the atmosphere. The civilian ships followed them to the surface. </span>
         <span> An abandoned colony on the surface was discovered, and quickly utilized. We now own a fully functional colony on </span>
         <span id="e2PlanetName2"> [planetName] </span><span>.</span></div>
-      <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent2()"> Fascinating. </button></div>
+      <div class="EAcell EAbutton"><button id="E2button" onclick="executeEvent2()"> Fascinating. </button></div>
     </div>
 
+    <div class="eventA" id="event3" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> The </span><i> Royal Dragon </i></div>
+      <div class="Eacell EAdesc">
+      <span> The starbase by </span><span id="e3PlanetName"> [planetName] </span><span> recently detected a strange anomaly.</span>
+      <span> Upon closer inspection, they found a cruiser marked the </span><i> Royal Dragon </i><span>. </span>
+      <span> The cruiser was completely empty, but still functioning. The starbase adapted it to our style and put it into use. </span></div>
+      <div class="EAcell EAbutton"><button id="E3button" onclick="executeEvent3()"> Curious, but fortunate. </button></div>
+    </div>
 
 
     <script>
@@ -722,7 +734,7 @@
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " corvette");
           var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 20 + 35 * currentShipNumber;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
           newCorvette.style.top = newTop + "px";
           newCorvette.style.left = newLeft + "px";
           newCorvette.style.height = "24px";
@@ -751,7 +763,7 @@
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " cruiser");
           var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 20 + 35 * currentShipNumber;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
           newCruiser.style.top = newTop + "px";
           newCruiser.style.left = newLeft + "px";
           newCruiser.style.height = "24px";
@@ -780,7 +792,7 @@
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " destroyer");
           var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 20 + 35 * currentShipNumber;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
           newDestroyer.style.top = newTop + "px";
           newDestroyer.style.left = newLeft + "px";
           newDestroyer.style.height = "24px";
@@ -811,7 +823,7 @@
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " dreadnaught");
           var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 20 + 35 * currentShipNumber;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
           newDreadnaught.style.top = newTop + "px";
           newDreadnaught.style.left = newLeft + "px";
           newDreadnaught.style.height = "24px";
@@ -842,7 +854,7 @@
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " titan");
           var newTop = starbase.offsetTop;
-          var newLeft = starbase.offsetLeft + 20 + 35 * currentShipNumber;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
           newTitan.style.top = newTop + "px";
           newTitan.style.left = newLeft + "px";
           newTitan.style.height = "24px";
@@ -1053,6 +1065,28 @@
         newMarker.style.display = "block";
         hideSurvey();
       }
+      function executeEvent3() {
+        var event = $("event3");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;  
+        var cruiser = $("passiveCruiser");
+        var newCruiser = cruiser.cloneNode(true);
+        var container = $("starbaseContainer");
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber + " cruiser");
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+        newCruiser.style.top = newTop + "px";
+        newCruiser.style.left = newLeft + "px";
+        newCruiser.style.height = "24px";
+        newCruiser.style.width = "32px";
+        newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
+        container.appendChild(newCruiser);
+        newCruiser.style.display = "block";
+      }
       
       function moveEvent(el) {
         el.style.top = "170px";
@@ -1164,7 +1198,17 @@
           e2PlanetName.innerText = event2Target.randomName;
           e2PlanetName2.innerText = event2Target.randomName;
         }
-        
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        var event3 = $("event3");
+        var e3planetName = $("e3PlanetName");
+        var event3Target = planetElList[1];
+        var event3Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        if (event3 !== undefined && Number(currentShipNumber) <= 10 && event3Randomizer == "1") {
+          event3.style.display = "inline-grid";
+          e3planetName.innerText = event3Target.randomName;
+        }
+          
         ///other
         if (HUDMineralNumber.innerText <= 0) {
          alert("you ran out of Minerals");
@@ -1188,4 +1232,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.296--->
+<!--Version 0.297--->
