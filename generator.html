@@ -708,128 +708,153 @@
       }
       
       function buildCorvette() {
-        alert("you built a Corvette");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
-        HUDCreditNumber.innerText = newCreditNumber;
-        var corvette = $("passiveCorvette");
-        var newCorvette = corvette.cloneNode(true);
-        var container = $("starbaseContainer");
-        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        currentShipNumber = Number(currentShipNumber) + 1;
-        starbase.dataset.ships = currentShipNumber;
-        console.log(currentShipNumber);
-        var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
-        newCorvette.style.top = newTop + "px";
-        newCorvette.style.left = newLeft + "px";
-        newCorvette.style.height = "24px";
-        newCorvette.style.width = "32px";
-        newCorvette.id = newCorvette.id + "-s1-" + currentShipNumber;
-        container.appendChild(newCorvette);
-        newCorvette.style.display = "block";
+        if (Number(currentShipNumber) <= 10) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var corvette = $("passiveCorvette");
+          var newCorvette = corvette.cloneNode(true);
+          var container = $("starbaseContainer");
+          var starbase = $("passiveStarbase-s1");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber);
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
+          newCorvette.style.top = newTop + "px";
+          newCorvette.style.left = newLeft + "px";
+          newCorvette.style.height = "24px";
+          newCorvette.style.width = "32px";
+          newCorvette.id = newCorvette.id + "-s1-" + currentShipNumber;
+          container.appendChild(newCorvette);
+          newCorvette.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
       }
       function buildCruiser() {
-        alert("you built a Cruiser");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
-        HUDCreditNumber.innerText = newCreditNumber;
-        var cruiser = $("passiveCruiser");
-        var newCruiser = cruiser.cloneNode(true);
-        var container = $("starbaseContainer");
-        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        currentShipNumber = Number(currentShipNumber) + 1;
-        starbase.dataset.ships = currentShipNumber;
-        console.log(currentShipNumber);
-        var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
-        newCruiser.style.top = newTop + "px";
-        newCruiser.style.left = newLeft + "px";
-        newCruiser.style.height = "24px";
-        newCruiser.style.width = "32px";
-        newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
-        container.appendChild(newCruiser);
-        newCruiser.style.display = "block";
+        if (Number(currentShipNumber) <= 10) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var cruiser = $("passiveCruiser");
+          var newCruiser = cruiser.cloneNode(true);
+          var container = $("starbaseContainer");
+          var starbase = $("passiveStarbase-s1");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " cruiser");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
+          newCruiser.style.top = newTop + "px";
+          newCruiser.style.left = newLeft + "px";
+          newCruiser.style.height = "24px";
+          newCruiser.style.width = "32px";
+          newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
+          container.appendChild(newCruiser);
+          newCruiser.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
       }
       function buildDestroyer() {
-        alert("you built a Destroyer");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
-        HUDCreditNumber.innerText = newCreditNumber;
-        var destroyer = $("passiveDestroyer");
-        var newDestroyer = destroyer.cloneNode(true);
-        var container = $("starbaseContainer");
-        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        currentShipNumber = Number(currentShipNumber) + 1;
-        starbase.dataset.ships = currentShipNumber;
-        console.log(currentShipNumber);
-        var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
-        newDestroyer.style.top = newTop + "px";
-        newDestroyer.style.left = newLeft + "px";
-        newDestroyer.style.height = "24px";
-        newDestroyer.style.width = "32px";
-        newDestroyer.id = newDestroyer.id + "-s1-" + currentShipNumber;
-        container.appendChild(newDestroyer);
-        newDestroyer.style.display = "block";
+        if (Number(currentShipNumber) <= 10) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var destroyer = $("passiveDestroyer");
+          var newDestroyer = destroyer.cloneNode(true);
+          var container = $("starbaseContainer");
+          var starbase = $("passiveStarbase-s1");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " destroyer");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
+          newDestroyer.style.top = newTop + "px";
+          newDestroyer.style.left = newLeft + "px";
+          newDestroyer.style.height = "24px";
+          newDestroyer.style.width = "32px";
+          newDestroyer.id = newDestroyer.id + "-s1-" + currentShipNumber;
+          container.appendChild(newDestroyer);
+          newDestroyer.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
       }
       function buildDreadnaught() {
-        alert("you built a Dreadnaught");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
-        HUDAuthorityNumber.innerText = newAuthorityNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
-        HUDCreditNumber.innerText = newCreditNumber;
-        var dreadnaught = $("passiveDreadnaught");
-        var newDreadnaught = dreadnaught.cloneNode(true);
-        var container = $("starbaseContainer");
-        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        currentShipNumber = Number(currentShipNumber) + 1;
-        starbase.dataset.ships = currentShipNumber;
-        console.log(currentShipNumber);
-        var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
-        newDreadnaught.style.top = newTop + "px";
-        newDreadnaught.style.left = newLeft + "px";
-        newDreadnaught.style.height = "24px";
-        newDreadnaught.style.width = "32px";
-        newDreadnaught.id = newDreadnaught.id + "-s1-" + currentShipNumber;
-        container.appendChild(newDreadnaught);
-        newDreadnaught.style.display = "block";
+        if (Number(currentShipNumber) <= 10) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var dreadnaught = $("passiveDreadnaught");
+          var newDreadnaught = dreadnaught.cloneNode(true);
+          var container = $("starbaseContainer");
+          var starbase = $("passiveStarbase-s1");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " dreadnaught");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
+          newDreadnaught.style.top = newTop + "px";
+          newDreadnaught.style.left = newLeft + "px";
+          newDreadnaught.style.height = "24px";
+          newDreadnaught.style.width = "32px";
+          newDreadnaught.id = newDreadnaught.id + "-s1-" + currentShipNumber;
+          container.appendChild(newDreadnaught);
+          newDreadnaught.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
       }
       function buildTitan() {
-        alert("you built a Titan");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
-        HUDMineralNumber.innerText = newMineralNumber;
-        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
-        HUDAuthorityNumber.innerText = newAuthorityNumber;
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
-        HUDCreditNumber.innerText = newCreditNumber;
-        var titan = $("passiveTitan");
-        var newTitan = titan.cloneNode(true);
-        var container = $("starbaseContainer");
-        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        currentShipNumber = Number(currentShipNumber) + 1;
-        starbase.dataset.ships = currentShipNumber;
-        console.log(currentShipNumber);
-        var newTop = starbase.offsetTop;
-        var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
-        newTitan.style.top = newTop + "px";
-        newTitan.style.left = newLeft + "px";
-        newTitan.style.height = "24px";
-        newTitan.style.width = "32px";
-        newTitan.id = newTitan.id + "-s1-" + currentShipNumber;
-        container.appendChild(newTitan);
-        newTitan.style.display = "block";
+        if (Number(currentShipNumber) <= 10) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var titan = $("passiveTitan");
+          var newTitan = titan.cloneNode(true);
+          var container = $("starbaseContainer");
+          var starbase = $("passiveStarbase-s1");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " titan");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
+          newTitan.style.top = newTop + "px";
+          newTitan.style.left = newLeft + "px";
+          newTitan.style.height = "24px";
+          newTitan.style.width = "32px";
+          newTitan.id = newTitan.id + "-s1-" + currentShipNumber;
+          container.appendChild(newTitan);
+          newTitan.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
       }
       
       function preferPlanet(el) {
@@ -1164,4 +1189,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.290--->
+<!--Version 0.291--->
