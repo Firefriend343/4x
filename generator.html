@@ -1204,7 +1204,7 @@
         var event3 = $("event3");
         var e3planetName = $("e3PlanetName");
         var event3Target = planetElList[1];
-        var event3Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        var event3Randomizer = Number(Math.floor(Math.random() * 40) + 1);
         if (event3 !== undefined && Number(currentShipNumber) <= 10 && event3Randomizer == "1") {
           event3.style.display = "inline-grid";
           e3planetName.innerText = event3Target.randomName;
