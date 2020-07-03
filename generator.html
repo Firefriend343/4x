@@ -126,12 +126,12 @@
       
       .passiveShip { position:absolute; padding:0px; }
       .passiveStarbase { position:absolute; width:25px; height:25px; background:gray; border-radius:50%; padding:1px; }
-      #passiveCivilianShip { height:30px; width:40px; }
-      #passiveCorvette { height:30px; width:40px; }
-      #passiveCruiser { height:30px; width:40px; }
-      #passiveDestroyer { height:30px; width:40px; }
-      #passiveDreadnaught { height:30px; width:40px; }
-      #passiveTitan { height:30px; width:40px; }
+      #passiveCivilianShip {  }
+      #passiveCorvette {  }
+      #passiveCruiser {  }
+      #passiveDestroyer {  }
+      #passiveDreadnaught {  }
+      #passiveTitan {  }
       
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:absolute; display:fixed; top:750px; left:1100px; }
@@ -725,6 +725,8 @@
         var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
         newCorvette.style.top = newTop + "px";
         newCorvette.style.left = newLeft + "px";
+        newCorvette.style.height = "24px";
+        newCorvette.style.width = "32px";
         newCorvette.id = newCorvette.id + "-s1-" + currentShipNumber;
         container.appendChild(newCorvette);
         newCorvette.style.display = "block";
@@ -747,6 +749,8 @@
         var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
         newCruiser.style.top = newTop + "px";
         newCruiser.style.left = newLeft + "px";
+        newCruiser.style.height = "24px";
+        newCruiser.style.width = "32px";
         newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
         container.appendChild(newCruiser);
         newCruiser.style.display = "block";
@@ -769,6 +773,8 @@
         var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
         newDestroyer.style.top = newTop + "px";
         newDestroyer.style.left = newLeft + "px";
+        newDestroyer.style.height = "24px";
+        newDestroyer.style.width = "32px";
         newDestroyer.id = newDestroyer.id + "-s1-" + currentShipNumber;
         container.appendChild(newDestroyer);
         newDestroyer.style.display = "block";
@@ -793,6 +799,8 @@
         var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
         newDreadnaught.style.top = newTop + "px";
         newDreadnaught.style.left = newLeft + "px";
+        newDreadnaught.style.height = "24px";
+        newDreadnaught.style.width = "32px";
         newDreadnaught.id = newDreadnaught.id + "-s1-" + currentShipNumber;
         container.appendChild(newDreadnaught);
         newDreadnaught.style.display = "block";
@@ -817,6 +825,8 @@
         var newLeft = starbase.offsetLeft + 30 + 20 * currentShipNumber;
         newTitan.style.top = newTop + "px";
         newTitan.style.left = newLeft + "px";
+        newTitan.style.height = "24px";
+        newTitan.style.width = "32px";
         newTitan.id = newTitan.id + "-s1-" + currentShipNumber;
         container.appendChild(newTitan);
         newTitan.style.display = "block";
@@ -1154,4 +1164,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.288--->
+<!--Version 0.290--->
