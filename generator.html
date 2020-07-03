@@ -253,11 +253,13 @@
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       #E2button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       #E3button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E4button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
       
       #event1 { top:200px; left:450px; }
       #event2 { top:200px; left:450px; }
       #event2 .EAdesc { font-size:80%; }
       #event3 { top:200px; left:450px; }
+      #event4
       
     </style>
     
@@ -400,6 +402,16 @@
       <span> Upon closer inspection, they found a cruiser marked the </span><i> Royal Dragon </i><span>. </span>
       <span> The cruiser was completely empty, but still functioning. The starbase adapted it to our style and put it into use. </span></div>
       <div class="EAcell EAbutton"><button id="E3button" onclick="executeEvent3()"> Curious, but fortunate. </button></div>
+    </div>
+
+    <div class="eventA" id="event4" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> Ancient Ruins </span></div>
+      <div class="Eacell EAdesc">
+      <span> An miniscule asteriod was snagged by a passing transport ship before it could sail into the nearby star. </span>
+      <span> The crew towed it back to the local starbase, where it barely fit inside the docking bay. Researchers found mysterious objects buried inside. </span>
+      <span> These were relics of some ancient race, dated to be thousands of years old. Amazingly, they were still mostly intact. </span>
+      <span> The starbase crew sold them a large museum chain on our homeworld for a large sum. We are now in possesion of the credits. </span></div>
+      <div class="EAcell EAbutton"><button id="E4button" onclick="executeEvent4()"> Interesting. </button></div>
     </div>
 
 
@@ -1088,6 +1100,13 @@
         container.appendChild(newCruiser);
         newCruiser.style.display = "block";
       }
+      function executeEvent4() {
+        var event = $("event4");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 120;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
       
       function moveEvent(el) {
         el.style.top = "170px";
@@ -1209,7 +1228,12 @@
           event3.style.display = "inline-grid";
           e3planetName.innerText = event3Target.randomName;
         }
-          
+        var event4 = $("event4");
+        var event4Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        if (event4 !== undefined && event4Randomizer == "1") {
+          event4.style.display = "inline-grid";
+        }
+        
         ///other
         if (HUDMineralNumber.innerText <= 0) {
          alert("you ran out of Minerals");
@@ -1233,4 +1257,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.298--->
+<!--Version 0.299--->
