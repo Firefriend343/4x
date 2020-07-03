@@ -1150,7 +1150,7 @@
         var e1PlanetName = $("e1PlanetName");
         var event1Target = allMiningPlanets[1];
         var event1Randomizer = Number(Math.floor(Math.random() * 50) + 1);
-        if (event1Target !== undefined && event1Randomizer == "1") {
+        if (event1 !== undefined && event1Target !== undefined && event1Randomizer == "1") {
           event1.style.display = "inline-grid";
           e1PlanetName.innerText = event1Target.randomName;
         }
