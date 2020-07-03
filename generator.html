@@ -1258,7 +1258,7 @@
         var event5 = $("event5");
         var e5PlanetName = $("e5PlanetName");
         var event5Target = planetElList[0];
-        var event5Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        var event5Randomizer = Number(Math.floor(Math.random() * 35) + 1);
         if (event5 !== undefined && event5Randomizer == "1" && habitablePlanets.includes(event5Target.biome)) {
           event5.style.display = "inline-grid";
           e5PlanetName.innerText = event5Target.randomName;
@@ -1287,4 +1287,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.303--->
+<!--Version 0.304--->
