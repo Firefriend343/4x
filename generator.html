@@ -708,6 +708,7 @@
       }
       
       function buildCorvette() {
+        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
         if (Number(currentShipNumber) <= 10) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
@@ -717,7 +718,6 @@
           var corvette = $("passiveCorvette");
           var newCorvette = corvette.cloneNode(true);
           var container = $("starbaseContainer");
-          var starbase = $("passiveStarbase-s1");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber);
@@ -737,6 +737,7 @@
         }
       }
       function buildCruiser() {
+        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
         if (Number(currentShipNumber) <= 10) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
@@ -746,7 +747,6 @@
           var cruiser = $("passiveCruiser");
           var newCruiser = cruiser.cloneNode(true);
           var container = $("starbaseContainer");
-          var starbase = $("passiveStarbase-s1");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " cruiser");
@@ -766,6 +766,7 @@
         }
       }
       function buildDestroyer() {
+        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
         if (Number(currentShipNumber) <= 10) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
@@ -775,7 +776,6 @@
           var destroyer = $("passiveDestroyer");
           var newDestroyer = destroyer.cloneNode(true);
           var container = $("starbaseContainer");
-          var starbase = $("passiveStarbase-s1");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " destroyer");
@@ -795,6 +795,7 @@
         }
       }
       function buildDreadnaught() {
+        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
         if (Number(currentShipNumber) <= 10) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
@@ -806,7 +807,6 @@
           var dreadnaught = $("passiveDreadnaught");
           var newDreadnaught = dreadnaught.cloneNode(true);
           var container = $("starbaseContainer");
-          var starbase = $("passiveStarbase-s1");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " dreadnaught");
@@ -826,6 +826,7 @@
         }
       }
       function buildTitan() {
+        var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
         if (Number(currentShipNumber) <= 10) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
@@ -837,7 +838,6 @@
           var titan = $("passiveTitan");
           var newTitan = titan.cloneNode(true);
           var container = $("starbaseContainer");
-          var starbase = $("passiveStarbase-s1");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
           console.log(currentShipNumber + " titan");
@@ -1189,4 +1189,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.291--->
+<!--Version 0.292--->
