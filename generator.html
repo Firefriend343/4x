@@ -1028,7 +1028,6 @@
       function executeEvent1() {
         var event = $("event1");
         event.style.display = "none";
-        event.parentNode.removeChild(event);
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
       }
@@ -1150,7 +1149,7 @@
         var event1 = $("event1");
         var e1PlanetName = $("e1PlanetName");
         var event1Target = allMiningPlanets[1];
-        var event1Randomizer = Number(Math.floor(Math.random() * 40) + 1);
+        var event1Randomizer = Number(Math.floor(Math.random() * 50) + 1);
         if (event1Target !== undefined && event1Randomizer == "1") {
           event1.style.display = "inline-grid";
           e1PlanetName.innerText = event1Target.randomName;
@@ -1189,4 +1188,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.294--->
+<!--Version 0.295--->
