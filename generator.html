@@ -711,6 +711,8 @@
         alert("you built a Corvette");
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
+        HUDCreditNumber.innerText = newCreditNumber;
         var corvette = $("passiveCorvette");
         var newCorvette = corvette.cloneNode(true);
         var container = $("starbaseContainer");
@@ -731,6 +733,8 @@
         alert("you built a Cruiser");
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
         HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
+        HUDCreditNumber.innerText = newCreditNumber;
         var cruiser = $("passiveCruiser");
         var newCruiser = cruiser.cloneNode(true);
         var container = $("starbaseContainer");
@@ -751,6 +755,8 @@
         alert("you built a Destroyer");
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
         HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
+        HUDCreditNumber.innerText = newCreditNumber;
         var destroyer = $("passiveDestroyer");
         var newDestroyer = destroyer.cloneNode(true);
         var container = $("starbaseContainer");
@@ -773,6 +779,8 @@
         HUDMineralNumber.innerText = newMineralNumber;
         var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
+        HUDCreditNumber.innerText = newCreditNumber;
         var dreadnaught = $("passiveDreadnaught");
         var newDreadnaught = dreadnaught.cloneNode(true);
         var container = $("starbaseContainer");
@@ -791,10 +799,12 @@
       }
       function buildTitan() {
         alert("you built a Titan");
-        var newMineralNumber = Number(HUDMineralNumber.innerText) - 100;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
         HUDMineralNumber.innerText = newMineralNumber;
         var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
         HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
+        HUDCreditNumber.innerText = newCreditNumber;
         var titan = $("passiveTitan");
         var newTitan = titan.cloneNode(true);
         var container = $("starbaseContainer");
@@ -1144,4 +1154,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.286--->
+<!--Version 0.287--->
