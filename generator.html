@@ -599,6 +599,12 @@
           alert ("Unidentified planet")
         }
         $("surveyPop").innerText = el.population || 0;
+        if (el.classList.contains(colony)) {
+          console.log("this is a colony");
+        }
+        else {
+          return;
+        }  
       }
       function hideSurvey() {
         var el = $("info-box");
@@ -1361,4 +1367,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.325--->
+<!--Version 0.326--->
