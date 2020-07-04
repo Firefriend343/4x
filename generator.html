@@ -128,7 +128,7 @@
       #miningStationMarker {  }
       
       .passiveShip { position:absolute; padding:0px; }
-      .passiveStarbase { position:absolute; width:25px; height:25px; background:gray; border-radius:50%; padding:0.4px; }
+      .passiveStarbase { position:absolute; width:30px; height:30px; background:gray; border-radius:50%; padding:0.4px; }
       #passiveCivilianShip {  }
       #passiveCorvette {  }
       #passiveCruiser {  }
@@ -1312,23 +1312,23 @@
         
         ///other
         if (HUDMineralNumber.innerText <= 0) {
-          alert("you ran out of Minerals");
-          newPointNumber = Number(gamePointNumber.innerText - 200);
+          alert("you ran out of Minerals (-200 Point Penalty)");
+          newPointNumber = Number(gamePointNumber.innerText) - 200;
           gamePointNumber.innerText = newPointNumber;
         }
         if (HUDCreditNumber.innerText <= 0) {
-          alert("you ran out of Credits");
-          newPointNumber = Number(gamePointNumber.innerText - 500);
+          alert("you ran out of Credits (-500 Point Penalty)");
+          newPointNumber = Number(gamePointNumber.innerText) - 500;
           gamePointNumber.innerText = newPointNumber;
         }
         if (HUDAuthorityNumber.innerText <= 0) {
-          alert("you ran out of Authority, you can no longer control your government");
-          newPointNumber = Number(gamePointNumber.innerText - 1000);
+          alert("you ran out of Authority, you can no longer control your government (-1000 Point Penalty)");
+          newPointNumber = Number(gamePointNumber.innerText) - 1000;
           gamePointNumber.innerText = newPointNumber;
         }
         if (HUDSupplyNumber.innerText <= 0) {
-          alert("you ran out of Supplies, your colonies are starving");
-          newPointNumber = Number(gamePointNumber.innerText - 500);
+          alert("you ran out of Supplies, your colonies are starving (-500 Point Penalty)");
+          newPointNumber = Number(gamePointNumber.innerText) - 500;
           gamePointNumber.innerText = newPointNumber;
         }
         if (gamePointNumber.innerText >= 10000) {
@@ -1347,4 +1347,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.316--->
+<!--Version 0.317--->
