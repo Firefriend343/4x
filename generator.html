@@ -441,7 +441,7 @@
       var preferenceTundra = false;
       var preferenceContinental = false;
       var preferenceOcean = false;
-      var planetElList = $$('#system1 .planet');
+      var planetElList = $$('.planet');
       var starElList = $$('.star')
       var surveyDictionary = {
           desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10",
@@ -1219,12 +1219,12 @@
         
         ///planets
         var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
-        var allColonies = $$('#system1 .planet.colony');
-        var allMiningPlanets = $$('#system1 .planet.miningStation');
-        var newCreditNumber = Number(HUDCreditNumber.innerText) - allColonies.length * 10;
+        var allColonies = $$('.planet.colony');
+        var allMiningPlanets = $$('.planet.miningStation');
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - allColonies.length * 10;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - allMiningPlanets.length * 5;
         HUDCreditNumber.innerText = newCreditNumber;
-        var newCreditNumber2 = Number(HUDCreditNumber.innerText) - allMiningPlanets.length * 6;
-        HUDCreditNumber.innerText = newCreditNumber2;
         for (const pEl of allColonies) {
           if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 && pEl.satisfactoryPlanet == true) {
             var newPopNumber = pEl.population + 1;
@@ -1259,8 +1259,8 @@
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
           HUDMineralNumber.innerText = newMineralNumber;
         }
-        var allJunkPlanets = $$('#system1 .planet.salvagedJunk');
-        var allGasPlanets = $$('#system1 .planet.salvagedGas');
+        var allJunkPlanets = $$('.planet.salvagedJunk');
+        var allGasPlanets = $$('.planet.salvagedGas');
         for (const pEl of allJunkPlanets) {
           pEl.classList.remove("salvagedJunk");
           pEl.addEventListener("click", salvageJunkPlanet, true);
@@ -1366,4 +1366,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.321--->
+<!--Version 0.322--->
