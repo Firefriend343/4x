@@ -612,7 +612,15 @@
         designationMenu.style.display = "none";
       }
       
+      function hideSurvey() {
+        var el = $("info-box");
+        el.style.display = "none";
+        var menu = $("constructionMenu");
+        menu.style.display = "none";
+        console.log("survey hidden");
+      }
       function survey() {
+        hideSurvey();
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
         var infoBox = $("info-box");
@@ -653,13 +661,6 @@
         else {
           return;
         }  
-      }
-      function hideSurvey() {
-        var el = $("info-box");
-        el.style.display = "none";
-        var menu = $("constructionMenu");
-        menu.style.display = "none";
-        console.log("survey hidden");
       }
       
       
@@ -1431,4 +1432,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.331--->
+<!--Version 0.332--->
