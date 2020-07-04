@@ -167,6 +167,41 @@
       #designationButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       #designationButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
       
+      .constructionMenu { position:absolute; top:430px; left:1050px; width: 190px; height: 200px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius:5px; display:none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "constructionCaption constructionCaption  constructionCaption"
+          "constructionButton1 constructionButton1  constructionCreditIcon"
+          "constructionButton2 constructionButton2  constructionMineralIcon"
+          "constructionButton3 constructionButton3  constructionSupplyIcon"
+          "constructionButton4 constructionButton4  constructionAuthorityIcon";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+      .constructionCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .constructionCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .constructionCaption { grid-area:constructionCaption; text-align:center; }
+      .constructionCaption span { font-size:130%; text-align:center; }
+      .constructionButton1 { grid-area:constructionButton1; }
+      .constructionButton2 { grid-area:constructionButton2; }
+      .constructionButton3 { grid-area:constructionButton3; }
+      .constructionButton4 { grid-area:constructionButton4; }
+      .constructionMineralIcon { grid-area:constructionMineralIcon; }
+      .constructionCreditIcon { grid-area:constructionCreditIcon; }
+      .constructionSupplyIcon { grid-area:constructionSupplyIcon; }
+      #constructionAuthorityIcon { grid-area:constructionAuthorityIcon; }
+      #constructionMenu {  }
+      #constructionCreditIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionMineralIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionSupplyIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionAuthorityIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton4 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+    
+      
       .preferenceMenu { position:absolute; top:640px; left:20px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
         grid-template-columns: 70px 150px 70px 150px; grid-auto-rows: auto;
@@ -320,6 +355,18 @@
       <div class="cell bottom"></div>
     </div>
     
+    <div class="constructionMenu" id="constructionMenu">
+      <div class="constructionCell constructionCaption"><span id="constructionCaption"> Colony Buildings </span></div>
+      <div class="constructionCell constructionButton1"><button id="constructionButton1" onclick="constructNationalBank()"> Build National Bank </button></div>
+      <div class="constructionCell constructionCreditIcon"><img id="constructionCreditIcon" src="crediticon.png"></img></div>
+      <div class="constructionCell constructionButton2"><button id="constructionButton2" onclick="constructStripMines()"> Build Strip Mines </button></div>
+      <div class="constructionCell constructionMineralIcon"><img id="constructionMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="constructionCell constructionButton3"><button id="constructionButton3" onclick="constructHydroponicFarms()"> Build Hydro-Farms </button></div>
+      <div class="constructionCell constructionSupplyIcon"><img id="constructionSupplyIcon" src="supplyicon.png"></img></div>
+      <div class="constructionCell constructionButton4"><button id="constructionButton4" onclick="constructLawOffices()"> Build Law Offices </button></div>
+      <div class="constructionCell constructionAuthorityIcon"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
+    </div>
+
     <img class="star" id="s1"></img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
@@ -600,7 +647,8 @@
         }
         $("surveyPop").innerText = el.population || 0;
         if (el.classList.contains("colony")) {
-          console.log("this is a colony");
+          var menu = $("constructionMenu");
+          menu.style.display = "inline-grid";
         }
         else {
           return;
@@ -609,6 +657,8 @@
       function hideSurvey() {
         var el = $("info-box");
         el.style.display = "none";
+        var menu = $("constructionMenu");
+        menu.style.display = "none";
         console.log("survey hidden");
       }
       
@@ -701,6 +751,20 @@
         console.log("surveyColony executed " + planet);
         survey();
       }
+      
+      function constructNationalBank() {
+        alert("you built a National Bank");
+      }
+      function constructStripMines() {
+        alert("you built Strip Mines");
+      }
+      function constructHydroponicFarms() {
+        alert("you built Hydroponic Farms");
+      }
+      function constructLawOffices() {
+        alert("you built Law Offices");
+      }
+    
       
       function designateMiningSystem() {
         alert("you've designated this system as a Mining System");
@@ -1367,4 +1431,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.327--->
+<!--Version 0.330--->
