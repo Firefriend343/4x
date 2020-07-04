@@ -790,6 +790,10 @@
           alert("Your fleet is already at full capacity!");
           return;
         }
+        else if (Number(gamePointNumber.innerText) >= 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
       }
       function buildCruiser() {
         var starbase = $("passiveStarbase-s1");
@@ -821,6 +825,10 @@
           alert("Your fleet is already at full capacity!");
           return;
         }
+        else if (Number(gamePointNumber.innerText) >= 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
       }
       function buildDestroyer() {
         var starbase = $("passiveStarbase-s1");
@@ -850,6 +858,10 @@
         }
         else if (Number(currentShipNumber) > 10) {
           alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(gamePointNumber.innerText) >= 0) {
+          alert("Your points are negative, you cannot build ships");
           return;
         }
       }
@@ -885,6 +897,10 @@
           alert("Your fleet is already at full capacity!");
           return;
         }
+        else if (Number(gamePointNumber.innerText) >= 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
       }
       function buildTitan() {
         var starbase = $("passiveStarbase-s1");
@@ -916,6 +932,10 @@
         }
         else if (Number(currentShipNumber) > 10) {
           alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(gamePointNumber.innerText) >= 0) {
+          alert("Your points are negative, you cannot build ships");
           return;
         }
       }
@@ -1031,7 +1051,7 @@
             pEl.addEventListener("click", salvageJunkPlanet, true);
           }
           else if (pEl.biome == "gas") {
-            pEl.addEventListener("click", salvageGasPlanet, true)
+            pEl.addEventListener("click", salvageGasPlanet, true);
           }
         }
       }
@@ -1346,4 +1366,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.320--->
+<!--Version 0.321--->
