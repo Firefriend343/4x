@@ -764,7 +764,7 @@
       function buildCorvette() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) >= 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
@@ -795,7 +795,7 @@
       function buildCruiser() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) >= 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
@@ -826,7 +826,7 @@
       function buildDestroyer() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) >= 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
@@ -857,7 +857,7 @@
       function buildDreadnaught() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) >= 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
           HUDMineralNumber.innerText = newMineralNumber;
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
@@ -890,7 +890,7 @@
       function buildTitan() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) >= 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
           HUDMineralNumber.innerText = newMineralNumber;
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
@@ -1345,4 +1345,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.313--->
+<!--Version 0.314--->
