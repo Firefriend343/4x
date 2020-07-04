@@ -612,18 +612,14 @@
         designationMenu.style.display = "none";
       }
       
-      function hideSurvey() {
-        var el = $("info-box");
-        el.style.display = "none";
-        var menu = $("constructionMenu");
-        menu.style.display = "none";
-        console.log("survey hidden");
-      }
+      
       function survey() {
-        hideSurvey();
         var el = $(lastSelectedPlanet);
         console.log(el.biome);
         var infoBox = $("info-box");
+        var menu = $("constructionMenu");
+        infoBox.style.display = "none";
+        menu.style.display = "none";
         infoBox.style.display = "inline-grid";
                 
         var biome = el.biome;
@@ -655,12 +651,18 @@
         }
         $("surveyPop").innerText = el.population || 0;
         if (el.classList.contains("colony")) {
-          var menu = $("constructionMenu");
           menu.style.display = "inline-grid";
         }
         else {
           return;
         }  
+      }
+      function hideSurvey() {
+        var el = $("info-box");
+        el.style.display = "none";
+        var menu = $("constructionMenu");
+        menu.style.display = "none";
+        console.log("survey hidden");
       }
       
       
