@@ -91,6 +91,9 @@
       #HUDAuthorityIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #HUDSupplyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       
+      .pointContainer { position:fixed; top:10px; left:1200px; width:60px; height:30px; font-family: 'MedievalSharp', cursive;
+        font-size:80%; display:block; background: #1d4b96; }
+      
       .planetMenu { position:absolute; top:20px; left:20px; width: 180px; height: 140px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
@@ -274,19 +277,21 @@
       <div class="HUDcell HUDtop"></div>
       <div class="HUDcell margin1"></div>
       <div class="HUDcell mineralIcon"><img id="HUDMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 200 </span></div>
+      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 0 </span></div>
       <div class="HUDcell margin2"></div>
       <div class="HUDcell creditIcon"><img id="HUDCreditIcon" src="crediticon.png"></img></div>
-      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 200 </span></div>
+      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 0 </span></div>
       <div class="HUDcell margin3"></div>
       <div class="HUDcell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
-      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 100 </span></div>
+      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 0 </span></div>
       <div class="HUDcell margin4"></div>
       <div class="HUDcell supplyIcon"><img id="HUDSupplyIcon" src="supplyicon.png"></img></div>
-      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 200 </span></div>
+      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 0 </span></div>
       <div class="HUDcell HUDbottom"></div>
     </div>
     
+    <div class="pointContainer"><span id="gamePointNumber"> 0 </span></div>
+
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
 
     <div class="iconCloner">
@@ -1061,6 +1066,16 @@
         starbase.style.left = newLeft + "px";
         star.starbase = true;
       }
+      function generateCurrency() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 200;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 200;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + 100;
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 200;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
       
       ///events
       function executeEvent1() {
@@ -1284,7 +1299,8 @@
       generatePosition();
       generateStarImg();
       generateStarbase();
+      generateCurrency();
     </script>
   </body>
 </html>
-<!--Version 0.304--->
+<!--Version 0.305--->
