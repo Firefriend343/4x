@@ -619,6 +619,9 @@
         var allMineralStationPlanets = $$('#system1 .planet.miningStation');
         if (miningPlanets.includes(el.biome)) {
           if (allMineralStationPlanets.includes(el.id)) {
+            alert("You already have a mining station here!");
+          }
+          else {
             var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
             HUDMineralNumber.innerText = newMineralNumber;
             var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
@@ -638,9 +641,6 @@
             newMarker.id = newMarker.id + "-" + el.id;
             system.appendChild(newMarker);
             newMarker.style.display = "block";
-          }
-          else {
-            alert("You already have a mining station here");
           }
         }
         else {
@@ -1344,4 +1344,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.311--->
+<!--Version 0.312--->
