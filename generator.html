@@ -618,7 +618,7 @@
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
         var allMineralStationPlanets = $$('#system1 .planet.miningStation');
         if (miningPlanets.includes(el.biome)) {
-          if (allMineralStationPlanets.includes(el.id)) {
+          if (el.miningStation == true) {
             alert("You already have a mining station here!");
           }
           else {
@@ -632,6 +632,7 @@
             var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
             HUDAuthorityNumber.innerText = newAuthorityNumber;
             el.classList.add("miningStation");
+            el.miningStation = true;
             var stationMarker = $("miningStationMarker");
             var newTop = el.offsetTop - 10;
             var newLeft = el.offsetLeft + 55;
@@ -1344,4 +1345,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.312--->
+<!--Version 0.313--->
