@@ -347,7 +347,7 @@
       <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
       <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
       <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority and Credits per Turn </span></div>
-      <div class="cell cost"><span id="surveyCost"> # </span><span> Credits in Upkeep Cost </span></div>
+      <div class="cell cost"><span id="surveyCost"> # </span><span> in Upkeep Cost </span></div>
       <div class="cell size"><span id="surveySize"> [Size] </span></div>
       <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
@@ -489,34 +489,34 @@
       var planetElList = $$('.planet');
       var starElList = $$('.star')
       var surveyDictionary = {
-          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10",
+          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "5 Supplies",
                    surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
                    surveyPop:0 }, 
-          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10",
+          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "5 Supplies",
                     surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
                     surveyPop:0 },
-          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10", 
+          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "5 Supplies", 
                    surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
                    surveyPop:0 },
-          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10", 
+          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "5 Supplies", 
                    surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
                    surveyPop:0 },
-          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10",
+          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "5 Supplies",
                         surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
                         surveyPop:0 },
-          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10",
+          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "5 Supplies",
                   surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
                   surveyPop:0 },
-          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "15", 
+          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "5 Supplies", 
                   surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
                   surveyPop:0 },
-          mineral1: { surveyType: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "6",
+          mineral1: { surveyType: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "5 Credits",
                      surveyDesc: "This planet is hot and grim, but relatively rich in minerals.",
                      surveyPop:0 },
-          mineral2: { surveyType: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "6",
+          mineral2: { surveyType: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "5 Credits",
                      surveyDesc: "There are no hills nor valleys on this planet, only massive lava-filled crevices.",
                      surveyPop:0 },
-          mineral3: { surveyType: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "6",
+          mineral3: { surveyType: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "5 Credits",
                      surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals.",
                      surveyPop:0 },
           barren: { surveyType: "Barren", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
@@ -1434,4 +1434,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.332--->
+<!--Version 0.333--->
