@@ -1331,7 +1331,7 @@
           newPointNumber = Number(gamePointNumber.innerText - 500);
           gamePointNumber.innerText = newPointNumber;
         }
-        if (gamePointNumber.innerText <= 10000) {
+        if (gamePointNumber.innerText >= 10000) {
           alert("you've won the game")
         }
         hideSurvey();
@@ -1345,4 +1345,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.314--->
+<!--Version 0.315--->
