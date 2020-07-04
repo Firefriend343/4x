@@ -307,6 +307,12 @@
       <img class="passiveShip" id="passiveTitan" src="passivetitan.png"></img>
     </div>
 
+    <div class="starbaseContainer" id="starbaseContainer">
+      <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
+      onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
+    </div>
+    
+
     <div class="info-box" id="info-box" onclick="hideSurvey()">
       <div class="cell top"></div>
       <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
@@ -321,8 +327,7 @@
       <div class="cell bottom"></div>
     </div>
     
-    <img class="star" id="s1">
-    </img>  
+    <img class="star" id="s1"></img>  
     <div id="system1">
       <img class="planet" id="p1"></img>
       <img class="planet" id="p2"></img>
@@ -349,13 +354,7 @@
       <div class="designationCell designationCreditIcon"><img id="designationCreditIcon" src="crediticon.png"></img></div>
       <div class="designationCell designationButton3"><button id="designationButton3" onclick="designateProduceSystem()"> Designate Produce System </button></div>
       <div class="designationCell designationSupplyIcon"><img id="designationSupplyIcon" src="supplyicon.png"></img></div>
-    </div>
-
-    <div class="starbaseContainer" id="starbaseContainer">
-      <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
-      onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
-    </div>
-    
+    </div> 
     
     <div class="shipBuilderMenu" id="builderMenu">
       <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png" onclick="buildCorvette()"></img></div>
@@ -1347,4 +1346,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.317--->
+<!--Version 0.318--->
