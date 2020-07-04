@@ -621,6 +621,8 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 150;
+          gamePointNumber.innerText = newPointNumber;
           var system = $("system1");
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
           HUDAuthorityNumber.innerText = newAuthorityNumber;
@@ -653,6 +655,8 @@
             HUDAuthorityNumber.innerText = newAuthorityNumber;
             var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
             HUDSupplyNumber.innerText = newSupplyNumber;
+            var newPointNumber = Number(gamePointNumber.innerText) + 200;
+            gamePointNumber.innerText = newPointNumber;
             var newPopulationNumber = (el.population || 0) + 2;
             el.population = newPopulationNumber;
             var newAuthorityNumber = (el.authority || 0) + 2;
@@ -758,6 +762,8 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 60;
+          gamePointNumber.innerText = newPointNumber;
           var corvette = $("passiveCorvette");
           var newCorvette = corvette.cloneNode(true);
           var container = $("starbaseContainer");
@@ -787,6 +793,8 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 140;
+          gamePointNumber.innerText = newPointNumber;
           var cruiser = $("passiveCruiser");
           var newCruiser = cruiser.cloneNode(true);
           var container = $("starbaseContainer");
@@ -816,6 +824,8 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 300;
+          gamePointNumber.innerText = newPointNumber;
           var destroyer = $("passiveDestroyer");
           var newDestroyer = destroyer.cloneNode(true);
           var container = $("starbaseContainer");
@@ -847,6 +857,8 @@
           HUDAuthorityNumber.innerText = newAuthorityNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 620;
+          gamePointNumber.innerText = newPointNumber;
           var dreadnaught = $("passiveDreadnaught");
           var newDreadnaught = dreadnaught.cloneNode(true);
           var container = $("starbaseContainer");
@@ -878,6 +890,8 @@
           HUDAuthorityNumber.innerText = newAuthorityNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
           HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(gamePointNumber.innerText) + 900;
+          gamePointNumber.innerText = newPointNumber;
           var titan = $("passiveTitan");
           var newTitan = titan.cloneNode(true);
           var container = $("starbaseContainer");
@@ -1083,8 +1097,12 @@
         event.style.display = "none";
         var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
         HUDMineralNumber.innerText = newMineralNumber;
+        var newPointNumber = Number(gamePointNumber.innerText) + 100;
+        gamePointNumber.innerText = newPointNumber;  
       }
       function executeEvent2() {
+        var newPointNumber = Number(gamePointNumber.innerText) + 100;
+        gamePointNumber.innerText = newPointNumber;
         var event = $("event2");
         event.style.display = "none";
         event.parentNode.removeChild(event);
@@ -1107,6 +1125,8 @@
         hideSurvey();
       }
       function executeEvent3() {
+        var newPointNumber = Number(gamePointNumber.innerText) + 100;
+        gamePointNumber.innerText = newPointNumber;
         var event = $("event3");
         event.style.display = "none";
         event.parentNode.removeChild(event);
@@ -1129,6 +1149,8 @@
         newCruiser.style.display = "block";
       }
       function executeEvent4() {
+        var newPointNumber = Number(gamePointNumber.innerText) + 100;
+        gamePointNumber.innerText = newPointNumber;
         var event = $("event4");
         event.style.display = "none";
         event.parentNode.removeChild(event);
@@ -1136,6 +1158,8 @@
         HUDCreditNumber.innerText = newCreditNumber;
       }
       function executeEvent5() {
+        var newPointNumber = Number(gamePointNumber.innerText) + 100;
+        gamePointNumber.innerText = newPointNumber;
         var event = $("event5");
         event.style.display = "none";
         event.parentNode.removeChild(event);
@@ -1303,4 +1327,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.308--->
+<!--Version 0.310--->
