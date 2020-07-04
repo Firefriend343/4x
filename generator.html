@@ -616,26 +616,32 @@
       function buildMiningStation() {
         var el = $(lastSelectedPlanet);
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
+        var allMineralStationPlanets = $$('#system1 .planet.miningStation');
         if (miningPlanets.includes(el.biome)) {
-          var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
-          HUDMineralNumber.innerText = newMineralNumber;
-          var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
-          HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(gamePointNumber.innerText) + 150;
-          gamePointNumber.innerText = newPointNumber;
-          var system = $("system1");
-          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
-          HUDAuthorityNumber.innerText = newAuthorityNumber;
-          el.classList.add("miningStation");
-          var stationMarker = $("miningStationMarker");
-          var newTop = el.offsetTop - 10;
-          var newLeft = el.offsetLeft + 55;
-          stationMarker.style.top = newTop + "px";
-          stationMarker.style.left = newLeft + "px";
-          var newMarker = stationMarker.cloneNode(true);
-          newMarker.id = newMarker.id + "-" + el.id;
-          system.appendChild(newMarker);
-          newMarker.style.display = "block";
+          if (allMineralStationPlanets.includes(el.id)) {
+            var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
+            HUDMineralNumber.innerText = newMineralNumber;
+            var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
+            HUDCreditNumber.innerText = newCreditNumber;
+            var newPointNumber = Number(gamePointNumber.innerText) + 150;
+            gamePointNumber.innerText = newPointNumber;
+            var system = $("system1");
+            var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
+            HUDAuthorityNumber.innerText = newAuthorityNumber;
+            el.classList.add("miningStation");
+            var stationMarker = $("miningStationMarker");
+            var newTop = el.offsetTop - 10;
+            var newLeft = el.offsetLeft + 55;
+            stationMarker.style.top = newTop + "px";
+            stationMarker.style.left = newLeft + "px";
+            var newMarker = stationMarker.cloneNode(true);
+            newMarker.id = newMarker.id + "-" + el.id;
+            system.appendChild(newMarker);
+            newMarker.style.display = "block";
+          }
+          else {
+            alert("You already have a mining station here");
+          }
         }
         else {
           alert("You can't build a Mining Station here. This planet is not suitable for mining.")
@@ -757,7 +763,7 @@
       function buildCorvette() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
@@ -788,7 +794,7 @@
       function buildCruiser() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
@@ -819,7 +825,7 @@
       function buildDestroyer() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
@@ -850,7 +856,7 @@
       function buildDreadnaught() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
           HUDMineralNumber.innerText = newMineralNumber;
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
@@ -883,7 +889,7 @@
       function buildTitan() {
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
-        if (Number(currentShipNumber) <= 10) {
+        if (Number(currentShipNumber) <= 10 && Number(gamePointNumber.innerText) > 0) {
           var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
           HUDMineralNumber.innerText = newMineralNumber;
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
@@ -1305,16 +1311,27 @@
         
         ///other
         if (HUDMineralNumber.innerText <= 0) {
-         alert("you ran out of Minerals");
+          alert("you ran out of Minerals");
+          newPointNumber = Number(gamePointNumber.innerText - 200);
+          gamePointNumber.innerText = newPointNumber;
         }
         if (HUDCreditNumber.innerText <= 0) {
           alert("you ran out of Credits");
+          newPointNumber = Number(gamePointNumber.innerText - 500);
+          gamePointNumber.innerText = newPointNumber;
         }
         if (HUDAuthorityNumber.innerText <= 0) {
           alert("you ran out of Authority, you can no longer control your government");
+          newPointNumber = Number(gamePointNumber.innerText - 1000);
+          gamePointNumber.innerText = newPointNumber;
         }
         if (HUDSupplyNumber.innerText <= 0) {
           alert("you ran out of Supplies, your colonies are starving");
+          newPointNumber = Number(gamePointNumber.innerText - 500);
+          gamePointNumber.innerText = newPointNumber;
+        }
+        if (gamePointNumber.innerText <= 10000) {
+          alert("you've won the game")
         }
         hideSurvey();
       }
@@ -1327,4 +1344,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.310--->
+<!--Version 0.311--->
