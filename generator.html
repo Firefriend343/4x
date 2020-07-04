@@ -767,8 +767,6 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
           HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(HUDPointNumber.innerText) + 60;
-          HUDPointNumber.innerText = newPointNumber;
           var corvette = $("passiveCorvette");
           var newCorvette = corvette.cloneNode(true);
           var container = $("starbaseContainer");
@@ -802,8 +800,6 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
           HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(HUDPointNumber.innerText) + 140;
-          HUDPointNumber.innerText = newPointNumber;
           var cruiser = $("passiveCruiser");
           var newCruiser = cruiser.cloneNode(true);
           var container = $("starbaseContainer");
@@ -837,7 +833,7 @@
           HUDMineralNumber.innerText = newMineralNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
           HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(HUDPointNumber.innerText) + 300;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 100;
           HUDPointNumber.innerText = newPointNumber;
           var destroyer = $("passiveDestroyer");
           var newDestroyer = destroyer.cloneNode(true);
@@ -874,7 +870,7 @@
           HUDAuthorityNumber.innerText = newAuthorityNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
           HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(HUDPointNumber.innerText) + 620;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 300;
           HUDPointNumber.innerText = newPointNumber;
           var dreadnaught = $("passiveDreadnaught");
           var newDreadnaught = dreadnaught.cloneNode(true);
@@ -911,7 +907,7 @@
           HUDAuthorityNumber.innerText = newAuthorityNumber;
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
           HUDCreditNumber.innerText = newCreditNumber;
-          var newPointNumber = Number(HUDPointNumber.innerText) + 900;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 500;
           HUDPointNumber.innerText = newPointNumber;
           var titan = $("passiveTitan");
           var newTitan = titan.cloneNode(true);
@@ -999,6 +995,7 @@
             pEl.randomHabit = "Uninhabitable";
           }
         }
+        hideSurvey();
       }
       
       
@@ -1365,4 +1362,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.324--->
+<!--Version 0.325--->
