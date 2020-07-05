@@ -1396,11 +1396,13 @@
         var e2PlanetName = $("e2PlanetName");
         var e2PlanetName2 = $("e2PlanetName2");
         var event2Target = planetElList[2];
-        var event2Randomizer = Number(Math.floor(Math.random() * 35) + 1);
+        var event2Randomizer = Number(Math.floor(Math.random() * 2) + 1);
         if (event2 !== undefined && event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
-          event2.style.display = "inline-grid";
-          e2PlanetName.innerText = event2Target.randomName;
-          e2PlanetName2.innerText = event2Target.randomName;
+          if (allColonies.includes(event2Target) == false) {
+            event2.style.display = "inline-grid";
+            e2PlanetName.innerText = event2Target.randomName;
+            e2PlanetName2.innerText = event2Target.randomName;
+          }
         }
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;
@@ -1463,4 +1465,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.340--->
+<!--Version 0.341--->
