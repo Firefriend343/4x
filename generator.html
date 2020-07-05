@@ -1317,7 +1317,7 @@
             pEl.authority = newAuthorityNumber;
             console.log("The " + pEl.biome + " World is Satisfactory and has grown by 1 Unit")
           }
-          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) && pEl.satisfactoryPlanet == false) {
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) && pEl.satisfactoryPlanet != true) {
             var newPopNumber = pEl.population + 1;
             pEl.population = newPopNumber;
             var newAuthorityNumber = (pEl.authority || 0) + 1;
@@ -1332,7 +1332,7 @@
             pEl.authority = newAuthorityNumber;
           }
           else {
-            console.log("population exceeds planet limit");
+            console.log("population exceeds planet limit or an error occured ");
           }
           var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
           HUDAuthorityNumber.innerText = newAuthorityNumber;
@@ -1467,4 +1467,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.344--->
+<!--Version 0.345--->
