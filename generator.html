@@ -480,6 +480,7 @@
     <script>
       //global variables
       var lastSelectedPlanet = null;
+      var lastSurveyedPlanet = null;
       var preferenceDesert = false;
       var preferenceSavanna = false;
       var preferenceArctic = false;
@@ -618,6 +619,7 @@
       
       function survey() {
         var el = $(lastSelectedPlanet);
+        lastSurveyedPlanet = el;
         console.log(el.biome);
         var infoBox = $("info-box");
         var menu = $("constructionMenu");
@@ -665,6 +667,7 @@
         el.style.display = "none";
         var menu = $("constructionMenu");
         menu.style.display = "none";
+        lastSurveyedPlanet = null;
         console.log("survey hidden");
       }
       
@@ -760,6 +763,8 @@
       
       function constructNationalBank() {
         alert("you built a National Bank");
+        var el = $(lastSurveyedPlanet);
+        el.classList.add("nationalBank");
       }
       function constructStripMines() {
         alert("you built Strip Mines");
@@ -1443,4 +1448,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.337--->
+<!--Version 0.338--->
