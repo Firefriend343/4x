@@ -762,18 +762,23 @@
       }
       
       function constructNationalBank() {
-        alert("you built a National Bank");
-        var newPointNumber = Number(HUDPointNumber.innerText) + 80;
-        HUDPointNumber.innerText = newPointNumber;
         var el = $(lastSurveyedPlanet);
-        el.classList.add("nationalBank");
-        var button = $("constructionButton1");
-        button.style.background = "lime";
-        if (el.buildingSlots === undefined) {
-          el.buildingSlots = 1;
+        if (el.nationalBank != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("nationalBank");
+          var button = $("constructionButton1");
+          button.style.background = "forestgreen";
+          el.nationalBank = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+          }
         }
         else {
-          el.buildingSlots = el.buildingSlots + 1;
+          return;
         }
       }
       function constructStripMines() {
@@ -1469,4 +1474,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.346--->
+<!--Version 0.347--->
