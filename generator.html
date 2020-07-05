@@ -1399,7 +1399,7 @@
         var event2Randomizer = Number(Math.floor(Math.random() * 2) + 1);
         if (event2 !== undefined && event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
           var targetFound = false;
-          allColonies.forEach(colonyEl => if (colonyEl == eventToTarget) targetFound = true);
+          allColonies.forEach(function(colonyEl) {  if (colonyEl == eventToTarget) targetFound = true});
           if (!targetFound) {
             event2.style.display = "inline-grid";
             e2PlanetName.innerText = event2Target.randomName;
@@ -1467,4 +1467,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.342--->
+<!--Version 0.343--->
