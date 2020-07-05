@@ -1331,13 +1331,17 @@
         var allGasPlanets = $$('.planet.salvagedGas');
         var junkPlanetRandomizer = Number(Math.floor(Math.random * 5) + 1);
         var gasPlanetRandomizer = Number(Math.floor(Math.random * 5) + 1);
-        for (const pEl of allJunkPlanets && gasPlanetRandomizer == "1") {
-          pEl.classList.remove("salvagedJunk");
-          pEl.addEventListener("click", salvageJunkPlanet, true);
+        if (junkPlanetRandomizer == "1") {
+          for (const pEl of allJunkPlanets) {
+            pEl.classList.remove("salvagedJunk");
+            pEl.addEventListener("click", salvageJunkPlanet, true);
+          }
         }
-        for (const pEl of allGasPlanets && junkPlanetRandomizer == "1") {
-          pEl.classList.remove("salvagedGas");
-          pEl.addEventListener("click", salvageGasPlanet, true);
+        if (gasPlanetRandomizer == "1") {
+          for (const pEl of allGasPlanets && junkPlanetRandomizer == "1") {
+            pEl.classList.remove("salvagedGas");
+            pEl.addEventListener("click", salvageGasPlanet, true);
+          }
         }
         
         
@@ -1436,4 +1440,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.335--->
+<!--Version 0.336--->
