@@ -763,8 +763,16 @@
       
       function constructNationalBank() {
         alert("you built a National Bank");
+        var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+        HUDPointNumber.innerText = newPointNumber;
         var el = $(lastSurveyedPlanet);
         el.classList.add("nationalBank");
+        if (el.buildingSlots === undefined) {
+          el.buildingSlots = 1;
+        }
+        else {
+          el.buildingSlots = el.buildingSlots + 1;
+        }
       }
       function constructStripMines() {
         alert("you built Strip Mines");
@@ -1335,6 +1343,13 @@
           var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
           HUDMineralNumber.innerText = newMineralNumber;
         }
+        
+        var allNationalBanks = $$('.planet.nationalBank');
+        for (const pEl of allNationalBanks) {
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 5;
+          HUDCreditNumber.innerText = newCreditNumber;
+        }
+        
         var allJunkPlanets = $$('.planet.salvagedJunk');
         var allGasPlanets = $$('.planet.salvagedGas');
         var junkPlanetRandomizer = Number(Math.floor(Math.random * 5) + 1);
@@ -1448,4 +1463,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.339--->
+<!--Version 0.340--->
