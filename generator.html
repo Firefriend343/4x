@@ -545,17 +545,17 @@
         el.style.padding = "1.5px";
         var button2 = $("menuButton2");
         var button3 = $("menuButton3");
-        button2.style.backgroundColor = "slateblue";
-        button3.style.backgroundColor = "slateblue";
-        button2.style.backgroundColor = "#9f97d1";
-        button3.style.backgroundColor = "#9f97d1";
+        button2.style.background = "slateblue";
+        button3.style.background = "slateblue";
+        button2.style.background = "#9f97d1";
+        button3.style.background = "#9f97d1";
         var miningPlanets = ["mineral1", "mineral2", "mineral3"];
         var colonizablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
         if (miningPlanets.includes(el.biome)) {
-          button2.style.backgroundColor = "slateblue";
+          button2.style.background = "slateblue";
         }
         else if (colonizablePlanets.includes(el.biome)) {
-          button3.style.backgroundColor = "slateblue";
+          button3.style.background = "slateblue";
         }
         var planetMenu = $("planetMenu");
         planetMenu.style.display = "inline-grid";
@@ -578,8 +578,8 @@
         planetMenu.style.display = "none";
         var button2 = $("menuButton2");
         var button3 = $("menuButton3");
-        button2.style.backgroundColor = "#9f97d1";
-        button3.style.backgroundColor = "#9f97d1";
+        button2.style.background = "#9f97d1";
+        button3.style.background = "#9f97d1";
       }
       
       function selectStar(ev) {
@@ -767,6 +767,8 @@
         HUDPointNumber.innerText = newPointNumber;
         var el = $(lastSurveyedPlanet);
         el.classList.add("nationalBank");
+        var button = $("constructionButton1");
+        button.style.background = "lime";
         if (el.buildingSlots === undefined) {
           el.buildingSlots = 1;
         }
@@ -1396,7 +1398,7 @@
         var e2PlanetName = $("e2PlanetName");
         var e2PlanetName2 = $("e2PlanetName2");
         var event2Target = planetElList[2];
-        var event2Randomizer = Number(Math.floor(Math.random() * 2) + 1);
+        var event2Randomizer = Number(Math.floor(Math.random() * 35) + 1);
         if (event2 !== undefined && event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
           var targetFound = false;
           allColonies.forEach(function(colonyEl) {  if (colonyEl == event2Target) targetFound = true});
@@ -1467,4 +1469,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.345--->
+<!--Version 0.346--->
