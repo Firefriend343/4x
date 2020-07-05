@@ -621,6 +621,18 @@
         var el = $(lastSelectedPlanet);
         lastSurveyedPlanet = el.id;
         console.log(el.biome);
+        var button1 = $("constructionButton1");
+        var button2 = $("constructionButton2");
+        var button3 = $("constructionButton3");
+        var button4 = $("constructionButton4");
+        button1.style.background = "slateblue";
+        button1.disabled = false;
+        button2.style.background = "slateblue";
+        button2.disabled = false;
+        button3.style.background = "slateblue";
+        button3.disabled = false;
+        button4.style.background = "slateblue";
+        button4.disabled = false;
         var infoBox = $("info-box");
         var menu = $("constructionMenu");
         infoBox.style.display = "none";
@@ -657,6 +669,11 @@
         $("surveyPop").innerText = el.population || 0;
         if (el.classList.contains("colony")) {
           menu.style.display = "inline-grid";
+          if (el.nationalBank == true) {
+            var button = $("constructionButton1");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
         }
         else {
           return;
@@ -1475,4 +1492,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.349--->
+<!--Version 0.350--->
