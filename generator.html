@@ -674,6 +674,21 @@
             button.style.background = "forestgreen";
             button.disabled = true;
           }
+          if (el.stripMines == true) {
+            var button = $("constructionButton2");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+          if (el.hydroponicFarms == true) {
+            var button = $("constructionButton3");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+          if (el.lawOffices == true) {
+            var button = $("constructionButton4");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
         }
         else {
           return;
@@ -800,13 +815,67 @@
         }
       }
       function constructStripMines() {
-        alert("you built Strip Mines");
+        var el = $(lastSurveyedPlanet);
+        if (el.stripMines != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("stripMines");
+          var button = $("constructionButton1");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.stripMines = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+          }
+        }
+        else {
+          return;
+        }
       }
       function constructHydroponicFarms() {
-        alert("you built Hydroponic Farms");
+        var el = $(lastSurveyedPlanet);
+        if (el.hydroponicFarms != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("hydroponicFarms");
+          var button = $("constructionButton1");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.hydroponicFarms = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+          }
+        }
+        else {
+          return;
+        }
       }
       function constructLawOffices() {
-        alert("you built Law Offices");
+        var el = $(lastSurveyedPlanet);
+        if (el.lawOffices != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("lawOffices");
+          var button = $("constructionButton1");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.lawOffices = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+          }
+        }
+        else {
+          return;
+        }
       }
     
       
@@ -1492,4 +1561,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.350--->
+<!--Version 0.351--->
