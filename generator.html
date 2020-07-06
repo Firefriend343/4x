@@ -669,6 +669,20 @@
         $("surveyPop").innerText = el.population || 0;
         if (el.classList.contains("colony")) {
           menu.style.display = "inline-grid";
+          if (el.buildingSlots >= 2) {
+            var button1 = $("constructionButton1");
+            var button2 = $("constructionButton2");
+            var button3 = $("constructionButton3");
+            var button4 = $("constructionButton4");
+            button1.style.background = "forestgreen";
+            button1.disabled = true;
+            button2.style.background = "forestgreen";
+            button2.disabled = true;
+            button3.style.background = "forestgreen";
+            button3.disabled = true;
+            button4.style.background = "forestgreen";
+            button4.disabled = true;            
+          }
           if (el.nationalBank == true) {
             var button = $("constructionButton1");
             button.style.background = "forestgreen";
@@ -808,6 +822,20 @@
           }
           else {
             el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.style.background = "forestgreen";
+              button1.disabled = true;
+              button2.style.background = "forestgreen";
+              button2.disabled = true;
+              button3.style.background = "forestgreen";
+              button3.disabled = true;
+              button4.style.background = "forestgreen";
+              button4.disabled = true; 
+            }
           }
         }
         else {
@@ -816,7 +844,7 @@
       }
       function constructStripMines() {
         var el = $(lastSurveyedPlanet);
-        if (el.stripMines != true) {
+        if (el.stripMines != true && el.buildingSlots <= 2) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
           HUDPointNumber.innerText = newPointNumber;
           el.classList.add("stripMines");
@@ -829,6 +857,20 @@
           }
           else {
             el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.style.background = "forestgreen";
+              button1.disabled = true;
+              button2.style.background = "forestgreen";
+              button2.disabled = true;
+              button3.style.background = "forestgreen";
+              button3.disabled = true;
+              button4.style.background = "forestgreen";
+              button4.disabled = true; 
+            }
           }
         }
         else {
@@ -850,6 +892,20 @@
           }
           else {
             el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.style.background = "forestgreen";
+              button1.disabled = true;
+              button2.style.background = "forestgreen";
+              button2.disabled = true;
+              button3.style.background = "forestgreen";
+              button3.disabled = true;
+              button4.style.background = "forestgreen";
+              button4.disabled = true; 
+            }
           }
         }
         else {
@@ -871,6 +927,20 @@
           }
           else {
             el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.style.background = "forestgreen";
+              button1.disabled = true;
+              button2.style.background = "forestgreen";
+              button2.disabled = true;
+              button3.style.background = "forestgreen";
+              button3.disabled = true;
+              button4.style.background = "forestgreen";
+              button4.disabled = true; 
+            }
           }
         }
         else {
@@ -1561,4 +1631,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.352--->
+<!--Version 0.353--->
