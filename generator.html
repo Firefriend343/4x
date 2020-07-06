@@ -1509,9 +1509,24 @@
         }
         
         var allNationalBanks = $$('.planet.nationalBank');
+        var allStripMines = $$('.planet.stripMines');
+        var allHydroponicFarms = $$('.planet.hydroponicFarms');
+        var allLawOffices = $$('.planet.lawOffices');
         for (const pEl of allNationalBanks) {
           var newCreditNumber = Number(HUDCreditNumber.innerText) + 5;
           HUDCreditNumber.innerText = newCreditNumber;
+        }
+        for (const pEl of allStripMines) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 5;
+          HUDMineralNumber.innerText = newMineralNumber;
+        }
+        for (const pEl of allHydroponicFarms) {
+          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 5;
+          HUDSupplyNumber.innerText = newSupplyNumber;
+        }
+        for (const pEl of allLawOffices) {
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + 5;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
         }
         
         var allJunkPlanets = $$('.planet.salvagedJunk');
@@ -1631,4 +1646,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.353--->
+<!--Version 0.355--->
