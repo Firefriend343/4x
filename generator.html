@@ -490,25 +490,25 @@
       var planetElList = $$('.planet');
       var starElList = $$('.star')
       var surveyDictionary = {
-          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "5 Supplies",
+          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10 Supplies",
                    surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
                    surveyPop:0 }, 
-          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "5 Supplies",
+          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10 Supplies",
                     surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
                     surveyPop:0 },
-          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "5 Supplies", 
+          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10 Supplies", 
                    surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
                    surveyPop:0 },
-          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "5 Supplies", 
+          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10 Supplies", 
                    surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
                    surveyPop:0 },
-          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "5 Supplies",
+          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10 Supplies",
                         surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
                         surveyPop:0 },
-          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "5 Supplies",
+          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10 Supplies",
                   surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
                   surveyPop:0 },
-          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "5 Supplies", 
+          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "10 Supplies", 
                   surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
                   surveyPop:0 },
           mineral1: { surveyType: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "5 Credits",
@@ -808,6 +808,8 @@
       }
       
       function constructNationalBank() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.nationalBank != true) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
@@ -843,6 +845,8 @@
         }
       }
       function constructStripMines() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.stripMines != true && el.buildingSlots <= 2) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
@@ -878,6 +882,8 @@
         }
       }
       function constructHydroponicFarms() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.hydroponicFarms != true) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
@@ -913,6 +919,8 @@
         }
       }
       function constructLawOffices() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.lawOffices != true) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
@@ -1646,4 +1654,4 @@
     </script>
   </body>
 </html>
-<!--Version # 0.355--->
+<!--Version # 0.357--->
