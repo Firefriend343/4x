@@ -641,7 +641,7 @@
                 
         var biome = el.biome;
         $("surveyName").innerText = el.randomName;
-        $("surveyImage").src = surveyDictionary[el.biome].surveyImage;
+        $("surveyImage").src = el.src;
         $("surveyImage").style.height = "40px";
         $("surveyImage").style.width = "40px";
         $("surveyType").innerText = surveyDictionary[el.biome].surveyType;
@@ -1655,4 +1655,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.358--->
+<!--Version 0.360--->
