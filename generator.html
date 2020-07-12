@@ -808,7 +808,7 @@
       }
       
       function constructNationalBank() {
-        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
         HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.nationalBank != true) {
@@ -845,7 +845,7 @@
         }
       }
       function constructStripMines() {
-        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
         HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.stripMines != true && el.buildingSlots <= 2) {
@@ -882,7 +882,7 @@
         }
       }
       function constructHydroponicFarms() {
-        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
         HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.hydroponicFarms != true) {
@@ -919,7 +919,7 @@
         }
       }
       function constructLawOffices() {
-        var newCreditNumber = Number(HUDCreditNumber.innerText) + 80;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
         HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
         if (el.lawOffices != true) {
