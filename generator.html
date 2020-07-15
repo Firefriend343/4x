@@ -2,6 +2,7 @@
   <head>
     <title> 4x Random System Generator </title>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
   
     <style>
       body { background:#030a17; }
@@ -38,7 +39,7 @@
       .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .name { grid-area: name; text-align:center; }
-      .name span { font-size:140%; }
+      .name span { font-size:140%; font-family: 'IM Fell French Canon', serif; }
       .sprite { grid-area:sprite; }
       .type { grid-area:type; text-align:center }
       .type span { font-size:120%; }
@@ -70,7 +71,7 @@
       .HUDtop { grid-area:top; background:#1d4b96; }
       .HUDbottom { grid-area:bottom; background:#1d4b96; }
       .HUDcell { position:relative; padding:3px; overflow:hidden; font-family: 'MedievalSharp', cursive; }
-      .HUDcell p { overflow:hidden; font-size:80%; font-family: 'MedievalSharp', cursive; }
+      .HUDcell p { overflow:hidden; font-size:80%; font-family: 'IM Fell French Canon', serif; }
       .HUDcell span { overflow:hidden; font-size:80%; }
       .margin1 { grid-area:margin1; }
       .margin2 { grid-area:margin2; }
@@ -90,7 +91,7 @@
       #HUDAuthorityIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       #HUDSupplyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
       
-      .HUDPointContainer { position:fixed; top:20px; left:1200px; width:60px; height:10px; font-family: 'MedievalSharp', cursive;
+      .HUDPointContainer { position:fixed; top:20px; left:1200px; width:60px; height:10px; font-family: 'IM Fell French Canon', serif;
         font-size:70%; display:block; background:royalblue; text-align:center; }
       
       .planetMenu { position:absolute; top:20px; left:20px; width: 180px; height: 140px; font-family: 'MedievalSharp', cursive; 
@@ -152,7 +153,7 @@
       .designationCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .designationCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .designationCaption { grid-area:designationCaption; text-align:center; }
-      .designationCaption span { font-size:130%; text-align:center; }
+      .designationCaption span { font-size:130%; font-family: 'IM Fell French Canon', serif; }
       .designationButton1 { grid-area:designationButton1; }
       .designationButton2 { grid-area:designationButton2; }
       .designationButton3 { grid-area:designationButton3; }
@@ -182,7 +183,7 @@
       .constructionCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .constructionCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .constructionCaption { grid-area:constructionCaption; text-align:center; }
-      .constructionCaption span { font-size:130%; text-align:center; }
+      .constructionCaption span { font-size:130%; text-align:center; font-family: 'IM Fell French Canon', serif; }
       .constructionButton1 { grid-area:constructionButton1; }
       .constructionButton2 { grid-area:constructionButton2; }
       .constructionButton3 { grid-area:constructionButton3; }
@@ -236,10 +237,11 @@
       #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       
-      .shipBuilderMenu { position:absolute; top:0px; left:0px; width: 125px; height: 180px; font-family: 'MedievalSharp', cursive; 
+      .shipBuilderMenu { position:absolute; top:0px; left:0px; width: 125px; height: 240px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: 41px 82px; grid-auto-rows: auto;
         grid-template-areas:
+          "builderLabel   builderLabel"
           "builderButton1 builderCaption1"  
           "builderButton2 builderCaption2"
           "builderButton3 builderCaption3"  
@@ -251,6 +253,7 @@
       .builderCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .builderCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .builderCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderLabel { font-family: 'IM Fell French Canon', serif; font-size:90%; }
       .builderButton1 { grid-area:builderButton1; }
       .builderButton2 { grid-area:builderButton2; }
       .builderButton3 { grid-area:builderButton3; }
@@ -283,8 +286,8 @@
       .EAcell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .EAcell span { font-family: 'MedievalSharp', cursive; font-size:110%; }
       .EAname { grid-area:EAname; text-align:center; margin-top:10px; }
-      .EAname span { white-space:nowrap; font-size:200%; }
-      .EAname i { font-family: 'MedievalSharp', cursive; font-size:200%; }
+      .EAname span { white-space:nowrap; font-size:200%; font-family: 'IM Fell French Canon', serif; }
+      .EAname i { font-family: 'IM Fell French Canon', serif; font-size:200%; }
       .EAdesc { grid-area:EAdesc; text-align:center; padding:10px; }
       .EAbutton { grid-area:EAbutton; }
       #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
@@ -402,6 +405,7 @@
     </div> 
     
     <div class="shipBuilderMenu" id="builderMenu">
+      <div class="builderCell builderLabel"><span> Starbase </span></div>
       <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png" onclick="buildCorvette()"></img></div>
       <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
       <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png" onclick="buildCruiser()"></img></div>
@@ -1655,4 +1659,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.362--->
+<!--Version 0.363--->
