@@ -237,23 +237,23 @@
       #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
       
-      .shipBuilderMenu { position:absolute; top:0px; left:0px; width: 120px; height: 240px; font-family: 'MedievalSharp', cursive; 
+      .shipBuilderMenu { position:absolute; top:0px; left:0px; width: 135px; height: 240px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
-        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-columns: 45px 90px; grid-auto-rows: auto;
         grid-template-areas:
-          "builderLabel   builderLabel    builderLabel"
-          "builderButton1 builderCaption1 builderCaption1"  
-          "builderButton2 builderCaption2 builderCaption2"
-          "builderButton3 builderCaption3 builderCaption3"  
-          "builderButton4 builderCaption4 builderCaption4"
-          "builderButton5 builderCaption5 builderCaption5"; 
+          "builderLabel   builderLabel"
+          "builderButton1 builderCaption1"  
+          "builderButton2 builderCaption2"
+          "builderButton3 builderCaption3"  
+          "builderButton4 builderCaption4"
+          "builderButton5 builderCaption5"; 
         gap: 1.75px; background: #1d4b96; transition:1.2s;
       }
       
       .builderCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
       .builderCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
       .builderCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
-      .builderLabel { font-family: 'IM Fell French Canon', serif; font-size:90%; }
+      .builderLabel { grid-area:builderLabel; font-family: 'IM Fell French Canon', serif; font-size:90%; }
       .builderButton1 { grid-area:builderButton1; }
       .builderButton2 { grid-area:builderButton2; }
       .builderButton3 { grid-area:builderButton3; }
@@ -1659,4 +1659,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.364--->
+<!--Version 0.365--->
