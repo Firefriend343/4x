@@ -271,6 +271,55 @@
       #builderButton4 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
       #builderButton5 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
       
+      .marketMenu {
+        position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray; 
+        border-radius: 5px; margin: 15px; overflow:scroll; display:inline-grid;  
+        gap: 2px; background: #1d4b96; transition:0.4s; grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 60px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+        grid-template-areas:
+        "marketCaption"
+        "market1a"
+        "market1b"
+        "market2a"
+        "market2b"
+        "market3a"
+        "market3b"
+        "market4a"
+        "market4b"
+        "market5a"
+        "market5b"
+        "market6a"
+        "market6b"
+        "market7a"
+        "market7b"
+        "market8a"
+        "market8b"
+        "market9a"
+        "market9b";
+      }
+      #marketMenu {}
+      .marketCell { font-size:90%; background:#7096cf; text-align:left; padding:7.5px; }
+      .marketCell span { text-align:center; }
+      .marketCaption { grid-area:marketCaption; font-size:210%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market1a { grid-area:market1a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market1b { grid-area:market1b; }
+      .market2a { grid-area:market2a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market2b { grid-area:market2b; }
+      .market3a { grid-area:market3a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market3b { grid-area:market3b; }
+      .market4a { grid-area:market4a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market4b { grid-area:market4b; }
+      .market5a { grid-area:market5a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market5b { grid-area:market5b; }
+      .market6a { grid-area:market6a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market6b { grid-area:market6b; }
+      .market7a { grid-area:market7a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market7b { grid-area:market7b; }
+      .market8a { grid-area:market8a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market8b { grid-area:market8b; }
+      .market9a { grid-area:market9a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market9b { grid-area:market9b; }
+      
       
       .eventA { 
         position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
@@ -354,6 +403,28 @@
       <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
       <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span> Population Units. </span></div>
       <div class="cell bottom"></div>
+    </div>
+
+    <div class="marketMenu" id="marketMenu">
+      <div class="marketCell marketCaption"><span><i> The Market </i></span></div>
+      <div class="marketCell market1a"><span> Colonies </span></div>
+      <div class="marketCell market1b"><span> 20 Minerals, 40 Credits, 20 Authority, 100 Supplies </span></div>
+      <div class="marketCell market2a"><span> Mining Stations </span></div>
+      <div class="marketCell market2b"><span> 40 Minerals, 100 Credits </span></div>
+      <div class="marketCell market3a"><span> Any Colony Building </span></div>
+      <div class="marketCell market3b"><span> 40 Credits </span></div>
+      <div class="marketCell market4a"><span> Corvettes </span></div>
+      <div class="marketCell market4b"><span> 50 Minerals, 20 Credits </span></div>
+      <div class="marketCell market5a"><span> Cruisers </span></div>
+      <div class="marketCell market5b"><span> 110 Minerals, 50 Credits </span></div>
+      <div class="marketCell market6a"><span> Destroyers </span></div>
+      <div class="marketCell market6b"><span> 320 Minerals, 160 Credits </span></div>
+      <div class="marketCell market7a"><span> Dreadnaughts </span></div>
+      <div class="marketCell market7b"><span> 520 Minerals, 240 Credits, 50 Authority </span></div>
+      <div class="marketCell market8a"><span> Titans </span></div>
+      <div class="marketCell market8b"><span> 1100 Minerals, 530 Credits, 350 Authority </span></div>
+      <div class="marketCell market9a"><span> TBD </span></div>
+      <div class="marketCell market9b"><span> TBD </span></div>
     </div>
     
     <div class="constructionMenu" id="constructionMenu">
@@ -1657,4 +1728,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.368--->
+<!--Version 0.370--->
