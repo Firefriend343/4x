@@ -271,8 +271,9 @@
       #builderButton4 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
       #builderButton5 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
       
-      .marketbutton { position:fixed; width:30px; height:30px; top:100px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .marketButton { position:fixed; width:30px; height:30px; top:100px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
+      #marketButton {}
       
       .marketMenu {
         position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray; 
@@ -408,9 +409,9 @@
       <div class="cell bottom"></div>
     </div>
 
-    <button class="marketButton"><span> M </span></button>
+    <button class="marketButton" id="marketButton" onclick="showMarket"><span> M </span></button>
 
-    <div class="marketMenu" id="marketMenu">
+    <div class="marketMenu" id="marketMenu" onclick="hideMarket">
       <div class="marketCell marketCaption"><span><i> The Market </i></span></div>
       <div class="marketCell market1a"><span> Colonies </span></div>
       <div class="marketCell market1b"><span> 20 Minerals, 40 Credits, 20 Authority, 100 Supplies </span></div>
@@ -1336,6 +1337,18 @@
         hideSurvey();
       }
       
+      function showMarket() {
+        var market = $("marketMenu");
+        var button = $("marketButton");
+        market.style.display = "inline-grid";
+        button.style.display = "none";
+      }
+      function hideMarket() {
+        var market = $("marketMenu");
+        var button = $("marketButton");
+        market.style.display = "none";
+        button.style.display = "block";
+      }
       
       //system generation
       
@@ -1733,4 +1746,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.370--->
+<!--Version 0.371--->
