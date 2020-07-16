@@ -7,7 +7,7 @@
   
     <style>
     
-      .tradeMenu { position:fixed; width: 350px; height: 180px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; 
+      .tradeMenu { position:fixed; width: 300px; height: 180px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
         grid-template-areas:
@@ -17,22 +17,46 @@
         gap: 1.75px; background: #1d4b96;transition:0.4s;
       }
       
-      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
+      #tradeMenu {}
+      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:90%; background:#7096cf; text-align:center; font-family: 'MedievalSharp', cursive; }
       .tradeCaption { grid-area:tradeCaption; font-size:170%; font-family: 'IM Fell French Canon', serif; margin-top:5px; }
       .tradeMinerals1 { grid-area:tradeMinerals1; }
+      .tradeMinerals1 img { position:relative; width:40px; height:40px; }
       .tradeMinerals2 { grid-area:tradeMinerals2; }
       .tradeMinerals3 { grid-area:tradeMinerals3; }
+      .tradeMinerals3 button { position:fixed; width:30px; height:30px; top:100px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
       .tradeMinerals4 { grid-area:tradeMinerals4; }
       .tradeMinerals5 { grid-area:tradeMinerals5; }
+      .tradeMinerals5 img { position:relative; width:40px; height:40px; }
       .tradeSupplies1 { grid-area:tradeMinerals1; }
+      .tradeSupplies1 img { position:relative; width:40px; height:40px; }
       .tradeSupplies2 { grid-area:tradeMinerals2; }
       .tradeSupplies3 { grid-area:tradeMinerals3; }
+      .tradeSupplies3 button { position:fixed; width:30px; height:30px; top:100px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
       .tradeSupplies4 { grid-area:tradeMinerals4; }
       .tradeSupplies5 { grid-area:tradeMinerals5; }
+      .tradeSupplies5 img { position:relative; width:40px; height:40px; }
       
     </style>
   </head>
   <body>
     
+    <div class="tradeMenu" id="tradeMenu">
+      <div class="tradeCell tradeCaption"><span> The Market </span></div>
+      <div class="tradeCell tradeMinerals1"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeMinerals2"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeMinerals3"><button> Buy </button></div>
+      <div class="tradeCell tradeMinerals4"><span> 30 Minerals </span></div>
+      <div class="tradeCell tradeMinerals5"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeSupplies1"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeSupplies2"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeSupplies3"><button> Buy </button></div>
+      <div class="tradeCell tradeSupplies4"><span> 30 Supplies </span></div>
+      <div class="tradeCell tradeSupplies5"><img src="supplyicon.png"></img></div>
+    </div>
+    
   </body>
 </html>
+<!--Version 3--->
