@@ -324,7 +324,59 @@
       .market9a { grid-area:market9a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
       .market9b { grid-area:market9b; }
       
+      tradeMenu { position:fixed; width: 300px; height: 300px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display:inline-grid; margin: 15px;
+        grid-template-columns: repeat(5, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "tradeCaption   tradeCaption   tradeCaption   tradeCaption   tradeCaption"
+          "tradeMinerals1 tradeMinerals2 tradeMinerals3 tradeMinerals4 tradeMinerals5"
+          "tradeSupplies1 tradeSupplies2 tradeSupplies3 tradeSupplies4 tradeSupplies5"
+          "tradeMinerals6 tradeMinerals7 tradeMinerals8 tradeMinerals9 tradeMinerals10"
+          "tradeSupplies6 tradeSupplies7 tradeSupplies8 tradeSupplies9 tradeSupplies10"
+          ;
+        gap: 1.75px; background: #1d4b96;transition:0.4s;
       
+        #tradeMenu {}
+      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:90%; background:#7096cf; text-align:center; font-family: 'MedievalSharp', cursive; }
+      .tradeCaption { grid-area:tradeCaption; font-size:170%; font-family: 'IM Fell French Canon', serif; margin-top:5px; }
+      .tradeMinerals1 { grid-area:tradeMinerals1; }
+      .tradeMinerals1 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals2 { grid-area:tradeMinerals2; }
+      .tradeMinerals3 { grid-area:tradeMinerals3; }
+      .tradeMinerals3 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals4 { grid-area:tradeMinerals4; }
+      .tradeMinerals5 { grid-area:tradeMinerals5; }
+      .tradeMinerals5 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies1 { grid-area:tradeSupplies1; }
+      .tradeSupplies1 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies2 { grid-area:tradeSupplies2; }
+      .tradeSupplies3 { grid-area:tradeSupplies3; }
+      .tradeSupplies3 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies4 { grid-area:tradeSupplies4; }
+      .tradeSupplies5 { grid-area:tradeSupplies5; }
+      .tradeSupplies5 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals6 { grid-area:tradeMinerals6; }
+      .tradeMinerals6 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals7 { grid-area:tradeMinerals7; }
+      .tradeMinerals8 { grid-area:tradeMinerals8; }
+      .tradeMinerals8 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals9 { grid-area:tradeMinerals9; }
+      .tradeMinerals10 { grid-area:tradeMinerals10; }
+      .tradeMinerals10 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies6 { grid-area:tradeSupplies6; }
+      .tradeSupplies6 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies7 { grid-area:tradeSupplies7; }
+      .tradeSupplies8 { grid-area:tradeSupplies8; }
+      .tradeSupplies8 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies9 { grid-area:tradeSupplies9; }
+      .tradeSupplies10 { grid-area:tradeSupplies10; }
+      .tradeSupplies10 img { position:relative; width:40px; height:40px; top:7.5px; }
+        
+        
       .eventA { 
         position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
         border-radius: 5px; display: none; margin: 15px; gap: 1.75px; background: #1d4b96; transition:0.4s;
@@ -508,6 +560,54 @@
       <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean World Preference </span></div>
     </div>
     
+    <button class="marketButton" id="marketButton" onclick="showMarket()"><span> M </span></button>
+
+    <div class="marketMenu" id="marketMenu" onclick="hideMarket()">
+      <div class="marketCell marketCaption"><span><i> Prices </i></span></div>
+      <div class="marketCell market1a"><span> Colonies </span></div>
+      <div class="marketCell market1b"><span> 20 Minerals, 40 Credits, 20 Authority, 100 Supplies </span></div>
+      <div class="marketCell market2a"><span> Mining Stations </span></div>
+      <div class="marketCell market2b"><span> 40 Minerals, 100 Credits </span></div>
+      <div class="marketCell market3a"><span> Any Colony Building </span></div>
+      <div class="marketCell market3b"><span> 40 Credits </span></div>
+      <div class="marketCell market4a"><span> Corvettes </span></div>
+      <div class="marketCell market4b"><span> 50 Minerals, 20 Credits </span></div>
+      <div class="marketCell market5a"><span> Cruisers </span></div>
+      <div class="marketCell market5b"><span> 110 Minerals, 50 Credits </span></div>
+      <div class="marketCell market6a"><span> Destroyers </span></div>
+      <div class="marketCell market6b"><span> 320 Minerals, 160 Credits </span></div>
+      <div class="marketCell market7a"><span> Dreadnaughts </span></div>
+      <div class="marketCell market7b"><span> 520 Minerals, 240 Credits, 50 Authority </span></div>
+      <div class="marketCell market8a"><span> Titans </span></div>
+      <div class="marketCell market8b"><span> 1100 Minerals, 530 Credits, 350 Authority </span></div>
+      <div class="marketCell market9a"><span> TBD </span></div>
+      <div class="marketCell market9b"><span> TBD </span></div>
+    </div>
+
+    <div class="tradeMenu" id="tradeMenu">
+      <div class="tradeCell tradeCaption"><span> The Market </span></div>
+      <div class="tradeCell tradeMinerals1"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeMinerals2"><span> 30 Credits </span></div>
+      <div class="tradeCell tradeMinerals3"><button> --> </button></div>
+      <div class="tradeCell tradeMinerals4"><span> 20 Minerals </span></div>
+      <div class="tradeCell tradeMinerals5"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeSupplies1"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeSupplies2"><span> 30 Credits </span></div>
+      <div class="tradeCell tradeSupplies3"><button> --> </button></div>
+      <div class="tradeCell tradeSupplies4"><span> 20 Supplies </span></div>
+      <div class="tradeCell tradeSupplies5"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeMinerals6"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeMinerals7"><span> 30 Minerals </span></div>
+      <div class="tradeCell tradeMinerals8"><button> --> </button></div>
+      <div class="tradeCell tradeMinerals9"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeMinerals10"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeSupplies6"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies7"><span> 30 Supplies </span></div>
+      <div class="tradeCell tradeSupplies8"><button> --> </button></div>
+      <div class="tradeCell tradeSupplies9"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeSupplies10"><img src="crediticon.png"></img></div>
+    </div>
+
     <div class="eventA" id="event1" onclick="moveEvent(this)">
       <div class="Eacell EAname"><span> Mineral Theft </span></div>
       <div class="Eacell EAdesc">
@@ -1746,4 +1846,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.378--->
+<!--Version 0.379--->
