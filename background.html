@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title> Background Test </title>
+    <style>
+      .backgroundStar { display:none; position:absolute; width:3px; height:3px; }
+      #bks1 {}
+      #bks2 {}
+      #bks3 {}
+      #bks4 {}
+      #bks5 {}
+      #bks6 {}
+      #bks7 {}
+      #bks8 {}
+      #bks9 {}
+      #bks10 {}
+      
+    </style>
+  </head>
+  <body>
+    
+    <div class="backgroundStar" id="bks1"></div>
+    <div class="backgroundStar" id="bks2"></div>
+    <div class="backgroundStar" id="bks3"></div>
+    <div class="backgroundStar" id="bks4"></div>
+    <div class="backgroundStar" id="bks5"></div>
+    <div class="backgroundStar" id="bks6"></div>
+    <div class="backgroundStar" id="bks7"></div>
+    <div class="backgroundStar" id="bks8"></div>
+    <div class="backgroundStar" id="bks9"></div>
+    <div class="backgroundStar" id="bks10"></div>
+    
+    
+    
+    <script>
+      
+      function randomBackgroundStarPlacement() {
+        var allBackgroundStars = document.querySelectAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var randomTop = Math.floor(Math.random * 900) + 1;
+          var randomLeft = Math.floor(Math.random * 1100) + 1;
+          bksEl.style.top = randomTop + "px";
+          bksEl.style.left = randomLeft + "px";
+          bksEl.style.display = "block";
+        }
+      }
+      
+      
+      randomBackgroundStarPlacement();
+    </script>
+  </body>
+</html>
+<!--Version 1--->
