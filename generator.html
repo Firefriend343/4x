@@ -325,7 +325,6 @@
       
       .tradeButton { position:fixed; width:30px; height:30px; top:140px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
-      .tradeButton img { top:20px; left:20px; }
       #tradeButton {}
       
       .tradeMenu { position:fixed; width: 300px; height: 300px; top:140px; left:10px; font-family: 'MedievalSharp', cursive; 
@@ -565,7 +564,7 @@
       <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean World Preference </span></div>
     </div>
     
-    <button class="marketButton" id="marketButton" onclick="showMarket()"><span> M </span></button>
+    <button class="marketButton" id="marketButton" onclick="showMarket()"><span> P </span></button>
 
     <div class="marketMenu" id="marketMenu" onclick="hideMarket()">
       <div class="marketCell marketCaption"><span><i> Prices </i></span></div>
@@ -589,28 +588,28 @@
       <div class="marketCell market9b"><span> TBD </span></div>
     </div>
 
-    <button class="tradeButton" id="tradeButton" onclick="showTradeMenu()"><img src="crediticon.png"></img></button>
+    <button class="tradeButton" id="tradeButton" onclick="showTradeMenu()"><span> M </span></button>
 
     <div class="tradeMenu" id="tradeMenu" onclick="hideTradeMenu()">
       <div class="tradeCell tradeCaption"><span> The Market </span></div>
       <div class="tradeCell tradeMinerals1"><img src="crediticon.png"></img></div>
       <div class="tradeCell tradeMinerals2"><span> 30 Credits </span></div>
-      <div class="tradeCell tradeMinerals3"><button> --> </button></div>
+      <div class="tradeCell tradeMinerals3"><button onclick="trade1()"> --> </button></div>
       <div class="tradeCell tradeMinerals4"><span> 20 Minerals </span></div>
       <div class="tradeCell tradeMinerals5"><img src="gemstoneicon.png"></img></div>
       <div class="tradeCell tradeSupplies1"><img src="crediticon.png"></img></div>
       <div class="tradeCell tradeSupplies2"><span> 30 Credits </span></div>
-      <div class="tradeCell tradeSupplies3"><button> --> </button></div>
+      <div class="tradeCell tradeSupplies3"><button onclick="trade2()"> --> </button></div>
       <div class="tradeCell tradeSupplies4"><span> 20 Supplies </span></div>
       <div class="tradeCell tradeSupplies5"><img src="supplyicon.png"></img></div>
       <div class="tradeCell tradeMinerals6"><img src="gemstoneicon.png"></img></div>
       <div class="tradeCell tradeMinerals7"><span> 30 Minerals </span></div>
-      <div class="tradeCell tradeMinerals8"><button> --> </button></div>
+      <div class="tradeCell tradeMinerals8"><button onclick="trade3()"> --> </button></div>
       <div class="tradeCell tradeMinerals9"><span> 20 Credits </span></div>
       <div class="tradeCell tradeMinerals10"><img src="crediticon.png"></img></div>
       <div class="tradeCell tradeSupplies6"><img src="supplyicon.png"></img></div>
       <div class="tradeCell tradeSupplies7"><span> 30 Supplies </span></div>
-      <div class="tradeCell tradeSupplies8"><button> --> </button></div>
+      <div class="tradeCell tradeSupplies8"><button onclick="trade4()"> --> </button></div>
       <div class="tradeCell tradeSupplies9"><span> 20 Credits </span></div>
       <div class="tradeCell tradeSupplies10"><img src="crediticon.png"></img></div>
     </div>
@@ -1469,6 +1468,31 @@
         button.style.display = "block";
       }
       
+      function trade1() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 30;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
+      function trade2() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 30;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 20;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      function trade3() {
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 30;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
+      function trade4() {
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 30;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
+      
       //system generation
       
       function generateStats() {
@@ -1865,4 +1889,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.382--->
+<!--Version 0.383--->
