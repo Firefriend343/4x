@@ -277,8 +277,7 @@
       
       .marketMenu {
         position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray; 
-        border-radius: 5px; margin: 15px; overflow:scroll; display:none;  
-        gap: 3px; background: #1d4b96; transition:0.4s; grid-template-columns: repeat(1, 1fr);
+        border-radius: 5px; overflow:scroll; display:none; gap: 3px; background: #1d4b96; transition:0.4s; grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: 60px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
         grid-template-areas:
         "marketCaption"
@@ -324,8 +323,13 @@
       .market9a { grid-area:market9a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
       .market9b { grid-area:market9b; }
       
-      .tradeMenu { position:fixed; width: 300px; height: 300px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; 
-        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display:inline-grid; margin: 15px;
+      .tradeButton { position:fixed; width:30px; height:30px; top:140px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
+      .tradeButton img { top:20px; left:20px; }
+      #tradeButton {}
+      
+      .tradeMenu { position:fixed; width: 300px; height: 300px; top:140px; left:10px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display:none;
         grid-template-columns: repeat(5, 1fr); grid-auto-rows: auto;
         grid-template-areas:
           "tradeCaption   tradeCaption   tradeCaption   tradeCaption   tradeCaption"
@@ -334,7 +338,7 @@
           "tradeMinerals6 tradeMinerals7 tradeMinerals8 tradeMinerals9 tradeMinerals10"
           "tradeSupplies6 tradeSupplies7 tradeSupplies8 tradeSupplies9 tradeSupplies10"
           ;
-        gap: 1.75px; background: #1d4b96;transition:0.4s;
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
       }
       
        #tradeMenu {}
@@ -585,7 +589,9 @@
       <div class="marketCell market9b"><span> TBD </span></div>
     </div>
 
-    <div class="tradeMenu" id="tradeMenu">
+    <button class="marketButton" id="marketButton" onclick="showTradeMenu()"><img src="creditIcon.png"></img></button>
+
+    <div class="tradeMenu" id="tradeMenu" onclick="hideTradeMenu()">
       <div class="tradeCell tradeCaption"><span> The Market </span></div>
       <div class="tradeCell tradeMinerals1"><img src="crediticon.png"></img></div>
       <div class="tradeCell tradeMinerals2"><span> 30 Credits </span></div>
@@ -1450,6 +1456,18 @@
         market.style.display = "none";
         button.style.display = "block";
       }
+      function showTradeMenu() {
+        var menu = $("tradeMenu");
+        var button = $("tradeButton");
+        menu.style.display = "inline-grid";
+        button.style.display = "none";
+      }
+      function hideTradeMenu() {
+        var menu = $("tradeMenu");
+        var button = $("tradeButton");
+        menu.style.display = "none";
+        button.style.display = "block";
+      }
       
       //system generation
       
@@ -1847,4 +1865,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.380--->
+<!--Version 0.381--->
