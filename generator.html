@@ -485,30 +485,6 @@
       <div class="cell bottom"></div>
     </div>
 
-    <button class="marketButton" id="marketButton" onclick="showMarket()"><span> M </span></button>
-
-    <div class="marketMenu" id="marketMenu" onclick="hideMarket()">
-      <div class="marketCell marketCaption"><span><i> Prices </i></span></div>
-      <div class="marketCell market1a"><span> Colonies </span></div>
-      <div class="marketCell market1b"><span> 20 Minerals, 40 Credits, 20 Authority, 100 Supplies </span></div>
-      <div class="marketCell market2a"><span> Mining Stations </span></div>
-      <div class="marketCell market2b"><span> 40 Minerals, 100 Credits </span></div>
-      <div class="marketCell market3a"><span> Any Colony Building </span></div>
-      <div class="marketCell market3b"><span> 40 Credits </span></div>
-      <div class="marketCell market4a"><span> Corvettes </span></div>
-      <div class="marketCell market4b"><span> 50 Minerals, 20 Credits </span></div>
-      <div class="marketCell market5a"><span> Cruisers </span></div>
-      <div class="marketCell market5b"><span> 110 Minerals, 50 Credits </span></div>
-      <div class="marketCell market6a"><span> Destroyers </span></div>
-      <div class="marketCell market6b"><span> 320 Minerals, 160 Credits </span></div>
-      <div class="marketCell market7a"><span> Dreadnaughts </span></div>
-      <div class="marketCell market7b"><span> 520 Minerals, 240 Credits, 50 Authority </span></div>
-      <div class="marketCell market8a"><span> Titans </span></div>
-      <div class="marketCell market8b"><span> 1100 Minerals, 530 Credits, 350 Authority </span></div>
-      <div class="marketCell market9a"><span> TBD </span></div>
-      <div class="marketCell market9b"><span> TBD </span></div>
-    </div>
-    
     <div class="constructionMenu" id="constructionMenu">
       <div class="constructionCell constructionCaption" onclick="hideSurvey()"><span id="constructionCaption"> Colony Buildings </span></div>
       <div class="constructionCell constructionButton1"><button id="constructionButton1" onclick="constructNationalBank()"> Build National Bank </button></div>
@@ -586,6 +562,8 @@
     
     <button class="marketButton" id="marketButton" onclick="showMarket()"><span> P </span></button>
 
+    <button class="tradeButton" id="tradeButton" onclick="showTradeMenu()"><span> M </span></button>
+
     <div class="marketMenu" id="marketMenu" onclick="hideMarket()">
       <div class="marketCell marketCaption"><span><i> Prices </i></span></div>
       <div class="marketCell market1a"><span> Colonies </span></div>
@@ -607,8 +585,6 @@
       <div class="marketCell market9a"><span> TBD </span></div>
       <div class="marketCell market9b"><span> TBD </span></div>
     </div>
-
-    <button class="tradeButton" id="tradeButton" onclick="showTradeMenu()"><span> M </span></button>
 
     <div class="tradeMenu" id="tradeMenu">
       <div class="tradeCell tradeCaption" onclick="hideTradeMenu()"><span> The Market </span></div>
@@ -1477,26 +1453,34 @@
       function showMarket() {
         var market = $("marketMenu");
         var button = $("marketButton");
+        var button2 = $("tradeButton");
         market.style.display = "inline-grid";
         button.style.display = "none";
+        button2.style.display = "none"
       }
       function hideMarket() {
         var market = $("marketMenu");
         var button = $("marketButton");
+        var button2 = $("tradeButton");
         market.style.display = "none";
         button.style.display = "block";
+        button2.style.display = "block"
       }
       function showTradeMenu() {
         var menu = $("tradeMenu");
         var button = $("tradeButton");
+        var button2 = $("marketButton");
         menu.style.display = "inline-grid";
         button.style.display = "none";
+        button2.style.display = "none";
       }
       function hideTradeMenu() {
         var menu = $("tradeMenu");
         var button = $("tradeButton");
+        var button2 = $("marketButton");
         menu.style.display = "none";
         button.style.display = "block";
+        button2.style.display = "block"
       }
       
       function trade1() {
@@ -1932,4 +1916,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.385--->
+<!--Version 0.386--->
