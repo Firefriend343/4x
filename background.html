@@ -5,7 +5,7 @@
       
        body { background:#030a17; }
       
-      .backgroundStar { display:none; position:absolute; width:3px; height:3px; background:white; border:0.2px solid grey; transition:1s; }
+      .backgroundStar { display:none; position:absolute; width:3px; height:3px; background:white; border:0.2px solid grey; transition:3s; }
       #bks1 {} 
       #bks2 {}
       #bks3 {}
@@ -109,14 +109,14 @@
       function bkstarGrowthLoop() {
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
         for (const bksEl of allBackgroundStars) {
-          var newHeight = "5px";
-          var newWidth = "5px";
+          var newHeight = "6px";
+          var newWidth = "6px";
           bksEl.style.height = newHeight;
           bksEl.style.width = newWidth;
         }
         setTimeout(function(){
           bkstarGrowthLoop2();
-        },1000);
+        },3000);
       }
       function bkstarGrowthLoop2() {
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
@@ -128,7 +128,7 @@
         }
         setTimeout(function(){
           bkstarGrowthLoop();
-        },1000);
+        },3000);
       }
       
       randomBackgroundStarPlacement();
@@ -136,4 +136,4 @@
     </script>
   </body>
 </html>
-<!--Version 10--->
+<!--Version 11--->
