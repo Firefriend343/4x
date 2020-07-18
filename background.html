@@ -39,8 +39,8 @@
       function randomBackgroundStarPlacement() {
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
         for (const bksEl of allBackgroundStars) {
-          var randomTop = Math.floor(Math.random * 900) + 1;
-          var randomLeft = Math.floor(Math.random * 1100) + 1;
+          var randomTop = Number(Math.floor(Math.random * 900) + 1);
+          var randomLeft = Number(Math.floor(Math.random * 1100) + 1);
           bksEl.style.top = randomTop + "px";
           bksEl.style.left = randomLeft + "px";
           bksEl.style.display = "block";
@@ -52,4 +52,4 @@
     </script>
   </body>
 </html>
-<!--Version 3--->
+<!--Version 4--->
