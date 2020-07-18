@@ -327,16 +327,17 @@
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
       #tradeButton {}
       
-      .tradeMenu { position:fixed; width: 300px; height: 300px; top:140px; left:10px; font-family: 'MedievalSharp', cursive; 
+      .tradeMenu { position:fixed; width: 300px; height: 420px; top:140px; left:10px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display:none;
         grid-template-columns: repeat(5, 1fr); grid-auto-rows: auto;
         grid-template-areas:
-          "tradeCaption   tradeCaption   tradeCaption   tradeCaption   tradeCaption"
-          "tradeMinerals1 tradeMinerals2 tradeMinerals3 tradeMinerals4 tradeMinerals5"
-          "tradeSupplies1 tradeSupplies2 tradeSupplies3 tradeSupplies4 tradeSupplies5"
-          "tradeMinerals6 tradeMinerals7 tradeMinerals8 tradeMinerals9 tradeMinerals10"
-          "tradeSupplies6 tradeSupplies7 tradeSupplies8 tradeSupplies9 tradeSupplies10"
-          ;
+          "tradeCaption    tradeCaption    tradeCaption    tradeCaption    tradeCaption"
+          "tradeMinerals1  tradeMinerals2  tradeMinerals3  tradeMinerals4  tradeMinerals5"
+          "tradeSupplies1  tradeSupplies2  tradeSupplies3  tradeSupplies4  tradeSupplies5"
+          "tradeMinerals6  tradeMinerals7  tradeMinerals8  tradeMinerals9  tradeMinerals10"
+          "tradeSupplies6  tradeSupplies7  tradeSupplies8  tradeSupplies9  tradeSupplies10"
+          "tradeMinerals11 tradeMinerals12 tradeMinerals13 tradeMinerals14 tradeMinerals15"
+          "tradeSupplies11 tradeSupplies12 tradeSupplies13 tradeSupplies14 tradeSupplies15";
         gap: 1.75px; background: #1d4b96; transition:0.4s;
       }
       
@@ -361,6 +362,7 @@
       .tradeSupplies4 { grid-area:tradeSupplies4; }
       .tradeSupplies5 { grid-area:tradeSupplies5; }
       .tradeSupplies5 img { position:relative; width:40px; height:40px; top:7.5px; }
+      
       .tradeMinerals6 { grid-area:tradeMinerals6; }
       .tradeMinerals6 img { position:relative; width:40px; height:40px; top:7.5px; }
       .tradeMinerals7 { grid-area:tradeMinerals7; }
@@ -379,7 +381,25 @@
       .tradeSupplies9 { grid-area:tradeSupplies9; }
       .tradeSupplies10 { grid-area:tradeSupplies10; }
       .tradeSupplies10 img { position:relative; width:40px; height:40px; top:7.5px; }
-        
+      
+      .tradeMinerals11 { grid-area:tradeMinerals11; }
+      .tradeMinerals11 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals12 { grid-area:tradeMinerals12; }
+      .tradeMinerals13 { grid-area:tradeMinerals13; }
+      .tradeMinerals13 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals14 { grid-area:tradeMinerals14; }
+      .tradeMinerals15 { grid-area:tradeMinerals15; }
+      .tradeMinerals15 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies11 { grid-area:tradeSupplies11; }
+      .tradeSupplies11 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies12 { grid-area:tradeSupplies12; }
+      .tradeSupplies13 { grid-area:tradeSupplies13; }
+      .tradeSupplies13 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies14 { grid-area:tradeSupplies14; }
+      .tradeSupplies15 { grid-area:tradeSupplies15; }
+      .tradeSupplies15 img { position:relative; width:40px; height:40px; top:7.5px; }
         
       .eventA { 
         position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
@@ -612,6 +632,17 @@
       <div class="tradeCell tradeSupplies8"><button onclick="trade4()"> --> </button></div>
       <div class="tradeCell tradeSupplies9" onclick="hideTradeMenu()"><span> 20 Credits </span></div>
       <div class="tradeCell tradeSupplies10" onclick="hideTradeMenu()"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeMinerals11" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeMinerals12" onclick="hideTradeMenu()"><span> 30 Minerals </span></div>
+      <div class="tradeCell tradeMinerals13"><button onclick="trade5()"> --> </button></div>
+      <div class="tradeCell tradeMinerals14" onclick="hideTradeMenu()"><span> 20 Supplies </span></div>
+      <div class="tradeCell tradeMinerals15" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies11" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies12" onclick="hideTradeMenu()"><span> 30 Supplies </span></div>
+      <div class="tradeCell tradeSupplies13"><button onclick="trade6()"> --> </button></div>
+      <div class="tradeCell tradeSupplies14" onclick="hideTradeMenu()"><span> 20 Minerals </span></div>
+      <div class="tradeCell tradeSupplies15" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+      
     </div>
 
     <div class="eventA" id="event1" onclick="moveEvent(this)">
@@ -1492,6 +1523,18 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
         HUDCreditNumber.innerText = newCreditNumber;
       }
+      function trade5() {
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 30;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 20;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      function trade6() {
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 30;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
       
       //system generation
       
@@ -1889,4 +1932,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.384--->
+<!--Version 0.385--->
