@@ -463,36 +463,7 @@
 
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
 
-    <div class="backgroundStar" id="bks1"></div>
-    <div class="backgroundStar" id="bks2"></div>
-    <div class="backgroundStar" id="bks3"></div>
-    <div class="backgroundStar" id="bks4"></div>
-    <div class="backgroundStar" id="bks5"></div>
-    <div class="backgroundStar" id="bks6"></div>
-    <div class="backgroundStar" id="bks7"></div>
-    <div class="backgroundStar" id="bks8"></div>
-    <div class="backgroundStar" id="bks9"></div>
-    <div class="backgroundStar" id="bks10"></div>
-    <div class="backgroundStar" id="bks11"></div>
-    <div class="backgroundStar" id="bks12"></div>
-    <div class="backgroundStar" id="bks13"></div>
-    <div class="backgroundStar" id="bks14"></div>
-    <div class="backgroundStar" id="bks15"></div>
-    <div class="backgroundStar" id="bks16"></div>
-    <div class="backgroundStar" id="bks17"></div>
-    <div class="backgroundStar" id="bks18"></div>
-    <div class="backgroundStar" id="bks19"></div>
-    <div class="backgroundStar" id="bks20"></div>
-    <div class="backgroundStar" id="bks21"></div>
-    <div class="backgroundStar" id="bks22"></div>
-    <div class="backgroundStar" id="bks23"></div>
-    <div class="backgroundStar" id="bks24"></div>
-    <div class="backgroundStar" id="bks25"></div>
-    <div class="backgroundStar" id="bks26"></div>
-    <div class="backgroundStar" id="bks27"></div>
-    <div class="backgroundStar" id="bks28"></div>
-    <div class="backgroundStar" id="bks29"></div>
-    <div class="backgroundStar" id="bks30"></div>
+    <div class="backgroundStar" id="bks"></div>
     
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
@@ -1649,6 +1620,18 @@
         HUDSupplyNumber.innerText = newSupplyNumber;
       }
       function generateBackgroundStarPlacement() {
+        var bkstarNumber = 0;
+        if (bkstarNumber < 60) {
+          var star = $("bkstar");
+          var newStar = star.cloneNode(true);
+          var container = $("system1");
+          newStar.id = star.id + "-" + bkstarNumber;
+          container.appendChild(newStar);
+          bkstarNumber++;
+        }
+        else if (bkstarNumber = 60) {
+          console.log("All stars have been accounted for");
+        }
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
         for (const bksEl of allBackgroundStars) {
           var randomTop = Number(Math.floor(Math.random() * 740) + 61);
@@ -1967,4 +1950,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.396--->
+<!--Version 0.397--->
