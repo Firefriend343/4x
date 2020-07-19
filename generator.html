@@ -138,6 +138,9 @@
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
       
+      #closingButton { position:fixed; width:30px; height:30px; top:70px; left:1250px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; } 
+      
       .backgroundStar { display:none; position:absolute; width:2px; height:2px; background:white; border:0.4px solid grey; 
         opacity:70%; transition:2s; border-radius:50%; }
       
@@ -466,6 +469,8 @@
     </div>
 
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
+
+    <button id="closingButton" onclick="hideSystem()"><b> X </b></button>
 
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
@@ -1511,6 +1516,11 @@
         HUDMineralNumber.innerText = newMineralNumber;
       }
       
+      function hideSystem() {
+        var system = $("system1"); //replace with variable of system element when read
+        system.style.display = "none";
+      }
+      
       //system generation
       
       function generateStats() {
@@ -1956,4 +1966,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.407--->
+<!--Version 0.408--->
