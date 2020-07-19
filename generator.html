@@ -463,8 +463,6 @@
 
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
 
-    <div class="backgroundStar" id="bkstar"></div>
-    
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -503,20 +501,26 @@
       <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
     </div>
 
-    <img class="star" id="s1"></img>  
     <div id="system1">
+      
+      <img class="star" id="s1"></img>  
+      
       <img class="planet" id="p1"></img>
       <img class="planet" id="p2"></img>
       <img class="planet" id="p3"></img>
       <img class="planet" id="p4"></img>
       <img class="planet" id="p5"></img>
       <img class="planet" id="p6"></img>
+
+      <div class="backgroundStar" id="bkstar"></div>
+
+      <div class="starbaseContainer" id="starbaseContainer">
+        <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
+        onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
+      </div>
+
     </div>
 
-    <div class="starbaseContainer" id="starbaseContainer">
-      <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
-      onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
-    </div>
     
     <div class="planetMenu" id="planetMenu">
       <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey Planet </button></div>
@@ -1950,4 +1954,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.401--->
+<!--Version 0.402--->
