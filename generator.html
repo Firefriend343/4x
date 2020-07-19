@@ -138,6 +138,8 @@
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
       
+      .backgroundStar { display:none; position:absolute; width:2px; height:2px; background:white; border:0.2px solid grey; transition:2s; border-radius:50%; }
+      
       .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 190px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
         grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
@@ -438,6 +440,7 @@
   </head>
   
   <body>
+    
     <div class="HUD">
       <div class="HUDcell HUDtop"></div>
       <div class="HUDcell margin1"></div>
@@ -458,6 +461,47 @@
     <div class="HUDPointContainer"><span id="HUDPointNumber"> 0 </span></div>
 
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
+
+    <div class="backgroundStar" id="bks1"></div>
+    <div class="backgroundStar" id="bks2"></div>
+    <div class="backgroundStar" id="bks3"></div>
+    <div class="backgroundStar" id="bks4"></div>
+    <div class="backgroundStar" id="bks5"></div>
+    <div class="backgroundStar" id="bks6"></div>
+    <div class="backgroundStar" id="bks7"></div>
+    <div class="backgroundStar" id="bks8"></div>
+    <div class="backgroundStar" id="bks9"></div>
+    <div class="backgroundStar" id="bks10"></div>
+    <div class="backgroundStar" id="bks11"></div>
+    <div class="backgroundStar" id="bks12"></div>
+    <div class="backgroundStar" id="bks13"></div>
+    <div class="backgroundStar" id="bks14"></div>
+    <div class="backgroundStar" id="bks15"></div>
+    <div class="backgroundStar" id="bks16"></div>
+    <div class="backgroundStar" id="bks17"></div>
+    <div class="backgroundStar" id="bks18"></div>
+    <div class="backgroundStar" id="bks19"></div>
+    <div class="backgroundStar" id="bks20"></div>
+    <div class="backgroundStar" id="bks21"></div>
+    <div class="backgroundStar" id="bks22"></div>
+    <div class="backgroundStar" id="bks23"></div>
+    <div class="backgroundStar" id="bks24"></div>
+    <div class="backgroundStar" id="bks25"></div>
+    <div class="backgroundStar" id="bks26"></div>
+    <div class="backgroundStar" id="bks27"></div>
+    <div class="backgroundStar" id="bks28"></div>
+    <div class="backgroundStar" id="bks29"></div>
+    <div class="backgroundStar" id="bks30"></div>
+    <div class="backgroundStar" id="bks31"></div>
+    <div class="backgroundStar" id="bks32"></div>
+    <div class="backgroundStar" id="bks33"></div>
+    <div class="backgroundStar" id="bks34"></div>
+    <div class="backgroundStar" id="bks35"></div>
+    <div class="backgroundStar" id="bks36"></div>
+    <div class="backgroundStar" id="bks37"></div>
+    <div class="backgroundStar" id="bks38"></div>
+    <div class="backgroundStar" id="bks39"></div>
+    <div class="backgroundStar" id="bks40"></div>
 
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
@@ -618,7 +662,6 @@
       <div class="tradeCell tradeSupplies13"><button onclick="trade6()"> --> </button></div>
       <div class="tradeCell tradeSupplies14" onclick="hideTradeMenu()"><span> 20 Minerals </span></div>
       <div class="tradeCell tradeSupplies15" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
-      
     </div>
 
     <div class="eventA" id="event1" onclick="moveEvent(this)">
@@ -1614,6 +1657,40 @@
         var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 200;
         HUDSupplyNumber.innerText = newSupplyNumber;
       }
+      function generateBackgroundStarPlacement() {
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var randomTop = Number(Math.floor(Math.random() * 740) + 61);
+          var randomLeft = Number(Math.floor(Math.random() * 1300) + 1);
+          bksEl.style.top = randomTop + "px";
+          bksEl.style.left = randomLeft + "px";
+          bksEl.style.display = "block";
+        }
+      }
+      function bkstarGrowthLoop() {
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var newHeight = "6px";
+          var newWidth = "6px";
+          bksEl.style.height = newHeight;
+          bksEl.style.width = newWidth;
+        }
+        setTimeout(function(){
+          bkstarGrowthLoop2();
+        },2000);
+      }
+      function bkstarGrowthLoop2() {
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var newHeight = "2px";
+          var newWidth = "2px";
+          bksEl.style.height = newHeight;
+          bksEl.style.width = newWidth;
+        }
+        setTimeout(function(){
+          bkstarGrowthLoop();
+        },2000);
+      }
       
       ///events
       function executeEvent1() {
@@ -1893,7 +1970,9 @@
       generateStarImg();
       generateStarbase();
       generateCurrency();
+      generateBackgroundStarPlacement();
+      bkstarGrowthLoop();
     </script>
   </body>
 </html>
-<!--Version 0.388--->
+<!--Version 0.390--->
