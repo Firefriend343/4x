@@ -461,7 +461,9 @@
     
     <div class="HUDPointContainer"><span id="HUDPointNumber"> 0 </span></div>
 
-    <div class="backgroundStar" id="bkstar"></div>
+    <div id="backgroundStarContainer">
+      <div class="backgroundStar" id="bkstar"></div>
+    </div>
 
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
 
@@ -1628,8 +1630,9 @@
         while (bkstarNumber < 80) {
           var star = $("bkstar");
           var newStar = star.cloneNode(false);
+          var conatiner = $("backgroundStarContainer");
           newStar.id = star.id + "-" + bkstarNumber;
-          star.appendChild(newStar);
+          container.appendChild(newStar);
           bkstarNumber++;
         }
         if (bkstarNumber == 80) {
@@ -1953,4 +1956,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.405--->
+<!--Version 0.406--->
