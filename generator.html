@@ -138,7 +138,7 @@
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
       
-      .backgroundStar { display:none; position:absolute; width:2px; height:2px; background:white; border:0.2px solid grey; transition:2s; border-radius:50%; }
+      .backgroundStar { display:none; position:absolute; width:2px; height:2px; background:white; border:0.2px solid grey; transition:4s; border-radius:50%; }
       
       .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 190px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
@@ -492,17 +492,7 @@
     <div class="backgroundStar" id="bks28"></div>
     <div class="backgroundStar" id="bks29"></div>
     <div class="backgroundStar" id="bks30"></div>
-    <div class="backgroundStar" id="bks31"></div>
-    <div class="backgroundStar" id="bks32"></div>
-    <div class="backgroundStar" id="bks33"></div>
-    <div class="backgroundStar" id="bks34"></div>
-    <div class="backgroundStar" id="bks35"></div>
-    <div class="backgroundStar" id="bks36"></div>
-    <div class="backgroundStar" id="bks37"></div>
-    <div class="backgroundStar" id="bks38"></div>
-    <div class="backgroundStar" id="bks39"></div>
-    <div class="backgroundStar" id="bks40"></div>
-
+    
     <div class="iconCloner">
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -1670,14 +1660,14 @@
       function bkstarGrowthLoop() {
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
         for (const bksEl of allBackgroundStars) {
-          var newHeight = "6px";
-          var newWidth = "6px";
+          var newHeight = "5px";
+          var newWidth = "5px";
           bksEl.style.height = newHeight;
           bksEl.style.width = newWidth;
         }
         setTimeout(function(){
           bkstarGrowthLoop2();
-        },2000);
+        },4000);
       }
       function bkstarGrowthLoop2() {
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
@@ -1689,8 +1679,9 @@
         }
         setTimeout(function(){
           bkstarGrowthLoop();
-        },2000);
+        },4000);
       }
+      
       
       ///events
       function executeEvent1() {
@@ -1975,4 +1966,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.390--->
+<!--Version 0.391--->
