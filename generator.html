@@ -943,7 +943,7 @@
             var newLeft = el.offsetLeft + 55;
             stationMarker.style.top = newTop + "px";
             stationMarker.style.left = newLeft + "px";
-            var newMarker = stationMarker.cloneNode(true);
+            var newMarker = stationMarker.cloneNode(false);
             newMarker.id = newMarker.id + "-" + el.id;
             system.appendChild(newMarker);
             newMarker.style.display = "block";
@@ -980,7 +980,7 @@
             var newLeft = el.offsetLeft + 55;
             colonyMarker.style.top = newTop + "px";
             colonyMarker.style.left = newLeft + "px";
-            var newMarker = colonyMarker.cloneNode(true);
+            var newMarker = colonyMarker.cloneNode(false);
             newMarker.id = newMarker.id + "-" + el.id;
             system.appendChild(newMarker);
             newMarker.style.display = "block";
@@ -1209,7 +1209,7 @@
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
           HUDCreditNumber.innerText = newCreditNumber;
           var corvette = $("passiveCorvette");
-          var newCorvette = corvette.cloneNode(true);
+          var newCorvette = corvette.cloneNode(false);
           var container = $("starbaseContainer");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
@@ -1242,7 +1242,7 @@
           var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
           HUDCreditNumber.innerText = newCreditNumber;
           var cruiser = $("passiveCruiser");
-          var newCruiser = cruiser.cloneNode(true);
+          var newCruiser = cruiser.cloneNode(false);
           var container = $("starbaseContainer");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
@@ -1277,7 +1277,7 @@
           var newPointNumber = Number(HUDPointNumber.innerText) + 100;
           HUDPointNumber.innerText = newPointNumber;
           var destroyer = $("passiveDestroyer");
-          var newDestroyer = destroyer.cloneNode(true);
+          var newDestroyer = destroyer.cloneNode(false);
           var container = $("starbaseContainer");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
@@ -1314,7 +1314,7 @@
           var newPointNumber = Number(HUDPointNumber.innerText) + 300;
           HUDPointNumber.innerText = newPointNumber;
           var dreadnaught = $("passiveDreadnaught");
-          var newDreadnaught = dreadnaught.cloneNode(true);
+          var newDreadnaught = dreadnaught.cloneNode(false);
           var container = $("starbaseContainer");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
@@ -1351,7 +1351,7 @@
           var newPointNumber = Number(HUDPointNumber.innerText) + 500;
           HUDPointNumber.innerText = newPointNumber;
           var titan = $("passiveTitan");
-          var newTitan = titan.cloneNode(true);
+          var newTitan = titan.cloneNode(false);
           var container = $("starbaseContainer");
           currentShipNumber = Number(currentShipNumber) + 1;
           starbase.dataset.ships = currentShipNumber;
@@ -1627,7 +1627,7 @@
         var bkstarNumber = 0;
         while (bkstarNumber < 80) {
           var star = $("bkstar");
-          var newStar = star.cloneNode(true);
+          var newStar = star.cloneNode(false);
           newStar.id = star.id + "-" + bkstarNumber;
           star.appendChild(newStar);
           bkstarNumber++;
@@ -1697,7 +1697,7 @@
         var newLeft = el.offsetLeft + 55;
         colonyMarker.style.top = newTop + "px";
         colonyMarker.style.left = newLeft + "px";
-        var newMarker = colonyMarker.cloneNode(true);
+        var newMarker = colonyMarker.cloneNode(false);
         newMarker.id = newMarker.id + "-" + el.id;
         system.appendChild(newMarker);
         newMarker.style.display = "block";
@@ -1712,7 +1712,7 @@
         var starbase = $("passiveStarbase-s1");
         var currentShipNumber = starbase.dataset.ships;  
         var cruiser = $("passiveCruiser");
-        var newCruiser = cruiser.cloneNode(true);
+        var newCruiser = cruiser.cloneNode(false);
         var container = $("starbaseContainer");
         currentShipNumber = Number(currentShipNumber) + 1;
         starbase.dataset.ships = currentShipNumber;
@@ -1953,4 +1953,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.403--->
+<!--Version 0.405--->
