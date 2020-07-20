@@ -1527,6 +1527,7 @@
         var ministarContainer = $("ministarContainer");
         system.style.opacity = "0%";
         ministarContainer.style.display = "block";
+        ministarContainer.style.opacity = "0%";
         setTimeout(function(){
           hideSystem2();
         },0800);
@@ -1542,9 +1543,21 @@
         var ministarContainer = $("ministarContainer");
         var newSystemNumber = el.id.split("-")[1];
         var newSystem = $("system" + newSystemNumber);
-        ministarContainer.style.display = "none";
+        ministarContainer.style.display = "0%";
         newSystem.style.display = "block";
+        newSystem.style.opacity = "0%"
+        setTimeout(function(){
+          showSystem2();
+        },0800);
       }
+       function showSystem2(el) {
+         var ministarContainer = $("ministarContainer");
+         var newSystemNumber = el.id.split("-")[1];
+         var newSystem = $("system" + newSystemNumber);
+         ministarContainer.style.display = "none";
+         ministarContainer.style.opacity = "100%";
+         newSystem.style.opacity = "100%";
+       }
       
       //system generation
       
@@ -2017,4 +2030,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.413--->
+<!--Version 0.414--->
