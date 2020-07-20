@@ -28,7 +28,7 @@
         var ministarCount = 0;
         var star = document.getElementById("ministar");
         var container = document.getElementById("ministarContainer");
-        while (ministarCount > 60) {
+        while (ministarCount < 60) {
           var newStar = star.cloneNode(false);
           var randomTop = Number(Math.floor(Math.random() * 740) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 1265) + 36);
@@ -50,4 +50,4 @@
     </script>
   </body>
 </html>
-<!--Version 6--->
+<!--Version 7--->
