@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title> Map Test </title>
+    <style>
+      
+      body { background:#030a17; }
+      .ministar { position:absolute; width:10px; height:10px; background:white; border-radius:50%; transition:0.45s; }
+      
+      .iconCloner { display:none; }
+      
+      .ministarContainer { display:none; }
+      
+    </style>
+    
+  </head>
+  <body>
+  
+    <div class="iconCloner">
+      <img class="ministar" id="ministar"></img>
+    </div>
+    
+    <div class="ministarContainer" id="ministarContainer">
+    </div>
+  
+    <script>
+    
+      function generateMinistars() {
+        var ministarCount = 0;
+        var star = document.getElementById("ministar");
+        var container = document.getElementById("ministarContainer");
+        while (ministarCount > 60) {
+          var newStar = star.cloneNode(false);
+          var randomTop = Number(Math.floor(Math.random() * 740) + 61);
+          var randomLeft = Number(Math.floor(Math.random() * 1265) + 36);
+          container.cloneNode(newStar);
+          newStar.id = star.id + Number(ministarCount + 1);
+          newStar.style.display = "block";
+          newStar.style.top = newTop + "px";
+          newStar.style.left = newLeft + "px";
+        }
+        if (ministarCount = 60) {
+          container.style.display = "block";
+          console.log("all system stars have been accounted for");
+          return;
+        }
+      }
+    
+    
+    generateMinistars();
+    </script>
+  </body>
+</html>
