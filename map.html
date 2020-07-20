@@ -28,7 +28,7 @@
         var ministarCount = 0;
         var star = document.getElementById("ministar");
         var container = document.getElementById("ministarContainer");
-        while (ministarCount < 60) {
+        while (ministarCount < 40) {
           var newStar = star.cloneNode(false);
           var randomTop = Number(Math.floor(Math.random() * 740) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 1265) + 36);
@@ -42,7 +42,7 @@
           container.appendChild(newStar);
           ministarCount++;
         }
-        if (ministarCount == 60) {
+        if (ministarCount == 40) {
           container.style.display = "block";
           console.log("all system stars have been accounted for");
         }
@@ -53,4 +53,4 @@
     </script>
   </body>
 </html>
-<!--Version 10--->
+<!--Version 11--->
