@@ -32,11 +32,12 @@
           var newStar = star.cloneNode(false);
           var randomTop = Number(Math.floor(Math.random() * 740) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 1265) + 36);
-          container.cloneNode(newStar);
+          container.appendChild(newStar);
           newStar.id = star.id + Number(ministarCount + 1);
           newStar.style.display = "block";
           newStar.style.top = newTop + "px";
           newStar.style.left = newLeft + "px";
+          ministarCount++;
         }
         if (ministarCount = 60) {
           container.style.display = "block";
