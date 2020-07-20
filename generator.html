@@ -1543,9 +1543,9 @@
         var ministarContainer = $("ministarContainer");
         var newSystemNumber = el.id.split("-")[1];
         var newSystem = $("system" + newSystemNumber);
-        ministarContainer.style.display = "0%";
+        ministarContainer.style.opacity = "0%";
         newSystem.style.display = "block";
-        newSystem.style.opacity = "0%"
+        newSystem.style.opacity = "100%"
         setTimeout(function(){
           showSystem2(el);
         },0800);
@@ -1556,7 +1556,6 @@
          var newSystem = $("system" + newSystemNumber);
          ministarContainer.style.display = "none";
          ministarContainer.style.opacity = "100%";
-         newSystem.style.opacity = "100%";
        }
       
       //system generation
@@ -2030,4 +2029,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.415--->
+<!--Version 0.416--->
