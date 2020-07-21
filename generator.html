@@ -1562,13 +1562,12 @@
           var container = $("system1");
           var newPlanet = planet.cloneNode(false);
           newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
-          newPlanet.classList.remove("planet");
-          newPlanet.classList.add("planet");
           container.appendChild(newPlanet);
           planetNumber++;
         }
         if (planetNumber == 6) {
           console.log("all system1 planets have been accounted for");
+          planetElList = $$('.planet');
         }
       }
       function generatePlanetStats() {
@@ -2049,4 +2048,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.430--->
+<!--Version 0.431--->
