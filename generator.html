@@ -989,7 +989,7 @@
             colonyMarker.style.top = newTop + "px";
             colonyMarker.style.left = newLeft + "px";
             var newMarker = colonyMarker.cloneNode(false);
-            newMarker.id = newMarker.id + "-" + el.id;
+            newMarker.id = newMarker.id + "~" + el.id;
             system.appendChild(newMarker);
             newMarker.style.display = "block";
             hideSurvey();
@@ -1006,7 +1006,7 @@
         }
       }
       function surveyColony(el) {
-        var planet = el.id.split("-")[1];
+        var planet = el.id.split("~")[1];
         lastSelectedPlanet = planet;
         console.log("surveyColony executed " + planet);
         survey();
@@ -2049,4 +2049,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.434--->
+<!--Version 0.435--->
