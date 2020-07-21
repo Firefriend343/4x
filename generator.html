@@ -515,7 +515,7 @@
       <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
     </div>
 
-    <div class="system">
+    <div class="system" id="system1">
       
       <img class="star" id="s1"></img>  
 
@@ -696,7 +696,8 @@
       var preferenceContinental = false;
       var preferenceOcean = false;
       var planetElList = $$('.planet');
-      var starElList = $$('.star')
+      var starElList = $$('.star');
+      var systemElList = $$('.system');
       var surveyDictionary = {
           desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10 Supplies",
                    surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
@@ -928,7 +929,7 @@
       function buildMiningStation() {
         var el = $(lastSelectedPlanet);
         const miningPlanets = ["mineral1", "mineral2", "mineral3"];
-        var allMineralStationPlanets = $$('#system1 .planet.miningStation');
+        var allMineralStationPlanets = $$('.planet.miningStation');
         if (miningPlanets.includes(el.biome)) {
           if (el.miningStation == true) {
             alert("You already have a mining station here!");
@@ -2050,4 +2051,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.439--->
+<!--Version 0.440--->
