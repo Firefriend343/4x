@@ -473,6 +473,7 @@
     <button id="closingButton" onclick="hideSystem()"><b> X </b></button>
 
     <div class="iconCloner">
+      <div class="system" id="system"></div>
       <img class="planet" id="p"></img>
       
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
@@ -1555,6 +1556,12 @@
        }
       
       //system generation
+      function generateSystems() {
+        var systemNumber = 0;
+        while (systemNumber < 30) {
+          var system = $("system");
+        }
+      }
       function generatePlanets() {
         var planetNumber = 0;
         while (planetNumber < 6) {
