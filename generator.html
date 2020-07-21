@@ -1563,7 +1563,7 @@
       
       //system generation
       
-      function generateStats() {
+      function generatePlanetStats() {
         var allImgs = [["desertplanet1.png", "desert"],
                        ["savannaplanet1.png", "savanna"],
                        ["arcticplanet1.png", "arctic"],
@@ -1614,7 +1614,7 @@
           }
         }
       }
-      function generatePosition() {
+      function generatePlanetPosition() {
         var allPositions =   [["133px","215px"],
                               ["215px","591px"],
                               ["85px" ,"380px"],
@@ -1725,10 +1725,10 @@
         var ministarCount = 0;
         var star = $("ministar");
         var container = $("ministarContainer");
-        while (ministarCount < 40) {
+        while (ministarCount < 30) {
           var newStar = star.cloneNode(false);
           var randomTop = Number(Math.floor(Math.random() * 60 * 12) + 61);
-          var randomLeft = Number(Math.floor(Math.random() * 120 * 10) + 56);
+          var randomLeft = Number(Math.floor(Math.random() * 100 * 10) + 56);
           var imgList = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
           var randomIndex = Number(Math.floor(Math.random() * 3));
           newStar.id = star.id + "-" + Number(ministarCount + 1);
@@ -1739,7 +1739,7 @@
           container.appendChild(newStar);
           ministarCount++;
         }
-        if (ministarCount == 40) {
+        if (ministarCount == 30) {
           console.log("all system stars have been accounted for");
           var mainStar = $("ministar-1");
           var bigStar = $("s1");
@@ -2031,8 +2031,8 @@
         hideSurvey();
       }
       //Instant Functions
-      generateStats();
-      generatePosition();
+      generatePlanetStats();
+      generatePlanetPosition();
       generateStarImg();
       generateStarbase();
       generateCurrency();
@@ -2042,4 +2042,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.422--->
+<!--Version 0.423--->
