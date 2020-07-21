@@ -1578,6 +1578,7 @@
       function generatePlanets() {
         for (const syEl of systemElList) {
           var planetNumber = 0;
+          var systemNumber = 0;
           while (planetNumber < 6) {
             var planet = $("p");
             var container = $("system1");
@@ -1586,7 +1587,10 @@
             container.appendChild(newPlanet);
             planetNumber++;
           }
-          if (planetNumber == 6) {
+          while (systemNumber < 30) {
+            systemNumber++;
+          }
+          if (systemNumber == 30) {
             console.log("all system1 planets have been accounted for");
             var oldPlanet = $("p");
             oldPlanet.parentNode.removeChild(oldPlanet);
@@ -2074,4 +2078,4 @@
     </script>
   </body>
 </html>
-<!--Version 4--->
+<!--Version 5--->
