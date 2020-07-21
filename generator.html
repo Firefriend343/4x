@@ -15,12 +15,6 @@
       .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
       
       #s1 { top:300px; left:420px; }
-      #p1 { }
-      #p2 { }
-      #p3 { }
-      #p4 { }
-      #p5 { }
-      #p6 { }
       
       .ministar { position:absolute; width:15px; height:15px; background:white; border-radius:50%; transition:0.45s; }
       .ministarContainer { display:none; transition:0.8s; }
@@ -213,7 +207,7 @@
       #constructionButton4 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
     
       
-      .preferenceMenu { position:absolute; top:280px; left:250px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+      .preferenceMenu { position:absolute; top:250px; left:270px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
         font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
         grid-template-columns: 70px 150px 70px 150px; grid-auto-rows: auto;
         grid-template-areas:
@@ -353,7 +347,8 @@
       }
       
        #tradeMenu {}
-      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:90%; background:#7096cf; text-align:center; font-family: 'MedievalSharp', cursive; }
+      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:90%; background:#7096cf; text-align:center; 
+        font-family: 'MedievalSharp', cursive; }
       .tradeCaption { grid-area:tradeCaption; font-size:170%; font-family: 'IM Fell French Canon', serif; margin-top:5px; }
       .tradeMinerals1 { grid-area:tradeMinerals1; }
       .tradeMinerals1 img { position:relative; width:40px; height:40px; top:7.5px; }
@@ -478,6 +473,8 @@
     <button id="closingButton" onclick="hideSystem()"><b> X </b></button>
 
     <div class="iconCloner">
+      <img class="planet" id="p"></img>
+      
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
       <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
@@ -522,13 +519,6 @@
       
       <img class="star" id="s1"></img>  
       
-      <img class="planet" id="p1"></img>
-      <img class="planet" id="p2"></img>
-      <img class="planet" id="p3"></img>
-      <img class="planet" id="p4"></img>
-      <img class="planet" id="p5"></img>
-      <img class="planet" id="p6"></img>
-
       <div class="starbaseContainer" id="starbaseContainer">
         <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
         onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
@@ -548,11 +538,14 @@
     
     <div class="designationMenu" id="designationMenu">
       <div class="designationCell designationCaption"><span id="designationCaption"> Designation Choices </span></div>
-      <div class="designationCell designationButton1"><button id="designationButton1" onclick="designateMiningSystem()"> Designate Mining System </button></div>
+      <div class="designationCell designationButton1"><button id="designationButton1" onclick="designateMiningSystem()"> Designate Mining System </button>
+      </div>
       <div class="designationCell designationMineralIcon"><img id="designationMineralIcon" src="gemstoneicon.png"></img></div>
-      <div class="designationCell designationButton2"><button id="designationButton2" onclick="designateTradeSystem()"> Designate Trade System </button></div>
+      <div class="designationCell designationButton2"><button id="designationButton2" onclick="designateTradeSystem()"> Designate Trade System </button>
+      </div>
       <div class="designationCell designationCreditIcon"><img id="designationCreditIcon" src="crediticon.png"></img></div>
-      <div class="designationCell designationButton3"><button id="designationButton3" onclick="designateProduceSystem()"> Designate Produce System </button></div>
+      <div class="designationCell designationButton3"><button id="designationButton3" onclick="designateProduceSystem()"> Designate Produce System </button>
+      </div>
       <div class="designationCell designationSupplyIcon"><img id="designationSupplyIcon" src="supplyicon.png"></img></div>
     </div> 
     
@@ -686,9 +679,9 @@
     <div class="eventA" id="event5" onclick="moveEvent(this)">
       <div class="Eacell EAname"><span> A Rogue Planet </span></div>
       <div class="Eacell EAdesc">
-      <span> A civilian ship hailing from </span><span id="e5PlanetName"> [planetName] </span><span> was passing between systems when it noticed something. </span>
+      <span> A civilian ship hailing from </span><span id="e5PlanetName"> [planetName] </span><span> was passing between systems when it found something. </span>
       <span> The onboard scientists realized it was a rogue planet, one hurled out of its system by the gravitational force of a star. </span>
-      <span> The planet may have once supported life, but had frozen over long since leaving its home system. However, it is still rich in resources. </span></div>
+      <span> The planet may have once supported life, but had frozen over long since leaving its home system. However, it's still rich in resources. </span></div>
       <div class="EAcell EAbutton"><button id="E5button" onclick="executeEvent5()"> Salvage it. </button></div>
     </div>
 
@@ -1564,6 +1557,18 @@
       //system generation
       
       function generatePlanetStats() {
+        var planetNumber = 0;
+        while (planetNumber < 6) {
+          var planet = $("p");
+          var container = $("system1");
+          var newPlanet = planet.cloneNode(false);
+          newPlanet.id = planet.id + "-" + planetNumber + 1;
+          container.appendChild(newPlanet);
+          planetNumber++
+        }
+        if (planetNumber == 6) {
+          console.log("all system1 planets have been accounted for");
+        }
         var allImgs = [["desertplanet1.png", "desert"],
                        ["savannaplanet1.png", "savanna"],
                        ["arcticplanet1.png", "arctic"],
@@ -1613,8 +1618,6 @@
             pEl.addEventListener("click", salvageGasPlanet, true);
           }
         }
-      }
-      function generatePlanetPosition() {
         var allPositions =   [["133px","215px"],
                               ["215px","591px"],
                               ["85px" ,"380px"],
@@ -1641,6 +1644,7 @@
           }
         }
       }
+      
       function generateStarImg() {
         var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
         var randomIndex = Math.floor(Math.random() * allImgs.length);
@@ -2042,4 +2046,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.427--->
+<!--Version 0.428--->
