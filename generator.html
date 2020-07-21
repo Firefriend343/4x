@@ -1567,9 +1567,9 @@
         }
         if (planetNumber == 6) {
           console.log("all system1 planets have been accounted for");
-          planetElList = $$('.planet');
           var oldPlanet = $("p");
           oldPlanet.parentNode.removeChild(oldPlanet);
+          planetElList = $$('.planet');
         }
       }
       function generatePlanetStats() {
@@ -1645,6 +1645,7 @@
           curPlanetIndex++;
           if (curPlanetIndex > numPlanets) {
             pEl.parentNode.removeChild(pEl);
+            planetElList = $$('.planet');
           }
         }
       }
@@ -2050,4 +2051,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.436--->
+<!--Version 0.438--->
