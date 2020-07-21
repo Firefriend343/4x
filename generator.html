@@ -20,7 +20,7 @@
       #p5 { }
       #p6 { }
       
-      .ministar { position:absolute; width:10px; height:10px; background:white; border-radius:50%; transition:0.45s; }
+      .ministar { position:absolute; width:15px; height:15px; background:white; border-radius:50%; transition:0.45s; }
       .ministarContainer { display:none; transition:0.8s; }
       
       .info-box { position:fixed; width: 190px; height: 310px; top:100px; left:1050px; font-family: 'MedievalSharp', cursive; 
@@ -1725,7 +1725,7 @@
         var container = $("ministarContainer");
         while (ministarCount < 40) {
           var newStar = star.cloneNode(false);
-          var randomTop = Number(Math.floor(Math.random() * 360 * 2) + 61);
+          var randomTop = Number(Math.floor(Math.random() * 60 * 12) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 120 * 10) + 56);
           var imgList = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
           var randomIndex = Number(Math.floor(Math.random() * 3));
@@ -2040,4 +2040,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.419--->
+<!--Version 0.420--->
