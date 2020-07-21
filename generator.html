@@ -1555,20 +1555,21 @@
        }
       
       //system generation
-      
-      function generatePlanetStats() {
+      function generatePlanets() {
         var planetNumber = 0;
         while (planetNumber < 6) {
           var planet = $("p");
           var container = $("system1");
           var newPlanet = planet.cloneNode(false);
-          newPlanet.id = planet.id + "-" + planetNumber + 1;
+          newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
           container.appendChild(newPlanet);
-          planetNumber++
+          planetNumber++;
         }
         if (planetNumber == 6) {
           console.log("all system1 planets have been accounted for");
         }
+      }
+      function generatePlanetStats() {
         var allImgs = [["desertplanet1.png", "desert"],
                        ["savannaplanet1.png", "savanna"],
                        ["arcticplanet1.png", "arctic"],
@@ -2035,6 +2036,7 @@
         hideSurvey();
       }
       //Instant Functions
+      generatePlanets();
       generatePlanetStats();
       generateStarImg();
       generateStarbase();
@@ -2045,4 +2047,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.428--->
+<!--Version 0.429--->
