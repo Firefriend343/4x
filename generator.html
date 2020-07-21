@@ -9,10 +9,10 @@
     <style>
       body { background:#030a17; }
       img { image-rendering:pixelated; }
-      #system1 { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
-    
+      
       .planet { position:absolute; width:50px; height:50px; background:gray; border-radius:50%; transition:0.45s; }
       .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
+      .system { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
       
       #s1 { top:300px; left:420px; }
       
@@ -127,7 +127,7 @@
       #miningStationMarker {  }
       
       .passiveShip { position:absolute; padding:0px; }
-      .passiveStarbase { position:absolute; width:30px; height:30px; background:gray; border-radius:50%; padding:0.4px; }
+      .passiveStarbase { position:absolute; width:30px; height:30px; background:gray; border-radius:50%; padding:0.4px; display:none; }
       #passiveCorvette {  }
       #passiveCruiser {  }
       #passiveDestroyer {  }
@@ -515,17 +515,16 @@
       <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
     </div>
 
-    <div id="system1">
+    <div class="system">
       
       <img class="star" id="s1"></img>  
-      
-      <div class="starbaseContainer" id="starbaseContainer">
-        <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
-        onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
-      </div>
 
     </div>
 
+    <div class="starbaseContainer" id="starbaseContainer">
+        <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
+        onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
+    </div>
     
     <div class="planetMenu" id="planetMenu">
       <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey Planet </button></div>
@@ -2051,4 +2050,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.438--->
+<!--Version 0.439--->
