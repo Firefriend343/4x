@@ -11,6 +11,7 @@
       img { image-rendering:pixelated; }
       
       .everything {}
+      #everything {}
       .planet { position:absolute; width:50px; height:50px; background:gray; border-radius:50%; transition:0.45s; }
       .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
       .system { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
@@ -445,7 +446,7 @@
   </head>
   
   <body>
-    <div class="everything">
+    <div class="everything" id="everything">
     <div class="HUD">
       <div class="HUDcell HUDtop"></div>
       <div class="HUDcell margin1"></div>
@@ -1561,6 +1562,17 @@
         var systemNumber = 0;
         while (systemNumber < 30) {
           var system = $("system");
+          var container = $("everything");
+          var newSystem = system.cloneNode(false);
+          newSystem.id = system.id + Number(systemNumber + 1);
+          container.appendChild(newSystem);
+          systemNumber++;
+        }
+        if (systemNumber == 30) {
+          console.log("all systems have been accounted for");
+          var oldSystem = $("system");
+          oldSystem.parentNode.removeChild(oldSystem);
+          systemElList = $$('.system');
         }
       }
       function generatePlanets() {
@@ -2048,6 +2060,7 @@
         hideSurvey();
       }
       //Instant Functions
+      generateSystems();
       generatePlanets();
       generatePlanetStats();
       generateStarImg();
@@ -2059,4 +2072,4 @@
     </script>
   </body>
 </html>
-<!--Version 2--->
+<!--Version 3--->
