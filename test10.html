@@ -1,0 +1,2062 @@
+<html>
+  <head>
+    <title> Test 10 </title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  
+    <style>
+      body { background:#030a17; }
+      img { image-rendering:pixelated; }
+      
+      .everything {}
+      .planet { position:absolute; width:50px; height:50px; background:gray; border-radius:50%; transition:0.45s; }
+      .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
+      .system { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
+      
+      #s1 { top:300px; left:420px; }
+      
+      .ministar { position:absolute; width:15px; height:15px; background:white; border-radius:50%; transition:0.45s; }
+      .ministarContainer { display:none; transition:0.8s; }
+      
+      .info-box { position:fixed; width: 190px; height: 310px; top:100px; left:1050px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1.75px 50px 40px 60px 100px 50px 8.25px;
+        grid-template-areas:
+          "top    top    top"
+          "name   name   sprite"
+          "type   type   output"
+          "cost   size   habit"
+          "desc   desc   desc"
+          "pop    pop    pop"
+          "bottom bottom bottom";
+        gap: 1.75px; background: #1d4b96;transition:0.4s;
+      }
+      #info-box { display:none; }
+      
+      .cell { padding: 3px; position: relative; overflow:hidden; font-size:80%; background:#7096cf; }
+      .cell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .cell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .name { grid-area: name; text-align:center; }
+      .name span { font-size:145%; font-family: 'IM Fell French Canon', serif; }
+      .sprite { grid-area:sprite; }
+      .type { grid-area:type; text-align:center }
+      .type span { font-size:110%; }
+      .output { grid-area:output; text-align:center; }
+      .output span { font-size:90%; }
+      .cost { grid-area: cost; text-align:center; }
+      .cost span { font-size:90%; }
+      .size { grid-area:size; text-align:center }
+      .size span { font-size:110%; }
+      .habit { grid-area:habit; text-align:center; }
+      .habit span { font-size:90%; }
+      .desc { grid-area: desc; text-align:center; font-size:90%; }
+      .pop { grid-area: pop; text-align:center; }
+      .pop span { font-size:110% }
+      .top { grid-area:top; display:none; }
+      .bottom { grid-area:bottom; display:none; }
+      #surveyImage { background:grey; border-radius:50%; padding:0.2px; margin-top:2px; margin-bottom:2px; margin-left:10px; margin-right:10px; }
+      
+      .HUD { position:fixed; top:0px; left:0px; height:50px; width:100%; background:#7096cf; display:inline-grid;
+        grid-template-columns: 20px 50px 70px 40px 50px 70px 40px 50px 70px 40px 50px 70px auto;
+        grid-auto-rows:10px 30px 10px;
+        grid-template-areas:
+          "top     top         top           top     top        top          top     top           top             top     top        top          top"
+          "margin1 mineralIcon mineralNumber margin2 creditIcon creditNumber margin3 authorityIcon authorityNumber margin4 supplyIcon supplyNumber margin5"
+          "bottom  bottom      bottom        bottom  bottom     bottom       bottom  bottom        bottom          bottom  bottom     bottom       bottom";
+        gap:0px;
+        transition:0.4s
+      }
+      .HUDtop { grid-area:top; background:#1d4b96; }
+      .HUDbottom { grid-area:bottom; background:#1d4b96; }
+      .HUDcell { position:relative; padding:3px; overflow:hidden; font-family: 'MedievalSharp', cursive; }
+      .HUDcell p { overflow:hidden; font-size:80%; font-family: 'IM Fell French Canon', serif; }
+      .HUDcell span { overflow:hidden; font-size:80%; }
+      .margin1 { grid-area:margin1; }
+      .margin2 { grid-area:margin2; }
+      .margin3 { grid-area:margin3; }
+      .margin4 { grid-area:margin4; }
+      .margin5 { grid-area:margin4; }
+      .mineralIcon { grid-area:mineralIcon; }
+      .creditIcon { grid-area:creditIcon; }
+      .authorityIcon { grid-area:authorityIcon; }
+      .supplyIcon { grid-area:supplyIcon; }
+      .mineralNumber { grid-area:mineralNumber; padding:7px; }
+      .creditNumber { grid-area:creditNumber; padding:7px; }
+      .authorityNumber { grid-area:authorityNumber; padding:7px; }
+      .supplyNumber { grid-area:supplyNumber; padding:7px; }
+      #HUDMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px;}
+      #HUDCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #HUDAuthorityIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #HUDSupplyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      
+      .HUDPointContainer { position:fixed; top:20px; left:1200px; width:60px; height:10px; font-family: 'MedievalSharp', cursive;
+        font-size:70%; display:block; background:royalblue; text-align:center; }
+      
+      .planetMenu { position:absolute; top:20px; left:20px; width: 180px; height: 140px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "menuButton1  menuButton1  menuSurveyIcon"
+          "menuButton2  menuButton2  menuMineralIcon"
+          "menuButton3  menuButton3  menuCreditIcon";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+      .menuCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .menuCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .menuButton1 { grid-area:menuButton1; }
+      .menuButton2 { grid-area:menuButton2; }
+      .menuButton3 { grid-area:menuButton3; }
+      .menuSurveyIcon { grid-area:menuSurveyIcon; }
+      .menuMineralIcon { grid-area:menuMineralIcon; }
+      .menuCreditIcon { grid-area:menuCreditIcon; }
+      #planetMenu {  }
+      #menuSurveyIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuMineralIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuCreditIcon { image-rendering:pixelated; position:relative; height:25px; width:25px; }
+      #menuButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton2 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #menuButton3 { border-radius:10%; background:#9f97d1; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      
+      .iconCloner { display:none; }
+      .colonyMarker { position:absolute; height:15px; width:15px; image-rendering:pixelated; background:gray; border-radius:50%; display:none; padding:0.2px; }
+      #passiveColonyMarker {  }
+      #neutralColonyMarker {  }
+      #hostileColonyMarker {  }
+      #miningStationMarker {  }
+      
+      .passiveShip { position:absolute; padding:0px; }
+      .passiveStarbase { position:absolute; width:30px; height:30px; background:gray; border-radius:50%; padding:0.4px; display:none; }
+      #passiveCorvette {  }
+      #passiveCruiser {  }
+      #passiveDestroyer {  }
+      #passiveDreadnaught {  }
+      #passiveTitan {  }
+      
+      #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
+                    position:fixed; display:block; top:750px; left:1100px; }
+      
+      #closingButton { position:fixed; width:30px; height:30px; top:70px; left:1250px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; } 
+      
+      .backgroundStar { display:none; position:absolute; width:2px; height:2px; background:white; border:0.4px solid grey; 
+        opacity:70%; transition:2s; border-radius:50%; }
+      
+      .designationMenu { position:absolute; top:20px; left:20px; width: 180px; height: 190px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "designationCaption  designationCaption  designationCaption"
+          "designationButton1  designationButton1  designationMineralIcon"
+          "designationButton2  designationButton2  designationCreditIcon"
+          "designationButton3  designationButton3  designationSupplyIcon";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+      .designationCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .designationCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .designationCaption { grid-area:designationCaption; text-align:center; }
+      .designationCaption span { font-size:130%; font-family: 'IM Fell French Canon', serif; }
+      .designationButton1 { grid-area:designationButton1; }
+      .designationButton2 { grid-area:designationButton2; }
+      .designationButton3 { grid-area:designationButton3; }
+      .designationMineralIcon { grid-area:designationMineralIcon; }
+      .designationCreditIcon { grid-area:designationCreditIcon; }
+      .designationSupplyIcon { grid-area:designationSupplyIcon; }
+      #designationMenu {  }
+      #designationMineralIcon { image-rendering:pixelated; position:relative; height:35px; width:35px; }
+      #designationCreditIcon { image-rendering:pixelated; position:relative; height:35px; width:35px; }
+      #designationSupplyIcon { image-rendering:pixelated; position:relative; height:35px; width:35px; }
+      #designationButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #designationButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #designationButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      
+      .constructionMenu { position:absolute; top:430px; left:1050px; width: 190px; height: 200px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius:5px; display:none; margin: 15px;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "constructionCaption constructionCaption  constructionCaption"
+          "constructionButton1 constructionButton1  constructionCreditIcon"
+          "constructionButton2 constructionButton2  constructionMineralIcon"
+          "constructionButton3 constructionButton3  constructionSupplyIcon"
+          "constructionButton4 constructionButton4  constructionAuthorityIcon";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+      .constructionCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .constructionCell p { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .constructionCaption { grid-area:constructionCaption; text-align:center; }
+      .constructionCaption span { font-size:130%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .constructionButton1 { grid-area:constructionButton1; }
+      .constructionButton2 { grid-area:constructionButton2; }
+      .constructionButton3 { grid-area:constructionButton3; }
+      .constructionButton4 { grid-area:constructionButton4; }
+      .constructionMineralIcon { grid-area:constructionMineralIcon; }
+      .constructionCreditIcon { grid-area:constructionCreditIcon; }
+      .constructionSupplyIcon { grid-area:constructionSupplyIcon; }
+      #constructionAuthorityIcon { grid-area:constructionAuthorityIcon; }
+      #constructionMenu {  }
+      #constructionCreditIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionMineralIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionSupplyIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionAuthorityIcon { image-rendering:pixelated; position:relative; height:30px; width:30px; }
+      #constructionButton1 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton2 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton3 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+      #constructionButton4 { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:110px; margin:1px; font-size:80%; }
+    
+      
+      .preferenceMenu { position:absolute; top:640px; left:10px; width: 445px; height: 135px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: inline-grid; margin: 15px;
+        grid-template-columns: 70px 150px 70px 150px; grid-auto-rows: auto;
+        grid-template-areas:
+          "preferenceButton1 preferenceCaption1  preferenceButton2 preferenceCaption2"
+          "preferenceButton3 preferenceCaption3  preferenceButton4 preferenceCaption4"
+          "preferenceButton5 preferenceCaption5  preferenceButton6 preferenceCaption6";
+        gap: 1.75px; background: #1d4b96; transition:1.2s;
+      }
+      
+      .preferenceCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .preferenceCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .preferenceCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .preferenceButton1 { grid-area:preferenceButton1; }
+      .preferenceButton2 { grid-area:preferenceButton2; }
+      .preferenceButton3 { grid-area:preferenceButton3; }
+      .preferenceCaption1 { grid-area:preferenceCaption1; }
+      .preferenceCaption2 { grid-area:preferenceCaption2; }
+      .preferenceCaption3 { grid-area:preferenceCaption3; }
+      .preferenceButton4 { grid-area:preferenceButton4; }
+      .preferenceButton5 { grid-area:preferenceButton5; }
+      .preferenceButton6 { grid-area:preferenceButton6; }
+      .preferenceCaption4 { grid-area:preferenceCaption4; }
+      .preferenceCaption5 { grid-area:preferenceCaption5; }
+      .preferenceCaption6 { grid-area:preferenceCaption6; }
+      
+      #preferenceMenu {  }
+      #preferenceButton1 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      #preferenceButton2 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      #preferenceButton3 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      #preferenceButton4 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      #preferenceButton5 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      #preferenceButton6 { border-radius:50%; background:gray; color:white; padding:2px; width:30px; height:30px; font-size:80%; }
+      
+      .shipBuilderMenu { position:absolute; top:0px; left:0px; width: 125px; height: 240px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display: none; margin: 15px;
+        grid-template-columns: 41px 82px; grid-auto-rows: auto;
+        grid-template-areas:
+          "builderLabel   builderLabel"
+          "builderButton1 builderCaption1"  
+          "builderButton2 builderCaption2"
+          "builderButton3 builderCaption3"  
+          "builderButton4 builderCaption4"
+          "builderButton5 builderCaption5"; 
+        gap: 1.75px; background: #1d4b96; transition:1.2s;
+      }
+      
+      .builderCell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .builderCell p { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderCell span { font-family: 'MedievalSharp', cursive; font-size:90%; }
+      .builderLabel { grid-area:builderLabel; font-family: 'IM Fell French Canon', serif; font-size:130%; text-align:center; }
+      .builderButton1 { grid-area:builderButton1; }
+      .builderButton2 { grid-area:builderButton2; }
+      .builderButton3 { grid-area:builderButton3; }
+      .builderButton4 { grid-area:builderButton4; }
+      .builderButton5 { grid-area:builderButton5; }
+      .builderCaption1 { grid-area:builderCaption1; }
+      .builderCaption2 { grid-area:builderCaption2; }
+      .builderCaption3 { grid-area:builderCaption3; }
+      .builderCaption4 { grid-area:builderCaption4; }
+      .builderCaption5 { grid-area:builderCaption5; }
+      
+      #builderMenu {  }
+      #builderButton1 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton2 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton3 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton4 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      #builderButton5 { background:navy; color:white; padding:0px; font-size:80%; width:32px; height:24px; }
+      
+      .marketButton { position:fixed; width:30px; height:30px; top:100px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
+      #marketButton {}
+      
+      .marketMenu {
+        position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray; 
+        border-radius: 5px; overflow:scroll; display:none; gap: 3px; background: #1d4b96; transition:0.4s; grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 60px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+        grid-template-areas:
+        "marketCaption"
+        "market1a"
+        "market1b"
+        "market2a"
+        "market2b"
+        "market3a"
+        "market3b"
+        "market4a"
+        "market4b"
+        "market5a"
+        "market5b"
+        "market6a"
+        "market6b"
+        "market7a"
+        "market7b"
+        "market8a"
+        "market8b"
+        "market9a"
+        "market9b";
+      }
+      #marketMenu {}
+      .marketCell { font-size:90%; background:#7096cf; text-align:left; padding:7.5px; margin-left:5px; margin-right:5px; }
+      .marketCell span { text-align:center; }
+      .marketCaption { grid-area:marketCaption; font-size:210%; text-align:center; font-family: 'IM Fell French Canon', serif; margin-top:7.5px; }
+      .market1a { grid-area:market1a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market1b { grid-area:market1b; }
+      .market2a { grid-area:market2a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market2b { grid-area:market2b; }
+      .market3a { grid-area:market3a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market3b { grid-area:market3b; }
+      .market4a { grid-area:market4a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market4b { grid-area:market4b; }
+      .market5a { grid-area:market5a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market5b { grid-area:market5b; }
+      .market6a { grid-area:market6a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market6b { grid-area:market6b; }
+      .market7a { grid-area:market7a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market7b { grid-area:market7b; }
+      .market8a { grid-area:market8a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market8b { grid-area:market8b; }
+      .market9a { grid-area:market9a; font-size:140%; text-align:center; font-family: 'IM Fell French Canon', serif; }
+      .market9b { grid-area:market9b; }
+      
+      .tradeButton { position:fixed; width:30px; height:30px; top:140px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
+      #tradeButton {}
+      
+      .tradeMenu { position:fixed; width: 300px; height: 420px; top:140px; left:10px; font-family: 'MedievalSharp', cursive; 
+        font-size:80%; border: 2px solid lightgray; border-radius: 5px; display:none;
+        grid-template-columns: repeat(5, 1fr); grid-auto-rows: auto;
+        grid-template-areas:
+          "tradeCaption    tradeCaption    tradeCaption    tradeCaption    tradeCaption"
+          "tradeMinerals1  tradeMinerals2  tradeMinerals3  tradeMinerals4  tradeMinerals5"
+          "tradeSupplies1  tradeSupplies2  tradeSupplies3  tradeSupplies4  tradeSupplies5"
+          "tradeMinerals6  tradeMinerals7  tradeMinerals8  tradeMinerals9  tradeMinerals10"
+          "tradeSupplies6  tradeSupplies7  tradeSupplies8  tradeSupplies9  tradeSupplies10"
+          "tradeMinerals11 tradeMinerals12 tradeMinerals13 tradeMinerals14 tradeMinerals15"
+          "tradeSupplies11 tradeSupplies12 tradeSupplies13 tradeSupplies14 tradeSupplies15";
+        gap: 1.75px; background: #1d4b96; transition:0.4s;
+      }
+      
+       #tradeMenu {}
+      .tradeCell { padding: 3px; position: relative; overflow:hidden; font-size:90%; background:#7096cf; text-align:center; 
+        font-family: 'MedievalSharp', cursive; }
+      .tradeCaption { grid-area:tradeCaption; font-size:170%; font-family: 'IM Fell French Canon', serif; margin-top:5px; }
+      .tradeMinerals1 { grid-area:tradeMinerals1; }
+      .tradeMinerals1 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals2 { grid-area:tradeMinerals2; }
+      .tradeMinerals3 { grid-area:tradeMinerals3; }
+      .tradeMinerals3 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals4 { grid-area:tradeMinerals4; }
+      .tradeMinerals5 { grid-area:tradeMinerals5; }
+      .tradeMinerals5 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies1 { grid-area:tradeSupplies1; }
+      .tradeSupplies1 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies2 { grid-area:tradeSupplies2; }
+      .tradeSupplies3 { grid-area:tradeSupplies3; }
+      .tradeSupplies3 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies4 { grid-area:tradeSupplies4; }
+      .tradeSupplies5 { grid-area:tradeSupplies5; }
+      .tradeSupplies5 img { position:relative; width:40px; height:40px; top:7.5px; }
+      
+      .tradeMinerals6 { grid-area:tradeMinerals6; }
+      .tradeMinerals6 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals7 { grid-area:tradeMinerals7; }
+      .tradeMinerals8 { grid-area:tradeMinerals8; }
+      .tradeMinerals8 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals9 { grid-area:tradeMinerals9; }
+      .tradeMinerals10 { grid-area:tradeMinerals10; }
+      .tradeMinerals10 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies6 { grid-area:tradeSupplies6; }
+      .tradeSupplies6 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies7 { grid-area:tradeSupplies7; }
+      .tradeSupplies8 { grid-area:tradeSupplies8; }
+      .tradeSupplies8 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies9 { grid-area:tradeSupplies9; }
+      .tradeSupplies10 { grid-area:tradeSupplies10; }
+      .tradeSupplies10 img { position:relative; width:40px; height:40px; top:7.5px; }
+      
+      .tradeMinerals11 { grid-area:tradeMinerals11; }
+      .tradeMinerals11 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeMinerals12 { grid-area:tradeMinerals12; }
+      .tradeMinerals13 { grid-area:tradeMinerals13; }
+      .tradeMinerals13 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeMinerals14 { grid-area:tradeMinerals14; }
+      .tradeMinerals15 { grid-area:tradeMinerals15; }
+      .tradeMinerals15 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies11 { grid-area:tradeSupplies11; }
+      .tradeSupplies11 img { position:relative; width:40px; height:40px; top:7.5px; }
+      .tradeSupplies12 { grid-area:tradeSupplies12; }
+      .tradeSupplies13 { grid-area:tradeSupplies13; }
+      .tradeSupplies13 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .tradeSupplies14 { grid-area:tradeSupplies14; }
+      .tradeSupplies15 { grid-area:tradeSupplies15; }
+      .tradeSupplies15 img { position:relative; width:40px; height:40px; top:7.5px; }
+        
+      .eventA { 
+        position:absolute; width: 270px; height: 305px; font-family: 'MedievalSharp', cursive; font-size:80%; border: 2px solid lightgray;   
+        border-radius: 5px; display: none; margin: 15px; gap: 1.75px; background: #1d4b96; transition:0.4s;
+        grid-template-columns: repeat(3, 1fr); grid-auto-rows: 70px 180px 50px;
+        grid-template-areas:
+          "EAname   EAname   EAname"
+          "EAdesc   EAdesc   EAdesc"
+          "EAbutton EAbutton EAbutton";
+        }
+      
+      .EAcell { background: lightgray; padding: 3px; position: relative; overflow:hidden; background:#7096cf; }
+      .EAcell span { font-family: 'MedievalSharp', cursive; font-size:110%; }
+      .EAname { grid-area:EAname; text-align:center; margin-top:10px; }
+      .EAname span { white-space:nowrap; font-size:200%; font-family: 'IM Fell French Canon', serif; }
+      .EAname i { font-family: 'IM Fell French Canon', serif; font-size:200%; }
+      .EAdesc { grid-area:EAdesc; text-align:center; padding:10px; }
+      .EAbutton { grid-area:EAbutton; }
+      #E1button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E2button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E3button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E4button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      #E5button { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:250px; margin:7.5px; }
+      
+      #event1 { top:200px; left:450px; }
+      #event2 { top:200px; left:450px; }
+      #event2 .EAdesc { font-size:80%; }
+      #event3 { top:200px; left:450px; }
+      #event4 { top:200px; left:450px; }
+      #event4 .EAdesc { font-size:80%; }
+      #event5 { top:200px; left:450px; }
+      #event5 .EAdesc { font-size:90%; }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    <div class="everything">
+    <div class="HUD">
+      <div class="HUDcell HUDtop"></div>
+      <div class="HUDcell margin1"></div>
+      <div class="HUDcell mineralIcon"><img id="HUDMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="HUDcell mineralNumber"><span id="HUDMineralNumber"> 0 </span></div>
+      <div class="HUDcell margin2"></div>
+      <div class="HUDcell creditIcon"><img id="HUDCreditIcon" src="crediticon.png"></img></div>
+      <div class="HUDcell creditNumber"><span id="HUDCreditNumber"> 0 </span></div>
+      <div class="HUDcell margin3"></div>
+      <div class="HUDcell authorityIcon"><img id="HUDAuthorityIcon" src="authorityicon.png"></img></div>
+      <div class="HUDcell authorityNumber"><span id="HUDAuthorityNumber"> 0 </span></div>
+      <div class="HUDcell margin4"></div>
+      <div class="HUDcell supplyIcon"><img id="HUDSupplyIcon" src="supplyicon.png"></img></div>
+      <div class="HUDcell supplyNumber"><span id="HUDSupplyNumber"> 0 </span></div>
+      <div class="HUDcell HUDbottom"></div>
+    </div>
+    
+    <div class="HUDPointContainer"><span id="HUDPointNumber"> 0 </span></div>
+
+    <div id="backgroundStarContainer">
+      <div class="backgroundStar" id="bkstar"></div>
+    </div>
+
+    <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
+
+    <button id="closingButton" onclick="hideSystem()"><b> X </b></button>
+
+    <div class="iconCloner">
+      <div class="system" id="system"></div>
+      <img class="planet" id="p"></img>
+      
+      <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
+      <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
+      <img class="colonyMarker" id="hostileColonyMarker" src="hostilecolony.png"></img>
+      <img class="colonyMarker" id="miningStationMarker" src="miningstationicon.png" onclick="showInfo(this)"></img>
+      <img class="passiveShip" id="passiveCorvette" src="passivecorvette.png"></img>
+      <img class="passiveShip" id="passiveCruiser" src="passivecruiser.png"></img>
+      <img class="passiveShip" id="passiveDestroyer" src="passivedestroyer.png"></img>
+      <img class="passiveShip" id="passiveDreadnaught" src="passivedreadnaught.png"></img>
+      <img class="passiveShip" id="passiveTitan" src="passivetitan.png"></img>
+      <img class="ministar" id="ministar" src="redstar1.png" onclick="showSystem(this)"></img>
+    </div>
+
+    <div class="ministarContainer" id="ministarContainer"></div>
+
+    <div class="info-box" id="info-box" onclick="hideSurvey()">
+      <div class="cell top"></div>
+      <div class="cell name"><span class="name" id="surveyName"> [variable] </span></div>
+      <div class="cell sprite"><img class="cell" id="surveyImage"></img></div>
+      <div class="cell type"><span class="type" id="surveyType"> [variable] </span></div>
+      <div class="cell output"><span class="output" id="surveyOutput"> 0 </span><span> Authority and Credits per Turn </span></div>
+      <div class="cell cost"><span id="surveyCost"> # </span><span> in Upkeep Cost </span></div>
+      <div class="cell size"><span id="surveySize"> [Size] </span></div>
+      <div class="cell habit"><p id="surveyHabit"> [% Habitability] </p></div>
+      <div class="cell desc"><p id="surveyDesc"> [desc] </p></div>
+      <div class="cell pop"><span> This planet contains </span><span id="surveyPop"> 0 </span><span> Population Units. </span></div>
+      <div class="cell bottom"></div>
+    </div>
+
+    <div class="constructionMenu" id="constructionMenu">
+      <div class="constructionCell constructionCaption" onclick="hideSurvey()"><span id="constructionCaption"> Colony Buildings </span></div>
+      <div class="constructionCell constructionButton1"><button id="constructionButton1" onclick="constructNationalBank()"> Build National Bank </button></div>
+      <div class="constructionCell constructionCreditIcon" onclick="hideSurvey()"><img id="constructionCreditIcon" src="crediticon.png"></img></div>
+      <div class="constructionCell constructionButton2"><button id="constructionButton2" onclick="constructStripMines()"> Build Strip Mines </button></div>
+      <div class="constructionCell constructionMineralIcon" onclick="hideSurvey()"><img id="constructionMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="constructionCell constructionButton3"><button id="constructionButton3" onclick="constructHydroponicFarms()"> Build Hydro-Farms </button></div>
+      <div class="constructionCell constructionSupplyIcon" onclick="hideSurvey()"><img id="constructionSupplyIcon" src="supplyicon.png"></img></div>
+      <div class="constructionCell constructionButton4"><button id="constructionButton4" onclick="constructLawOffices()"> Build Law Offices </button></div>
+      <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
+    </div>
+
+    <div class="system" id="system1">
+      
+      <img class="star" id="s1"></img>  
+
+    </div>
+
+    <div class="starbaseContainer" id="starbaseContainer">
+        <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
+        onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
+    </div>
+    
+    <div class="planetMenu" id="planetMenu">
+      <div class="menuCell menuButton1"><button id="menuButton1" onclick="survey()"> Survey Planet </button></div>
+      <div class="menuCell menuSurveyIcon"><img id="menuSurveyIcon" src="surveyicon.png"></img></div>
+      <div class="menuCell menuButton2"><button id="menuButton2" onclick="buildMiningStation()"> Build Mining Station </button></div>
+      <div class="menuCell menuMineralIcon"><img id="menuMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="menuCell menuButton3"><button id="menuButton3" onclick="buildColony()"> Build Colony </button></div>
+      <div class="menuCell menuCreditIcon"><img id="menuCreditIcon" src="crediticon.png"></img></div>
+    </div>
+    
+    <div class="designationMenu" id="designationMenu">
+      <div class="designationCell designationCaption"><span id="designationCaption"> Designation Choices </span></div>
+      <div class="designationCell designationButton1"><button id="designationButton1" onclick="designateMiningSystem()"> Designate Mining System </button>
+      </div>
+      <div class="designationCell designationMineralIcon"><img id="designationMineralIcon" src="gemstoneicon.png"></img></div>
+      <div class="designationCell designationButton2"><button id="designationButton2" onclick="designateTradeSystem()"> Designate Trade System </button>
+      </div>
+      <div class="designationCell designationCreditIcon"><img id="designationCreditIcon" src="crediticon.png"></img></div>
+      <div class="designationCell designationButton3"><button id="designationButton3" onclick="designateProduceSystem()"> Designate Produce System </button>
+      </div>
+      <div class="designationCell designationSupplyIcon"><img id="designationSupplyIcon" src="supplyicon.png"></img></div>
+    </div> 
+    
+    <div class="shipBuilderMenu" id="builderMenu">
+      <div class="builderCell builderLabel"><span> Starbase </span></div>
+      <div class="builderCell builderButton1"><img id="builderButton1" src="passivecorvette.png" onclick="buildCorvette()"></img></div>
+      <div class="builderCell builderCaption1"><span> Build Corvette </span></div>
+      <div class="builderCell builderButton2"><img id="builderButton2" src="passivecruiser.png" onclick="buildCruiser()"></img></div>
+      <div class="builderCell builderCaption2"><span> Build Cruiser </span></div>
+      <div class="builderCell builderButton3"><img id="builderButton3" src="passivedestroyer.png" onclick="buildDestroyer()"></img></div>
+      <div class="builderCell builderCaption3"><span> Build Destroyer </span></div>
+      <div class="builderCell builderButton4"><img id="builderButton4" src="passivedreadnaught.png" onclick="buildDreadnaught()"></img></div>
+      <div class="builderCell builderCaption4"><span> Build Dreadnaught </span></div>
+      <div class="builderCell builderButton5"><img id="builderButton5" src="passivetitan.png" onclick="buildTitan()"></img></div>
+      <div class="builderCell builderCaption5"><span> Build Titan </span></div>
+    </div>
+
+    <div class="preferenceMenu" id="preferenceMenu">
+      <div class="preferenceCell preferenceButton1"><img id="preferenceButton1" onclick="preferPlanet(this)" src="desertplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption1"><span id="preferenceCaption1"> Desert World Preference </span></div>
+      <div class="preferenceCell preferenceButton2"><img id="preferenceButton2" onclick="preferPlanet(this)" src="savannaplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption2"><span id="preferenceCaption2"> Savanna World Preference </span></div>
+      <div class="preferenceCell preferenceButton3"><img id="preferenceButton3" onclick="preferPlanet(this)" src="arcticplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption3"><span id="preferenceCaption3"> Arctic World Preference </span></div>
+      <div class="preferenceCell preferenceButton4"><img id="preferenceButton4" onclick="preferPlanet(this)" src="tundraplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption4"><span id="preferenceCaption4"> Tundra World Preference </span></div>
+      <div class="preferenceCell preferenceButton5"><img id="preferenceButton5" onclick="preferPlanet(this)" src="continentalplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption5"><span id="preferenceCaption5"> Continental World Preference </span></div>
+      <div class="preferenceCell preferenceButton6"><img id="preferenceButton6" onclick="preferPlanet(this)" src="oceanplanet1.png"></img></div>
+      <div class="preferenceCell preferenceCaption6"><span id="preferenceCaption6"> Ocean World Preference </span></div>
+    </div>
+    
+    <button class="marketButton" id="marketButton" onclick="showMarket()"><span> P </span></button>
+
+    <button class="tradeButton" id="tradeButton" onclick="showTradeMenu()"><span> M </span></button>
+
+    <div class="marketMenu" id="marketMenu" onclick="hideMarket()">
+      <div class="marketCell marketCaption"><span><i> Prices </i></span></div>
+      <div class="marketCell market1a"><span> Colonies </span></div>
+      <div class="marketCell market1b"><span> 20 Minerals, 40 Credits, 20 Authority, 100 Supplies </span></div>
+      <div class="marketCell market2a"><span> Mining Stations </span></div>
+      <div class="marketCell market2b"><span> 40 Minerals, 100 Credits </span></div>
+      <div class="marketCell market3a"><span> Any Colony Building </span></div>
+      <div class="marketCell market3b"><span> 40 Credits </span></div>
+      <div class="marketCell market4a"><span> Corvettes </span></div>
+      <div class="marketCell market4b"><span> 50 Minerals, 20 Credits </span></div>
+      <div class="marketCell market5a"><span> Cruisers </span></div>
+      <div class="marketCell market5b"><span> 110 Minerals, 50 Credits </span></div>
+      <div class="marketCell market6a"><span> Destroyers </span></div>
+      <div class="marketCell market6b"><span> 320 Minerals, 160 Credits </span></div>
+      <div class="marketCell market7a"><span> Dreadnaughts </span></div>
+      <div class="marketCell market7b"><span> 520 Minerals, 240 Credits, 50 Authority </span></div>
+      <div class="marketCell market8a"><span> Titans </span></div>
+      <div class="marketCell market8b"><span> 1100 Minerals, 530 Credits, 350 Authority </span></div>
+      <div class="marketCell market9a"><span> TBD </span></div>
+      <div class="marketCell market9b"><span> TBD </span></div>
+    </div>
+
+    <div class="tradeMenu" id="tradeMenu">
+      <div class="tradeCell tradeCaption" onclick="hideTradeMenu()"><span> The Market </span></div>
+      <div class="tradeCell tradeMinerals1" onclick="hideTradeMenu()"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeMinerals2" onclick="hideTradeMenu()"><span> 30 Credits </span></div>
+      <div class="tradeCell tradeMinerals3"><button onclick="trade1()"> --> </button></div>
+      <div class="tradeCell tradeMinerals4" onclick="hideTradeMenu()"><span> 20 Minerals </span></div>
+      <div class="tradeCell tradeMinerals5" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeSupplies1" onclick="hideTradeMenu()"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeSupplies2" onclick="hideTradeMenu()"><span> 30 Credits </span></div>
+      <div class="tradeCell tradeSupplies3"><button onclick="trade2()"> --> </button></div>
+      <div class="tradeCell tradeSupplies4" onclick="hideTradeMenu()"><span> 20 Supplies </span></div>
+      <div class="tradeCell tradeSupplies5" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeMinerals6" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeMinerals7" onclick="hideTradeMenu()"><span> 30 Minerals </span></div>
+      <div class="tradeCell tradeMinerals8"><button onclick="trade3()"> --> </button></div>
+      <div class="tradeCell tradeMinerals9" onclick="hideTradeMenu()"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeMinerals10" onclick="hideTradeMenu()"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeSupplies6" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies7" onclick="hideTradeMenu()"><span> 30 Supplies </span></div>
+      <div class="tradeCell tradeSupplies8"><button onclick="trade4()"> --> </button></div>
+      <div class="tradeCell tradeSupplies9" onclick="hideTradeMenu()"><span> 20 Credits </span></div>
+      <div class="tradeCell tradeSupplies10" onclick="hideTradeMenu()"><img src="crediticon.png"></img></div>
+      <div class="tradeCell tradeMinerals11" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+      <div class="tradeCell tradeMinerals12" onclick="hideTradeMenu()"><span> 30 Minerals </span></div>
+      <div class="tradeCell tradeMinerals13"><button onclick="trade5()"> --> </button></div>
+      <div class="tradeCell tradeMinerals14" onclick="hideTradeMenu()"><span> 20 Supplies </span></div>
+      <div class="tradeCell tradeMinerals15" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies11" onclick="hideTradeMenu()"><img src="supplyicon.png"></img></div>
+      <div class="tradeCell tradeSupplies12" onclick="hideTradeMenu()"><span> 30 Supplies </span></div>
+      <div class="tradeCell tradeSupplies13"><button onclick="trade6()"> --> </button></div>
+      <div class="tradeCell tradeSupplies14" onclick="hideTradeMenu()"><span> 20 Minerals </span></div>
+      <div class="tradeCell tradeSupplies15" onclick="hideTradeMenu()"><img src="gemstoneicon.png"></img></div>
+    </div>
+
+    <div class="eventA" id="event1" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> Mineral Theft </span></div>
+      <div class="Eacell EAdesc">
+      <span> A thief has broken into a storage warehouse on </span><span id="e1PlanetName"> [planetName] </span><span>.</span>
+      <span> They have stolen a large amount of raw minerals recently mined from the planet. </span></div>
+      <div class="EAcell EAbutton"><button id="E1button" onclick="executeEvent1()"> Unfortunate. </button></div>
+    </div>
+
+    <div class="eventA" id="event2" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> Nanite Swarm </span></div>
+      <div class="Eacell EAdesc">
+        <span> Civilian ships in </span><span id="e2PlanetName"> [planetName] </span><span>'s system reported unusal findings.</span>
+        <span> Upon further inspection, it appared that a stream of nanites had been stuck in orbit for a long time. </span>
+        <span> When they were discovered, they immediately descended deeper into the atmosphere. The civilian ships followed them to the surface. </span>
+        <span> An abandoned colony on the surface was discovered, and quickly utilized. We now own a fully functional colony on </span>
+        <span id="e2PlanetName2"> [planetName] </span><span>.</span></div>
+      <div class="EAcell EAbutton"><button id="E2button" onclick="executeEvent2()"> Fascinating. </button></div>
+    </div>
+
+    <div class="eventA" id="event3" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> The </span><i> Royal Dragon </i></div>
+      <div class="Eacell EAdesc">
+      <span> The starbase by </span><span id="e3PlanetName"> [planetName] </span><span> recently detected a strange anomaly.</span>
+      <span> Upon closer inspection, they found a cruiser marked the </span><i> Royal Dragon </i><span>. </span>
+      <span> The cruiser was completely empty, but still functioning. The starbase adapted it to our style and put it into use. </span></div>
+      <div class="EAcell EAbutton"><button id="E3button" onclick="executeEvent3()"> Curious, but fortunate. </button></div>
+    </div>
+
+    <div class="eventA" id="event4" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> Ancient Ruins </span></div>
+      <div class="Eacell EAdesc">
+      <span> An miniscule asteriod was snagged by a passing transport ship before it could sail into the nearby star. </span>
+      <span> The crew towed it back to the local starbase, where it barely fit inside the docking bay. Researchers found mysterious objects buried inside. </span>
+      <span> These were relics of some ancient race, dated to be thousands of years old. Amazingly, they were still mostly intact. </span>
+      <span> The starbase crew sold them a large museum chain on our homeworld for a large sum. We are now in possesion of the credits. </span></div>
+      <div class="EAcell EAbutton"><button id="E4button" onclick="executeEvent4()"> Interesting. </button></div>
+    </div>
+
+    <div class="eventA" id="event5" onclick="moveEvent(this)">
+      <div class="Eacell EAname"><span> A Rogue Planet </span></div>
+      <div class="Eacell EAdesc">
+      <span> A civilian ship hailing from </span><span id="e5PlanetName"> [planetName] </span><span> was passing between systems when it found something. </span>
+      <span> The onboard scientists realized it was a rogue planet, one hurled out of its system by the gravitational force of a star. </span>
+      <span> The planet may have once supported life, but had frozen over long since leaving its home system. However, it's still rich in resources. </span></div>
+      <div class="EAcell EAbutton"><button id="E5button" onclick="executeEvent5()"> Salvage it. </button></div>
+    </div>
+    </div>
+
+    <script>
+      //global variables
+      var lastSelectedPlanet = null;
+      var lastSurveyedPlanet = null;
+      var preferenceDesert = false;
+      var preferenceSavanna = false;
+      var preferenceArctic = false;
+      var preferenceTundra = false;
+      var preferenceContinental = false;
+      var preferenceOcean = false;
+      var planetElList = $$('.planet');
+      var starElList = $$('.star');
+      var systemElList = $$('.system');
+      var surveyDictionary = {
+          desert: { surveyType: "Desert World", surveyImage: "desertplanet1.png", surveyCost: "10 Supplies",
+                   surveyDesc: "Your scans of the planet show nothing but endless seas of dunes dotted with cacti and oases.",
+                   surveyPop:0 }, 
+          savanna: { surveyType: "Savanna World", surveyImage: "savannaplanet1.png", surveyCost: "10 Supplies",
+                    surveyDesc: "The grasslands of this planet stretch to the horizon, dotted with trees, caves, hills, and small oceans.",
+                    surveyPop:0 },
+          arctic: { surveyType: "Arctic World", surveyImage: "arcticplanet1.png", surveyCost: "10 Supplies", 
+                   surveyDesc: "This planet is a barren, freezing, thick floe of ice. It may have once been an Ocean World.",
+                   surveyPop:0 },
+          tundra: { surveyType: "Tundra World", surveyImage: "tundraplanet1.png", surveyCost: "10 Supplies", 
+                   surveyDesc: "What was probably once a rolling green-hilled planet has been frozen to its core.",
+                   surveyPop:0 },
+          continental: { surveyType: "Continental World", surveyImage: "continentalplanet1.png", surveyCost: "10 Supplies",
+                        surveyDesc: "The hills and valleys of this planet are a brilliant, verdant green when in bloom.",
+                        surveyPop:0 },
+          ocean: { surveyType: "Ocean World", surveyImage: "oceanplanet1.png", surveyCost: "10 Supplies",
+                  surveyDesc: "This planet is entirely a massive ocean, bound to a small rock core by a strong magnetic field.",
+                  surveyPop:0 },
+          relic: { surveyType: "Relic World", surveyImage: "relicplanet1.png", surveyCost: "10 Supplies", 
+                  surveyDesc: "An ancient civilization inhabited this planet, leaving the endless ruins of massive cities behind.",
+                  surveyPop:0 },
+          mineral1: { surveyType: "Rocky World", surveyImage: "mineralplanet1.png", surveyCost: "5 Credits",
+                     surveyDesc: "This planet is hot and grim, but relatively rich in minerals.",
+                     surveyPop:0 },
+          mineral2: { surveyType: "Volcanic World", surveyImage: "mineralplanet2.png", surveyCost: "5 Credits",
+                     surveyDesc: "There are no hills nor valleys on this planet, only massive lava-filled crevices.",
+                     surveyPop:0 },
+          mineral3: { surveyType: "Ringed World", surveyImage: "mineralplanet3.png", surveyCost: "5 Credits",
+                     surveyDesc: "A moderately sized gas giant with a small assortment of rings rich in minerals.",
+                     surveyPop:0 },
+          barren: { surveyType: "Barren World", surveyImage: "barrenplanet1.png", surveyCost: "N/A", 
+                   surveyDesc: "Scanning the planet shows nothing of importance, as it lacks decently sized deposits of resources.",
+                   surveyPop:0 },
+          junk: { surveyType: "Junk World", surveyImage: "junkplanet1.png", surveyCost: "N/A",
+                 surveyDesc: "This planet was once used as a gargantuan junkyard, piled miles high with ruins.",
+                 surveyPop:0 },
+          gas: { surveyType: "Gas Giant", surveyImage: "gasplanet1.png", surveyCost: "N/A",
+                surveyDesc: "Small asteriods drift through this gas giant's atmosphere, stuck in an endless orbit.",
+                surveyPop:0 }
+        }
+      
+      function $ (id) {
+        return document.getElementById(id);
+      }
+      function $$ (sel) {
+        return document.querySelectorAll(sel);
+      }
+      
+      function selectPlanet(ev) {
+        let el = ev.target;
+        lastSelectedPlanet = el.id;
+        el.style.background = "lime";
+        el.style.padding = "1.5px";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        button2.style.background = "slateblue";
+        button3.style.background = "slateblue";
+        button2.style.background = "#9f97d1";
+        button3.style.background = "#9f97d1";
+        var miningPlanets = ["mineral1", "mineral2", "mineral3"];
+        var colonizablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
+        if (miningPlanets.includes(el.biome)) {
+          button2.style.background = "slateblue";
+        }
+        else if (colonizablePlanets.includes(el.biome)) {
+          button3.style.background = "slateblue";
+        }
+        var planetMenu = $("planetMenu");
+        planetMenu.style.display = "inline-grid";
+        var newTop = el.offsetTop - 10;
+        planetMenu.style.top = newTop + "px";
+        var newLeft = el.offsetLeft + 70;
+        planetMenu.style.left = newLeft + "px";
+      }
+      function preunselectPlanet(ev) {
+        setTimeout(function(){
+          unselectPlanet(ev);
+        },2200);
+      }
+      function unselectPlanet(ev) {
+        let el = ev.target;
+        lastSelectedPlanet = null;
+        el.style.background = "gray";
+        el.style.padding = "0px";
+        var planetMenu = $("planetMenu");
+        planetMenu.style.display = "none";
+        var button2 = $("menuButton2");
+        var button3 = $("menuButton3");
+        button2.style.background = "#9f97d1";
+        button3.style.background = "#9f97d1";
+      }
+      
+      function selectStar(ev) {
+        let el = ev.target;
+        lastSelectedStar = el.id;
+        el.style.background = "lime";
+        el.style.padding = "1.5px";
+        if (el.designated == true) {
+          return;
+        }
+        else if (el.starbase != true) {
+          return;
+        }
+        else {
+          var designationMenu = $("designationMenu");
+          designationMenu.style.display = "inline-grid";
+          var newTop = el.offsetTop - 10;
+          designationMenu.style.top = newTop + "px";
+          var newLeft = el.offsetLeft + 110;
+          designationMenu.style.left = newLeft + "px";
+        }
+      }
+      function preunselectStar(ev) {
+        setTimeout(function(){
+          unselectStar(ev);
+        },2200);
+      }
+      function unselectStar(ev) {
+        let el = ev.target;
+        lastSelectedStar = null;
+        el.style.background = "white";
+        el.style.padding = "0px";
+        var designationMenu = $("designationMenu");
+        designationMenu.style.display = "none";
+      }
+      
+      
+      function survey() {
+        var el = $(lastSelectedPlanet);
+        lastSurveyedPlanet = el.id;
+        console.log(el.biome);
+        var button1 = $("constructionButton1");
+        var button2 = $("constructionButton2");
+        var button3 = $("constructionButton3");
+        var button4 = $("constructionButton4");
+        button1.style.background = "slateblue";
+        button1.disabled = false;
+        button2.style.background = "slateblue";
+        button2.disabled = false;
+        button3.style.background = "slateblue";
+        button3.disabled = false;
+        button4.style.background = "slateblue";
+        button4.disabled = false;
+        var infoBox = $("info-box");
+        var menu = $("constructionMenu");
+        infoBox.style.display = "none";
+        menu.style.display = "none";
+        infoBox.style.display = "inline-grid";
+                
+        var biome = el.biome;
+        $("surveyName").innerText = el.randomName;
+        $("surveyImage").src = el.src;
+        $("surveyImage").style.height = "40px";
+        $("surveyImage").style.width = "40px";
+        $("surveyType").innerText = surveyDictionary[el.biome].surveyType;
+        $("surveyOutput").innerText = el.authority || 0;
+        $("surveySize").innerText = el.randomSize;
+        $("surveyCost").innerText = surveyDictionary[el.biome].surveyCost;
+        if (el.randomHabit === undefined) {
+          $("surveyHabit").innerText = "You haven't picked your prefered planet yet!";
+        }
+        else {
+          $("surveyHabit").innerText = el.randomHabit;
+        }
+        const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];
+        const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
+        if (uninhabitablePlanets.includes(el.biome)) {
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc + " This planet is not suitable for life.";
+        }
+        else if (habitablePlanets.includes(el.biome)) {
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc + " This planet is suitable for life.";
+        }
+        else {
+          $("surveyDesc").innerText = surveyDictionary[el.biome].surveyDesc;
+          alert ("Unidentified planet")
+        }
+        $("surveyPop").innerText = el.population || 0;
+        if (el.classList.contains("colony")) {
+          menu.style.display = "inline-grid";
+          if (el.buildingSlots >= 2) {
+            var button1 = $("constructionButton1");
+            var button2 = $("constructionButton2");
+            var button3 = $("constructionButton3");
+            var button4 = $("constructionButton4");
+            button1.disabled = true;
+            button2.disabled = true;
+            button3.disabled = true;
+            button4.disabled = true;            
+          }
+          if (el.nationalBank == true) {
+            var button = $("constructionButton1");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+          if (el.stripMines == true) {
+            var button = $("constructionButton2");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+          if (el.hydroponicFarms == true) {
+            var button = $("constructionButton3");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+          if (el.lawOffices == true) {
+            var button = $("constructionButton4");
+            button.style.background = "forestgreen";
+            button.disabled = true;
+          }
+        }
+        else {
+          return;
+        }  
+      }
+      function hideSurvey() {
+        var el = $("info-box");
+        el.style.display = "none";
+        var menu = $("constructionMenu");
+        menu.style.display = "none";
+        lastSurveyedPlanet = null;
+        console.log("survey hidden");
+      }
+      
+      
+      ///building or designating things
+      
+      
+      function buildMiningStation() {
+        var el = $(lastSelectedPlanet);
+        const miningPlanets = ["mineral1", "mineral2", "mineral3"];
+        var allMineralStationPlanets = $$('.planet.miningStation');
+        if (miningPlanets.includes(el.biome)) {
+          if (el.miningStation == true) {
+            alert("You already have a mining station here!");
+          }
+          else {
+            var newMineralNumber = Number(HUDMineralNumber.innerText) - 40;
+            HUDMineralNumber.innerText = newMineralNumber;
+            var newCreditNumber = Number(HUDCreditNumber.innerText) - 100;
+            HUDCreditNumber.innerText = newCreditNumber;
+            var newPointNumber = Number(HUDPointNumber.innerText) + 150;
+            HUDPointNumber.innerText = newPointNumber;
+            var system = $("system1");
+            var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
+            HUDAuthorityNumber.innerText = newAuthorityNumber;
+            el.classList.add("miningStation");
+            el.miningStation = true;
+            var stationMarker = $("miningStationMarker");
+            var newTop = el.offsetTop - 10;
+            var newLeft = el.offsetLeft + 55;
+            stationMarker.style.top = newTop + "px";
+            stationMarker.style.left = newLeft + "px";
+            var newMarker = stationMarker.cloneNode(false);
+            newMarker.id = newMarker.id + "-" + el.id;
+            system.appendChild(newMarker);
+            newMarker.style.display = "block";
+          }
+        }
+        else {
+          alert("You can't build a Mining Station here. This planet is not suitable for mining.")
+        }
+      }
+      function buildColony() {
+        var el = $(lastSelectedPlanet);
+        const uninhabitablePlanets = ["mineral1", "mineral2", "mineral3", "barren", "junk", "gas"];        
+        const habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
+        if (habitablePlanets.includes(el.biome)) {
+          if ((el.population || 0) < Number(el.randomSize.split(" ")[1]) * 2) {
+            var newMineralNumber = Number(HUDMineralNumber.innerText) - 20;
+            HUDMineralNumber.innerText = newMineralNumber;
+            var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+            HUDCreditNumber.innerText = newCreditNumber;
+            var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 20;
+            HUDAuthorityNumber.innerText = newAuthorityNumber;
+            var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 100;
+            HUDSupplyNumber.innerText = newSupplyNumber;
+            var newPointNumber = Number(HUDPointNumber.innerText) + 200;
+            HUDPointNumber.innerText = newPointNumber;
+            var newPopulationNumber = (el.population || 0) + 2;
+            el.population = newPopulationNumber;
+            var newAuthorityNumber = (el.authority || 0) + 2;
+            el.authority = newAuthorityNumber;
+            el.classList.add("colony");
+            var system = $("system1");
+            var colonyMarker = $("passiveColonyMarker");
+            var newTop = el.offsetTop - 10;
+            var newLeft = el.offsetLeft + 55;
+            colonyMarker.style.top = newTop + "px";
+            colonyMarker.style.left = newLeft + "px";
+            var newMarker = colonyMarker.cloneNode(false);
+            newMarker.id = newMarker.id + "~" + el.id;
+            system.appendChild(newMarker);
+            newMarker.style.display = "block";
+            hideSurvey();
+          }
+          else {
+            console.log("population exceeds planet limit");           
+          }
+        }
+        else if (uninhabitablePlanets.includes(el.biome)) {
+          alert ("This planet is uninhabitable. You cannot build a colony here");
+        }
+        else {
+          alert ("Something went wrong with this function");
+        }
+      }
+      function surveyColony(el) {
+        var planet = el.id.split("~")[1];
+        lastSelectedPlanet = planet;
+        console.log("surveyColony executed " + planet);
+        survey();
+      }
+      
+      function constructNationalBank() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var el = $(lastSurveyedPlanet);
+        if (el.nationalBank != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("nationalBank");
+          var button = $("constructionButton1");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.nationalBank = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.disabled = true;
+              button2.disabled = true;
+              button3.disabled = true;
+              button4.disabled = true; 
+            }
+          }
+        }
+        else {
+          return;
+        }
+      }
+      function constructStripMines() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var el = $(lastSurveyedPlanet);
+        if (el.stripMines != true && el.buildingSlots <= 2) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("stripMines");
+          var button = $("constructionButton2");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.stripMines = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.disabled = true;
+              button2.disabled = true;
+              button3.disabled = true;
+              button4.disabled = true; 
+            }
+          }
+        }
+        else {
+          return;
+        }
+      }
+      function constructHydroponicFarms() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var el = $(lastSurveyedPlanet);
+        if (el.hydroponicFarms != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("hydroponicFarms");
+          var button = $("constructionButton3");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.hydroponicFarms = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.disabled = true;
+              button2.disabled = true;
+              button3.disabled = true;
+              button4.disabled = true; 
+            }
+          }
+        }
+        else {
+          return;
+        }
+      }
+      function constructLawOffices() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var el = $(lastSurveyedPlanet);
+        if (el.lawOffices != true) {
+          var newPointNumber = Number(HUDPointNumber.innerText) + 80;
+          HUDPointNumber.innerText = newPointNumber;
+          el.classList.add("lawOffices");
+          var button = $("constructionButton4");
+          button.style.background = "forestgreen";
+          button.disabled = true;
+          el.lawOffices = true;
+          if (el.buildingSlots === undefined) {
+            el.buildingSlots = 1;
+          }
+          else {
+            el.buildingSlots = el.buildingSlots + 1;
+            if (el.buildingSlots = 2) {
+              var button1 = $("constructionButton1");
+              var button2 = $("constructionButton2");
+              var button3 = $("constructionButton3");
+              var button4 = $("constructionButton4");
+              button1.disabled = true;
+              button2.disabled = true;
+              button3.disabled = true;
+              button4.disabled = true; 
+            }
+          }
+        }
+        else {
+          return;
+        }
+      }
+    
+      
+      function designateMiningSystem() {
+        alert("you've designated this system as a Mining System");
+        var star = $(lastSelectedStar);
+        star.classList.add("miningSystem");
+        star.designated = true;   
+      }
+      function designateTradeSystem() {
+        alert("you've designated this system as a Trade System");
+        var star = $(lastSelectedStar);
+        star.classList.add("tradeSystem");
+        star.designated = true;
+      }
+      function designateProduceSystem() {
+        alert("you've designated this system as a Produce System");
+        var star = $(lastSelectedStar);
+        star.classList.add("produceSystem");
+        star.designated = true;
+      }
+      
+      function salvageJunkPlanet(ev) {
+        let el = ev.target;
+        alert ("you've salvaged some parts from this Junk Planet. (+60 Minerals, +20 Credits)")
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 60;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;          
+        el.classList.add("salvagedJunk");
+        el.removeEventListener("click", salvageJunkPlanet, true);
+      }
+      function salvageGasPlanet(ev) {
+        let el = ev.target;
+        alert ("you've salvaged some parts from this Gas Planet. (+70 Supplies)")
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 70;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        el.classList.add("salvagedGas");
+        el.removeEventListener("click", salvageGasPlanet, true);
+      }
+      
+      function showBuilderMenu(el) {
+        var menu = $("builderMenu");
+        var container = $("starbaseContainer");
+        var newMenu = menu.cloneNode(true);
+        var newTop = el.offsetTop + 20;
+        var newLeft = el.offsetLeft + 30;
+        newMenu.style.top = newTop + "px";
+        newMenu.style.left = newLeft + "px";
+        newMenu.id = newMenu.id + "-" + el.id;
+        container.appendChild(newMenu);
+        newMenu.style.display = "inline-grid";
+      }
+      function preCloseBuilderMenu(el) {
+        setTimeout(function(){
+          closeBuilderMenu(el);
+        },2200);
+      }
+      function closeBuilderMenu(el) {
+        var menu = $("builderMenu-passiveStarbase-s1");
+        var container = $("starbaseContainer");
+        menu.style.display = "none";
+        container.removeChild(menu);
+      }
+      
+      function buildCorvette() {
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        if (Number(currentShipNumber) <= 10 && Number(HUDPointNumber.innerText) >= 0) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 20;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var corvette = $("passiveCorvette");
+          var newCorvette = corvette.cloneNode(false);
+          var container = $("starbaseContainer");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " corvette");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+          newCorvette.style.top = newTop + "px";
+          newCorvette.style.left = newLeft + "px";
+          newCorvette.style.height = "24px";
+          newCorvette.style.width = "32px";
+          newCorvette.id = newCorvette.id + "-s1-" + currentShipNumber;
+          container.appendChild(newCorvette);
+          newCorvette.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(HUDPointNumber.innerText) < 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
+      }
+      function buildCruiser() {
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        if (Number(currentShipNumber) <= 10 && Number(HUDPointNumber.innerText) >= 0) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 110;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 50;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var cruiser = $("passiveCruiser");
+          var newCruiser = cruiser.cloneNode(false);
+          var container = $("starbaseContainer");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " cruiser");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+          newCruiser.style.top = newTop + "px";
+          newCruiser.style.left = newLeft + "px";
+          newCruiser.style.height = "24px";
+          newCruiser.style.width = "32px";
+          newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
+          container.appendChild(newCruiser);
+          newCruiser.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(HUDPointNumber.innerText) < 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
+      }
+      function buildDestroyer() {
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        if (Number(currentShipNumber) <= 10 && Number(HUDPointNumber.innerText) >= 0) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 320;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 160;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+          HUDPointNumber.innerText = newPointNumber;
+          var destroyer = $("passiveDestroyer");
+          var newDestroyer = destroyer.cloneNode(false);
+          var container = $("starbaseContainer");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " destroyer");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+          newDestroyer.style.top = newTop + "px";
+          newDestroyer.style.left = newLeft + "px";
+          newDestroyer.style.height = "24px";
+          newDestroyer.style.width = "32px";
+          newDestroyer.id = newDestroyer.id + "-s1-" + currentShipNumber;
+          container.appendChild(newDestroyer);
+          newDestroyer.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(HUDPointNumber.innerText) < 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
+      }
+      function buildDreadnaught() {
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        if (Number(currentShipNumber) <= 10 && Number(HUDPointNumber.innerText) >= 0) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 520;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 50;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 240;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 300;
+          HUDPointNumber.innerText = newPointNumber;
+          var dreadnaught = $("passiveDreadnaught");
+          var newDreadnaught = dreadnaught.cloneNode(false);
+          var container = $("starbaseContainer");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " dreadnaught");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+          newDreadnaught.style.top = newTop + "px";
+          newDreadnaught.style.left = newLeft + "px";
+          newDreadnaught.style.height = "24px";
+          newDreadnaught.style.width = "32px";
+          newDreadnaught.id = newDreadnaught.id + "-s1-" + currentShipNumber;
+          container.appendChild(newDreadnaught);
+          newDreadnaught.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(HUDPointNumber.innerText) < 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
+      }
+      function buildTitan() {
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        if (Number(currentShipNumber) <= 10 && Number(HUDPointNumber.innerText) >= 0) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) - 1100;
+          HUDMineralNumber.innerText = newMineralNumber;
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 350;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) - 530;
+          HUDCreditNumber.innerText = newCreditNumber;
+          var newPointNumber = Number(HUDPointNumber.innerText) + 500;
+          HUDPointNumber.innerText = newPointNumber;
+          var titan = $("passiveTitan");
+          var newTitan = titan.cloneNode(false);
+          var container = $("starbaseContainer");
+          currentShipNumber = Number(currentShipNumber) + 1;
+          starbase.dataset.ships = currentShipNumber;
+          console.log(currentShipNumber + " titan");
+          var newTop = starbase.offsetTop;
+          var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+          newTitan.style.top = newTop + "px";
+          newTitan.style.left = newLeft + "px";
+          newTitan.style.height = "24px";
+          newTitan.style.width = "32px";
+          newTitan.id = newTitan.id + "-s1-" + currentShipNumber;
+          container.appendChild(newTitan);
+          newTitan.style.display = "block";
+        }
+        else if (Number(currentShipNumber) > 10) {
+          alert("Your fleet is already at full capacity!");
+          return;
+        }
+        else if (Number(HUDPointNumber.innerText) < 0) {
+          alert("Your points are negative, you cannot build ships");
+          return;
+        }
+      }
+      
+      function preferPlanet(el) {
+        if (el.id == "preferenceButton1") {
+          preferenceDesert = true;
+        }
+        if (el.id == "preferenceButton2") {
+          preferenceSavanna = true;
+        }
+        if (el.id == "preferenceButton3") {
+          preferenceArctic = true;
+        }
+        if (el.id == "preferenceButton4") {
+          preferenceTundra = true;
+        }
+        if (el.id == "preferenceButton5") {
+          preferenceContinental = true;
+        }
+        if (el.id == "preferenceButton6") {
+          preferenceOcean = true;
+        }
+        var menu = $("preferenceMenu");
+        menu.parentNode.removeChild(menu);
+        for (const pEl of planetElList) {
+          var basicHabitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean"];
+          if (basicHabitablePlanets.includes(pEl.biome)) {
+            if (preferenceDesert == true && pEl.biome == "desert") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else if (preferenceSavanna == true && pEl.biome == "savanna") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else if (preferenceArctic == true && pEl.biome == "arctic") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else if (preferenceTundra == true && pEl.biome == "tundra") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else if (preferenceContinental == true && pEl.biome == "continental") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else if (preferenceOcean == true && pEl.biome == "ocean") {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 20) + 81) + "% Habitability";
+              pEl.satisfactoryPlanet = true;
+            }
+            else {
+              pEl.randomHabit = Number(Math.floor(Math.random() * 30) + 21) + "% Habitability";
+              pEl.satisfactoryPlanet = false;
+            }
+          }
+          else if (pEl.biome == "relic") {
+            pEl.randomHabit = "70% Habitability";
+          }
+          else {
+            pEl.randomHabit = "Uninhabitable";
+          }
+        }
+        hideSurvey();
+      }
+      
+      function showMarket() {
+        var market = $("marketMenu");
+        var button = $("marketButton");
+        var button2 = $("tradeButton");
+        market.style.display = "inline-grid";
+        button.style.display = "none";
+        button2.style.display = "none"
+      }
+      function hideMarket() {
+        var market = $("marketMenu");
+        var button = $("marketButton");
+        var button2 = $("tradeButton");
+        market.style.display = "none";
+        button.style.display = "block";
+        button2.style.display = "block"
+      }
+      function showTradeMenu() {
+        var menu = $("tradeMenu");
+        var button = $("tradeButton");
+        var button2 = $("marketButton");
+        menu.style.display = "inline-grid";
+        button.style.display = "none";
+        button2.style.display = "none";
+      }
+      function hideTradeMenu() {
+        var menu = $("tradeMenu");
+        var button = $("tradeButton");
+        var button2 = $("marketButton");
+        menu.style.display = "none";
+        button.style.display = "block";
+        button2.style.display = "block"
+      }
+      
+      function trade1() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 30;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
+      function trade2() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - 30;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 20;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      function trade3() {
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 30;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
+      function trade4() {
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 30;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 20;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
+      function trade5() {
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 30;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 20;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      function trade6() {
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - 30;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 20;
+        HUDMineralNumber.innerText = newMineralNumber;
+      }
+      
+      function hideSystem() {
+        var system = $("system1"); //replace with variable of system element when read
+        var ministarContainer = $("ministarContainer");
+        system.style.opacity = "0%";
+        ministarContainer.style.display = "block";
+        ministarContainer.style.opacity = "0%";
+        setTimeout(function(){
+          hideSystem2();
+        },0800);
+      }
+      function hideSystem2() {
+        var system = $("system1"); //replace with variable of system element when read
+        var ministarContainer = $("ministarContainer");
+        system.style.display = "none";
+        system.style.opacity = "100%";
+        ministarContainer.style.opacity = "100%";
+      }
+      function showSystem(el) {
+        var ministarContainer = $("ministarContainer");
+        var newSystemNumber = el.id.split("-")[1];
+        var newSystem = $("system" + newSystemNumber);
+        ministarContainer.style.opacity = "0%";
+        newSystem.style.display = "block";
+        newSystem.style.opacity = "0%"
+        setTimeout(function(){
+          showSystem2(el);
+        },0800);
+      }
+       function showSystem2(el) {
+         var ministarContainer = $("ministarContainer");
+         var newSystemNumber = el.id.split("-")[1];
+         var newSystem = $("system" + newSystemNumber);
+         ministarContainer.style.display = "none";
+         ministarContainer.style.opacity = "100%";
+         newSystem.style.opacity = "100%";
+       }
+      
+      //system generation
+      function generateSystems() {
+        var systemNumber = 0;
+        while (systemNumber < 30) {
+          var system = $("system");
+        }
+      }
+      function generatePlanets() {
+        var planetNumber = 0;
+        while (planetNumber < 6) {
+          var planet = $("p");
+          var container = $("system1");
+          var newPlanet = planet.cloneNode(false);
+          newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
+          container.appendChild(newPlanet);
+          planetNumber++;
+        }
+        if (planetNumber == 6) {
+          console.log("all system1 planets have been accounted for");
+          var oldPlanet = $("p");
+          oldPlanet.parentNode.removeChild(oldPlanet);
+          planetElList = $$('.planet');
+        }
+      }
+      function generatePlanetStats() {
+        var allImgs = [["desertplanet1.png", "desert"],
+                       ["savannaplanet1.png", "savanna"],
+                       ["arcticplanet1.png", "arctic"],
+                       ["tundraplanet1.png", "tundra"],
+                       ["continentalplanet1.png", "continental"], 
+                       ["oceanplanet1.png", "ocean"],
+                       ["relicplanet1.png", "relic"],
+                       ["mineralplanet1.png", "mineral1"],
+                       ["mineralplanet2.png", "mineral2"],
+                       ["mineralplanet2.png", "mineral2"],
+                       ["mineralplanet3.png", "mineral3"],
+                       ["mineralplanet3.png", "mineral3"],
+                       ["barrenplanet1.png", "barren"],
+                       ["barrenplanet1.png", "barren"],
+                       ["barrenplanet2.png", "barren"],
+                       ["barrenplanet2.png", "barren"],
+                       ["gasplanet1.png",    "gas"],
+                       ["gasplanet2.png",    "gas"],
+                       ["junkplanet1.png",   "junk"]];
+        for (const pEl of planetElList) {
+          var randomIndex = Math.floor(Math.random() * allImgs.length);
+          pEl.src = allImgs[randomIndex][0];
+          pEl.biome =  allImgs[randomIndex][1];
+          pEl.addEventListener("mouseenter", selectPlanet);
+          pEl.addEventListener("mouseout", preunselectPlanet);
+        }
+        for (const pEl of planetElList) {
+          var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
+          pEl.randomSize = "Size " + sizeNumber;
+          pEl.style.height = sizeNumber * 2 + 40 + "px";
+          pEl.style.width = sizeNumber * 2 + 40 + "px";
+        }
+        for (const pEl of planetElList) {
+          var nameList = ["Riak", "Quevec", "Tolorae", "Cassentor Alpha", "Cassentor Beta", "Cassentor Gamma", "Vlaron", "Tholia Prime", "Karsaec", "Sacradia",
+                          "Eclysia Alpha", "Eclysia Prime", "Trilliad", "Celium", "Piaryus", "Mazirus", "Kwevec", "D'Arthen", "Epsilon Ras", "Sherocira",
+                          "Mardilon", "Tofarian Prime", "Scieor", "Dessanu", "Zaydran", "Irsa", "Rihlac", "Saer'esr", "Vartirc", "New Beyius", "Antares", 
+                          "Cyleria"];
+          var randomIndex = Math.floor(Math.random() * nameList.length);
+          var planetName = nameList[randomIndex];
+          pEl.randomName = planetName;
+        }
+        for (const pEl of planetElList) {
+          if (pEl.biome == "junk") {
+            pEl.addEventListener("click", salvageJunkPlanet, true);
+          }
+          else if (pEl.biome == "gas") {
+            pEl.addEventListener("click", salvageGasPlanet, true);
+          }
+        }
+        var allPositions =   [["133px","215px"],
+                              ["215px","591px"],
+                              ["85px" ,"380px"],
+                              ["415px","210px"],
+                              ["347px","715px"],
+                              ["126px","515px"],
+                              ["122px","717px"],
+                              ["417px","813px"],
+                              ["488px","430px"],
+                              ["214px","315px"],
+                              ["412px","584px"],
+                              ["587px","453px"]];
+        var curPlanetIndex = 0;
+        var numPlanets = Math.floor(Math.random() * 6) + 1;
+        for (const pEl of planetElList) {
+          var randomIndex = Math.floor(Math.random() * allPositions.length);
+          var planetPosition = allPositions[randomIndex];
+          pEl.style.top = planetPosition[0];
+          pEl.style.left = planetPosition[1];
+          let removed = allPositions.splice(randomIndex, 1);
+          curPlanetIndex++;
+          if (curPlanetIndex > numPlanets) {
+            pEl.parentNode.removeChild(pEl);
+            planetElList = $$('.planet');
+          }
+        }
+      }
+      
+      function generateStarImg() {
+        var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
+        var randomIndex = Math.floor(Math.random() * allImgs.length);
+        var starImg = allImgs[randomIndex];
+        for (const sEl of starElList) {
+          sEl.src = starImg;
+        }
+        for (const sEl of starElList) {
+          var sizeNumber = Number(Math.floor(Math.random() * 10) + 1);
+          sEl.style.height = sizeNumber * 3 + 70 + "px";
+          sEl.style.width = sizeNumber * 3 + 70 + "px";
+          sEl.addEventListener("mouseenter", selectStar);
+          sEl.addEventListener("mouseout", preunselectStar);
+        }
+      }
+      function generateStarbase() {
+        var star = $("s1");
+        var starbase = $("passiveStarbase-s1");
+        var newTop = star.offsetTop - 20;
+        var newLeft = star.offsetLeft + 105;
+        starbase.style.top = newTop + "px";
+        starbase.style.left = newLeft + "px";
+        star.starbase = true;
+      }
+      function generateCurrency() {
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 200;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newMineralNumber = Number(HUDMineralNumber.innerText) + 200;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + 100;
+        HUDAuthorityNumber.innerText = newAuthorityNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 200;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      function generateBackgroundStarPlacement() {
+        var bkstarNumber = 0;
+        while (bkstarNumber < 80) {
+          var star = $("bkstar");
+          var newStar = star.cloneNode(false);
+          var container = $("backgroundStarContainer");
+          newStar.id = star.id + "-" + bkstarNumber;
+          container.appendChild(newStar);
+          bkstarNumber++;
+        }
+        if (bkstarNumber == 80) {
+          console.log("All stars have been accounted for");
+        }
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var randomTop = Number(Math.floor(Math.random() * 740) + 61);
+          var randomLeft = Number(Math.floor(Math.random() * 1265) + 36);
+          bksEl.style.top = randomTop + "px";
+          bksEl.style.left = randomLeft + "px";
+          bksEl.style.display = "block";
+        }
+      }
+      function bkstarGrowthLoop() {
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var newHeight = "5px";
+          var newWidth = "5px";
+          bksEl.style.height = newHeight;
+          bksEl.style.width = newWidth;
+        }
+        setTimeout(function(){
+          bkstarGrowthLoop2();
+        },2000);
+      }
+      function bkstarGrowthLoop2() {
+        var allBackgroundStars = document.querySelectorAll('.backgroundStar');
+        for (const bksEl of allBackgroundStars) {
+          var newHeight = "2px";
+          var newWidth = "2px";
+          bksEl.style.height = newHeight;
+          bksEl.style.width = newWidth;
+        }
+        setTimeout(function(){
+          bkstarGrowthLoop();
+        },2000);
+      }
+       function generateMinistars() {
+        var ministarCount = 0;
+        var star = $("ministar");
+        var container = $("ministarContainer");
+        while (ministarCount < 30) {
+          var newStar = star.cloneNode(false);
+          var randomTop = Number(Math.floor(Math.random() * 60 * 12) + 61);
+          var randomLeft = Number(Math.floor(Math.random() * 120 * 10) + 56);
+          var imgList = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
+          var randomIndex = Number(Math.floor(Math.random() * 3));
+          newStar.id = star.id + "-" + Number(ministarCount + 1);
+          newStar.style.display = "block";
+          newStar.style.top = randomTop + "px";
+          newStar.style.left = randomLeft + "px";
+          newStar.src = imgList[randomIndex];
+          container.appendChild(newStar);
+          ministarCount++;
+        }
+        if (ministarCount == 30) {
+          console.log("all system stars have been accounted for");
+          var mainStar = $("ministar-1");
+          var bigStar = $("s1");
+          mainStar.style.padding = "2px";
+          mainStar.style.background = "lime";
+          if (bigStar.src = "redstar1.png") {
+            mainStar.src = "redstar1.png";
+          }
+          if (bigStar.src = "bluestar1.png") {
+            mainStar.src = "bluestar1.png";
+          }
+          if (bigStar.src = "orangestar1.png") {
+            mainStar.src = "orangestar1.png";
+          }
+        }
+      }
+      
+      
+      ///events
+      function executeEvent1() {
+        var event = $("event1");
+        event.style.display = "none";
+        var newMineralNumber = Number(HUDMineralNumber.innerText) - 50;
+        HUDMineralNumber.innerText = newMineralNumber;
+        var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+        HUDPointNumber.innerText = newPointNumber;  
+      }
+      function executeEvent2() {
+        var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+        HUDPointNumber.innerText = newPointNumber;
+        var event = $("event2");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var el = planetElList[2];
+        var newPopulationNumber = (el.population || 0) + 2;
+        el.population = newPopulationNumber;
+        var newAuthorityNumber = (el.authority || 0) + 2;
+        el.authority = newAuthorityNumber;
+        el.classList.add("colony");
+        var system = $("system1");
+        var colonyMarker = $("passiveColonyMarker");
+        var newTop = el.offsetTop - 10;
+        var newLeft = el.offsetLeft + 55;
+        colonyMarker.style.top = newTop + "px";
+        colonyMarker.style.left = newLeft + "px";
+        var newMarker = colonyMarker.cloneNode(false);
+        newMarker.id = newMarker.id + "-" + el.id;
+        system.appendChild(newMarker);
+        newMarker.style.display = "block";
+        hideSurvey();
+      }
+      function executeEvent3() {
+        var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+        HUDPointNumber.innerText = newPointNumber;
+        var event = $("event3");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;  
+        var cruiser = $("passiveCruiser");
+        var newCruiser = cruiser.cloneNode(false);
+        var container = $("starbaseContainer");
+        currentShipNumber = Number(currentShipNumber) + 1;
+        starbase.dataset.ships = currentShipNumber;
+        console.log(currentShipNumber + " cruiser");
+        var newTop = starbase.offsetTop;
+        var newLeft = starbase.offsetLeft + 10 + 30 * currentShipNumber;
+        newCruiser.style.top = newTop + "px";
+        newCruiser.style.left = newLeft + "px";
+        newCruiser.style.height = "24px";
+        newCruiser.style.width = "32px";
+        newCruiser.id = newCruiser.id + "-s1-" + currentShipNumber;
+        container.appendChild(newCruiser);
+        newCruiser.style.display = "block";
+      }
+      function executeEvent4() {
+        var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+        HUDPointNumber.innerText = newPointNumber;
+        var event = $("event4");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 120;
+        HUDCreditNumber.innerText = newCreditNumber;
+      }
+      function executeEvent5() {
+        var newPointNumber = Number(HUDPointNumber.innerText) + 100;
+        HUDPointNumber.innerText = newPointNumber;
+        var event = $("event5");
+        event.style.display = "none";
+        event.parentNode.removeChild(event);
+        var newCreditNumber = Number(HUDCreditNumber.innerText) + 60;
+        HUDCreditNumber.innerText = newCreditNumber;
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 80;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+      }
+      
+      function moveEvent(el) {
+        el.style.top = "170px";
+        el.style.left = "1000px"
+      }
+      
+      ///misc. and nextTurn
+      function hide(el) {
+        el.style.display = "none";
+      }
+      function remove(el) {
+        el.parentNode.removeChild(el);
+      }
+      
+      function showInfo(el) {
+        if (el = $("miningStationMarker")) {
+          alert ("Mining Stations produce 10 Minerals every turn. Use the tech tree to upgrade(tech tree not in random system generator).");
+        }
+      }
+      
+      function nextTurn() {
+        alert("nextTurn initated");
+        
+        ///planets
+        var habitablePlanets = ["desert", "savanna", "arctic", "tundra", "continental", "ocean", "relic"];
+        var allColonies = $$('.planet.colony');
+        var allMiningPlanets = $$('.planet.miningStation');
+        var newSupplyNumber = Number(HUDSupplyNumber.innerText) - allColonies.length * 10;
+        HUDSupplyNumber.innerText = newSupplyNumber;
+        var newCreditNumber = Number(HUDCreditNumber.innerText) - allMiningPlanets.length * 5;
+        HUDCreditNumber.innerText = newCreditNumber;
+        for (const pEl of allColonies) {
+          if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1]) * 2 && pEl.satisfactoryPlanet == true) {
+            var newPopNumber = pEl.population + 1;
+            pEl.population = newPopNumber;
+            var newAuthorityNumber = (pEl.authority || 0) + 2;
+            pEl.authority = newAuthorityNumber;
+            console.log("The " + pEl.biome + " World is Satisfactory and has grown by 1 Unit")
+          }
+          else if ((pEl.population || 0) < Number(pEl.randomSize.split(" ")[1] * 2) && pEl.satisfactoryPlanet != true) {
+            var newPopNumber = pEl.population + 1;
+            pEl.population = newPopNumber;
+            var newAuthorityNumber = (pEl.authority || 0) + 1;
+            pEl.authority = newAuthorityNumber;
+            console.log("The " + pEl.biome + " World is not Satisfactory but has grown by 1 Unit")
+          }
+          else if ((pEl.population || 0) > Number(pEl.randomSize.split(" ")[1]) * 2) {
+            console.log("population is over planet limit");
+            var newPopNumber = pEl.population - 1;
+            pEl.population = newPopNumber;
+            var newAuthorityNumber = (pEl.authority || 0) - 1;
+            pEl.authority = newAuthorityNumber;
+          }
+          else {
+            console.log("population exceeds planet limit or an error occured ");
+          }
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + Number(pEl.population);
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + Number(pEl.population);
+          HUDCreditNumber.innerText = newCreditNumber;
+        }
+        for (const pEl of allMiningPlanets) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10;
+          HUDMineralNumber.innerText = newMineralNumber;
+        }
+        
+        var allNationalBanks = $$('.planet.nationalBank');
+        var allStripMines = $$('.planet.stripMines');
+        var allHydroponicFarms = $$('.planet.hydroponicFarms');
+        var allLawOffices = $$('.planet.lawOffices');
+        for (const pEl of allNationalBanks) {
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 5;
+          HUDCreditNumber.innerText = newCreditNumber;
+        }
+        for (const pEl of allStripMines) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 5;
+          HUDMineralNumber.innerText = newMineralNumber;
+        }
+        for (const pEl of allHydroponicFarms) {
+          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 5;
+          HUDSupplyNumber.innerText = newSupplyNumber;
+        }
+        for (const pEl of allLawOffices) {
+          var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) + 5;
+          HUDAuthorityNumber.innerText = newAuthorityNumber;
+        }
+        
+        var allJunkPlanets = $$('.planet.salvagedJunk');
+        var allGasPlanets = $$('.planet.salvagedGas');
+        var junkPlanetRandomizer = Number(Math.floor(Math.random * 5) + 1);
+        var gasPlanetRandomizer = Number(Math.floor(Math.random * 5) + 1);
+        if (junkPlanetRandomizer == "1") {
+          for (const pEl of allJunkPlanets) {
+            pEl.classList.remove("salvagedJunk");
+            pEl.addEventListener("click", salvageJunkPlanet, true);
+          }
+        }
+        if (gasPlanetRandomizer == "1") {
+          for (const pEl of allGasPlanets && junkPlanetRandomizer == "1") {
+            pEl.classList.remove("salvagedGas");
+            pEl.addEventListener("click", salvageGasPlanet, true);
+          }
+        }
+        
+        
+        ///stars
+        var allMiningSystems = $$('.star.miningSystem');
+        var allTradeSystems = $$('.star.tradeSystem');
+        var allProduceSystems = $$('.star.produceSystem');
+        for (const sEl of allMiningSystems) {
+          var newMineralNumber = Number(HUDMineralNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
+          HUDMineralNumber.innerText = newMineralNumber;
+        }
+        for (const sEl of allTradeSystems) {
+          var newCreditNumber = Number(HUDCreditNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
+          HUDCreditNumber.innerText = newCreditNumber;
+        }
+        for (const sEl of allProduceSystems) {
+          var newSupplyNumber = Number(HUDSupplyNumber.innerText) + 10 + Number(Math.floor(Math.random() * 21));
+          HUDSupplyNumber.innerText = newSupplyNumber;
+        }
+        var event1 = $("event1");
+        var e1PlanetName = $("e1PlanetName");
+        var event1Target = allMiningPlanets[1];
+        var event1Randomizer = Number(Math.floor(Math.random() * 50) + 1);
+        if (event1 !== undefined && event1Target !== undefined && event1Randomizer == "1") {
+          event1.style.display = "inline-grid";
+          e1PlanetName.innerText = event1Target.randomName;
+        }
+        var event2 = $("event2");
+        var e2PlanetName = $("e2PlanetName");
+        var e2PlanetName2 = $("e2PlanetName2");
+        var event2Target = planetElList[2];
+        var event2Randomizer = Number(Math.floor(Math.random() * 35) + 1);
+        if (event2 !== undefined && event2Target !== undefined && event2Randomizer == "1" && habitablePlanets.includes(event2Target.biome)) {
+          var targetFound = false;
+          allColonies.forEach(function(colonyEl) {  if (colonyEl == event2Target) targetFound = true});
+          if (!targetFound) {
+            event2.style.display = "inline-grid";
+            e2PlanetName.innerText = event2Target.randomName;
+            e2PlanetName2.innerText = event2Target.randomName;
+          }
+        }
+        var starbase = $("passiveStarbase-s1");
+        var currentShipNumber = starbase.dataset.ships;
+        var event3 = $("event3");
+        var e3planetName = $("e3PlanetName");
+        var event3Target = planetElList[1];
+        var event3Randomizer = Number(Math.floor(Math.random() * 40) + 1);
+        if (event3 !== undefined && Number(currentShipNumber) <= 10 && event3Randomizer == "1") {
+          event3.style.display = "inline-grid";
+          e3planetName.innerText = event3Target.randomName;
+        }
+        var event4 = $("event4");
+        var event4Randomizer = Number(Math.floor(Math.random() * 45) + 1);
+        if (event4 !== undefined && event4Randomizer == "1") {
+          event4.style.display = "inline-grid";
+        }
+        var event5 = $("event5");
+        var e5PlanetName = $("e5PlanetName");
+        var event5Target = planetElList[0];
+        var event5Randomizer = Number(Math.floor(Math.random() * 35) + 1);
+        if (event5 !== undefined && event5Randomizer == "1" && habitablePlanets.includes(event5Target.biome)) {
+          event5.style.display = "inline-grid";
+          e5PlanetName.innerText = event5Target.randomName;
+        }
+        
+        ///other
+        if (HUDMineralNumber.innerText <= 0) {
+          alert("you ran out of Minerals (-200 Point Penalty)");
+          newPointNumber = Number(HUDPointNumber.innerText) - 200;
+          HUDPointNumber.innerText = newPointNumber;
+        }
+        if (HUDCreditNumber.innerText <= 0) {
+          alert("you ran out of Credits (-300 Point Penalty)");
+          newPointNumber = Number(HUDPointNumber.innerText) - 300;
+          HUDPointNumber.innerText = newPointNumber;
+        }
+        if (HUDAuthorityNumber.innerText <= 0) {
+          alert("you ran out of Authority, you can no longer control your government (-1000 Point Penalty)");
+          newPointNumber = Number(HUDPointNumber.innerText) - 1000;
+          HUDPointNumber.innerText = newPointNumber;
+        }
+        if (HUDSupplyNumber.innerText <= 0) {
+          alert("you ran out of Supplies, your colonies are starving (-500 Point Penalty)");
+          newPointNumber = Number(HUDPointNumber.innerText) - 500;
+          HUDPointNumber.innerText = newPointNumber;
+        }
+        if (HUDPointNumber.innerText >= 15000) {
+          alert("you've won the game")
+        }
+        var newPointNumber = Number(HUDPointNumber.innerText) + 20;
+        HUDPointNumber.innerText = newPointNumber;
+        hideSurvey();
+      }
+      //Instant Functions
+      generatePlanets();
+      generatePlanetStats();
+      generateStarImg();
+      generateStarbase();
+      generateCurrency();
+      generateBackgroundStarPlacement();
+      generateMinistars();
+      bkstarGrowthLoop();
+    </script>
+  </body>
+</html>
+<!--Version 2--->
