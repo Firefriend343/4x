@@ -1576,20 +1576,22 @@
         }
       }
       function generatePlanets() {
-        var planetNumber = 0;
-        while (planetNumber < 6) {
-          var planet = $("p");
-          var container = $("system1");
-          var newPlanet = planet.cloneNode(false);
-          newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
-          container.appendChild(newPlanet);
-          planetNumber++;
-        }
-        if (planetNumber == 6) {
-          console.log("all system1 planets have been accounted for");
-          var oldPlanet = $("p");
-          oldPlanet.parentNode.removeChild(oldPlanet);
-          planetElList = $$('.planet');
+        for (const syEl of systemElList) {
+          var planetNumber = 0;
+          while (planetNumber < 6) {
+            var planet = $("p");
+            var container = $("system1");
+            var newPlanet = planet.cloneNode(false);
+            newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
+            container.appendChild(newPlanet);
+            planetNumber++;
+          }
+          if (planetNumber == 6) {
+            console.log("all system1 planets have been accounted for");
+            var oldPlanet = $("p");
+            oldPlanet.parentNode.removeChild(oldPlanet);
+            planetElList = $$('.planet');
+          }
         }
       }
       function generatePlanetStats() {
@@ -2072,4 +2074,4 @@
     </script>
   </body>
 </html>
-<!--Version 3--->
+<!--Version 4--->
