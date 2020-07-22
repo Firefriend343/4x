@@ -1581,7 +1581,7 @@
               var planet = $("p");
               var container = $("system" + Number(systemNumber + 1));
               var newPlanet = planet.cloneNode(false);
-              newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
+              newPlanet.id = planet.id + "-" + Number(planetNumber + 1) + "-" + Number(systemNumber + 1);
               container.appendChild(newPlanet);
               planetNumber++;
             }
@@ -2086,4 +2086,4 @@
     </script>
   </body>
 </html>
-<!--Version 465--->
+<!--Version 466--->
