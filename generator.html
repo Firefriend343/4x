@@ -1046,7 +1046,7 @@
         var newCreditNumber = Number(HUDCreditNumber.innerText) - 40;
         HUDCreditNumber.innerText = newCreditNumber;
         var el = $(lastSurveyedPlanet);
-        if (el.stripMines != true && el.buildingSlots <= 2) {
+        if (el.stripMines != true) {
           var newPointNumber = Number(HUDPointNumber.innerText) + 80;
           HUDPointNumber.innerText = newPointNumber;
           el.classList.add("stripMines");
@@ -2089,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 461--->
+<!--Version 462--->
