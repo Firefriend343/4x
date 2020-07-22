@@ -13,10 +13,8 @@
       .everything {}
       #everything {}
       .planet { position:absolute; width:50px; height:50px; background:gray; border-radius:50%; transition:0.45s; }
-      .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
+      .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; top:300px; left:420px; }
       .system { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
-      
-      #s1 { top:300px; left:420px; }
       
       .ministar { position:absolute; width:15px; height:15px; background:white; border-radius:50%; transition:0.45s; }
       .ministarContainer { display:none; transition:0.8s; }
@@ -477,6 +475,7 @@
     <div class="iconCloner">
       <div class="system" id="system"></div>
       <img class="planet" id="p"></img>
+      <img class="star" id="star"></img>
       
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -1675,7 +1674,30 @@
           }
         }
       }
-      
+      function generateStars() {
+        var systemNumber = 0;
+        for (const syEl of systemElList) {
+          while (systemNumber < 30) {
+            var starNumber = 0;
+            while (starNumber < 6) {
+              var star = $("s");
+              var container = $("system" + Number(systemNumber + 1));
+              var newStar = star.cloneNode(false);
+              newStar.id = star.id + "-" + Number(starNumber + 1);
+              container.appendChild(newStar);
+              starNumber++;
+            }
+            systemNumber++;
+          }
+        }
+        if (systemNumber == 30) {
+          console.log("all system's all Stars have been accounted for");
+          var oldStar = $("s");
+          oldStar.parentNode.removeChild(oldStar);
+          starElList = $$('.star');
+          return;
+        }
+      }
       function generateStarImg() {
         var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
         var randomIndex = Math.floor(Math.random() * allImgs.length);
@@ -2067,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 11--->
+<!--Version 12--->
