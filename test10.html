@@ -1559,6 +1559,7 @@
           var container = $("everything");
           var newSystem = system.cloneNode(false);
           newSystem.id = system.id + Number(systemNumber + 1);
+          newSystem.style.display = "none";
           container.appendChild(newSystem);
           systemNumber++;
         }
@@ -1567,6 +1568,8 @@
           var oldSystem = $("system");
           oldSystem.parentNode.removeChild(oldSystem);
           systemElList = $$('.system');
+          var system1 = $("system1");
+          system1.style.display = "block";
         }
       }
       function generatePlanets() {
@@ -1773,19 +1776,8 @@
         }
         if (ministarCount == 30) {
           console.log("all system stars have been accounted for");
-          var mainStar = $("ministar-1");
-          var bigStar = $("s1");
-          mainStar.style.padding = "2px";
-          mainStar.style.background = "lime";
-          if (bigStar.src = "redstar1.png") {
-            mainStar.src = "redstar1.png";
-          }
-          if (bigStar.src = "bluestar1.png") {
-            mainStar.src = "bluestar1.png";
-          }
-          if (bigStar.src = "orangestar1.png") {
-            mainStar.src = "orangestar1.png";
-          }
+          var oldStar = $("ministar");
+          oldStar.parentNode.removeChild(oldStar);
         }
       }
       
@@ -2075,4 +2067,4 @@
     </script>
   </body>
 </html>
-<!--Version 10--->
+<!--Version 11--->
