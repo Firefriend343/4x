@@ -518,12 +518,6 @@
       <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
     </div>
 
-    <div class="system" id="system1">
-      
-      <img class="star" id="s1"></img>  
-
-    </div>
-
     <div class="starbaseContainer" id="starbaseContainer">
         <img class="passiveStarbase" id="passiveStarbase-s1" data-ships="0" src="starbaseicon.png" 
         onmouseenter="showBuilderMenu(this)" onmouseout="preCloseBuilderMenu(this)">
@@ -1649,30 +1643,32 @@
             pEl.addEventListener("click", salvageGasPlanet, true);
           }
         }
-        var allPositions =   [["133px","215px"],
-                              ["215px","591px"],
-                              ["85px" ,"380px"],
-                              ["415px","210px"],
-                              ["347px","715px"],
-                              ["126px","515px"],
-                              ["122px","717px"],
-                              ["417px","813px"],
-                              ["488px","430px"],
-                              ["214px","315px"],
-                              ["412px","584px"],
-                              ["587px","453px"]];
-        var curPlanetIndex = 0;
-        var numPlanets = Math.floor(Math.random() * 6) + 1;
-        for (const pEl of planetElList) {
-          var randomIndex = Math.floor(Math.random() * allPositions.length);
-          var planetPosition = allPositions[randomIndex];
-          pEl.style.top = planetPosition[0];
-          pEl.style.left = planetPosition[1];
-          let removed = allPositions.splice(randomIndex, 1);
-          curPlanetIndex++;
-          if (curPlanetIndex > numPlanets) {
-            pEl.parentNode.removeChild(pEl);
-            planetElList = $$('.planet');
+        for (const syEl of systemElList) {
+          var allPositions =   [["133px","215px"],
+                                ["215px","591px"],
+                                ["85px" ,"380px"],
+                                ["415px","210px"],
+                                ["347px","715px"],
+                                ["126px","515px"],
+                                ["122px","717px"],
+                                ["417px","813px"],
+                                ["488px","430px"],
+                                ["214px","315px"],
+                                ["412px","584px"],
+                                ["587px","453px"]];
+          var curPlanetIndex = 0;
+          var numPlanets = Math.floor(Math.random() * 6) + 1;
+          for (const pEl of planetElList) {
+            var randomIndex = Math.floor(Math.random() * allPositions.length);
+            var planetPosition = allPositions[randomIndex];
+            pEl.style.top = planetPosition[0];
+            pEl.style.left = planetPosition[1];
+            let removed = allPositions.splice(randomIndex, 1);
+            curPlanetIndex++;
+            if (curPlanetIndex > numPlanets) {
+              pEl.parentNode.removeChild(pEl);
+              planetElList = $$('.planet');
+            }
           }
         }
       }
@@ -2079,4 +2075,4 @@
     </script>
   </body>
 </html>
-<!--Version 7--->
+<!--Version 8--->
