@@ -1572,6 +1572,7 @@
           var system1 = $("system1");
           system1.style.display = "block";
         }
+        lastSelectedSystem = $("system1");
       }
       function generatePlanets() {
         var systemNumber = 0;
@@ -2075,9 +2076,6 @@
         hideSurvey();
       }
       //Instant Functions
-      let lastSelectedSystem = $("system1");
-      
-      
       generateSystems();
       generatePlanets();
       generatePlanetStats();
@@ -2091,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 18--->
+<!--Version 19--->
