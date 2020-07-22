@@ -475,7 +475,7 @@
     <div class="iconCloner">
       <div class="system" id="system"></div>
       <img class="planet" id="p"></img>
-      <img class="star" id="star"></img>
+      <img class="star" id="s"></img>
       
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -1678,15 +1678,11 @@
         var systemNumber = 0;
         for (const syEl of systemElList) {
           while (systemNumber < 30) {
-            var starNumber = 0;
-            while (starNumber < 6) {
-              var star = $("s");
-              var container = $("system" + Number(systemNumber + 1));
-              var newStar = star.cloneNode(false);
-              newStar.id = star.id + "-" + Number(starNumber + 1);
-              container.appendChild(newStar);
-              starNumber++;
-            }
+            var star = $("s");
+            var container = $("system" + Number(systemNumber + 1));
+            var newStar = star.cloneNode(false);
+            newStar.id = star.id + "-" + Number(systemNumber + 1);
+            container.appendChild(newStar);
             systemNumber++;
           }
         }
@@ -2090,4 +2086,4 @@
     </script>
   </body>
 </html>
-<!--Version 13--->
+<!--Version 14--->
