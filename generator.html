@@ -938,7 +938,7 @@
             HUDCreditNumber.innerText = newCreditNumber;
             var newPointNumber = Number(HUDPointNumber.innerText) + 150;
             HUDPointNumber.innerText = newPointNumber;
-            var system = $(lastSelectedSystem);
+            var system = lastSelectedSystem;
             var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
             HUDAuthorityNumber.innerText = newAuthorityNumber;
             el.classList.add("miningStation");
@@ -979,7 +979,7 @@
             var newAuthorityNumber = (el.authority || 0) + 2;
             el.authority = newAuthorityNumber;
             el.classList.add("colony");
-            var system = $(lastSelectedSystem);
+            var system = lastSelectedSystem;
             var colonyMarker = $("passiveColonyMarker");
             var newTop = el.offsetTop - 10;
             var newLeft = el.offsetLeft + 55;
@@ -1824,7 +1824,7 @@
         var newAuthorityNumber = (el.authority || 0) + 2;
         el.authority = newAuthorityNumber;
         el.classList.add("colony");
-        var system = $(lastSelectedSystem);
+        var system = lastSelectedSystem;
         var colonyMarker = $("passiveColonyMarker");
         var newTop = el.offsetTop - 10;
         var newLeft = el.offsetLeft + 55;
@@ -2089,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 460--->
+<!--Version 461--->
