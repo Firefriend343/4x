@@ -1515,7 +1515,7 @@
       }
       
       function hideSystem() {
-        var system = $(lastSelectedSystem);
+        var system = lastSelectedSystem;
         var ministarContainer = $("ministarContainer");
         system.style.opacity = "0%";
         ministarContainer.style.display = "block";
@@ -1525,7 +1525,7 @@
         },0800);
       }
       function hideSystem2() {
-        var system = $(lastSelectedSystem);
+        var system = lastSelectedSystem;
         var ministarContainer = $("ministarContainer");
         system.style.display = "none";
         system.style.opacity = "100%";
@@ -1535,7 +1535,7 @@
         var ministarContainer = $("ministarContainer");
         var newSystemNumber = el.id.split("-")[1];
         var newSystem = $("system" + newSystemNumber);
-        lastSelectedSystem = $(newSystem);
+        lastSelectedSystem = newSystem;
         ministarContainer.style.opacity = "0%";
         newSystem.style.display = "block";
         newSystem.style.opacity = "0%"
@@ -2089,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 19--->
+<!--Version 20--->
