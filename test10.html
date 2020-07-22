@@ -685,6 +685,7 @@
       //global variables
       var lastSelectedPlanet = null;
       var lastSurveyedPlanet = null;
+      var lastSelectedSystem = null;
       var preferenceDesert = false;
       var preferenceSavanna = false;
       var preferenceArctic = false;
@@ -937,7 +938,7 @@
             HUDCreditNumber.innerText = newCreditNumber;
             var newPointNumber = Number(HUDPointNumber.innerText) + 150;
             HUDPointNumber.innerText = newPointNumber;
-            var system = $("system1");
+            var system = $(lastSelectedSystem);
             var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
             HUDAuthorityNumber.innerText = newAuthorityNumber;
             el.classList.add("miningStation");
@@ -978,7 +979,7 @@
             var newAuthorityNumber = (el.authority || 0) + 2;
             el.authority = newAuthorityNumber;
             el.classList.add("colony");
-            var system = $("system1");
+            var system = $(lastSelectedSystem);
             var colonyMarker = $("passiveColonyMarker");
             var newTop = el.offsetTop - 10;
             var newLeft = el.offsetLeft + 55;
@@ -1514,7 +1515,7 @@
       }
       
       function hideSystem() {
-        var system = $("system1"); //replace with variable of system element when read
+        var system = $(lastSelectedSystem);
         var ministarContainer = $("ministarContainer");
         system.style.opacity = "0%";
         ministarContainer.style.display = "block";
@@ -1524,7 +1525,7 @@
         },0800);
       }
       function hideSystem2() {
-        var system = $("system1"); //replace with variable of system element when read
+        var system = $(lastSelectedSystem);
         var ministarContainer = $("ministarContainer");
         system.style.display = "none";
         system.style.opacity = "100%";
@@ -1534,6 +1535,7 @@
         var ministarContainer = $("ministarContainer");
         var newSystemNumber = el.id.split("-")[1];
         var newSystem = $("system" + newSystemNumber);
+        lastSelectedSystem = $(newSystem);
         ministarContainer.style.opacity = "0%";
         newSystem.style.display = "block";
         newSystem.style.opacity = "0%"
@@ -1821,7 +1823,7 @@
         var newAuthorityNumber = (el.authority || 0) + 2;
         el.authority = newAuthorityNumber;
         el.classList.add("colony");
-        var system = $("system1");
+        var system = $(lastSelectedSystem);
         var colonyMarker = $("passiveColonyMarker");
         var newTop = el.offsetTop - 10;
         var newLeft = el.offsetLeft + 55;
@@ -2027,7 +2029,7 @@
         var event3Target = planetElList[1];
         var event3Randomizer = Number(Math.floor(Math.random() * 40) + 1);
         if (event3 !== undefined && Number(currentShipNumber) <= 10 && event3Randomizer == "1") {
-          event3.style.display = "inline-grid";
+          //event3.style.display = "inline-grid";
           e3planetName.innerText = event3Target.randomName;
         }
         var event4 = $("event4");
@@ -2086,4 +2088,4 @@
     </script>
   </body>
 </html>
-<!--Version 14--->
+<!--Version 16--->
