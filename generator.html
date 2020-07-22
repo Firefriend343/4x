@@ -1740,7 +1740,7 @@
           bkstarNumber++;
         }
         if (bkstarNumber == 80) {
-          console.log("All stars have been accounted for");
+          console.log("All background stars have been accounted for");
         }
         var allBackgroundStars = document.querySelectorAll('.backgroundStar');
         for (const bksEl of allBackgroundStars) {
@@ -1781,8 +1781,8 @@
         var container = $("ministarContainer");
         while (ministarCount < 30) {
           var newStar = star.cloneNode(false);
-          var randomTop = Number(Math.floor(Math.random() * 60 * 12) + 61);
-          var randomLeft = Number(Math.floor(Math.random() * 120 * 10) + 56);
+          var randomTop = Number(Math.floor(Math.random() * 72 * 10) + 61);
+          var randomLeft = Number(Math.floor(Math.random() * 120 * 10) + 51);
           var imgList = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
           var randomIndex = Number(Math.floor(Math.random() * 3));
           newStar.id = star.id + "-" + Number(ministarCount + 1);
@@ -2086,4 +2086,4 @@
     </script>
   </body>
 </html>
-<!--Version 466--->
+<!--Version 467--->
