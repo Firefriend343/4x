@@ -1658,7 +1658,8 @@
                                 ["587px","453px"]];
           var curPlanetIndex = 0;
           var numPlanets = Math.floor(Math.random() * 6) + 1;
-          for (const pEl of planetElList) {
+          var systemplanetElList = sysEl.querySelectorAll('.planet');
+          for (const pEl of systemplanetElList) {
             var randomIndex = Math.floor(Math.random() * allPositions.length);
             var planetPosition = allPositions[randomIndex];
             pEl.style.top = planetPosition[0];
@@ -1667,7 +1668,6 @@
             curPlanetIndex++;
             if (curPlanetIndex > numPlanets) {
               pEl.parentNode.removeChild(pEl);
-              planetElList = $$('.planet');
             }
           }
         }
@@ -2075,4 +2075,4 @@
     </script>
   </body>
 </html>
-<!--Version 8--->
+<!--Version 9--->
