@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title> 4x Random System Generator </title>
+    <title> 4X Random System Generator </title>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -10,11 +10,11 @@
       body { background:#030a17; }
       img { image-rendering:pixelated; }
       
+      .everything {}
+      #everything {}
       .planet { position:absolute; width:50px; height:50px; background:gray; border-radius:50%; transition:0.45s; }
-      .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; }
+      .star { position:absolute; width:90px; height:90px; background:white; border-radius:50%; transition:0.45s; top:300px; left:420px; }
       .system { position:absolute; width:0px; height:0px; top:0px; left:0px; transition:0.8s; }
-      
-      #s1 { top:300px; left:420px; }
       
       .ministar { position:absolute; width:15px; height:15px; background:white; border-radius:50%; transition:0.45s; }
       .ministarContainer { display:none; transition:0.8s; }
@@ -444,7 +444,7 @@
   </head>
   
   <body>
-    
+    <div class="everything" id="everything">
     <div class="HUD">
       <div class="HUDcell HUDtop"></div>
       <div class="HUDcell margin1"></div>
@@ -475,6 +475,7 @@
     <div class="iconCloner">
       <div class="system" id="system"></div>
       <img class="planet" id="p"></img>
+      <img class="star" id="s"></img>
       
       <img class="colonyMarker" id="passiveColonyMarker" src="passivecolony.png" onclick="surveyColony(this)"></img>
       <img class="colonyMarker" id="neutralColonyMarker" src="neutralcolony.png"></img>
@@ -514,12 +515,6 @@
       <div class="constructionCell constructionSupplyIcon" onclick="hideSurvey()"><img id="constructionSupplyIcon" src="supplyicon.png"></img></div>
       <div class="constructionCell constructionButton4"><button id="constructionButton4" onclick="constructLawOffices()"> Build Law Offices </button></div>
       <div class="constructionCell constructionAuthorityIcon" onclick="hideSurvey()"><img id="constructionAuthorityIcon" src="authorityicon.png"></img></div>
-    </div>
-
-    <div class="system" id="system1">
-      
-      <img class="star" id="s1"></img>  
-
     </div>
 
     <div class="starbaseContainer" id="starbaseContainer">
@@ -684,12 +679,13 @@
       <span> The planet may have once supported life, but had frozen over long since leaving its home system. However, it's still rich in resources. </span></div>
       <div class="EAcell EAbutton"><button id="E5button" onclick="executeEvent5()"> Salvage it. </button></div>
     </div>
-
+    </div>
 
     <script>
       //global variables
       var lastSelectedPlanet = null;
       var lastSurveyedPlanet = null;
+      var lastSelectedSystem = null;
       var preferenceDesert = false;
       var preferenceSavanna = false;
       var preferenceArctic = false;
@@ -942,7 +938,7 @@
             HUDCreditNumber.innerText = newCreditNumber;
             var newPointNumber = Number(HUDPointNumber.innerText) + 150;
             HUDPointNumber.innerText = newPointNumber;
-            var system = $("system1");
+            var system = $(lastSelectedSystem);
             var newAuthorityNumber = Number(HUDAuthorityNumber.innerText) - 10;
             HUDAuthorityNumber.innerText = newAuthorityNumber;
             el.classList.add("miningStation");
@@ -983,7 +979,7 @@
             var newAuthorityNumber = (el.authority || 0) + 2;
             el.authority = newAuthorityNumber;
             el.classList.add("colony");
-            var system = $("system1");
+            var system = $(lastSelectedSystem);
             var colonyMarker = $("passiveColonyMarker");
             var newTop = el.offsetTop - 10;
             var newLeft = el.offsetLeft + 55;
@@ -1519,7 +1515,7 @@
       }
       
       function hideSystem() {
-        var system = $("system1"); //replace with variable of system element when read
+        var system = lastSelectedSystem;
         var ministarContainer = $("ministarContainer");
         system.style.opacity = "0%";
         ministarContainer.style.display = "block";
@@ -1529,7 +1525,7 @@
         },0800);
       }
       function hideSystem2() {
-        var system = $("system1"); //replace with variable of system element when read
+        var system = lastSelectedSystem;
         var ministarContainer = $("ministarContainer");
         system.style.display = "none";
         system.style.opacity = "100%";
@@ -1539,6 +1535,7 @@
         var ministarContainer = $("ministarContainer");
         var newSystemNumber = el.id.split("-")[1];
         var newSystem = $("system" + newSystemNumber);
+        lastSelectedSystem = newSystem;
         ministarContainer.style.opacity = "0%";
         newSystem.style.display = "block";
         newSystem.style.opacity = "0%"
@@ -1560,23 +1557,45 @@
         var systemNumber = 0;
         while (systemNumber < 30) {
           var system = $("system");
+          var container = $("everything");
+          var newSystem = system.cloneNode(false);
+          newSystem.id = system.id + Number(systemNumber + 1);
+          newSystem.style.display = "none";
+          container.appendChild(newSystem);
+          systemNumber++;
         }
+        if (systemNumber == 30) {
+          console.log("all systems have been accounted for");
+          var oldSystem = $("system");
+          oldSystem.parentNode.removeChild(oldSystem);
+          systemElList = $$('.system');
+          var system1 = $("system1");
+          system1.style.display = "block";
+        }
+        lastSelectedSystem = $("system1");
       }
       function generatePlanets() {
-        var planetNumber = 0;
-        while (planetNumber < 6) {
-          var planet = $("p");
-          var container = $("system1");
-          var newPlanet = planet.cloneNode(false);
-          newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
-          container.appendChild(newPlanet);
-          planetNumber++;
+        var systemNumber = 0;
+        for (const syEl of systemElList) {
+          while (systemNumber < 30) {
+            var planetNumber = 0;
+            while (planetNumber < 6) {
+              var planet = $("p");
+              var container = $("system" + Number(systemNumber + 1));
+              var newPlanet = planet.cloneNode(false);
+              newPlanet.id = planet.id + "-" + Number(planetNumber + 1);
+              container.appendChild(newPlanet);
+              planetNumber++;
+            }
+            systemNumber++;
+          }
         }
-        if (planetNumber == 6) {
-          console.log("all system1 planets have been accounted for");
+        if (systemNumber == 30) {
+          console.log("all system's all Planets have been accounted for");
           var oldPlanet = $("p");
           oldPlanet.parentNode.removeChild(oldPlanet);
           planetElList = $$('.planet');
+          return;
         }
       }
       function generatePlanetStats() {
@@ -1629,34 +1648,55 @@
             pEl.addEventListener("click", salvageGasPlanet, true);
           }
         }
-        var allPositions =   [["133px","215px"],
-                              ["215px","591px"],
-                              ["85px" ,"380px"],
-                              ["415px","210px"],
-                              ["347px","715px"],
-                              ["126px","515px"],
-                              ["122px","717px"],
-                              ["417px","813px"],
-                              ["488px","430px"],
-                              ["214px","315px"],
-                              ["412px","584px"],
-                              ["587px","453px"]];
-        var curPlanetIndex = 0;
-        var numPlanets = Math.floor(Math.random() * 6) + 1;
-        for (const pEl of planetElList) {
-          var randomIndex = Math.floor(Math.random() * allPositions.length);
-          var planetPosition = allPositions[randomIndex];
-          pEl.style.top = planetPosition[0];
-          pEl.style.left = planetPosition[1];
-          let removed = allPositions.splice(randomIndex, 1);
-          curPlanetIndex++;
-          if (curPlanetIndex > numPlanets) {
-            pEl.parentNode.removeChild(pEl);
-            planetElList = $$('.planet');
+        for (const syEl of systemElList) {
+          var allPositions =   [["133px","215px"],
+                                ["215px","591px"],
+                                ["85px" ,"380px"],
+                                ["415px","210px"],
+                                ["347px","715px"],
+                                ["126px","515px"],
+                                ["122px","717px"],
+                                ["417px","813px"],
+                                ["488px","430px"],
+                                ["214px","315px"],
+                                ["412px","584px"],
+                                ["587px","453px"]];
+          var curPlanetIndex = 0;
+          var numPlanets = Math.floor(Math.random() * 6) + 1;
+          var systemplanetElList = syEl.querySelectorAll('.planet');
+          for (const pEl of systemplanetElList) {
+            var randomIndex = Math.floor(Math.random() * allPositions.length);
+            var planetPosition = allPositions[randomIndex];
+            pEl.style.top = planetPosition[0];
+            pEl.style.left = planetPosition[1];
+            let removed = allPositions.splice(randomIndex, 1);
+            curPlanetIndex++;
+            if (curPlanetIndex > numPlanets) {
+              pEl.parentNode.removeChild(pEl);
+            }
           }
         }
       }
-      
+      function generateStars() {
+        var systemNumber = 0;
+        for (const syEl of systemElList) {
+          while (systemNumber < 30) {
+            var star = $("s");
+            var container = $("system" + Number(systemNumber + 1));
+            var newStar = star.cloneNode(false);
+            newStar.id = star.id + "-" + Number(systemNumber + 1);
+            container.appendChild(newStar);
+            systemNumber++;
+          }
+        }
+        if (systemNumber == 30) {
+          console.log("all system's Stars have been accounted for");
+          var oldStar = $("s");
+          oldStar.parentNode.removeChild(oldStar);
+          starElList = $$('.star');
+          return;
+        }
+      }
       function generateStarImg() {
         var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
         var randomIndex = Math.floor(Math.random() * allImgs.length);
@@ -1757,19 +1797,8 @@
         }
         if (ministarCount == 30) {
           console.log("all system stars have been accounted for");
-          var mainStar = $("ministar-1");
-          var bigStar = $("s1");
-          mainStar.style.padding = "2px";
-          mainStar.style.background = "lime";
-          if (bigStar.src = "redstar1.png") {
-            mainStar.src = "redstar1.png";
-          }
-          if (bigStar.src = "bluestar1.png") {
-            mainStar.src = "bluestar1.png";
-          }
-          if (bigStar.src = "orangestar1.png") {
-            mainStar.src = "orangestar1.png";
-          }
+          var oldStar = $("ministar");
+          oldStar.parentNode.removeChild(oldStar);
         }
       }
       
@@ -1795,7 +1824,7 @@
         var newAuthorityNumber = (el.authority || 0) + 2;
         el.authority = newAuthorityNumber;
         el.classList.add("colony");
-        var system = $("system1");
+        var system = $(lastSelectedSystem);
         var colonyMarker = $("passiveColonyMarker");
         var newTop = el.offsetTop - 10;
         var newLeft = el.offsetLeft + 55;
@@ -2001,7 +2030,7 @@
         var event3Target = planetElList[1];
         var event3Randomizer = Number(Math.floor(Math.random() * 40) + 1);
         if (event3 !== undefined && Number(currentShipNumber) <= 10 && event3Randomizer == "1") {
-          event3.style.display = "inline-grid";
+          //event3.style.display = "inline-grid";
           e3planetName.innerText = event3Target.randomName;
         }
         var event4 = $("event4");
@@ -2047,10 +2076,12 @@
         hideSurvey();
       }
       //Instant Functions
+      generateSystems();
       generatePlanets();
       generatePlanetStats();
+      generateStars();
       generateStarImg();
-      generateStarbase();
+      ///generateStarbase(); to be added in later
       generateCurrency();
       generateBackgroundStarPlacement();
       generateMinistars();
@@ -2058,4 +2089,4 @@
     </script>
   </body>
 </html>
-<!--Version 0.440--->
+<!--Version 460--->
