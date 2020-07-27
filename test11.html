@@ -7,16 +7,62 @@
       body { background:#030a17; }
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
+      
+      .techMenu { position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; 
+        border: 2px solid lightgray; border-radius: 5px; overflow:scroll; display:none; gap: 3px; background: #1d4b96; transition:0.4s; 
+        grid-template-columns: repeat(2, 1fr); grid-auto-rows:auto;
+        "techName1 techButton1"
+        "techName2 techButton2"
+        "techName3 techButton3"
+        "techName4 techButton4"
+        "techName5 techButton5";
+      }
+      .techCell { font-size:90%; background:#7096cf; text-align:center; }
+      .techName1 { grid-area:techName1; }
+      .techButton1 { grid-area:techButton1; }
+      .techButton1 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .techName2 { grid-area:techName1; }
+      .techButton2 { grid-area:techButton1; }
+      .techButton2 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .techName3 { grid-area:techName1; }
+      .techButton3 { grid-area:techButton1; }
+      .techButton3 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .techName4 { grid-area:techName1; }
+      .techButton4 { grid-area:techButton1; }
+      .techButton4 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      .techName5 { grid-area:techName1; }
+      .techButton5 { grid-area:techButton1; }
+      .techButton5 button { position:relative; width:50px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; }
+      
     </style>
   </head>
   
   
   <body>
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
+    
+    <div class="techMenu">
+      <div class="techCell techName1"><span> Thing 1 </span></div>
+      <div class="techCell techButton1"><button> Research </button></div>
+      <div class="techCell techName2"><span> Thing 2 </span></div>
+      <div class="techCell techButton2"><button> Research </button></div>
+      <div class="techCell techName3"><span> Thing 3 </span></div>
+      <div class="techCell techButton3"><button> Research </button></div>
+      <div class="techCell techName4"><span> Thing 4 </span></div>
+      <div class="techCell techButton4"><button> Research </button></div>
+      <div class="techCell techName5"><span> Thing 5 </span></div>
+      <div class="techCell techButton5"><button> Research </button></div>
+    </div>
+    
     <script>
     
     
     </script>
   </body>
 </html>
-<!--Version 5--->
+<!--Version 6--->
