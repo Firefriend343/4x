@@ -1696,10 +1696,10 @@
         }
       }
       function generateStarImg() {
-        var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
-        var randomIndex = Math.floor(Math.random() * allImgs.length);
-        var starImg = allImgs[randomIndex];
         for (const sEl of starElList) {
+          var allImgs = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
+          var randomIndex = Math.floor(Math.random() * allImgs.length);
+          var starImg = allImgs[randomIndex];
           sEl.src = starImg;
         }
         for (const sEl of starElList) {
@@ -2085,4 +2085,4 @@
     </script>
   </body>
 </html>
-<!--Version 472--->
+<!--Version 473--->
