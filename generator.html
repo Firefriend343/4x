@@ -1784,7 +1784,7 @@
           var randomTop = Number(Math.floor(Math.random() * 30 * 20) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 55 * 20) + 61);
           newStar.id = star.id + "-" + Number(ministarCount + 1);
-          var sameStar = $("s" + newStar.id.split("-")[1]);
+          var sameStar = $("s-" + newStar.id.split("-")[1]);
           newStar.style.display = "block";
           newStar.style.top = randomTop + "px";
           newStar.style.left = randomLeft + "px";
@@ -2085,4 +2085,4 @@
     </script>
   </body>
 </html>
-<!--Version 471--->
+<!--Version 472--->
