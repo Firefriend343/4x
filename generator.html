@@ -1783,13 +1783,12 @@
           var newStar = star.cloneNode(false);
           var randomTop = Number(Math.floor(Math.random() * 30 * 20) + 61);
           var randomLeft = Number(Math.floor(Math.random() * 55 * 20) + 61);
-          var imgList = ["redstar1.png", "bluestar1.png", "orangestar1.png"];
-          var randomIndex = Number(Math.floor(Math.random() * 3));
           newStar.id = star.id + "-" + Number(ministarCount + 1);
+          var sameStar = $("s" + newStar.id.split("-")[1]);
           newStar.style.display = "block";
           newStar.style.top = randomTop + "px";
           newStar.style.left = randomLeft + "px";
-          newStar.src = imgList[randomIndex];
+          newStar.src = sameStar.src;
           container.appendChild(newStar);
           ministarCount++;
         }
@@ -2086,4 +2085,4 @@
     </script>
   </body>
 </html>
-<!--Version 470--->
+<!--Version 471--->
