@@ -7,6 +7,7 @@
       body { background:#030a17; }
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
+      .techButton {  }
       
       .techMenu { position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; 
         border: 2px solid lightgray; border-radius: 5px; overflow:scroll; display:inline-grid; gap: 3px; background: #1d4b96; transition:0.4s; 
@@ -49,15 +50,15 @@
     
     <div class="techMenu">
       <div class="techCell techName1"><span> Technology 1 </span></div>
-      <div class="techCell techButton1"><button onclick="activateTech1()"> Research </button></div>
+      <div class="techCell techButton1"><button class="techButton" id="tB1" onclick="activateTech1()"> Research </button></div>
       <div class="techCell techName2"><span> Technology 2 </span></div>
-      <div class="techCell techButton2"><button onclick="activateTech2()"> Research </button></div>
+      <div class="techCell techButton2"><button class="techButton" id="tB2" onclick="activateTech2()"> Research </button></div>
       <div class="techCell techName3"><span> Technology 3 </span></div>
-      <div class="techCell techButton3"><button onclick="activateTech3()"> Research </button></div>
+      <div class="techCell techButton3"><button class="techButton" id="tB3" onclick="activateTech3()"> Research </button></div>
       <div class="techCell techName4"><span> Technology 4 </span></div>
-      <div class="techCell techButton4"><button onclick="activateTech4()"> Research </button></div>
+      <div class="techCell techButton4"><button class="techButton" id="tB4" onclick="activateTech4()"> Research </button></div>
       <div class="techCell techName5"><span> Technology 5 </span></div>
-      <div class="techCell techButton5"><button onclick="activateTech5()"> Research </button></div>
+      <div class="techCell techButton5"><button class="techButton" id="tB5" onclick="activateTech5()"> Research </button></div>
     </div>
     
     <script>
@@ -108,24 +109,36 @@
         }
         if (tech1Count == 2) {
           alert("Technology 1 has been activated!");
+          var button = $("tb2");
+          button.disabled = false;
+          button.style.display = "#7096cf";
         }
         if (tech2Active == true) {
           tech2Count++; 
         }
         if (tech2Count == 2) {
           alert("Technology 2 has been activated!");
+          var button = $("tb3");
+          button.disabled = false;
+          button.style.display = "#7096cf";
         }
         if (tech3Active == true) {
           tech3Count++; 
         }
         if (tech3Count == 2) {
           alert("Technology 3 has been activated!");
+          var button = $("tb4");
+          button.disabled = false;
+          button.style.display = "#7096cf";
         }
         if (tech4Active == true) {
           tech4Count++; 
         }
         if (tech4Count == 2) {
           alert("Technology 4 has been activated!");
+          var button = $("tb5");
+          button.disabled = false;
+          button.style.display = "#7096cf";
         }
         if (tech5Active == true) {
           tech5Count++; 
@@ -134,8 +147,18 @@
           alert("Technology 5 has been activated!");
         }
       }
+      function generateTechButtons() {
+        var allTechButtons = $$('.techButton');
+        for (const tBEl of allTechButtons) {
+          tBEl.disabled = true;
+          tBEl.style.background = "lightgray";
+        }
+        var button1 = $("tB1");
+        button1.disabled = false;
+        button1.style.background = "#7096cf";
+      }
     
     </script>
   </body>
 </html>
-<!--Version 18--->
+<!--Version 19--->
