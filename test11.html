@@ -21,23 +21,23 @@
       .techCell { font-size:90%; background:#7096cf; text-align:center; padding-top:10px;  }
       .techName1 { grid-area:techName1; }
       .techButton1 { grid-area:techButton1; padding-top:0px; }
-      .techButton1 button { position:relative; width:70px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .techButton1 button { position:relative; width:70px; height:40px; top:9px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; margin-left:4px; padding-top:0px; }
       .techName2 { grid-area:techName2; }
       .techButton2 { grid-area:techButton2; padding-top:0px; }
-      .techButton2 button { position:relative; width:70px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .techButton2 button { position:relative; width:70px; height:40px; top:9px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; margin-left:4px; padding-top:0px; }
       .techName3 { grid-area:techName3; }
       .techButton3 { grid-area:techButton3; padding-top:0px; }
-      .techButton3 button { position:relative; width:70px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .techButton3 button { position:relative; width:70px; height:40px; top:9px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; margin-left:4px; padding-top:0px; }
       .techName4 { grid-area:techName4; }
       .techButton4 { grid-area:techButton4; padding-top:0px; }
-      .techButton4 button { position:relative; width:70px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .techButton4 button { position:relative; width:70px; height:40px; top:9px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; margin-left:4px; padding-top:0px; }
       .techName5 { grid-area:techName5; }
       .techButton5 { grid-area:techButton5; padding-top:0px; }
-      .techButton5 button { position:relative; width:70px; height:40px; top:7.5px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
+      .techButton5 button { position:relative; width:70px; height:40px; top:9px; left:1.5px; display:block; border: 2px solid lightgray; border-radius:20%;
         font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; font-family: 'MedievalSharp', cursive; margin-left:4px; padding-top:0px; }
       
     </style>
@@ -49,21 +49,59 @@
     
     <div class="techMenu">
       <div class="techCell techName1"><span> Technology 1 </span></div>
-      <div class="techCell techButton1"><button> Research </button></div>
+      <div class="techCell techButton1"><button> Research </button onclick="activateTech1()"></div>
       <div class="techCell techName2"><span> Technology 2 </span></div>
-      <div class="techCell techButton2"><button> Research </button></div>
+      <div class="techCell techButton2"><button> Research </button onclick="activateTech2()"></div>
       <div class="techCell techName3"><span> Technology 3 </span></div>
-      <div class="techCell techButton3"><button> Research </button></div>
+      <div class="techCell techButton3"><button> Research </button onclick="activateTech3()"></div>
       <div class="techCell techName4"><span> Technology 4 </span></div>
-      <div class="techCell techButton4"><button> Research </button></div>
+      <div class="techCell techButton4"><button> Research </button onclick="activateTech4()"></div>
       <div class="techCell techName5"><span> Technology 5 </span></div>
-      <div class="techCell techButton5"><button> Research </button></div>
+      <div class="techCell techButton5"><button> Research </button onclick="activateTech5()"></div>
     </div>
     
     <script>
-    
+      
+      var tech1Active = false;
+      var tech1Count = 0;
+      var tech2Active = false;
+      var tech2Count = 0;
+      var tech3Active = false;
+      var tech3Count = 0;
+      var tech4Active = false;
+      var tech4Count = 0;
+      var tech5Active = false;
+      var tech5Count = 0;
+      
+      function $ (id) {
+        return document.getElementById(id);
+      }
+      function $$ (sel) {
+        return document.querySelectorAll(sel);
+      }
+      
+      function activateTech1() {
+        tech1Active = true;
+      }
+      function activateTech2() {
+        tech1Active = true;
+      }
+      function activateTech3() {
+        tech1Active = true;
+      }
+      function activateTech4() {
+        tech1Active = true;
+      }
+      function activateTech5() {
+        tech1Active = true;
+      }
+      
+      function nextTurn() {
+        console.log("nextTurn");
+        return;
+      }
     
     </script>
   </body>
 </html>
-<!--Version 13--->
+<!--Version 14--->
