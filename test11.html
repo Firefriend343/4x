@@ -7,10 +7,13 @@
       body { background:#030a17; }
       #turnButton { border-radius:10%; background:slateblue; color:white; font-family:'MedievalSharp', cursive; width:90px; margin:1px; font-size:80%; 
                     position:fixed; display:block; top:750px; left:1100px; }
+      
+      #techButton { position:fixed; width:30px; height:30px; top:180px; left:10px; display:block; border: 2px solid lightgray; border-radius:20%;
+        font-family: 'IM Fell French Canon', serif; padding:5px; background:#7096cf; }
       .techButton {  }
       
-      .techMenu { position:fixed; width: 170px; height: 310px; top:100px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; 
-        border: 2px solid lightgray; border-radius: 5px; overflow:scroll; display:inline-grid; gap: 3px; background: #1d4b96; transition:0.4s; 
+      .techMenu { position:fixed; width: 170px; height: 310px; top:180px; left:10px; font-family: 'MedievalSharp', cursive; font-size:80%; 
+        border: 2px solid lightgray; border-radius: 5px; overflow:scroll; display:none; gap: 3px; background: #1d4b96; transition:0.4s; 
         grid-template-columns: repeat(2, 1fr); grid-auto-rows:auto;
         grid-template-areas:
         "techName1 techButton1"
@@ -19,6 +22,7 @@
         "techName4 techButton4"
         "techName5 techButton5";
       }
+      #techMenu {}
       .techCell { font-size:90%; background:#7096cf; text-align:center; padding-top:10px;  }
       #techName1 { grid-area:techName1; }
       #techButton1 { grid-area:techButton1; padding-top:0px; }
@@ -68,7 +72,7 @@
   <body>
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
     
-    <div class="techMenu">
+    <div class="techMenu" id="techMenu" onclick="hideTechMenu">
       <div class="techCell" id="techName1"><span> Technology 1 </span></div>
       <div class="techCell" id="techButton1"><button class="techButton" id="tB1" onclick="activateTech1()"> Research </button></div>
       <div class="techCell" id="techName2"><span> Technology 2 </span></div>
@@ -90,6 +94,8 @@
       <div class="techCell" id="techName10"><span> Technology 10 </span></div>
       <div class="techCell" id="techButton10"><button class="techButton" id="tB10" onclick="activateTech10()"> Research </button></div>
     </div>
+    
+    <button class="techButton" id="techButton" onclick="showTechMenu()"><span> T </span></button>
     
     <script>
       
@@ -233,10 +239,23 @@
           techButtonCount++;
         }
       }
+      
+      function showTechMenu() {
+        var menu = $("techMenu");
+        var button = $("techButton");
+        button.style.display = "none";
+        menu.style.display = "inline-grid";
+      }
+      function showTechMenu() {
+        var menu = $("techMenu");
+        var button = $("techButton");
+        button.style.display = "block";
+        menu.style.display = "none";
+      }
     
       
       generateTechButtons();
     </script>
   </body>
 </html>
-<!--Version 32--->
+<!--Version 33--->
