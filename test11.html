@@ -69,26 +69,26 @@
     <button id="turnButton" onclick="nextTurn()"> Next Turn </button>
     
     <div class="techMenu">
-      <div class="techCell techName1"><span> Technology 1 </span></div>
-      <div class="techCell techButton1"><button class="techButton" id="tB1" onclick="activateTech1()"> Research </button></div>
-      <div class="techCell techName2"><span> Technology 2 </span></div>
-      <div class="techCell techButton2"><button class="techButton" id="tB2" onclick="activateTech2()"> Research </button></div>
-      <div class="techCell techName3"><span> Technology 3 </span></div>
-      <div class="techCell techButton3"><button class="techButton" id="tB3" onclick="activateTech3()"> Research </button></div>
-      <div class="techCell techName4"><span> Technology 4 </span></div>
-      <div class="techCell techButton4"><button class="techButton" id="tB4" onclick="activateTech4()"> Research </button></div>
-      <div class="techCell techName5"><span> Technology 5 </span></div>
-      <div class="techCell techButton5"><button class="techButton" id="tB5" onclick="activateTech5()"> Research </button></div>
-      <div class="techCell techName6"><span> Technology 6 </span></div>
-      <div class="techCell techButton6"><button class="techButton" id="tB6" onclick="activateTech6()"> Research </button></div>
-      <div class="techCell techName7"><span> Technology 7 </span></div>
-      <div class="techCell techButton7"><button class="techButton" id="tB7" onclick="activateTech7()"> Research </button></div>
-      <div class="techCell techName8"><span> Technology 8 </span></div>
-      <div class="techCell techButton8"><button class="techButton" id="tB8" onclick="activateTech8()"> Research </button></div>
-      <div class="techCell techName9"><span> Technology 9 </span></div>
-      <div class="techCell techButton9"><button class="techButton" id="tB9" onclick="activateTech9()"> Research </button></div>
-      <div class="techCell techName10"><span> Technology 10 </span></div>
-      <div class="techCell techButton10"><button class="techButton" id="tB10" onclick="activateTech10()"> Research </button></div>
+      <div class="techCell" id="techName1"><span> Technology 1 </span></div>
+      <div class="techCell" id="techButton1"><button class="techButton" id="tB1" onclick="activateTech1()"> Research </button></div>
+      <div class="techCell" id="techName2"><span> Technology 2 </span></div>
+      <div class="techCell" id="techButton2"><button class="techButton" id="tB2" onclick="activateTech2()"> Research </button></div>
+      <div class="techCell" id="techName3"><span> Technology 3 </span></div>
+      <div class="techCell" id="techButton3"><button class="techButton" id="tB3" onclick="activateTech3()"> Research </button></div>
+      <div class="techCell" id="techName4"><span> Technology 4 </span></div>
+      <div class="techCell" id="techButton4"><button class="techButton" id="tB4" onclick="activateTech4()"> Research </button></div>
+      <div class="techCell" id="techName5"><span> Technology 5 </span></div>
+      <div class="techCell" id="techButton5"><button class="techButton" id="tB5" onclick="activateTech5()"> Research </button></div>
+      <div class="techCell" id="techName6"><span> Technology 6 </span></div>
+      <div class="techCell" id="techButton6"><button class="techButton" id="tB6" onclick="activateTech6()"> Research </button></div>
+      <div class="techCell" id="techName7"><span> Technology 7 </span></div>
+      <div class="techCell" id="techButton7"><button class="techButton" id="tB7" onclick="activateTech7()"> Research </button></div>
+      <div class="techCell" id="techName8"><span> Technology 8 </span></div>
+      <div class="techCell" id="techButton8"><button class="techButton" id="tB8" onclick="activateTech8()"> Research </button></div>
+      <div class="techCell" id="techName9"><span> Technology 9 </span></div>
+      <div class="techCell" id="techButton9"><button class="techButton" id="tB9" onclick="activateTech9()"> Research </button></div>
+      <div class="techCell" id="techName10"><span> Technology 10 </span></div>
+      <div class="techCell" id="techButton10"><button class="techButton" id="tB10" onclick="activateTech10()"> Research </button></div>
     </div>
     
     <script>
@@ -103,6 +103,16 @@
       var tech4Count = 0;
       var tech5Active = false;
       var tech5Count = 0;
+      var tech6Active = false;
+      var tech6Count = 0;
+      var tech7Active = false;
+      var tech7Count = 0;
+      var tech8Active = false;
+      var tech8Count = 0;
+      var tech9Active = false;
+      var tech9Count = 0;
+      var tech10Active = false;
+      var tech10Count = 0;
       
       function $ (id) {
         return document.getElementById(id);
@@ -130,6 +140,26 @@
       function activateTech5() {
         tech5Active = true;
         console.log("tech5 Activated");
+      }
+      function activateTech6() {
+        tech6Active = true;
+        console.log("tech6 Activated");
+      }
+      function activateTech7() {
+        tech7Active = true;
+        console.log("tech7 Activated");
+      }
+      function activateTech8() {
+        tech8Active = true;
+        console.log("tech8 Activated");
+      }
+      function activateTech9() {
+        tech9Active = true;
+        console.log("tech9 Activated");
+      }
+      function activateTech10() {
+        tech10Active = true;
+        console.log("tech10 Activated");
       }
       
       function nextTurn() {
@@ -186,6 +216,18 @@
         var button1 = $("tB1");
         button1.disabled = false;
         button1.style.background = "#7096cf";
+        var techNameCount = 0;
+        while (techNameCount < 5) {
+          var techNameCell = $("techName" + Number(techNameCount + 6));
+          techNameCell.style.display = "none";
+          techNameCount++;
+        }
+        var techButtonCount = 0;
+        while (techButtonCount < 5) {
+          var techButtonCell = $("techButton" + Number(techButtonCount + 6));
+          techButtonCell.style.display = "none";
+          techButtonCount++;
+        }
       }
     
       
@@ -193,4 +235,4 @@
     </script>
   </body>
 </html>
-<!--Version 27--->
+<!--Version 28--->
